@@ -108,8 +108,8 @@ def generate_report():
     now = datetime.now()
     current_time = now.strftime("%Y-%m-%d %H:%M:%S")
     current_date = now.strftime("%Y年%m月%d日")
-    current_date_en = now.strftime("%B %d, 2025")
-    current_month = now.strftime("%B")
+    current_date_en = now.strftime("%B %d, %Y")     # ← 改這裡
+    current_month = now.strftime("%B %Y")           # ← 改這裡
     
     # 格式化 prompt
     prompt = PROMPT_TEMPLATE.format(
