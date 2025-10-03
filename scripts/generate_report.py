@@ -126,7 +126,7 @@ def generate_report():
         # 呼叫 Claude API
         message = client.messages.create(
             model="claude-sonnet-4-5-20250929",
-            max_tokens=150000,
+            max_tokens=16000,
             temperature=0.3,  # 較低的溫度以獲得更一致的輸出
             messages=[{
                 "role": "user",
