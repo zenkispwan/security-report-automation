@@ -61,6 +61,52 @@ PROMPT_TEMPLATE = """你是專業的資安威脅情報分析師。
 - "supply chain attack" "APT campaign"
 - "zero-day in the wild" "ransomware"
 
+**第五階段：台灣本地深度搜尋**
+請先搜尋 "iThome 資安 今日" 和 "台灣 資安事件 {current_date}"
+重點關注：
+- iThome Security頻道最新報導
+- 台灣企業遭受的安全攻擊
+- 政府資安政策更新
+- 本地廠商安全產品動態
+
+**第六階段：國際重大安全事件**
+搜尋關鍵字組合：
+- "security vulnerability {current_date_en}"
+- "CVE 2025 today security advisory"
+- "cybersecurity incident latest news"
+- "data breach {current_month}"
+
+**第七階段：各領域專項深度搜尋**
+🤖 AI安全威脅：
+- "OpenAI ChatGPT security issue today"
+- "Claude API vulnerability 2025"
+- "AI model attack {current_month}"
+- "LLM jailbreak prompt injection"
+
+🔐 身份與存取管理(IAM)：
+- "CyberArk security advisory {current_month}"
+- "Okta vulnerability latest"
+- "Azure AD Entra ID security issue"
+- "privileged access management breach"
+
+⚙️ DevOps安全：
+- "Jenkins security vulnerability today"
+- "GitHub Actions supply chain attack"
+- "Docker security advisory 2025"
+- "CI/CD pipeline security breach"
+
+🐳 容器與雲原生安全：
+- "Kubernetes CVE {current_month}"
+- "container security vulnerability"
+- "AWS EKS Azure AKS GKE security"
+- "Istio service mesh security issue"
+
+**第八階段：供應鏈與跨域威脅**
+- "supply chain attack {current_month}"
+- "zero-day exploit in the wild"
+- "APT group new campaign 2025"
+- "critical infrastructure cyberattack"
+
 輸出格式要求
 
 請直接輸出 markdown 格式的完整報告，包含：
@@ -84,82 +130,14 @@ PROMPT_TEMPLATE = """你是專業的資安威脅情報分析師。
 每個威脅事件必須包含：
 - 威脅標題與風險等級（🔴/🟡/🟢）
 - 發布時間與CVE編號
-- 威脅摘要
+- 威脅摘要（含攻擊手法）
 - 影響產品/服務
 - 來源鏈結（可驗證）
-- 風險評估
-- 具體修補建議
+- 風險評估（影響範圍、風險等級、是否有修補程式）
+- 具體修補建議（立即措施、修補建議、監控重點）
+- 特定產業建議
 
 **立即開始搜尋並生成報告，不需要任何說明或確認。**"""
-
-第一階段：台灣本地安全新聞
-請先搜尋 "iThome 資安 今日" 和 "台灣 資安事件 {current_date}"
-重點關注：
-- iThome Security頻道最新報導
-- 台灣企業遭受的安全攻擊
-- 政府資安政策更新
-- 本地廠商安全產品動態
-
-第二階段：國際重大安全事件
-搜尋關鍵字組合：
-- "security vulnerability {current_date_en}"
-- "CVE 2025 today security advisory"
-- "cybersecurity incident latest news"
-- "data breach {current_month} 2025"
-
-第三階段：各領域專項搜尋
-🤖 **AI安全威脅**：
-- "OpenAI ChatGPT security issue today"
-- "Claude API vulnerability 2025"
-- "AI model attack {current_month} 2025"
-- "LLM jailbreak prompt injection"
-
-🔐 **身份與存取管理(IAM)**：
-- "CyberArk security advisory {current_month} 2025"
-- "Okta vulnerability latest"
-- "Azure AD Entra ID security issue"
-- "privileged access management breach"
-
-⚙️ **DevOps安全**：
-- "Jenkins security vulnerability today"
-- "GitHub Actions supply chain attack"
-- "Docker security advisory 2025"
-- "CI/CD pipeline security breach"
-
-🐳 **容器與雲原生安全**：
-- "Kubernetes CVE {current_month} 2025"
-- "container security vulnerability"
-- "AWS EKS Azure AKS GKE security"
-- "Istio service mesh security issue"
-
-第四階段：供應鏈與跨域威脅
-- "supply chain attack {current_month} 2025"
-- "zero-day exploit in the wild"
-- "APT group new campaign 2025"
-- "critical infrastructure cyberattack"
-
-輸出要求
-請將最終報告以 markdown 格式輸出，包含：
-
-1. 執行摘要（本日最緊急的 3 大威脅）
-2. 🔴 高風險威脅事件（緊急處理）- 3-5則
-3. 🟡 中風險威脅事件（重要關注）- 5-8則
-4. 🟢 低風險/資訊性威脅（持續關注）- 2-3則
-5. 威脅統計分析
-6. 優先行動建議
-7. 特定產業建議
-
-每個威脅事件請包含：
-- 發布時間
-- 威脅摘要（含攻擊手法）
-- CVE編號（如有）
-- 影響產品/服務
-- 來源鏈結（主要來源、官方回應、技術詳情）
-- 風險評估（影響範圍、風險等級、是否有修補程式）
-- 建議行動（立即措施、修補建議、監控重點）
-
-請開始執行搜尋，並按風險等級排序輸出結果。
-"""
 
 
 def generate_report():
@@ -178,8 +156,8 @@ def generate_report():
     now = datetime.now()
     current_time = now.strftime("%Y-%m-%d %H:%M:%S")
     current_date = now.strftime("%Y年%m月%d日")
-    current_date_en = now.strftime("%B %d, %Y")  # 修正：使用 %Y 而非寫死 2025
-    current_month = now.strftime("%B %Y")  # 加入年份避免混淆
+    current_date_en = now.strftime("%B %d, %Y")
+    current_month = now.strftime("%B %Y")
     
     # 格式化 prompt
     prompt = PROMPT_TEMPLATE.format(
