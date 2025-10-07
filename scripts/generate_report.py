@@ -19,12 +19,12 @@ PROMPT_TEMPLATE = """你是專業的資安威脅情報分析師。
 
 請執行以下任務：收集並分析**今天與最近24-48小時**發布的最新資安威脅情報。
 
-【任務要求】
+任務要求
 - 使用 web_search 工具搜尋最新資訊
 - 直接開始搜尋，不要詢問或確認
 - 報告語言：繁體中文為主
 
-【搜尋策略】
+搜尋策略
 
 **第一階段：台灣本地資安新聞**
 搜尋關鍵字：
@@ -61,7 +61,7 @@ PROMPT_TEMPLATE = """你是專業的資安威脅情報分析師。
 - "supply chain attack" "APT campaign"
 - "zero-day in the wild" "ransomware"
 
-【輸出格式要求】
+輸出格式要求
 
 請直接輸出 markdown 格式的完整報告，包含：
 
@@ -92,7 +92,7 @@ PROMPT_TEMPLATE = """你是專業的資安威脅情報分析師。
 
 **立即開始搜尋並生成報告，不需要任何說明或確認。**"""
 
-【第一階段：台灣本地安全新聞】
+第一階段：台灣本地安全新聞
 請先搜尋 "iThome 資安 今日" 和 "台灣 資安事件 {current_date}"
 重點關注：
 - iThome Security頻道最新報導
@@ -100,14 +100,14 @@ PROMPT_TEMPLATE = """你是專業的資安威脅情報分析師。
 - 政府資安政策更新
 - 本地廠商安全產品動態
 
-【第二階段：國際重大安全事件】
+第二階段：國際重大安全事件
 搜尋關鍵字組合：
 - "security vulnerability {current_date_en}"
 - "CVE 2025 today security advisory"
 - "cybersecurity incident latest news"
 - "data breach {current_month} 2025"
 
-【第三階段：各領域專項搜尋】
+第三階段：各領域專項搜尋
 🤖 **AI安全威脅**：
 - "OpenAI ChatGPT security issue today"
 - "Claude API vulnerability 2025"
@@ -132,13 +132,13 @@ PROMPT_TEMPLATE = """你是專業的資安威脅情報分析師。
 - "AWS EKS Azure AKS GKE security"
 - "Istio service mesh security issue"
 
-【第四階段：供應鏈與跨域威脅】
+第四階段：供應鏈與跨域威脅
 - "supply chain attack {current_month} 2025"
 - "zero-day exploit in the wild"
 - "APT group new campaign 2025"
 - "critical infrastructure cyberattack"
 
-【輸出要求】
+輸出要求
 請將最終報告以 markdown 格式輸出，包含：
 
 1. 執行摘要（本日最緊急的 3 大威脅）
