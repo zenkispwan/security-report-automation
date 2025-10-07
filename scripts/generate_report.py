@@ -14,13 +14,83 @@ import anthropic
 REPORTS_DIR = Path("reports")
 REPORTS_DIR.mkdir(exist_ok=True)
 
-# 讀取 prompt 模板
-PROMPT_TEMPLATE = """請幫我收集今日最新的綜合安全威脅情報，執行以下搜尋策略：
+# Prompt 模板
+PROMPT_TEMPLATE = """你是專業的資安威脅情報分析師。
 
-【今日搜尋策略】
-執行時間：{current_time}
-搜尋範圍：過去24小時內發布的安全事件
-語言：繁體中文優先，英文補充
+請執行以下任務：收集並分析**今天與最近24-48小時**發布的最新資安威脅情報。
+
+【任務要求】
+- 使用 web_search 工具搜尋最新資訊
+- 直接開始搜尋，不要詢問或確認
+- 報告語言：繁體中文為主
+
+【搜尋策略】
+
+**第一階段：台灣本地資安新聞**
+搜尋關鍵字：
+- "iThome 資安 today" "iThome Security 最新"
+- "台灣 資安事件" "台灣 cybersecurity"
+- "台灣 資料外洩" "台灣 漏洞"
+
+**第二階段：國際重大事件**
+搜尋關鍵字：
+- "security vulnerability today" "CVE today"
+- "data breach latest" "security advisory latest"
+- "cybersecurity news today" "zero-day exploit"
+
+**第三階段：專項領域搜尋**
+
+🤖 AI安全：
+- "ChatGPT security issue" "Claude vulnerability"
+- "LLM security" "AI model attack"
+- "prompt injection" "jailbreak attack"
+
+🔐 身份與存取管理：
+- "Okta breach" "CyberArk vulnerability"
+- "Azure AD security" "identity management attack"
+
+⚙️ DevOps安全：
+- "GitHub Actions attack" "Jenkins vulnerability"
+- "Docker security" "CI/CD breach"
+
+🐳 容器與雲原生：
+- "Kubernetes CVE" "container security"
+- "AWS security advisory" "Azure vulnerability"
+
+**第四階段：供應鏈威脅**
+- "supply chain attack" "APT campaign"
+- "zero-day in the wild" "ransomware"
+
+【輸出格式要求】
+
+請直接輸出 markdown 格式的完整報告，包含：
+
+## 📊 執行摘要
+（3大最緊急威脅）
+
+## 🔴 高風險威脅事件
+（3-5則，含CVE、影響範圍、修補建議）
+
+## 🟡 中風險威脅事件  
+（5-8則）
+
+## 🟢 低風險/資訊性威脅
+（2-3則）
+
+## 📈 威脅統計分析
+
+## 🎯 優先行動建議
+
+每個威脅事件必須包含：
+- 威脅標題與風險等級（🔴/🟡/🟢）
+- 發布時間與CVE編號
+- 威脅摘要
+- 影響產品/服務
+- 來源鏈結（可驗證）
+- 風險評估
+- 具體修補建議
+
+**立即開始搜尋並生成報告，不需要任何說明或確認。**"""
 
 【第一階段：台灣本地安全新聞】
 請先搜尋 "iThome 資安 今日" 和 "台灣 資安事件 {current_date}"
@@ -108,8 +178,8 @@ def generate_report():
     now = datetime.now()
     current_time = now.strftime("%Y-%m-%d %H:%M:%S")
     current_date = now.strftime("%Y年%m月%d日")
-    current_date_en = now.strftime("%B %d, %Y")     # ← 改這裡
-    current_month = now.strftime("%B %Y")           # ← 改這裡
+    current_date_en = now.strftime("%B %d, %Y")  # 修正：使用 %Y 而非寫死 2025
+    current_month = now.strftime("%B %Y")  # 加入年份避免混淆
     
     # 格式化 prompt
     prompt = PROMPT_TEMPLATE.format(
@@ -126,7 +196,7 @@ def generate_report():
         # 呼叫 Claude API
         message = client.messages.create(
             model="claude-sonnet-4-5-20250929",
-            max_tokens=16000,
+            max_tokens=150000,
             temperature=0.3,  # 較低的溫度以獲得更一致的輸出
             messages=[{
                 "role": "user",
