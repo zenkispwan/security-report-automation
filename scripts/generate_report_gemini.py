@@ -153,9 +153,10 @@ def generate_report():
     
     try:
         # 建立模型（啟用 Google Search grounding）
+        # 修正：使用新的 API 語法
         model = genai.GenerativeModel(
             model_name='gemini-2.0-flash-exp',
-            tools='google_search_retrieval'  # 啟用 Google Search
+            tools=[{'google_search': {}}]  # 正確的語法
         )
         
         print(f"🔍 正在使用 Google Search 搜尋最新資訊...")
@@ -194,6 +195,14 @@ def generate_report():
             print(f"   - Response tokens: {response.usage_metadata.candidates_token_count}")
             print(f"   - Total tokens: {response.usage_metadata.total_token_count}")
         
+        # 顯示搜尋來源數量
+        if hasattr(response, 'candidates') and response.candidates:
+            candidate = response.candidates[0]
+            if hasattr(candidate, 'grounding_metadata') and candidate.grounding_metadata:
+                if hasattr(candidate.grounding_metadata, 'grounding_chunks'):
+                    search_count = len(candidate.grounding_metadata.grounding_chunks)
+                    print(f"🔍 搜尋引用來源數量：{search_count}")
+        
         return str(report_path)
         
     except Exception as e:
@@ -203,6 +212,7 @@ def generate_report():
         print(f"   2. API Key 是否有效且未過期")
         print(f"   3. 是否已安裝 google-generativeai 套件")
         print(f"   4. 網路連線是否正常")
+        print(f"   5. 使用的是最新版本的 google-generativeai")
         sys.exit(1)
 
 
@@ -211,3 +221,7 @@ if __name__ == "__main__":
     print(f"\n🎉 報告生成完成！")
     print(f"📁 檔案位置：{report_path}")
     print(f"📝 說明：每次執行都會覆蓋此檔案，保持最新版本")
+    print(f"\n💡 優點：")
+    print(f"   ✅ 固定檔案路徑，方便自動化讀取")
+    print(f"   ✅ 不會累積大量歷史檔案")
+    print(f"   ✅ 永遠是最新的報告")
