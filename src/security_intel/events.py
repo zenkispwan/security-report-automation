@@ -9,6 +9,7 @@ from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
 CVE_RE = re.compile(r"\bCVE-\d{4}-\d{4,}\b", re.IGNORECASE)
 WORD_RE = re.compile(r"[a-z0-9][a-z0-9+._/-]{1,}", re.IGNORECASE)
 TRACKING_PREFIXES = ("utm_", "ref", "source", "campaign")
+EVENT_STATE_RETENTION_DAYS = 3
 
 STOPWORDS = {
     "about", "after", "again", "against", "attack", "attacks", "been", "being",
@@ -82,6 +83,7 @@ def build_event_outputs(
     clusters = cluster_articles(normalized)
     vuln_by_cve = _vulnerability_index(vulnerability_intelligence or {})
     previous_items = (previous_state or {}).get("items") or {}
+    baseline_available = bool(previous_state and isinstance(previous_items, dict))
 
     events: list[dict[str, Any]] = []
     state_items: dict[str, Any] = {}
@@ -104,8 +106,7 @@ def build_event_outputs(
             "title": event["title"],
         }
 
-    # Retain recently seen fingerprints so repeated stories are not labelled new tomorrow.
-    retention_cutoff = now - timedelta(days=7)
+    retention_cutoff = now - timedelta(days=EVENT_STATE_RETENTION_DAYS)
     for fingerprint, previous in previous_items.items():
         if fingerprint in state_items or not isinstance(previous, dict):
             continue
@@ -115,19 +116,29 @@ def build_event_outputs(
 
     events.sort(key=_event_sort_key, reverse=True)
     selected = events[:max_events]
-    new_events = [x for x in selected if x.get("is_new") and x["priority"] != "WATCH"]
+    new_events = (
+        [x for x in selected if x.get("is_new") and x["priority"] != "WATCH"]
+        if baseline_available
+        else []
+    )
 
     generated_at = now.isoformat()
+    baseline = {
+        "available": baseline_available,
+        "type": "event_state" if baseline_available else "bootstrap",
+        "generated_at": (previous_state or {}).get("generated_at"),
+    }
     event_state = {
         "schema_version": "2.5-event-state",
         "generated_at": generated_at,
-        "retention_days": 7,
+        "retention_days": EVENT_STATE_RETENTION_DAYS,
         "items": state_items,
     }
     output = {
         "schema_version": "2.5-events",
         "generated_at": generated_at,
         "window": {"hours": lookback_hours, "start": cutoff.isoformat(), "end": generated_at},
+        "baseline": baseline,
         "profile": {
             "name": profile.get("profile_name"),
             "geographies": profile.get("geographies") or [],
@@ -152,6 +163,8 @@ def build_event_outputs(
     delta = {
         "schema_version": "2.5-event-delta",
         "generated_at": generated_at,
+        "baseline": baseline,
+        "mode": "delta" if baseline_available else "bootstrap",
         "summary": {
             "new_notable_count": len(new_events),
             "by_type": _count_by(new_events, "event_type"),
@@ -169,7 +182,7 @@ def normalize_article(article: dict[str, Any], profile: dict[str, Any]) -> dict[
         return None
     url = canonical_url(raw_url)
     domain = (article.get("domain") or urlparse(url).netloc).lower().removeprefix("www.")
-    summary = _clean_text(article.get("summary"))
+    summary = _truncate(_clean_text(article.get("summary")), 700)
     source_policy = profile.get("source_policy") or {}
     authority = article.get("authority") or source_authority(domain, source_policy)
     if authority == "discovery":
@@ -258,7 +271,7 @@ def build_event(
     combined = " ".join(f"{x['title']} {x.get('summary') or ''}" for x in cluster).lower()
     relevance = relevance_for(combined, event_type, profile)
     score, reasons = event_score(event_type, verification, relevance, linked, last_seen, now)
-    priority = "P1" if score >= 75 else "P2" if score >= 55 else "P3" if score >= 35 else "WATCH"
+    priority = priority_for(score, verification.get("status"))
 
     return {
         "event_id": f"evt-{fingerprint[:16]}",
@@ -281,6 +294,21 @@ def build_event(
         "relevance": relevance,
         "sources": sources,
     }
+
+
+def priority_for(score: int, verification_status_value: Any) -> str:
+    status = str(verification_status_value or "discovery_only")
+    if status == "discovery_only":
+        return "WATCH"
+    if status == "single_trusted_source":
+        return "P3" if score >= 35 else "WATCH"
+    if score >= 75:
+        return "P1"
+    if score >= 55:
+        return "P2"
+    if score >= 35:
+        return "P3"
+    return "WATCH"
 
 
 def verification_status(sources: list[dict[str, Any]]) -> dict[str, Any]:
@@ -395,7 +423,7 @@ def event_fingerprint(event_type: str, title: str, cves: list[str]) -> str:
         seed = f"{event_type}|{'|'.join(sorted(cves))}"
     else:
         tokens = sorted(_title_tokens(title))[:16]
-        seed = f"{event_type}|{'|'.join(tokens) or _clean_text(title).lower()}"
+        seed = f"{event_type}|{'|'.join(tokens) or (_clean_text(title) or '').lower()}"
     return hashlib.sha256(seed.encode("utf-8")).hexdigest()
 
 
@@ -481,6 +509,12 @@ def _clean_text(value: Any) -> str | None:
     if value is None:
         return None
     return re.sub(r"\s+", " ", str(value)).strip() or None
+
+
+def _truncate(value: str | None, limit: int) -> str | None:
+    if not value or len(value) <= limit:
+        return value
+    return value[: limit - 1].rstrip() + "…"
 
 
 def _parse_dt(value: Any) -> datetime | None:
