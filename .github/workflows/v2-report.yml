@@ -1,0 +1,114 @@
+name: V2 Grounded Security Intelligence Report
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows:
+      - V2 Security Intelligence Collector
+    types:
+      - completed
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/security_intel/reporting.py'
+      - 'src/security_intel/llm/**'
+      - 'scripts/generate_report_v2.py'
+      - 'scripts/validate_report.py'
+      - 'requirements-report.txt'
+      - '.github/workflows/v2-report.yml'
+  pull_request:
+    paths:
+      - 'src/security_intel/reporting.py'
+      - 'src/security_intel/llm/**'
+      - 'scripts/generate_report_v2.py'
+      - 'scripts/validate_report.py'
+      - 'tests/test_reporting.py'
+      - 'requirements-report.txt'
+      - '.github/workflows/v2-report.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: security-intelligence-report-v2
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Report unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            requirements-report.txt
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt -r requirements-report.txt
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+
+  report:
+    name: Generate grounded report
+    needs: test
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout latest main intelligence
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: requirements-report.txt
+
+      - name: Install report dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-report.txt
+
+      - name: Generate grounded report
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.8-flash' }}
+          REPORT_PROVIDER: gemini
+        run: python scripts/generate_report_v2.py
+
+      - name: Validate grounded report
+        run: python scripts/validate_report.py
+
+      - name: Preserve report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-intelligence-report-${{ github.run_id }}
+          path: |
+            reports/security_report_latest.md
+            reports/security_report_metadata.json
+          retention-days: 14
+          if-no-files-found: error
+
+      - name: Commit report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/security_report_latest.md reports/security_report_metadata.json
+          if git diff --cached --quiet; then
+            echo "No report changes."
+          else
+            git commit -m "report: refresh grounded security intelligence brief"
+            git push
+          fi
