@@ -34,12 +34,12 @@ def build(output: Path) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Build the static Security Intelligence web report for Cloudflare Pages.")
+    parser = argparse.ArgumentParser(description="Build the static Security Intelligence web report for Cloudflare Workers Static Assets.")
     parser.add_argument("--output", default="_site", help="Output directory (default: _site)")
     args = parser.parse_args()
     output = Path(args.output)
     build(output)
-    print(f"OK: built Cloudflare Pages site at {output}/index.html")
+    print(f"OK: built Cloudflare Workers Static Assets site at {output}/index.html")
 
 
 if __name__ == "__main__":
