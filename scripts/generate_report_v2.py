@@ -39,6 +39,8 @@ def main() -> int:
 
     model = os.getenv("GEMINI_MODEL", "gemini-3.8-flash").strip()
     search_mode = os.getenv("GEMINI_SEARCH_MODE", "auto").strip().lower()
+    search_timeout_ms = _env_int("GEMINI_SEARCH_TIMEOUT_MS", 45_000)
+    facts_timeout_ms = _env_int("GEMINI_FACTS_TIMEOUT_MS", 120_000)
     intelligence = _load_json(INTELLIGENCE_PATH)
     delta = _load_json(DELTA_PATH)
 
@@ -53,6 +55,8 @@ def main() -> int:
                 "provider": provider,
                 "model": model,
                 "search_mode": search_mode,
+                "search_timeout_ms": search_timeout_ms,
+                "facts_timeout_ms": facts_timeout_ms,
                 "intelligence_items": len(intelligence.get("items") or []),
                 "delta_items": len(delta.get("items") or []),
             },
@@ -66,6 +70,8 @@ def main() -> int:
         prompt=prompt,
         system_instruction=SYSTEM_INSTRUCTION,
         search_mode=search_mode,
+        search_timeout_ms=search_timeout_ms,
+        facts_timeout_ms=facts_timeout_ms,
     )
 
     unknown = unknown_report_cves(response.text, intelligence)
@@ -88,6 +94,12 @@ def main() -> int:
             f"({response.grounding_fallback_reason})",
             file=sys.stderr,
         )
+    elif response.grounding_fallback_reason:
+        print(
+            "INFO: Google Search grounding preserved through alternate API transport "
+            f"({response.grounding_fallback_reason})",
+            file=sys.stderr,
+        )
 
     appendix = render_source_appendix(
         response.text,
@@ -104,6 +116,7 @@ def main() -> int:
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "provider": provider,
         "model": response.model,
+        "api_mode": response.api_mode,
         "interaction_id": response.interaction_id,
         "input": {
             "intelligence_generated_at": intelligence.get("generated_at"),
@@ -120,6 +133,10 @@ def main() -> int:
             "search_queries": response.search_queries,
             "citations": response.citations,
         },
+        "timeouts_ms": {
+            "search": search_timeout_ms,
+            "facts_only": facts_timeout_ms,
+        },
         "usage": response.usage,
     }
     METADATA_PATH.write_text(
@@ -129,9 +146,23 @@ def main() -> int:
 
     print(f"OK: wrote {REPORT_PATH.relative_to(ROOT)}")
     print(f"OK: wrote {METADATA_PATH.relative_to(ROOT)}")
+    print(f"Gemini API mode: {response.api_mode}")
     print(f"Grounding mode: {response.grounding_mode}")
     print(f"Grounding citations: {len(response.citations)}")
     return 0
+
+
+def _env_int(name: str, default: int) -> int:
+    raw = os.getenv(name, "").strip()
+    if not raw:
+        return default
+    try:
+        value = int(raw)
+    except ValueError as exc:
+        raise ValueError(f"{name} must be an integer, got {raw!r}") from exc
+    if value < 1_000:
+        raise ValueError(f"{name} must be at least 1000 ms")
+    return value
 
 
 def _load_json(path: Path) -> dict:
