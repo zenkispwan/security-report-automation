@@ -375,7 +375,7 @@ def _important_new_cve(item: dict[str, Any]) -> bool:
         return True
     if _exploit_status(item) in {"poc", "active", "known_exploited"}:
         return True
-    if cvss is not None and cvss >= 7.0:
+    if cvss is not None and cvss >= 9.0:
         return True
     if epss is not None and epss >= 0.05:
         return True
