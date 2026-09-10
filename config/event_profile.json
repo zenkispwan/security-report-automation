@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "profile_name": "taiwan-general-enterprise",
+  "lookback_hours": 24,
+  "geographies": ["Taiwan", "APAC"],
+  "technology_keywords": [],
+  "industry_keywords": [],
+  "priority_event_types": [
+    "active_exploitation",
+    "zero_day",
+    "ransomware",
+    "supply_chain",
+    "data_breach",
+    "malware_campaign"
+  ],
+  "asset_classes": {
+    "network_edge": ["vpn", "firewall", "router", "gateway", "network appliance", "edge device"],
+    "identity": ["identity", "credential", "mfa", "active directory", "entra", "okta", "microsoft 365", "m365"],
+    "cloud_saas": ["cloud", "saas", "aws", "azure", "gcp", "google cloud", "microsoft 365"],
+    "software_supply_chain": ["supply chain", "npm", "pypi", "package", "dependency", "github action", "ci/cd"],
+    "endpoint_server": ["windows", "linux", "macos", "android", "ios", "server", "endpoint"]
+  },
+  "discovery_queries": [
+    "(\"cyber attack\" OR ransomware OR \"data breach\")",
+    "(\"supply chain attack\" OR \"software supply chain\" OR \"malicious package\")",
+    "(\"zero-day\" OR \"zero day\" OR \"actively exploited\" OR \"active exploitation\")",
+    "(malware OR phishing) (campaign OR attack)"
+  ],
+  "official_feeds": [
+    {
+      "name": "TWCERT/CC Security News",
+      "url": "https://www.twcert.org.tw/tw/rss-104-1.xml",
+      "publisher": "TWCERT/CC",
+      "authority": "official"
+    },
+    {
+      "name": "Google Threat Intelligence",
+      "url": "https://feeds.feedburner.com/threatintelligence/pvexyqv7v0v",
+      "publisher": "Google Threat Intelligence Group",
+      "authority": "official"
+    },
+    {
+      "name": "Cisco Talos",
+      "url": "https://blog.talosintelligence.com/rss/",
+      "publisher": "Cisco Talos",
+      "authority": "official"
+    }
+  ],
+  "source_policy": {
+    "official_domains": [
+      "twcert.org.tw",
+      "cisa.gov",
+      "microsoft.com",
+      "msrc.microsoft.com",
+      "cloud.google.com",
+      "blog.talosintelligence.com",
+      "cisco.com",
+      "fortiguard.com",
+      "paloaltonetworks.com"
+    ],
+    "trusted_media_domains": [
+      "bleepingcomputer.com",
+      "therecord.media",
+      "securityweek.com",
+      "darkreading.com",
+      "thehackernews.com",
+      "krebsonsecurity.com"
+    ]
+  }
+}
