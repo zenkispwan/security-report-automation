@@ -55,10 +55,10 @@ def validate(root: Path) -> None:
     if "<script src=\"http" in index or "<link rel=\"stylesheet\" href=\"http" in index:
         raise SystemExit("External executable/style dependency is not allowed")
     if "Content-Security-Policy:" not in headers or "Cache-Control: no-cache" not in headers:
-        raise SystemExit("Cloudflare Pages security/cache headers are missing")
+        raise SystemExit("Cloudflare Workers Static Assets security/cache headers are missing")
 
     print(
-        "OK: Cloudflare Pages web report "
+        "OK: Cloudflare Workers Static Assets web report "
         f"intelligence={len(intelligence['items'])} "
         f"delta={len(delta['items'])} "
         f"renderer={metadata.get('renderer')} "
