@@ -14,8 +14,11 @@ on:
       - 'src/**'
       - 'scripts/collect_v2.py'
       - 'scripts/validate_latest.py'
+      - 'scripts/build_intelligence.py'
+      - 'scripts/validate_intelligence.py'
       - 'tests/**'
       - 'requirements.txt'
+      - 'data/.gitignore'
       - '.github/workflows/v2-collect.yml'
 
 permissions:
@@ -31,6 +34,15 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+
+      - name: Preserve previous snapshot for bootstrap
+        run: |
+          if [ -f "data/latest.json" ]; then
+            cp data/latest.json /tmp/previous_latest.json
+            echo "Previous full snapshot preserved for delta bootstrap."
+          else
+            echo "No tracked full snapshot found; state.json will be used when available."
+          fi
 
       - uses: actions/setup-python@v5
         with:
@@ -52,26 +64,44 @@ jobs:
           LOOKBACK="${{ github.event.inputs.lookback_hours || '48' }}"
           python scripts/collect_v2.py --lookback-hours "$LOOKBACK"
 
-      - name: Validate
+      - name: Validate normalized facts
         run: python scripts/validate_latest.py
 
-      - name: Preserve raw snapshots
+      - name: Build Daily Delta and Intelligence
+        run: |
+          python scripts/build_intelligence.py \
+            --previous-snapshot /tmp/previous_latest.json
+
+      - name: Validate compact intelligence
+        run: python scripts/validate_intelligence.py
+
+      - name: Preserve full snapshots and raw facts
         uses: actions/upload-artifact@v4
         with:
-          name: security-intel-raw-${{ github.run_id }}
-          path: data/raw/latest/
+          name: security-intel-full-${{ github.run_id }}
+          path: |
+            data/latest.json
+            data/raw/latest/
           retention-days: 7
           if-no-files-found: error
 
-      - name: Commit normalized facts
+      - name: Commit compact intelligence state
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/latest.json
+
+          git add data/state.json data/delta.json data/intelligence.json
+
+          # The first V2.1 main run retires the large tracked snapshot.
+          # The newly generated file remains in the workspace/artifact, but future runs do not commit it.
+          if git ls-files --error-unmatch data/latest.json >/dev/null 2>&1; then
+            git rm --cached data/latest.json
+          fi
+
           if git diff --cached --quiet; then
-            echo "No normalized data changes."
+            echo "No compact intelligence changes."
           else
-            git commit -m "data: refresh security intelligence"
+            git commit -m "data: refresh security intelligence delta"
             git push
           fi
