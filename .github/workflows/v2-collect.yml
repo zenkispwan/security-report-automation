@@ -13,23 +13,35 @@ on:
     branches:
       - main
     paths:
-      - 'src/**'
+      - 'src/security_intel/__init__.py'
+      - 'src/security_intel/http.py'
+      - 'src/security_intel/normalize.py'
+      - 'src/security_intel/pipeline.py'
+      - 'src/security_intel/intelligence.py'
+      - 'src/security_intel/collectors/**'
       - 'scripts/collect_v2.py'
       - 'scripts/validate_latest.py'
       - 'scripts/build_intelligence.py'
       - 'scripts/validate_intelligence.py'
-      - 'tests/**'
+      - 'tests/test_normalize.py'
+      - 'tests/test_intelligence.py'
       - 'requirements.txt'
       - 'data/.gitignore'
       - '.github/workflows/v2-collect.yml'
   pull_request:
     paths:
-      - 'src/**'
+      - 'src/security_intel/__init__.py'
+      - 'src/security_intel/http.py'
+      - 'src/security_intel/normalize.py'
+      - 'src/security_intel/pipeline.py'
+      - 'src/security_intel/intelligence.py'
+      - 'src/security_intel/collectors/**'
       - 'scripts/collect_v2.py'
       - 'scripts/validate_latest.py'
       - 'scripts/build_intelligence.py'
       - 'scripts/validate_intelligence.py'
-      - 'tests/**'
+      - 'tests/test_normalize.py'
+      - 'tests/test_intelligence.py'
       - 'requirements.txt'
       - 'data/.gitignore'
       - '.github/workflows/v2-collect.yml'
@@ -38,8 +50,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: security-intelligence-v2
-  cancel-in-progress: true
+  group: security-intelligence-v2-${{ github.head_ref || github.ref_name || github.event_name }}
+  cancel-in-progress: false
 
 jobs:
   collect:
@@ -67,8 +79,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Unit tests
-        run: python -m unittest discover -s tests -v
+      - name: Collector unit tests
+        run: |
+          python -m unittest discover -s tests -p 'test_normalize.py' -v
+          python -m unittest discover -s tests -p 'test_intelligence.py' -v
 
       - name: Collect facts
         env:

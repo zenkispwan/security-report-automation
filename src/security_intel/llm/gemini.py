@@ -3,23 +3,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Sequence
 
-FACTS_ONLY_SYSTEM_SUFFIX = """
-
-目前進入 VERIFIED_FACTS_ONLY 模式，Google Search 工具不可用。此模式的限制優先於其他指示：
-- 不得使用模型既有知識新增任何近期漏洞事實、受影響版本、修補版本、攻擊事件、攻擊手法、勒索軟體歸因或 vendor 公告內容。
-- 只能重述與分析 VERIFIED_FACTS 中已有的事實。
-- 處置建議只能引用 VERIFIED_FACTS 內的 required_action，或提供不依賴特定未驗證版本/公告的一般性防禦建議。
-- 不知道的資訊一律寫「未確認」。
-- 不得暗示本次已進行即時網路搜尋。
-"""
-
 _TRANSIENT_STATUS_CODES = {408, 425, 429, 500, 502, 503, 504}
 
 
 @dataclass
 class GroundedResponse:
     text: str
-    model: str
+    model: str | None
     requested_model: str
     attempted_models: list[str]
     model_fallback_reason: str | None
@@ -41,22 +31,24 @@ def generate_grounded_markdown(
     search_mode: str = "auto",
     fallback_models: Sequence[str] | None = None,
     search_timeout_ms: int = 45_000,
-    facts_timeout_ms: int = 120_000,
 ) -> GroundedResponse:
-    """Generate a Gemini report while keeping the fact boundary deterministic.
+    """Try to generate a Google-Search-grounded Gemini report.
+
+    The adapter never asks an ungrounded LLM to invent a fallback report.
+    When Search cannot be used in ``auto`` mode, it returns an explicit
+    ``deterministic_facts_only`` decision. The caller then renders directly
+    from verified ``delta.json`` / ``intelligence.json`` facts.
 
     Search transport strategy:
       1. Interactions API + Google Search using the requested model.
-      2. If Interactions has a transient transport failure, retry Search with
-         GenerateContent. High-demand model failures may move down the stable
-         fallback model chain while preserving Search.
-      3. In ``auto`` mode, if Search is unavailable because of quota or a
-         transient failure, generate from VERIFIED_FACTS only. Facts-only
-         generation may also move down the model chain for transient 429/5xx
-         or transport errors.
+      2. On transient Interactions transport failure, try GenerateContent +
+         Google Search. Transient 5xx/high-demand model errors may rotate
+         through the configured stable model chain while preserving Search.
+      3. If Search is unavailable because of quota or exhausted transient
+         transport failures, return deterministic-facts-only mode.
 
-    Authentication, authorization, malformed request and other non-transient
-    failures are never hidden by model fallback.
+    Authentication, authorization, malformed requests and other non-transient
+    failures are never hidden by fallback.
     """
     from google import genai
     from google.genai import types
@@ -64,22 +56,15 @@ def generate_grounded_markdown(
     mode = (search_mode or "auto").strip().lower()
     if mode not in {"auto", "required", "off"}:
         raise ValueError(f"unsupported Gemini search mode: {search_mode!r}")
-    if search_timeout_ms < 1_000 or facts_timeout_ms < 1_000:
-        raise ValueError("Gemini timeouts must be at least 1000 ms")
+    if search_timeout_ms < 1_000:
+        raise ValueError("Gemini search timeout must be at least 1000 ms")
 
     models = _model_candidates(model, fallback_models or [])
-    facts_prompt = _facts_only_prompt(prompt)
 
     if mode == "off":
-        return _generate_facts_only(
-            genai=genai,
-            types=types,
-            api_key=api_key,
+        return _deterministic_facts_only_response(
             requested_model=model,
-            models=models,
-            prompt=facts_prompt,
-            system_instruction=system_instruction,
-            timeout_ms=facts_timeout_ms,
+            attempted_models=[],
             fallback_reason="google_search_disabled",
         )
 
@@ -95,26 +80,20 @@ def generate_grounded_markdown(
         if _is_quota_error(interaction_exc):
             if mode == "required":
                 raise
-            return _generate_facts_only(
-                genai=genai,
-                types=types,
-                api_key=api_key,
+            return _deterministic_facts_only_response(
                 requested_model=model,
-                models=models,
-                prompt=facts_prompt,
-                system_instruction=system_instruction,
-                timeout_ms=facts_timeout_ms,
+                attempted_models=[model],
                 fallback_reason="google_search_quota_unavailable",
             )
 
         if not _is_transient_error(interaction_exc):
             raise
 
-        # Interactions transport failed. Keep Search if possible by trying the
-        # fully-supported GenerateContent endpoint. A 429 on this Search path
-        # is treated as grounding quota and does not waste requests on other
-        # models; 5xx/high-demand failures may try the fallback models.
+        # Keep grounding if possible by trying the fully-supported
+        # GenerateContent endpoint. Search quota 429 is not rotated through
+        # models; high-demand 5xx/network errors may use fallback models.
         legacy_search_client = _make_client(genai, api_key, search_timeout_ms)
+        attempted_search: list[str] = []
         try:
             response, selected_model, attempted = _generate_content_with_model_fallback(
                 client=legacy_search_client,
@@ -124,6 +103,7 @@ def generate_grounded_markdown(
                 system_instruction=system_instruction,
                 use_search=True,
                 fallback_on_quota=False,
+                attempted_out=attempted_search,
             )
         except Exception as search_exc:
             if mode == "required":
@@ -135,23 +115,18 @@ def generate_grounded_markdown(
                 if _is_quota_error(search_exc)
                 else "google_search_transport_unavailable"
             )
-            return _generate_facts_only(
-                genai=genai,
-                types=types,
-                api_key=api_key,
+            return _deterministic_facts_only_response(
                 requested_model=model,
-                models=models,
-                prompt=facts_prompt,
-                system_instruction=system_instruction,
-                timeout_ms=facts_timeout_ms,
+                attempted_models=_merge_models([model], attempted_search),
                 fallback_reason=reason,
             )
 
+        attempted_all = _merge_models([model], attempted)
         return _parse_generate_content(
             response=response,
             model=selected_model,
             requested_model=model,
-            attempted_models=attempted,
+            attempted_models=attempted_all,
             model_fallback_reason=_model_fallback_reason(model, selected_model),
             grounding_mode="google_search",
             fallback_reason="interactions_transport_unavailable",
@@ -166,10 +141,31 @@ def generate_grounded_markdown(
     )
 
 
+def _deterministic_facts_only_response(
+    *,
+    requested_model: str,
+    attempted_models: Sequence[str],
+    fallback_reason: str,
+) -> GroundedResponse:
+    return GroundedResponse(
+        text="",
+        model=None,
+        requested_model=requested_model,
+        attempted_models=_merge_models(attempted_models),
+        model_fallback_reason=None,
+        interaction_id=None,
+        citations=[],
+        search_queries=[],
+        usage=None,
+        grounding_mode="verified_facts_only",
+        grounding_fallback_reason=fallback_reason,
+        api_mode="deterministic_facts_only",
+    )
+
+
 def _make_client(genai: Any, api_key: str, timeout_ms: int) -> Any:
-    # The SDK defaults to several exponential retries. Keep the report bounded:
-    # two total attempts with short delays, then let our explicit fallback
-    # strategy decide what to do next.
+    # Bound transient SDK retries; explicit transport fallback decides what to
+    # do after two short attempts.
     return genai.Client(
         api_key=api_key,
         http_options={
@@ -231,9 +227,10 @@ def _generate_content_with_model_fallback(
     system_instruction: str,
     use_search: bool,
     fallback_on_quota: bool,
+    attempted_out: list[str] | None = None,
 ) -> tuple[Any, str, list[str]]:
-    """Try models in order, but only cross models for transient failures."""
-    attempted: list[str] = []
+    """Try models in order, crossing models only for transient failures."""
+    attempted = attempted_out if attempted_out is not None else []
     last_exc: Exception | None = None
 
     for candidate in models:
@@ -247,7 +244,7 @@ def _generate_content_with_model_fallback(
                 system_instruction=system_instruction,
                 use_search=use_search,
             )
-            return response, candidate, attempted
+            return response, candidate, list(attempted)
         except Exception as exc:
             if _is_quota_error(exc) and not fallback_on_quota:
                 raise
@@ -258,40 +255,6 @@ def _generate_content_with_model_fallback(
     if last_exc is not None:
         raise last_exc
     raise RuntimeError("Gemini model candidate list is empty")
-
-
-def _generate_facts_only(
-    *,
-    genai: Any,
-    types: Any,
-    api_key: str,
-    requested_model: str,
-    models: Sequence[str],
-    prompt: str,
-    system_instruction: str,
-    timeout_ms: int,
-    fallback_reason: str,
-) -> GroundedResponse:
-    client = _make_client(genai, api_key, timeout_ms)
-    response, selected_model, attempted = _generate_content_with_model_fallback(
-        client=client,
-        types=types,
-        models=models,
-        prompt=prompt,
-        system_instruction=system_instruction + FACTS_ONLY_SYSTEM_SUFFIX,
-        use_search=False,
-        fallback_on_quota=True,
-    )
-    return _parse_generate_content(
-        response=response,
-        model=selected_model,
-        requested_model=requested_model,
-        attempted_models=attempted,
-        model_fallback_reason=_model_fallback_reason(requested_model, selected_model),
-        grounding_mode="verified_facts_only",
-        fallback_reason=fallback_reason,
-        api_mode="generate_content_facts_only",
-    )
 
 
 def _parse_interaction(
@@ -463,11 +426,13 @@ def _model_fallback_reason(requested_model: str, selected_model: str) -> str | N
     return None if requested_model == selected_model else "transient_model_unavailable"
 
 
-def _facts_only_prompt(prompt: str) -> str:
-    return (
-        "VERIFIED_FACTS_ONLY 模式已啟用。忽略任何要求你進行搜尋的指示；"
-        "只可根據提供的 VERIFIED_FACTS 產生報告。\n\n" + prompt
-    )
+def _merge_models(*groups: Sequence[str]) -> list[str]:
+    out: list[str] = []
+    for group in groups:
+        for value in group:
+            if value and value not in out:
+                out.append(value)
+    return out
 
 
 def _is_quota_error(exc: Exception) -> bool:

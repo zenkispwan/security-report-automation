@@ -9,13 +9,14 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from security_intel.llm.gemini import (  # noqa: E402
-    FACTS_ONLY_SYSTEM_SUFFIX,
+    _deterministic_facts_only_response,
     _generate_content_with_model_fallback,
     _is_quota_error,
     _is_search_fallback_error,
     _is_transient_error,
     _model_candidates,
     _parse_generate_content,
+    generate_grounded_markdown,
 )
 
 
@@ -67,7 +68,37 @@ class FakeModels:
 
 
 class GeminiAdapterTests(unittest.TestCase):
-    def test_quota_error_detection_allows_rate_limit_fallback(self) -> None:
+    def test_search_off_returns_deterministic_decision_without_llm_body(self) -> None:
+        response = generate_grounded_markdown(
+            api_key="",
+            model="gemini-3.8-flash",
+            fallback_models=["gemini-3.7-flash"],
+            prompt="verified facts",
+            system_instruction="strict",
+            search_mode="off",
+        )
+        self.assertEqual(response.api_mode, "deterministic_facts_only")
+        self.assertEqual(response.grounding_mode, "verified_facts_only")
+        self.assertEqual(response.grounding_fallback_reason, "google_search_disabled")
+        self.assertEqual(response.text, "")
+        self.assertIsNone(response.model)
+        self.assertEqual(response.attempted_models, [])
+        self.assertIsNone(response.usage)
+        self.assertIsNone(response.interaction_id)
+
+    def test_deterministic_response_never_contains_model_generated_text(self) -> None:
+        response = _deterministic_facts_only_response(
+            requested_model="gemini-3.8-flash",
+            attempted_models=["gemini-3.8-flash"],
+            fallback_reason="google_search_quota_unavailable",
+        )
+        self.assertEqual(response.text, "")
+        self.assertIsNone(response.model)
+        self.assertIsNone(response.usage)
+        self.assertEqual(response.attempted_models, ["gemini-3.8-flash"])
+        self.assertEqual(response.api_mode, "deterministic_facts_only")
+
+    def test_quota_error_detection_allows_search_fallback(self) -> None:
         quota = FakeRateLimitError("429 too_many_requests: exceeded your current quota")
         auth = FakeAuthError("401 invalid API key")
         self.assertTrue(_is_quota_error(quota))
@@ -90,8 +121,8 @@ class GeminiAdapterTests(unittest.TestCase):
             ["gemini-3.8-flash", "gemini-3.7-flash", "gemini-3.6-flash"],
         )
 
-    def test_transient_503_moves_to_next_model(self) -> None:
-        success = SimpleNamespace(text="fallback succeeded")
+    def test_transient_search_503_moves_to_next_model(self) -> None:
+        success = SimpleNamespace(text="grounded fallback succeeded")
         models = FakeModels(
             {
                 "gemini-3.8-flash": FakeServerError("503 UNAVAILABLE: high demand"),
@@ -104,10 +135,10 @@ class GeminiAdapterTests(unittest.TestCase):
             client=client,
             types=FakeTypes,
             models=["gemini-3.8-flash", "gemini-3.7-flash"],
-            prompt="facts",
+            prompt="search",
             system_instruction="strict",
-            use_search=False,
-            fallback_on_quota=True,
+            use_search=True,
+            fallback_on_quota=False,
         )
 
         self.assertIs(response, success)
@@ -131,10 +162,10 @@ class GeminiAdapterTests(unittest.TestCase):
                 client=client,
                 types=FakeTypes,
                 models=["gemini-3.8-flash", "gemini-3.7-flash"],
-                prompt="facts",
+                prompt="search",
                 system_instruction="strict",
-                use_search=False,
-                fallback_on_quota=True,
+                use_search=True,
+                fallback_on_quota=False,
             )
         self.assertEqual(models.calls, ["gemini-3.8-flash"])
 
@@ -213,30 +244,6 @@ class GeminiAdapterTests(unittest.TestCase):
         self.assertEqual(parsed.search_queries, ["Cisco FMC CVE advisory"])
         self.assertEqual(parsed.citations[0]["url"], "https://example.com/advisory")
         self.assertEqual(parsed.citations[0]["cited_text"], "Verified")
-
-    def test_facts_only_generate_content_may_have_no_grounding_metadata(self) -> None:
-        response = SimpleNamespace(
-            text="Facts-only report",
-            response_id=None,
-            usage_metadata=None,
-            candidates=[SimpleNamespace(grounding_metadata=None)],
-        )
-        parsed = _parse_generate_content(
-            response=response,
-            model="gemini-test",
-            grounding_mode="verified_facts_only",
-            fallback_reason="google_search_quota_unavailable",
-            api_mode="generate_content_facts_only",
-        )
-        self.assertEqual(parsed.citations, [])
-        self.assertEqual(parsed.search_queries, [])
-        self.assertEqual(parsed.grounding_mode, "verified_facts_only")
-
-    def test_facts_only_instruction_forbids_model_memory_for_recent_facts(self) -> None:
-        self.assertIn("不得使用模型既有知識", FACTS_ONLY_SYSTEM_SUFFIX)
-        self.assertIn("只能重述與分析 VERIFIED_FACTS", FACTS_ONLY_SYSTEM_SUFFIX)
-        self.assertIn("未確認", FACTS_ONLY_SYSTEM_SUFFIX)
-        self.assertIn("不得暗示本次已進行即時網路搜尋", FACTS_ONLY_SYSTEM_SUFFIX)
 
 
 if __name__ == "__main__":

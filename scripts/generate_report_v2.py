@@ -15,6 +15,7 @@ from security_intel.reporting import (  # noqa: E402
     SYSTEM_INSTRUCTION,
     build_report_prompt,
     render_source_appendix,
+    render_verified_facts_report,
     sha256_file,
     unknown_report_cves,
 )
@@ -28,11 +29,6 @@ DEFAULT_FALLBACK_MODELS = "gemini-3.7-flash,gemini-3.6-flash"
 
 
 def main() -> int:
-    api_key = os.getenv("GEMINI_API_KEY", "").strip()
-    if not api_key:
-        print("ERROR: GEMINI_API_KEY is not configured", file=sys.stderr)
-        return 2
-
     provider = os.getenv("REPORT_PROVIDER", "gemini").strip().lower()
     if provider != "gemini":
         print(f"ERROR: unsupported REPORT_PROVIDER={provider!r}", file=sys.stderr)
@@ -42,14 +38,22 @@ def main() -> int:
     fallback_models = _env_csv("GEMINI_FALLBACK_MODELS", DEFAULT_FALLBACK_MODELS)
     search_mode = os.getenv("GEMINI_SEARCH_MODE", "auto").strip().lower()
     search_timeout_ms = _env_int("GEMINI_SEARCH_TIMEOUT_MS", 45_000)
-    facts_timeout_ms = _env_int("GEMINI_FACTS_TIMEOUT_MS", 120_000)
+    api_key = os.getenv("GEMINI_API_KEY", "").strip()
+
+    if search_mode not in {"auto", "required", "off"}:
+        print(f"ERROR: unsupported GEMINI_SEARCH_MODE={search_mode!r}", file=sys.stderr)
+        return 2
+    if search_mode != "off" and not api_key:
+        print("ERROR: GEMINI_API_KEY is not configured", file=sys.stderr)
+        return 2
+
     intelligence = _load_json(INTELLIGENCE_PATH)
     delta = _load_json(DELTA_PATH)
-
     if not intelligence.get("items"):
         print("ERROR: data/intelligence.json has no items", file=sys.stderr)
         return 2
 
+    verified_scope = _verified_scope(intelligence, delta)
     prompt = build_report_prompt(intelligence, delta)
     print(
         json.dumps(
@@ -59,7 +63,6 @@ def main() -> int:
                 "fallback_models": fallback_models,
                 "search_mode": search_mode,
                 "search_timeout_ms": search_timeout_ms,
-                "facts_timeout_ms": facts_timeout_ms,
                 "intelligence_items": len(intelligence.get("items") or []),
                 "delta_items": len(delta.get("items") or []),
             },
@@ -75,61 +78,56 @@ def main() -> int:
         system_instruction=SYSTEM_INSTRUCTION,
         search_mode=search_mode,
         search_timeout_ms=search_timeout_ms,
-        facts_timeout_ms=facts_timeout_ms,
     )
 
-    unknown = unknown_report_cves(response.text, intelligence)
+    if response.api_mode == "deterministic_facts_only":
+        body = render_verified_facts_report(intelligence, delta).rstrip()
+        print(
+            "WARNING: Google Search grounding unavailable; rendering deterministic "
+            f"verified-facts-only report ({response.grounding_fallback_reason})",
+            file=sys.stderr,
+        )
+    else:
+        body = response.text.rstrip()
+        if response.grounding_fallback_reason:
+            print(
+                "INFO: Google Search grounding preserved through alternate API transport "
+                f"({response.grounding_fallback_reason})",
+                file=sys.stderr,
+            )
+        if response.model_fallback_reason:
+            print(
+                "WARNING: requested Gemini model was transiently unavailable; "
+                f"selected {response.model} after attempts {response.attempted_models}",
+                file=sys.stderr,
+            )
+
+    unknown = unknown_report_cves(body, verified_scope)
     if unknown:
         print(
-            "ERROR: model introduced CVEs outside verified intelligence: " + ", ".join(unknown),
+            "ERROR: report introduced CVEs outside verified intelligence/delta: "
+            + ", ".join(unknown),
             file=sys.stderr,
         )
         return 3
 
-    mode_notice = ""
-    if response.grounding_mode == "verified_facts_only":
-        mode_notice = (
-            "\n\n> **資料來源模式：Verified facts only。** "
-            "本次 Google Search grounding 未啟用；報告僅依 CISA KEV、NVD、FIRST EPSS "
-            "與 deterministic risk/delta 輸入進行整理分析，未確認資訊不以模型記憶補足。"
-        )
-        print(
-            "WARNING: Google Search grounding unavailable; generated verified-facts-only report "
-            f"({response.grounding_fallback_reason})",
-            file=sys.stderr,
-        )
-    elif response.grounding_fallback_reason:
-        print(
-            "INFO: Google Search grounding preserved through alternate API transport "
-            f"({response.grounding_fallback_reason})",
-            file=sys.stderr,
-        )
-
-    if response.model_fallback_reason:
-        print(
-            "WARNING: requested Gemini model was transiently unavailable; "
-            f"selected {response.model} after attempts {response.attempted_models}",
-            file=sys.stderr,
-        )
-
-    appendix = render_source_appendix(
-        response.text,
-        intelligence,
-        response.citations,
-    )
-    report_text = response.text.rstrip() + mode_notice + "\n" + appendix
+    appendix = render_source_appendix(body, verified_scope, response.citations)
+    report_text = body + "\n" + appendix
 
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
     REPORT_PATH.write_text(report_text, encoding="utf-8")
 
+    llm_body_used = response.api_mode != "deterministic_facts_only"
     metadata = {
-        "schema_version": "2.2-report-metadata",
+        "schema_version": "2.3-report-metadata",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "provider": provider,
+        "renderer": "llm" if llm_body_used else "deterministic",
+        "llm_body_used": llm_body_used,
         "requested_model": response.requested_model,
         "model": response.model,
         "model_fallback": {
-            "used": response.model != response.requested_model,
+            "used": bool(response.model and response.model != response.requested_model),
             "attempted_models": response.attempted_models,
             "reason": response.model_fallback_reason,
         },
@@ -150,10 +148,7 @@ def main() -> int:
             "search_queries": response.search_queries,
             "citations": response.citations,
         },
-        "timeouts_ms": {
-            "search": search_timeout_ms,
-            "facts_only": facts_timeout_ms,
-        },
+        "timeouts_ms": {"search": search_timeout_ms},
         "usage": response.usage,
     }
     METADATA_PATH.write_text(
@@ -163,11 +158,26 @@ def main() -> int:
 
     print(f"OK: wrote {REPORT_PATH.relative_to(ROOT)}")
     print(f"OK: wrote {METADATA_PATH.relative_to(ROOT)}")
-    print(f"Gemini model: {response.model}")
-    print(f"Gemini API mode: {response.api_mode}")
+    print(f"Renderer: {metadata['renderer']}")
+    print(f"Gemini model: {response.model or 'not used for report body'}")
+    print(f"API mode: {response.api_mode}")
     print(f"Grounding mode: {response.grounding_mode}")
     print(f"Grounding citations: {len(response.citations)}")
     return 0
+
+
+def _verified_scope(intelligence: dict, delta: dict) -> dict:
+    """Build the verified CVE/source scope used by validation and appendix.
+
+    Daily Delta is itself a verified collector output. A delta CVE must remain
+    valid even when it falls outside the capped intelligence candidate list.
+    """
+    return {
+        "items": [
+            *(intelligence.get("items") or []),
+            *(delta.get("items") or []),
+        ]
+    }
 
 
 def _env_csv(name: str, default: str) -> list[str]:
