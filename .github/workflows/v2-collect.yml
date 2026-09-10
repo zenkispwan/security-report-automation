@@ -75,12 +75,15 @@ jobs:
       - name: Validate compact intelligence
         run: python scripts/validate_intelligence.py
 
-      - name: Preserve full snapshots and raw facts
+      - name: Preserve full snapshots and intelligence outputs
         uses: actions/upload-artifact@v4
         with:
           name: security-intel-full-${{ github.run_id }}
           path: |
             data/latest.json
+            data/state.json
+            data/delta.json
+            data/intelligence.json
             data/raw/latest/
           retention-days: 7
           if-no-files-found: error
