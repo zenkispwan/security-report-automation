@@ -8,6 +8,8 @@ from pathlib import Path
 
 
 COPIES = {
+    Path("data/events.json"): Path("data/events.json"),
+    Path("data/event_delta.json"): Path("data/event_delta.json"),
     Path("data/intelligence.json"): Path("data/intelligence.json"),
     Path("data/delta.json"): Path("data/delta.json"),
     Path("reports/security_report_metadata.json"): Path("data/report_metadata.json"),
@@ -32,14 +34,20 @@ def validate(root: Path) -> None:
         if digest(source) != digest(built):
             raise SystemExit(f"Built file differs from verified source: {relative_target}")
 
+    events = json.loads((root / "data/events.json").read_text(encoding="utf-8"))
+    event_delta = json.loads((root / "data/event_delta.json").read_text(encoding="utf-8"))
     intelligence = json.loads((root / "data/intelligence.json").read_text(encoding="utf-8"))
     delta = json.loads((root / "data/delta.json").read_text(encoding="utf-8"))
     metadata = json.loads((root / "data/report_metadata.json").read_text(encoding="utf-8"))
 
+    if events.get("schema_version") != "2.5-events" or not isinstance(events.get("items"), list):
+        raise SystemExit("Invalid web event payload")
+    if event_delta.get("schema_version") != "2.5-event-delta" or not isinstance(event_delta.get("items"), list):
+        raise SystemExit("Invalid web event delta payload")
     if not isinstance(intelligence.get("items"), list):
         raise SystemExit("Invalid web intelligence payload")
     if not isinstance(delta.get("items"), list):
-        raise SystemExit("Invalid web delta payload")
+        raise SystemExit("Invalid web vulnerability delta payload")
     if not metadata.get("generated_at"):
         raise SystemExit("Missing report metadata generated_at")
 
@@ -48,8 +56,15 @@ def validate(root: Path) -> None:
     headers = (root / "_headers").read_text(encoding="utf-8")
     if "./styles.css" not in index or "./app.js" not in index:
         raise SystemExit("Static shell is missing local assets")
-    if "./data/intelligence.json" not in app or "./data/delta.json" not in app or "./data/report_metadata.json" not in app:
-        raise SystemExit("Web app is not wired to verified compact inputs")
+    required_fetches = (
+        "./data/events.json",
+        "./data/event_delta.json",
+        "./data/intelligence.json",
+        "./data/delta.json",
+        "./data/report_metadata.json",
+    )
+    if any(path not in app for path in required_fetches):
+        raise SystemExit("Web app is not wired to event and vulnerability verified inputs")
     if "https://" in index.replace("https://github.com/zenkispwan/security-report-automation", ""):
         raise SystemExit("Unexpected external resource in web shell")
     if "<script src=\"http" in index or "<link rel=\"stylesheet\" href=\"http" in index:
@@ -58,16 +73,17 @@ def validate(root: Path) -> None:
         raise SystemExit("Cloudflare Workers Static Assets security/cache headers are missing")
 
     print(
-        "OK: Cloudflare Workers Static Assets web report "
-        f"intelligence={len(intelligence['items'])} "
-        f"delta={len(delta['items'])} "
-        f"renderer={metadata.get('renderer')} "
-        f"llm_body_used={metadata.get('llm_body_used')}"
+        "OK: event-first Cloudflare web report "
+        f"events={len(events['items'])} "
+        f"event_delta={len(event_delta['items'])} "
+        f"vulnerabilities={len(intelligence['items'])} "
+        f"vuln_delta={len(delta['items'])} "
+        f"renderer={metadata.get('renderer')}"
     )
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Validate the static Security Intelligence web report.")
+    parser = argparse.ArgumentParser(description="Validate the event-first Security Intelligence web report.")
     parser.add_argument("--root", default="_site", help="Built site root (default: _site)")
     args = parser.parse_args()
     validate(Path(args.root))
