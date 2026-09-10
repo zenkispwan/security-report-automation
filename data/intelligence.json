@@ -1,10 +1,10 @@
 {
   "schema_version": "2.1-intelligence",
   "risk_version": "1.1",
-  "generated_at": "2026-09-10T05:19:44.901661+00:00",
+  "generated_at": "2026-09-10T07:23:44.564328+00:00",
   "selection": {
     "max_items": 30,
-    "candidate_count": 30,
+    "candidate_count": 31,
     "selected_count": 30
   },
   "summary": {
@@ -740,8 +740,8 @@
           "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
           "type": "Secondary"
         },
-        "epss": null,
-        "epss_percentile": null,
+        "epss": 0.00291,
+        "epss_percentile": 0.21438,
         "cisa_kev": {
           "listed": true,
           "date_added": "2026-09-09",
@@ -770,7 +770,8 @@
         "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-87491",
         "source_type": [
           "nvd",
-          "cisa_kev"
+          "cisa_kev",
+          "first_epss"
         ],
         "cwes": [
           "CWE-787"
@@ -778,7 +779,7 @@
         "provenance": {
           "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-87491",
           "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-          "epss": null
+          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-87491"
         }
       }
     },
@@ -817,8 +818,8 @@
           "source": "a5532a13-c4dd-4202-bef1-e0b8f2f8d12b",
           "type": "Secondary"
         },
-        "epss": null,
-        "epss_percentile": null,
+        "epss": 0.00744,
+        "epss_percentile": 0.52602,
         "cisa_kev": {
           "listed": true,
           "date_added": "2026-09-08",
@@ -847,7 +848,8 @@
         "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86218",
         "source_type": [
           "nvd",
-          "cisa_kev"
+          "cisa_kev",
+          "first_epss"
         ],
         "cwes": [
           "CWE-96"
@@ -855,7 +857,7 @@
         "provenance": {
           "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-86218",
           "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-          "epss": null
+          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-86218"
         }
       }
     },
@@ -1140,8 +1142,8 @@
           "source": "50a63c94-1ea7-4568-8c11-eb79e7c5a2b5",
           "type": "Secondary"
         },
-        "epss": 0.03372,
-        "epss_percentile": 0.88028,
+        "epss": null,
+        "epss_percentile": null,
         "cisa_kev": {
           "listed": true,
           "date_added": "2026-09-09",
@@ -1170,8 +1172,7 @@
         "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19490",
         "source_type": [
           "nvd",
-          "cisa_kev",
-          "first_epss"
+          "cisa_kev"
         ],
         "cwes": [
           "CWE-288"
@@ -1179,7 +1180,7 @@
         "provenance": {
           "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-19490",
           "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-19490"
+          "epss": null
         }
       }
     },
@@ -1562,6 +1563,76 @@
           "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2023-52251",
           "cisa_kev": null,
           "epss": "https://api.first.org/data/v1/epss?cve=CVE-2023-52251"
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-42945",
+      "events": [],
+      "risk": {
+        "score": 45,
+        "priority": "P3",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "EPSS_VERY_HIGH",
+            "points": 20
+          },
+          {
+            "code": "EPSS_TOP_5_PERCENT",
+            "points": 5
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-42945",
+        "vendor": "F5",
+        "product": "NGINX Plus",
+        "title": null,
+        "description": "NGINX Plus and NGINX Open Source have a vulnerability in the ngx_http_rewrite_module module. This vulnerability exists when the rewrite directive is followed by a rewrite, if, or set directive and an unnamed Perl-Compatible Regular Expression (PCRE) capture (for example, $1, $2) with a replacement string that includes a question mark (?). An unauthenticated attacker along with conditions beyond its control can exploit this vulnerability by sending crafted HTTP requests. This may cause a heap buffer overflow in the NGINX worker process leading to a restart. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR.  Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.2,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "f5sirt@f5.com",
+          "type": "Secondary"
+        },
+        "epss": 0.68047,
+        "epss_percentile": 0.99279,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "none",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "none",
+            "automatable": "no",
+            "technical_impact": "total",
+            "timestamp": "2026-05-13T00:00:00+00:00",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-05-13T16:16:50.190",
+        "updated_time": "2026-09-09T13:20:04.940",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42945",
+        "source_type": [
+          "nvd",
+          "first_epss"
+        ],
+        "cwes": [
+          "CWE-122",
+          "CWE-131"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-42945",
+          "cisa_kev": null,
+          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-42945"
         }
       }
     },
@@ -2253,75 +2324,6 @@
           "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-53581",
           "cisa_kev": null,
           "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-53581"
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-22590",
-      "events": [],
-      "risk": {
-        "score": 38,
-        "priority": "P3",
-        "reasons": [
-          {
-            "code": "POC_AVAILABLE",
-            "points": 10
-          },
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-22590",
-        "vendor": "eProsima",
-        "product": "Fast-DDS",
-        "title": null,
-        "description": "eprosima Fast DDS is a C++ implementation of the DDS (Data Distribution Service) standard of the OMG (Object Management Group). Versions prior to 2.6.12, 2.14.6, 3.2.4, 3.3.1, and 3.4.2 have a remotely triggerable Out-of-Bounds Read while processing RTPS `DATA_FRAG` submessages. An attacker can craft a `DATA_FRAG` with a large `sampleSize` but a small actual payload, and set `fragmentsInSubmessage` such that the receiver treats the packet as the LAST fragment**. In this LAST-fragment path, Fast-DDS computes `incoming_length` based on `sampleSize` and calls `memcpy()` without validating `incoming_data.length >= incoming_length`. As a result, `CacheChange_t::add_fragments()` reads past the received UDP datagram buffer and into adjacent heap memory, copying those bytes into the reassembly buffer. In a Discovery Server deployment, the resulting `CacheChange_t` can be relayed to other participants, meaning that a newly joining participant may receive leaked heap memory (e.g., pointer values that could aid ASLR bypass). Versions 2.6.12, 2.14.6, 3.2.4, 3.3.1, and 3.4.2 fix the issue.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.1,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
-          "source": "security-advisories@github.com",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "poc",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "poc",
-            "automatable": "yes",
-            "technical_impact": "partial",
-            "timestamp": "2026-09-09T16:08:33.638883Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2026-09-09T16:17:02.387",
-        "updated_time": "2026-09-09T20:16:54.383",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-22590",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [
-          "CWE-125",
-          "CWE-131"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-22590",
-          "cisa_kev": null,
-          "epss": null
         }
       }
     }
