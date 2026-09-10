@@ -1,0 +1,120 @@
+.event-list {
+  display: grid;
+  gap: 16px;
+}
+
+.event-card {
+  position: relative;
+  overflow: hidden;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(12, 23, 40, 0.94);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+}
+
+.event-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--watch);
+}
+.event-card.p1::before { background: var(--p1); }
+.event-card.p2::before { background: var(--p2); }
+.event-card.p3::before { background: var(--p3); }
+
+.event-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 22px;
+}
+
+.event-title-box { min-width: 0; }
+.event-title {
+  margin: 0;
+  max-width: 880px;
+  font-size: clamp(1.08rem, 2.2vw, 1.38rem);
+  letter-spacing: -0.015em;
+}
+.event-meta {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.event-score {
+  flex: 0 0 auto;
+  text-align: right;
+}
+.event-score strong {
+  display: block;
+  margin-top: 7px;
+  color: #c9d7e8;
+  font-size: 0.78rem;
+}
+.event-summary {
+  margin: 16px 0 0;
+  max-width: 980px;
+  color: #bbc9db;
+}
+
+.event-fact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.event-cves,
+.linked-vulns {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-top: 15px;
+  padding: 12px 14px;
+  border: 1px solid #1d2c42;
+  border-radius: 12px;
+  background: #091525;
+}
+
+.event-cve-label {
+  color: #8ea1ba;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.event-cve-label.warning { color: #ffce8b; }
+.event-cves strong { overflow-wrap: anywhere; }
+.linked-vuln {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+}
+
+.minor-heading {
+  margin: 16px 0 0;
+  color: #c7d5e6;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 900px) {
+  .event-fact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .event-head { flex-direction: column; gap: 12px; }
+  .event-score { display: flex; align-items: center; gap: 9px; text-align: left; }
+  .event-score strong { margin-top: 0; }
+  .event-fact-grid { grid-template-columns: 1fr; }
+  .event-card { padding: 18px; }
+}
+
+@media print {
+  .event-card { break-inside: avoid; background: #fff; box-shadow: none; }
+  .event-fact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
