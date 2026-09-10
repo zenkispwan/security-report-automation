@@ -38,6 +38,7 @@ def main() -> int:
         return 2
 
     model = os.getenv("GEMINI_MODEL", "gemini-3.8-flash").strip()
+    search_mode = os.getenv("GEMINI_SEARCH_MODE", "auto").strip().lower()
     intelligence = _load_json(INTELLIGENCE_PATH)
     delta = _load_json(DELTA_PATH)
 
@@ -51,6 +52,7 @@ def main() -> int:
             {
                 "provider": provider,
                 "model": model,
+                "search_mode": search_mode,
                 "intelligence_items": len(intelligence.get("items") or []),
                 "delta_items": len(delta.get("items") or []),
             },
@@ -63,6 +65,7 @@ def main() -> int:
         model=model,
         prompt=prompt,
         system_instruction=SYSTEM_INSTRUCTION,
+        search_mode=search_mode,
     )
 
     unknown = unknown_report_cves(response.text, intelligence)
@@ -73,12 +76,25 @@ def main() -> int:
         )
         return 3
 
+    mode_notice = ""
+    if response.grounding_mode == "verified_facts_only":
+        mode_notice = (
+            "\n\n> **資料來源模式：Verified facts only。** "
+            "本次 Google Search grounding 未啟用；報告僅依 CISA KEV、NVD、FIRST EPSS "
+            "與 deterministic risk/delta 輸入進行整理分析，未確認資訊不以模型記憶補足。"
+        )
+        print(
+            "WARNING: Google Search grounding unavailable; generated verified-facts-only report "
+            f"({response.grounding_fallback_reason})",
+            file=sys.stderr,
+        )
+
     appendix = render_source_appendix(
         response.text,
         intelligence,
         response.citations,
     )
-    report_text = response.text.rstrip() + "\n" + appendix
+    report_text = response.text.rstrip() + mode_notice + "\n" + appendix
 
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
     REPORT_PATH.write_text(report_text, encoding="utf-8")
@@ -98,6 +114,9 @@ def main() -> int:
             "delta_items": len(delta.get("items") or []),
         },
         "grounding": {
+            "requested_mode": search_mode,
+            "mode": response.grounding_mode,
+            "fallback_reason": response.grounding_fallback_reason,
             "search_queries": response.search_queries,
             "citations": response.citations,
         },
@@ -110,6 +129,7 @@ def main() -> int:
 
     print(f"OK: wrote {REPORT_PATH.relative_to(ROOT)}")
     print(f"OK: wrote {METADATA_PATH.relative_to(ROOT)}")
+    print(f"Grounding mode: {response.grounding_mode}")
     print(f"Grounding citations: {len(response.citations)}")
     return 0
 
