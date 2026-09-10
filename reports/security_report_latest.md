@@ -4,102 +4,36 @@
 
 ## 執行摘要
 
-- Daily Delta：**8** 筆符合目前門檻的重要變化；事件統計：NEW_CVE=8。
-- Intelligence 候選：**30** 筆；P1 **17**、P2 **0**、P3 **5**、WATCH **8**。
-- Baseline：state / generated_at=2026-09-10T07:34:25.273081+00:00 / available=true。
-- 目前排序最前的 P1：CVE-2026-31431、CVE-2026-20079、CVE-2025-14733、CVE-2022-41352、CVE-2022-37969。此排序直接沿用 deterministic risk score，不由本報告重新評分。
+- Daily Delta：**2** 筆符合目前門檻的重要變化；事件統計：NEW_CVE=2。
+- Intelligence 候選：**30** 筆；P1 **17**、P2 **0**、P3 **11**、WATCH **2**。
+- Baseline：state / generated_at=2026-09-10T11:15:12.377256+00:00 / available=true。
+- 目前排序最前的 P1：CVE-2026-31431、CVE-2026-20079、CVE-2025-67038、CVE-2025-14733、CVE-2022-41352。此排序直接沿用 deterministic risk score，不由本報告重新評分。
 
 ## Daily Delta｜自上一份報告的重要變化
 
-本次共有 **8** 筆 delta item；以下欄位直接取自 `data/delta.json`。
+本次共有 **2** 筆 delta item；以下欄位直接取自 `data/delta.json`。
 
-### 1. CVE-2026-88285｜GeoVision Inc. / GV-LPC2011/LPC2211
-- **Delta event**：NEW_CVE (from=未確認; to=2026-09-10T09:17:05.563)
-- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
-- **CVSS**：v3.1 9.4 (CRITICAL)
+### 1. CVE-2026-87962｜tdunning / t-digest
+- **Delta event**：NEW_CVE (from=未確認; to=2026-09-10T11:17:07.763)
+- **Risk**：WATCH / score 30；reasons：POC_AVAILABLE(+10)、CVSS_HIGH(+12)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 8.7 (HIGH)
 - **EPSS**：未確認
 - **CISA KEV**：listed=false
-- **Exploitation status**：status=unconfirmed / source=未確認
+- **Exploitation status**：status=poc / source=nvd_ssvc
 - **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-09-10T09:17:05.563 / 2026-09-10T09:17:05.563
-- **官方描述（原文）**：GeoVision GV-LPC2211 V1.13 exposes a network-accessible PTZ control service without authentication, allowing remote clients to retrieve PTZ information and issue PTZ or raw serial commands.
+- **Published / Updated**：2026-09-10T11:17:07.763 / 2026-09-10T13:20:32.920
+- **官方描述（原文）**：t-digest versions 3.1 through 3.3 contain a denial of service vulnerability in MergingDigest.fromBytes that fails to validate length and capacity fields from serialized data. Attackers can supply crafted serialized digests with mismatched header fields to trigger ArrayIndexOutOfBoundsException or NegativeArraySizeException, aborting the parsing thread.
 
-### 2. CVE-2026-88278｜GeoVision Inc. / GV-LPCLPC2011/2211
-- **Delta event**：NEW_CVE (from=未確認; to=2026-09-10T09:17:04.787)
-- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
-- **CVSS**：v3.1 9.8 (CRITICAL)
-- **EPSS**：未確認
-- **CISA KEV**：listed=false
-- **Exploitation status**：status=unconfirmed / source=未確認
-- **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-09-10T09:17:04.787 / 2026-09-10T09:17:04.787
-- **官方描述（原文）**：GeoVision GV-LPC2211 V1.13 fails to enforce WS-Security UsernameToken freshness or nonce reuse protection, allowing a captured PasswordDigest token to be replayed for subsequent ONVIF operations.
-
-### 3. CVE-2026-8323｜Armiya Information Technologies Ltd. Co. / Access Control System
-- **Delta event**：NEW_CVE (from=未確認; to=2026-09-10T09:17:06.250)
-- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
-- **CVSS**：v3.1 9.3 (CRITICAL)
-- **EPSS**：未確認
-- **CISA KEV**：listed=false
-- **Exploitation status**：status=unconfirmed / source=未確認
-- **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-09-10T09:17:06.250 / 2026-09-10T09:17:06.250
-- **官方描述（原文）**：URL redirection to untrusted site ('open redirect') vulnerability in Armiya Information Technologies Ltd. Co. Access Control System allows Fake the Source of Data. This issue affects Access Control System: before Versiyon 2.
-
-### 4. CVE-2026-78082｜joomshaper.com / SP Property extension for Joomla
-- **Delta event**：NEW_CVE (from=未確認; to=2026-09-10T10:17:31.863)
-- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
-- **CVSS**：v4.0 9.3 (CRITICAL)
-- **EPSS**：未確認
-- **CISA KEV**：listed=false
-- **Exploitation status**：status=unconfirmed / source=未確認
-- **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-09-10T10:17:31.863 / 2026-09-10T10:17:31.863
-- **官方描述（原文）**：Joomla Extension - joomshaper.com - Unauthenticated SQL Injection in Property Search and Map Filtering in SP Property < 4.1.4 - The property search and listing query builders assembled several WHERE and ORDER BY clauses (zipcode, sorting, price_range_dropdown, and psize_range_dropdown) by directly concatenating raw request parameters into SQL strings without quoting or type casting. An unauthenticated remote attacker could execute boolean-based or time-based blind SQL injection to extract sensitive data from the database.
-
-### 5. CVE-2026-7188｜Armiya Information Technologies Ltd. Co. / Access Control System
-- **Delta event**：NEW_CVE (from=未確認; to=2026-09-10T08:16:57.893)
+### 2. CVE-2026-9163｜GIS Informatics / GisLab Laboratory Management System
+- **Delta event**：NEW_CVE (from=未確認; to=2026-09-10T13:20:33.663)
 - **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
 - **CVSS**：v3.1 9.8 (CRITICAL)
 - **EPSS**：未確認
 - **CISA KEV**：listed=false
-- **Exploitation status**：status=unconfirmed / source=未確認
+- **Exploitation status**：status=none / source=nvd_ssvc
 - **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-09-10T08:16:57.893 / 2026-09-10T08:16:57.893
-- **官方描述（原文）**：Improper neutralization of special elements used in an SQL command ('SQL injection') vulnerability in Armiya Information Technologies Ltd. Co. Access Control System allows SQL Injection. This issue affects Access Control System: before Versiyon 2.
-
-### 6. CVE-2026-59679｜SUSE / Container suse/kiosk/tigervnc-x11vnc:1.14-63.8
-- **Delta event**：NEW_CVE (from=未確認; to=2026-09-10T09:17:02.883)
-- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
-- **CVSS**：v4.0 9.2 (CRITICAL)
-- **EPSS**：未確認
-- **CISA KEV**：listed=false
-- **Exploitation status**：status=unconfirmed / source=未確認
-- **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-09-10T09:17:02.883 / 2026-09-10T09:17:02.883
-- **官方描述（原文）**：fs_read_glyphs() in the libXfont2 font-server client (src/fc/fserve.c) indexes the per-character encoding[] array using num_chars from the FS_QueryXBitmaps16 reply, but that array was allocated with a size derived from num_extents in the separate FS_QueryXExtents16 reply. The two CARD32 fields are never cross-checked. A malicious or compromised font server can send a small num_extents (e.g. 1) in the extents reply, then a large num_chars (e.g. 100000) in the bitmaps reply. This causes attacker-controlled out-of-bounds heap read and writes.
-
-### 7. CVE-2026-44950｜SUSE / Container suse/kiosk/tigervnc-x11vnc:1.14-63.8
-- **Delta event**：NEW_CVE (from=未確認; to=2026-09-10T09:17:02.490)
-- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
-- **CVSS**：v4.0 9.5 (CRITICAL)
-- **EPSS**：未確認
-- **CISA KEV**：listed=false
-- **Exploitation status**：status=unconfirmed / source=未確認
-- **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-09-10T09:17:02.490 / 2026-09-10T09:17:02.490
-- **官方描述（原文）**：fs_read_glyphs() in the libXfont2 font-server client (src/fc/fserve.c) copies each glyph's bitmap into a single buffer. Existing checks validates only that the source slice (position, length) lies within the source bitmap buffer. It does not check whether the running destination cursor has exceeded the allocation. A malicious font server can send overlapping source offsets -- for example 1000 glyphs each referencing {position:0, length:64} with nbytes=64. Each individual source range passes the existing validation, but the cumulative writes total 64000 bytes into a 64-byte destination buffer. This is a heap buffer overflow with attacker-controlled content.
-
-### 8. CVE-2026-13745｜Google Cloud / Gemini CLI
-- **Delta event**：NEW_CVE (from=未確認; to=2026-09-10T09:17:00.703)
-- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
-- **CVSS**：v4.0 9.2 (CRITICAL)
-- **EPSS**：未確認
-- **CISA KEV**：listed=false
-- **Exploitation status**：status=unconfirmed / source=未確認
-- **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-09-10T09:17:00.703 / 2026-09-10T09:17:00.703
-- **官方描述（原文）**：A vulnerability in the Gemini CLI and associated GitHub Action allowed an unprivileged attacker to achieve an arbitrary code execution in Gemini CLI via untrusted local .env files overriding GEMINI_CLI_HOME.
+- **Published / Updated**：2026-09-10T13:20:33.663 / 2026-09-10T13:20:33.663
+- **官方描述（原文）**：Improper neutralization of special elements used in an SQL command ('SQL injection') vulnerability in GIS Informatics GisLab Laboratory Management System allows SQL Injection. This issue affects GisLab Laboratory Management System: from 1.4.03 before 1.5.
 
 
 ## P1｜立即優先處理
@@ -132,7 +66,20 @@
 - **CISA Required Action（原文）**：Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.
 - **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
 
-### 3. CVE-2025-14733｜WatchGuard / Firebox
+### 3. CVE-2025-67038｜Lantronix / EDS5000
+- **Title**：Lantronix EDS5000 Code Injection Vulnerability
+- **Risk**：P1 / score 100；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、CVSS_CRITICAL(+20)、EPSS_ELEVATED(+8)、EPSS_TOP_5_PERCENT(+5)
+- **CVSS**：v4.0 9.3 (CRITICAL)
+- **EPSS**：0.1926 / percentile=0.97168
+- **CISA KEV**：listed=true / date_added=2026-06-23 / due_date=2026-06-26
+- **Exploitation status**：status=known_exploited / source=cisa_kev
+- **Known ransomware campaign use**：Unknown
+- **受影響版本**：未確認（compact intelligence 未提供結構化受影響版本）
+- **官方描述（原文）**：Lantronix EDS5000 contains a code injection vulnerability that could allow attackers to inject arbitrary OS commands into the username parameter. Injected commands are executed with root privileges.
+- **CISA Required Action（原文）**：Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.
+- **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
+
+### 4. CVE-2025-14733｜WatchGuard / Firebox
 - **Title**：WatchGuard Firebox Out of Bounds Write Vulnerability
 - **Risk**：P1 / score 100；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、KNOWN_RANSOMWARE_USE(+20)、CVSS_CRITICAL(+20)、EPSS_HIGH(+14)、EPSS_TOP_5_PERCENT(+5)
 - **CVSS**：v4.0 9.3 (CRITICAL)
@@ -145,7 +92,7 @@
 - **CISA Required Action（原文）**：Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.
 - **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
 
-### 4. CVE-2022-41352｜Synacor / Zimbra Collaboration Suite (ZCS)
+### 5. CVE-2022-41352｜Synacor / Zimbra Collaboration Suite (ZCS)
 - **Title**：Synacor Zimbra Collaboration Suite (ZCS) Arbitrary File Upload Vulnerability
 - **Risk**：P1 / score 100；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、KNOWN_RANSOMWARE_USE(+20)、CVSS_CRITICAL(+20)、EPSS_VERY_HIGH(+20)、EPSS_TOP_5_PERCENT(+5)
 - **CVSS**：v3.1 9.8 (CRITICAL)
@@ -158,7 +105,7 @@
 - **CISA Required Action（原文）**：Apply updates per vendor instructions.
 - **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
 
-### 5. CVE-2022-37969｜Microsoft / Windows
+### 6. CVE-2022-37969｜Microsoft / Windows
 - **Title**：Microsoft Windows Common Log File System (CLFS) Driver Privilege Escalation Vulnerability
 - **Risk**：P1 / score 100；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、KNOWN_RANSOMWARE_USE(+20)、CVSS_HIGH(+12)、EPSS_HIGH(+14)、EPSS_TOP_5_PERCENT(+5)
 - **CVSS**：v3.1 7.8 (HIGH)
@@ -171,7 +118,7 @@
 - **CISA Required Action（原文）**：Apply updates per vendor instructions.
 - **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
 
-### 6. CVE-2016-7255｜Microsoft / Win32k
+### 7. CVE-2016-7255｜Microsoft / Win32k
 - **Title**：Microsoft Win32k Privilege Escalation Vulnerability
 - **Risk**：P1 / score 100；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、KNOWN_RANSOMWARE_USE(+20)、CVSS_HIGH(+12)
 - **CVSS**：v3.1 7.8 (HIGH)
@@ -184,7 +131,7 @@
 - **CISA Required Action（原文）**：Apply updates per vendor instructions.
 - **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
 
-### 7. CVE-2016-4117｜Adobe / Flash Player
+### 8. CVE-2016-4117｜Adobe / Flash Player
 - **Title**：Adobe Flash Player Arbitrary Code Execution Vulnerability
 - **Risk**：P1 / score 100；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、KNOWN_RANSOMWARE_USE(+20)、CVSS_CRITICAL(+20)
 - **CVSS**：v3.1 9.8 (CRITICAL)
@@ -197,7 +144,7 @@
 - **CISA Required Action（原文）**：The impacted product is end-of-life and should be disconnected if still in use.
 - **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
 
-### 8. CVE-2026-87491｜Google / Chromium V8
+### 9. CVE-2026-87491｜Google / Chromium V8
 - **Title**：Google Chromium V8 Out of Bounds Write Vulnerability
 - **Risk**：P1 / score 90；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、CVSS_HIGH(+12)、RECENTLY_PUBLISHED(+8)
 - **CVSS**：v3.1 8.8 (HIGH)
@@ -210,7 +157,7 @@
 - **CISA Required Action（原文）**：Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.
 - **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
 
-### 9. CVE-2026-86218｜N-able / N-central
+### 10. CVE-2026-86218｜N-able / N-central
 - **Title**：N-able N-central Static Code Injection Vulnerability
 - **Risk**：P1 / score 90；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、CVSS_CRITICAL(+20)
 - **CVSS**：v4.0 10.0 (CRITICAL)
@@ -223,30 +170,17 @@
 - **CISA Required Action（原文）**：Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.
 - **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
 
-### 10. CVE-2026-85880｜Microsoft / Windows
-- **Title**：Microsoft Windows Heap-Based Buffer Overflow Vulnerability
-- **Risk**：P1 / score 90；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、CVSS_HIGH(+12)、RECENTLY_PUBLISHED(+8)
-- **CVSS**：v3.1 7.8 (HIGH)
-- **EPSS**：0.00572 / percentile=0.45396
-- **CISA KEV**：listed=true / date_added=2026-09-08 / due_date=2026-09-22
-- **Exploitation status**：status=known_exploited / source=cisa_kev
-- **Known ransomware campaign use**：Unknown
-- **受影響版本**：未確認（compact intelligence 未提供結構化受影響版本）
-- **官方描述（原文）**：Microsoft Windows Advanced Local Procedure Call contains a heap-based buffer overflow vulnerability that allows an attacker to elevate privileges locally.
-- **CISA Required Action（原文）**：Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.
-- **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
-
 
 ### 其他 P1
 
 | CVE | Priority / Score | Vendor / Product | CVSS | EPSS | KEV | Exploitation | Ransomware use |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| CVE-2026-85880 | P1 / 90 | Microsoft / Windows | v3.1 7.8 (HIGH) | 0.00572 / percentile=0.45396 | listed=true / date_added=2026-09-08 / due_date=2026-09-22 | status=known_exploited / source=cisa_kev | Unknown |
 | CVE-2026-81963 | P1 / 90 | Microsoft / Windows | v3.1 7.8 (HIGH) | 0.00631 / percentile=0.48159 | listed=true / date_added=2026-09-08 / due_date=2026-09-22 | status=known_exploited / source=cisa_kev | Unknown |
 | CVE-2026-75650 | P1 / 90 | Adobe / Commerce and Magento | v3.1 10.0 (CRITICAL) | 未確認 | listed=true / date_added=2026-09-08 / due_date=2026-09-11 | status=known_exploited / source=cisa_kev | Unknown |
 | CVE-2026-19490 | P1 / 90 | Citrix / NetScaler | v4.0 9.3 (CRITICAL) | 0.03372 / percentile=0.88028 | listed=true / date_added=2026-09-09 / due_date=2026-09-12 | status=known_exploited / source=cisa_kev | Unknown |
-| CVE-2025-67038 | P1 / 90 | Lantronix / EDS5000 | v4.0 9.3 (CRITICAL) | 未確認 | listed=true / date_added=2026-06-23 / due_date=2026-06-26 | status=known_exploited / source=cisa_kev | Unknown |
 | CVE-2025-25249 | P1 / 90 | Fortinet / Multiple Products | v3.1 9.8 (CRITICAL) | 0.00759 / percentile=0.53107 | listed=true / date_added=2026-09-09 / due_date=2026-09-12 | status=known_exploited / source=cisa_kev | Unknown |
-| CVE-2026-85046 | P1 / 82 | Google / Chromium V8 | v3.1 8.8 (HIGH) | 0.01427 / percentile=0.7137 | listed=true / date_added=2026-09-04 / due_date=2026-09-18 | status=known_exploited / source=cisa_kev | Unknown |
+| CVE-2026-85046 | P1 / 82 | Google / Chromium V8 | v3.1 8.8 (HIGH) | 未確認 | listed=true / date_added=2026-09-04 / due_date=2026-09-18 | status=known_exploited / source=cisa_kev | Unknown |
 | CVE-2025-38352 | P1 / 82 | Linux / Kernel | v3.1 7.8 (HIGH) | 0.01254 / percentile=0.67698 | listed=true / date_added=2025-09-04 / due_date=2025-09-25 | status=known_exploited / source=cisa_kev | Unknown |
 
 ## P2 / P3｜排程處理與監控
@@ -255,22 +189,22 @@
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | CVE-2026-43284 | P3 / 47 | Linux / Linux | v3.1 8.8 (HIGH) | 0.93235 / percentile=0.99829 | listed=false | status=poc / source=nvd_ssvc | 未確認 |
 | CVE-2023-52251 | P3 / 47 | 未確認 / 未確認 | v3.1 8.8 (HIGH) | 0.8684 / percentile=0.99733 | listed=false | status=poc / source=nvd_ssvc | 未確認 |
+| CVE-2026-42945 | P3 / 45 | F5 / NGINX Plus | v4.0 9.2 (CRITICAL) | 0.68047 / percentile=0.99279 | listed=false | status=none / source=nvd_ssvc | 未確認 |
 | CVE-2026-87930 | P3 / 38 | MaxSite / MaxSite CMS | v4.0 9.2 (CRITICAL) | 未確認 | listed=false | status=poc / source=nvd_ssvc | 未確認 |
 | CVE-2026-79576 | P3 / 38 | 未確認 / 未確認 | v3.1 9.8 (CRITICAL) | 0.00334 / percentile=0.26314 | listed=false | status=poc / source=nvd_ssvc | 未確認 |
 | CVE-2026-79574 | P3 / 38 | 未確認 / 未確認 | v3.1 9.8 (CRITICAL) | 0.00166 / percentile=0.06168 | listed=false | status=poc / source=nvd_ssvc | 未確認 |
+| CVE-2026-79571 | P3 / 38 | 未確認 / 未確認 | v3.1 9.1 (CRITICAL) | 0.00175 / percentile=0.07135 | listed=false | status=poc / source=nvd_ssvc | 未確認 |
+| CVE-2026-79570 | P3 / 38 | 未確認 / 未確認 | v3.1 9.8 (CRITICAL) | 0.00153 / percentile=0.04774 | listed=false | status=poc / source=nvd_ssvc | 未確認 |
+| CVE-2026-79569 | P3 / 38 | 未確認 / 未確認 | v3.1 9.8 (CRITICAL) | 0.00393 / percentile=0.32718 | listed=false | status=poc / source=nvd_ssvc | 未確認 |
+| CVE-2026-78997 | P3 / 38 | 未確認 / 未確認 | v3.1 9.3 (CRITICAL) | 0.00153 / percentile=0.04736 | listed=false | status=poc / source=nvd_ssvc | 未確認 |
+| CVE-2026-73309 | P3 / 38 | XenForo / XenForo | v4.0 9.1 (CRITICAL) | 0.00469 / percentile=0.39168 | listed=false | status=poc / source=nvd_ssvc | 未確認 |
 
 ## WATCH｜新增或待觀察項目
 
 | CVE | Priority / Score | Vendor / Product | CVSS | EPSS | KEV | Exploitation | Ransomware use |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| CVE-2026-88285 | WATCH / 28 | GeoVision Inc. / GV-LPC2011/LPC2211 | v3.1 9.4 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-88278 | WATCH / 28 | GeoVision Inc. / GV-LPCLPC2011/2211 | v3.1 9.8 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-8323 | WATCH / 28 | Armiya Information Technologies Ltd. Co. / Access Control System | v3.1 9.3 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-78082 | WATCH / 28 | joomshaper.com / SP Property extension for Joomla | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-7188 | WATCH / 28 | Armiya Information Technologies Ltd. Co. / Access Control System | v3.1 9.8 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-59679 | WATCH / 28 | SUSE / Container suse/kiosk/tigervnc-x11vnc:1.14-63.8 | v4.0 9.2 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-44950 | WATCH / 28 | SUSE / Container suse/kiosk/tigervnc-x11vnc:1.14-63.8 | v4.0 9.5 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-13745 | WATCH / 28 | Google Cloud / Gemini CLI | v4.0 9.2 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-87962 | WATCH / 30 | tdunning / t-digest | v4.0 8.7 (HIGH) | 未確認 | listed=false | status=poc / source=nvd_ssvc | 未確認 |
+| CVE-2026-9163 | WATCH / 28 | GIS Informatics / GisLab Laboratory Management System | v3.1 9.8 (CRITICAL) | 未確認 | listed=false | status=none / source=nvd_ssvc | 未確認 |
 
 ## 建議行動
 
@@ -292,11 +226,11 @@
 
 ## 資料品質與未確認事項
 
-- Intelligence items：30；缺少 Vendor：3；缺少 Product：3；缺少 Title：13。
-- EPSS 未確認：13；Exploitation status 未確認：8。
+- Intelligence items：30；缺少 Vendor：7；缺少 Product：7；缺少 Title：13。
+- EPSS 未確認：7；Exploitation status 未確認：0。
 - 結構化受影響版本未提供：30。本 renderer **不會**從 description 自行解析或猜測版本。
 - Google Search grounding：本次不可用或已停用，因此沒有 Search query / citation，也不會用模型既有知識補齊 vendor advisory 或攻擊背景。
-- Intelligence generated at：`2026-09-10T11:15:12.377256+00:00`；Delta generated at：`2026-09-10T11:15:12.377256+00:00`。
+- Intelligence generated at：`2026-09-10T13:45:25.158574+00:00`；Delta generated at：`2026-09-10T13:45:25.158574+00:00`。
 
 ---
 
@@ -304,17 +238,12 @@
 
 - **CVE-2026-31431** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-31431) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-31431) · [Vendor / Advisory (lore.kernel.org)](https://lore.kernel.org/linux-cve-announce/2026042214-CVE-2026-31431-3d65@gregkh/) · [Vendor / Advisory (xint.io)](https://xint.io/blog/copy-fail-linux-distributions#the-fix-6) · [Vendor / Advisory (git.kernel.org)](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/about/)
 - **CVE-2026-20079** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-20079) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-20079) · [Vendor / Advisory (sec.cloudapps.cisco.com)](https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-onprem-fmc-authbypass-5JPp45V2) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
+- **CVE-2025-67038** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2025-67038) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2025-67038) · [Vendor / Advisory (ltrxdev.atlassian.net)](https://ltrxdev.atlassian.net/wiki/spaces/LTRXTS/pages/2538438657/Latest+Firmware+for+the+EDS5000+series+EDS5008+EDS5016+EDS5032) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
 - **CVE-2025-14733** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2025-14733) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2025-14733) · [Vendor / Advisory (watchguard.com)](https://www.watchguard.com/wgrd-psirt/advisory/wgsa-2025-00027)
 - **CVE-2022-41352** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2022-41352) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2022-41352) · [Vendor / Advisory (wiki.zimbra.com)](https://wiki.zimbra.com/wiki/Security_Center)
+- **CVE-2026-87962** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-87962)
+- **CVE-2026-9163** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-9163)
 - **CVE-2022-37969** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2022-37969) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2022-37969) · [Vendor / Advisory (msrc.microsoft.com)](https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2022-37969)
-- **CVE-2026-88285** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-88285)
-- **CVE-2026-88278** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-88278)
-- **CVE-2026-8323** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-8323)
-- **CVE-2026-78082** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-78082)
-- **CVE-2026-7188** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-7188)
-- **CVE-2026-59679** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-59679)
-- **CVE-2026-44950** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-44950)
-- **CVE-2026-13745** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-13745)
 - **CVE-2016-7255** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2016-7255) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)
 - **CVE-2016-4117** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2016-4117) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)
 - **CVE-2026-87491** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-87491) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-87491) · [Vendor / Advisory (chromereleases.googleblog.com)](https://chromereleases.googleblog.com/2026/09/stable-channel-update-for-desktop_0808145027.html) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
@@ -323,14 +252,19 @@
 - **CVE-2026-81963** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-81963) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-81963) · [Vendor / Advisory (msrc.microsoft.com)](https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-81963) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
 - **CVE-2026-75650** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-75650) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [Vendor / Advisory (helpx.adobe.com)](https://helpx.adobe.com/security/products/magento/apsb26-146.html) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
 - **CVE-2026-19490** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-19490) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-19490) · [Vendor / Advisory (support.citrix.com)](https://support.citrix.com/external/article/CTX696939/netscaler-adc-and-netscaler-gateway-secu.html) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
-- **CVE-2025-67038** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2025-67038) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [Vendor / Advisory (ltrxdev.atlassian.net)](https://ltrxdev.atlassian.net/wiki/spaces/LTRXTS/pages/2538438657/Latest+Firmware+for+the+EDS5000+series+EDS5008+EDS5016+EDS5032) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
 - **CVE-2025-25249** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2025-25249) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2025-25249) · [Vendor / Advisory (fortiguard.fortinet.com)](https://fortiguard.fortinet.com/psirt/FG-IR-25-084) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
-- **CVE-2026-85046** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-85046) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-85046) · [Vendor / Advisory (chromereleases.googleblog.com)](https://chromereleases.googleblog.com/2026/09/stable-channel-update-for-desktop_01882797386.html) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
+- **CVE-2026-85046** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-85046) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [Vendor / Advisory (chromereleases.googleblog.com)](https://chromereleases.googleblog.com/2026/09/stable-channel-update-for-desktop_01882797386.html) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
 - **CVE-2025-38352** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2025-38352) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2025-38352) · [Vendor / Advisory (git.kernel.org)](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/?id=2c72fe18cc5f9f1750f5bc148cf1c94c29e106ff) · [Vendor / Advisory (source.android.com)](https://source.android.com/docs/security/bulletin/2025-09-01)
 - **CVE-2026-43284** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-43284) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-43284)
 - **CVE-2023-52251** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2023-52251) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2023-52251)
+- **CVE-2026-42945** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-42945) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-42945)
 - **CVE-2026-87930** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-87930)
 - **CVE-2026-79576** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-79576) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-79576)
 - **CVE-2026-79574** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-79574) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-79574)
+- **CVE-2026-79571** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-79571) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-79571)
+- **CVE-2026-79570** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-79570) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-79570)
+- **CVE-2026-79569** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-79569) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-79569)
+- **CVE-2026-78997** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-78997) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-78997)
+- **CVE-2026-73309** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-73309) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-73309)
 
 > 核心漏洞 Facts 來自 CISA KEV、NVD 與 FIRST EPSS；Google Search 僅用於補充即時背景與處置脈絡。未經確認的欄位應維持「未確認」。
