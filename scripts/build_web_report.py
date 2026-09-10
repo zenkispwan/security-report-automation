@@ -10,6 +10,7 @@ STATIC_FILES = {
     Path("web/index.html"): Path("index.html"),
     Path("web/styles.css"): Path("styles.css"),
     Path("web/app.js"): Path("app.js"),
+    Path("web/_headers"): Path("_headers"),
     Path("data/intelligence.json"): Path("data/intelligence.json"),
     Path("data/delta.json"): Path("data/delta.json"),
     Path("reports/security_report_metadata.json"): Path("data/report_metadata.json"),
@@ -31,16 +32,14 @@ def build(output: Path) -> None:
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, target)
 
-    (output / ".nojekyll").write_text("", encoding="utf-8")
-
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Build the static Security Intelligence web report.")
+    parser = argparse.ArgumentParser(description="Build the static Security Intelligence web report for Cloudflare Pages.")
     parser.add_argument("--output", default="_site", help="Output directory (default: _site)")
     args = parser.parse_args()
     output = Path(args.output)
     build(output)
-    print(f"OK: built static web report at {output}/index.html")
+    print(f"OK: built Cloudflare Pages site at {output}/index.html")
 
 
 if __name__ == "__main__":
