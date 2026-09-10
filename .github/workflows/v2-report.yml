@@ -31,12 +31,15 @@ permissions:
   contents: write
 
 concurrency:
-  group: security-intelligence-report-v2
+  group: security-intelligence-report-v2-${{ github.event.workflow_run.head_branch || github.head_ref || github.ref_name || github.event_name }}
   cancel-in-progress: true
 
 jobs:
   test:
     name: Report unit tests
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
