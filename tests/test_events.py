@@ -13,6 +13,7 @@ from security_intel.events import (  # noqa: E402
     canonical_url,
     cluster_articles,
     normalize_article,
+    priority_for,
     verification_status,
 )
 
@@ -67,8 +68,40 @@ class EventIntelligenceTests(unittest.TestCase):
         ])
         self.assertEqual("corroborated", status["status"])
 
+    def test_discovery_only_event_can_never_be_actionable_priority(self):
+        self.assertEqual("WATCH", priority_for(100, "discovery_only"))
+        _, events, delta = build_event_outputs([
+            {
+                "title": "Cisco firewall under active exploitation in Taiwan",
+                "url": "https://unknown-source.example/a",
+                "published_time": "2026-09-10T14:30:00+00:00",
+                "authority": "discovery",
+            }
+        ], PROFILE, vulnerability_intelligence={"items": []}, previous_state={"generated_at": "2026-09-10T12:00:00+00:00", "items": {}}, now=NOW)
+        self.assertEqual("WATCH", events["items"][0]["priority"])
+        self.assertEqual([], delta["items"])
+
+    def test_single_trusted_source_is_capped_at_p3(self):
+        self.assertEqual("P3", priority_for(100, "single_trusted_source"))
+
+    def test_bootstrap_builds_event_list_but_not_false_daily_delta(self):
+        _, events, delta = build_event_outputs([
+            {
+                "title": "Vendor confirms ransomware incident",
+                "url": "https://example-vendor.com/a",
+                "published_time": "2026-09-10T14:00:00+00:00",
+                "authority": "official",
+            }
+        ], PROFILE, vulnerability_intelligence={"items": []}, previous_state=None, now=NOW)
+        self.assertEqual(1, len(events["items"]))
+        self.assertTrue(events["items"][0]["is_new"])
+        self.assertEqual("bootstrap", delta["mode"])
+        self.assertFalse(delta["baseline"]["available"])
+        self.assertEqual(0, delta["summary"]["new_notable_count"])
+        self.assertEqual([], delta["items"])
+
     def test_unverified_cve_mention_is_not_linked(self):
-        state, events, delta = build_event_outputs([
+        _, events, _ = build_event_outputs([
             {
                 "title": "CVE-2026-99999 reportedly used in attack",
                 "url": "https://news-a.example/a",
@@ -80,8 +113,6 @@ class EventIntelligenceTests(unittest.TestCase):
         self.assertEqual(["CVE-2026-99999"], item["unverified_cve_mentions"])
         self.assertEqual([], item["confirmed_cves"])
         self.assertEqual([], item["linked_vulnerabilities"])
-        self.assertTrue(state["items"])
-        self.assertTrue(delta["items"])
 
     def test_profile_match_changes_relevance_without_claiming_asset_presence(self):
         _, events, _ = build_event_outputs([
@@ -109,6 +140,7 @@ class EventIntelligenceTests(unittest.TestCase):
         ], PROFILE, vulnerability_intelligence={"items": []}, now=NOW)
         item = first_events["items"][0]
         previous_state = {
+            "generated_at": "2026-09-10T14:05:00+00:00",
             "items": {
                 item["fingerprint"]: {
                     "event_id": item["event_id"],
@@ -129,6 +161,7 @@ class EventIntelligenceTests(unittest.TestCase):
             }
         ], PROFILE, vulnerability_intelligence={"items": []}, previous_state=previous_state, now=NOW)
         self.assertFalse(second_events["items"][0]["is_new"])
+        self.assertEqual("delta", second_delta["mode"])
         self.assertEqual(0, second_delta["summary"]["new_notable_count"])
 
     def test_tracking_parameters_are_removed(self):
