@@ -58,9 +58,18 @@ jobs:
           pip install -r requirements.txt -r requirements-report.txt
       - name: Unit tests
         run: python -m unittest discover -s tests -v
+      - name: Deterministic report smoke test
+        env:
+          GEMINI_SEARCH_MODE: off
+          GEMINI_MODEL: gemini-3.8-flash
+          GEMINI_FALLBACK_MODELS: gemini-3.7-flash,gemini-3.6-flash
+          REPORT_PROVIDER: gemini
+        run: |
+          python scripts/generate_report_v2.py
+          python scripts/validate_report.py
 
   report:
-    name: Generate grounded report
+    name: Generate security intelligence report
     needs: test
     if: >-
       github.event_name == 'workflow_dispatch' ||
@@ -85,18 +94,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-report.txt
 
-      - name: Generate grounded report
+      - name: Generate security intelligence report
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.8-flash' }}
           GEMINI_FALLBACK_MODELS: ${{ vars.GEMINI_FALLBACK_MODELS || 'gemini-3.7-flash,gemini-3.6-flash' }}
           GEMINI_SEARCH_MODE: ${{ vars.GEMINI_SEARCH_MODE || 'auto' }}
           GEMINI_SEARCH_TIMEOUT_MS: ${{ vars.GEMINI_SEARCH_TIMEOUT_MS || '45000' }}
-          GEMINI_FACTS_TIMEOUT_MS: ${{ vars.GEMINI_FACTS_TIMEOUT_MS || '120000' }}
           REPORT_PROVIDER: gemini
         run: python scripts/generate_report_v2.py
 
-      - name: Validate grounded report
+      - name: Validate report
         run: python scripts/validate_report.py
 
       - name: Preserve report artifact
