@@ -26,7 +26,7 @@ GitHub Actions
 
 ```json
 {
-  "name": "security-intelligence-report",
+  "name": "security-report-automation",
   "compatibility_date": "2026-09-10",
   "assets": {
     "directory": "./_site"
@@ -41,22 +41,23 @@ GitHub Actions
 1. Cloudflare Dashboard -> **Workers & Pages** -> **Create application**。
 2. 選 **Import a repository**，連接 GitHub。
 3. 選擇 `zenkispwan/security-report-automation`。
-4. Production branch 設為 `main`。
-5. Root directory 使用 repository root。
-6. Build command：
+4. Worker / Project name 使用 `security-report-automation`。
+5. Production branch 設為 `main`。
+6. Root directory 使用 repository root。
+7. Build command：
 
    ```bash
    npm run build:web
    ```
 
-7. Deploy command 保持：
+8. Deploy command：
 
    ```bash
    npx wrangler deploy
    ```
 
-8. 第一版網站不需要設定任何 Cloudflare secret 或 binding。
-9. Deploy 完成後先用 `workers.dev` 網址驗證，再視需要綁定自訂網域。
+9. 第一版網站不需要設定任何 Cloudflare secret 或 binding。
+10. Deploy 完成後先用 `workers.dev` 網址驗證，再視需要綁定自訂網域。
 
 Cloudflare Workers Builds 的 build image 同時提供 Node.js 與 Python；`package.json` 只負責固定 Wrangler 依賴，網站 build 本身由 Python standard library 完成。
 
