@@ -9,6 +9,19 @@ on:
         default: '48'
   schedule:
     - cron: '0 1 * * *'
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/**'
+      - 'scripts/collect_v2.py'
+      - 'scripts/validate_latest.py'
+      - 'scripts/build_intelligence.py'
+      - 'scripts/validate_intelligence.py'
+      - 'tests/**'
+      - 'requirements.txt'
+      - 'data/.gitignore'
+      - '.github/workflows/v2-collect.yml'
   pull_request:
     paths:
       - 'src/**'
