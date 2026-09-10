@@ -1,56 +1,114 @@
-# 📊 每日資安威脅情報自動化報告系統（Gemini 版本）
+# Security Report Automation V2
 
-使用 GitHub Actions 和 Google Gemini API 自動生成每日資安威脅情報報告。
+可信、即時、可驗證的每日資安威脅情報自動化系統。
 
-## ✨ 功能特色
+## 核心原則
 
-- 🤖 **自動化收集**：使用 Google Search 搜尋最新資安威脅
-- 🆓 **完全免費**：Gemini API 免費額度充足
-- 📧 **郵件通知**：自動發送 HTML 格式報告
-- 📁 **固定檔名**：報告固定為 `security_report_latest.md`，每次覆蓋
-- 🔍 **多來源整合**：台灣本地與國際資安新聞
-- 📅 **最近7天資料**：自動搜尋最近一週的威脅情報
+**Search / API 負責 Facts，LLM 負責 Intelligence。**
 
-## 🚀 快速開始
+V2 不再要求 LLM 依模型既有知識產生最近幾天的 CVE、CVSS、EPSS、KEV 或 exploit 狀態。所有時效性事實先由官方資料來源取得，再交給 LLM 做繁體中文摘要、風險排序與處置建議。
 
-### 1. Fork 此專案
+## Phase 1 資料流
 
-### 2. 取得 Gemini API Key
+```text
+CISA KEV
+   ↓
+NVD CVE API 2.0
+   ↓
+FIRST EPSS
+   ↓
+Normalize / Deduplicate
+   ↓
+data/latest.json
+```
 
-1. 前往 https://aistudio.google.com/apikey
-2. 點擊「Create API key」
-3. 複製 API Key
+目前 Collector：
 
-### 3. 設定 GitHub Secret
+- CISA KEV：canonical JSON feed，失敗時 fallback 到 CISA 官方 `cisagov/kev-data` mirror
+- NVD：抓指定 lookback window 內 `lastModified` 的 CVE
+- 新 KEV 若未出現在當期 NVD modified window，會依 CVE ID 補抓 NVD
+- FIRST EPSS：依 CVE 批次 enrich `epss` 與 `percentile`
+- Raw payload 存在 GitHub Actions artifact 7 天，不寫入 Git history
+- Normalized facts 寫入 `data/latest.json`
+- 未確認欄位使用 `null` 或 `unconfirmed`，不得自行猜測
+- EPSS 不會被推論成 exploitation status
 
-在 Repository Settings → Secrets and variables → Actions：
+## 目錄
 
-| Secret 名稱 | 說明 |
-|------------|------|
-| `GEMINI_API_KEY` | Google Gemini API Key |
-| `EMAIL_SENDER` | Gmail 發送帳號（選用） |
-| `EMAIL_PASSWORD` | Gmail 應用程式密碼（選用） |
-| `EMAIL_RECIPIENT` | 接收報告郵箱（選用） |
+```text
+.github/workflows/v2-collect.yml
 
-### 4. 手動測試
+src/security_intel/
+  http.py
+  normalize.py
+  pipeline.py
+  collectors/
+    cisa_kev.py
+    nvd.py
+    epss.py
 
-1. 前往 Actions → 📊 每日資安威脅情報報告（Gemini）
-2. 點擊「Run workflow」
-3. 等待執行完成
-4. 查看 `reports/security_report_latest.md`
+scripts/
+  collect_v2.py
+  validate_latest.py
 
-## ⏰ 執行排程
+data/
+  latest.json
+  raw/
 
-預設每天台北時間早上 9:00 自動執行
+tests/
+  test_normalize.py
+```
 
-## 💰 成本
+舊版 Gemini / Email 程式目前先保留，方便比對與回滾；V2 report generator 完成後再移除。
 
-**完全免費！**
-- Gemini API: 免費額度充足
-- GitHub Actions: 免費（Public Repo）或 2000分鐘/月（Private Repo）
+## Normalized record
 
-## 📝 報告位置
+每筆 CVE 盡可能保留：
 
-固定位置：`reports/security_report_latest.md`
+- CVE
+- Vendor / Product
+- Title / Description
+- CVSS
+- EPSS / EPSS Percentile
+- CISA KEV
+- Exploitation status（KEV 或 NVD SSVC；否則 `unconfirmed`）
+- Published / Updated / Collected time
+- Source URL / Source type
+- References / CWE / affected data
+- `change_flags`: newly published / recently modified / new KEV
+- provenance
 
-每次執行會覆蓋此檔案，保持最新版本。
+## 本機執行
+
+```bash
+pip install -r requirements.txt
+python scripts/collect_v2.py --lookback-hours 48
+python scripts/validate_latest.py
+```
+
+NVD API Key 為選用，但建議新增 GitHub Actions Secret：
+
+```text
+NVD_API_KEY
+```
+
+沒有 API Key 仍可執行，Collector 會自動降低 NVD request rate。
+
+## GitHub Actions
+
+`V2 Security Intelligence Collector`：
+
+- 每天台北時間 09:00（UTC 01:00）
+- 支援手動執行
+- PR 會跑 unit tests、真實 Collector 與 JSON validation
+- raw snapshots 只保留為 artifact
+- main 的 schedule/manual run 會更新 `data/latest.json`
+
+## 下一階段
+
+1. Previous snapshot + Daily Delta
+2. Risk scoring
+3. Gemini + Google Search enrichment
+4. `reports/security_report_latest.md`
+5. HTML Email
+6. Vendor advisories / TWCERT/CC / dashboard / historical trends
