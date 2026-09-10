@@ -74,7 +74,7 @@ class ReportingTests(unittest.TestCase):
         self.assertIn("VERIFIED_FACTS", prompt)
         self.assertIn("meaningful_change_count", prompt)
         self.assertIn("CVE-2026-20079", prompt)
-        self.assertIn("未偵測到符合門檻的重大 Daily Delta", prompt)
+        self.assertIn("本次沒有符合門檻的重大變化", prompt)
 
     def test_unknown_cve_is_rejected(self) -> None:
         intelligence = sample_intelligence()
