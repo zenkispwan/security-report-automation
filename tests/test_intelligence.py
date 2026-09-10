@@ -83,6 +83,28 @@ class IntelligenceTests(unittest.TestCase):
         self.assertEqual(len(epss_events), 1)
         self.assertAlmostEqual(epss_events[0]["delta"], 0.37)
 
+    def test_new_cve_is_critical_first_without_other_signals(self) -> None:
+        baseline = datetime(2026, 9, 10, 1, tzinfo=timezone.utc)
+        high = item("CVE-2026-10020", cvss=8.8, epss=None, percentile=None)
+        critical = item("CVE-2026-10021", cvss=9.1, epss=None, percentile=None)
+        self.assertNotIn("NEW_CVE", {x["type"] for x in detect_events(high, None, baseline)})
+        self.assertIn("NEW_CVE", {x["type"] for x in detect_events(critical, None, baseline)})
+
+    def test_high_new_cve_with_poc_is_still_meaningful(self) -> None:
+        current = item(
+            "CVE-2026-10022",
+            cvss=8.0,
+            epss=None,
+            percentile=None,
+            exploit="poc",
+        )
+        events = detect_events(
+            current,
+            None,
+            datetime(2026, 9, 10, 1, tzinfo=timezone.utc),
+        )
+        self.assertIn("NEW_CVE", {x["type"] for x in events})
+
     def test_missing_current_item_is_not_reported_as_resolved(self) -> None:
         previous_state = {
             "generated_at": "2026-09-09T01:00:00+00:00",
