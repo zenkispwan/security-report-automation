@@ -12,6 +12,7 @@ COPIES = {
     Path("data/delta.json"): Path("data/delta.json"),
     Path("reports/security_report_metadata.json"): Path("data/report_metadata.json"),
     Path("reports/security_report_latest.md"): Path("security_report_latest.md"),
+    Path("web/_headers"): Path("_headers"),
 }
 
 
@@ -20,7 +21,7 @@ def digest(path: Path) -> str:
 
 
 def validate(root: Path) -> None:
-    required = [root / "index.html", root / "styles.css", root / "app.js", root / ".nojekyll"]
+    required = [root / "index.html", root / "styles.css", root / "app.js", root / "_headers"]
     required += [root / target for target in COPIES.values()]
     missing = [str(path) for path in required if not path.is_file()]
     if missing:
@@ -44,6 +45,7 @@ def validate(root: Path) -> None:
 
     index = (root / "index.html").read_text(encoding="utf-8")
     app = (root / "app.js").read_text(encoding="utf-8")
+    headers = (root / "_headers").read_text(encoding="utf-8")
     if "./styles.css" not in index or "./app.js" not in index:
         raise SystemExit("Static shell is missing local assets")
     if "./data/intelligence.json" not in app or "./data/delta.json" not in app or "./data/report_metadata.json" not in app:
@@ -52,9 +54,11 @@ def validate(root: Path) -> None:
         raise SystemExit("Unexpected external resource in web shell")
     if "<script src=\"http" in index or "<link rel=\"stylesheet\" href=\"http" in index:
         raise SystemExit("External executable/style dependency is not allowed")
+    if "Content-Security-Policy:" not in headers or "Cache-Control: no-cache" not in headers:
+        raise SystemExit("Cloudflare Pages security/cache headers are missing")
 
     print(
-        "OK: web report "
+        "OK: Cloudflare Pages web report "
         f"intelligence={len(intelligence['items'])} "
         f"delta={len(delta['items'])} "
         f"renderer={metadata.get('renderer')} "
