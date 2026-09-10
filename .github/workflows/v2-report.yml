@@ -122,9 +122,32 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add reports/security_report_latest.md reports/security_report_metadata.json
+
           if git diff --cached --quiet; then
             echo "No report changes."
-          else
-            git commit -m "report: refresh grounded security intelligence brief"
-            git push
+            exit 0
           fi
+
+          git commit -m "report: refresh grounded security intelligence brief"
+
+          # Collector may publish refreshed data while this report is finishing.
+          # Rebase the report-only commit onto newest main rather than racing with
+          # or overwriting a concurrent data commit.
+          for attempt in 1 2 3; do
+            echo "Push attempt ${attempt}/3"
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort || true
+              echo "ERROR: report commit conflicts with current main; refusing to overwrite remote state."
+              exit 1
+            fi
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            if [ "$attempt" -lt 3 ]; then
+              sleep $((attempt * 2))
+            fi
+          done
+
+          echo "ERROR: failed to push report after 3 race-safe attempts."
+          exit 1

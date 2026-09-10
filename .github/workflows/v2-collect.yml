@@ -131,7 +131,29 @@ jobs:
 
           if git diff --cached --quiet; then
             echo "No compact intelligence changes."
-          else
-            git commit -m "data: refresh security intelligence delta"
-            git push
+            exit 0
           fi
+
+          git commit -m "data: refresh security intelligence delta"
+
+          # Report and Collector can finish close together and both write to main.
+          # Rebase this data-only commit onto the newest main and retry a bounded
+          # number of times if another disjoint bot commit lands between fetch/push.
+          for attempt in 1 2 3; do
+            echo "Push attempt ${attempt}/3"
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort || true
+              echo "ERROR: data commit conflicts with current main; refusing to overwrite remote state."
+              exit 1
+            fi
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            if [ "$attempt" -lt 3 ]; then
+              sleep $((attempt * 2))
+            fi
+          done
+
+          echo "ERROR: failed to push compact intelligence after 3 race-safe attempts."
+          exit 1
