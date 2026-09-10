@@ -63,7 +63,8 @@ def main() -> int:
         print("ERROR: data/events.json is not V2.5 event intelligence", file=sys.stderr)
         return 2
 
-    verified_scope = _verified_scope(intelligence, delta, events)
+    confirmed_scope = _verified_scope(intelligence, delta, events, include_source_mentions=False)
+    source_scope = _verified_scope(intelligence, delta, events, include_source_mentions=True)
     prompt = build_event_report_prompt(events, event_delta, intelligence, delta)
     print(
         json.dumps(
@@ -94,6 +95,7 @@ def main() -> int:
 
     if response.api_mode == "deterministic_facts_only":
         body = render_event_first_verified_report(events, event_delta, intelligence, delta).rstrip()
+        report_scope = source_scope
         print(
             "WARNING: Google Search grounding unavailable; rendering deterministic "
             f"event-first verified-facts report ({response.grounding_fallback_reason})",
@@ -101,6 +103,7 @@ def main() -> int:
         )
     else:
         body = response.text.rstrip()
+        report_scope = confirmed_scope
         if response.grounding_fallback_reason:
             print(
                 "INFO: Google Search grounding preserved through alternate API transport "
@@ -113,17 +116,25 @@ def main() -> int:
                 f"selected {response.model} after attempts {response.attempted_models}",
                 file=sys.stderr,
             )
+        exposed_unverified = sorted(cve for cve in _unverified_event_cves(events) if cve in body.upper())
+        if exposed_unverified:
+            print(
+                "ERROR: grounded report exposed source-mentioned but unverified CVEs: "
+                + ", ".join(exposed_unverified),
+                file=sys.stderr,
+            )
+            return 3
 
-    unknown = unknown_report_cves(body, verified_scope)
+    unknown = unknown_report_cves(body, report_scope)
     if unknown:
         print(
-            "ERROR: report introduced CVEs outside verified event/vulnerability scope: "
+            "ERROR: report introduced CVEs outside allowed event/vulnerability scope: "
             + ", ".join(unknown),
             file=sys.stderr,
         )
         return 3
 
-    appendix = render_source_appendix(body, verified_scope, response.citations)
+    appendix = render_source_appendix(body, report_scope, response.citations)
     report_text = body + "\n" + appendix
 
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
@@ -159,6 +170,8 @@ def main() -> int:
             "event_delta_items": len(event_delta.get("items") or []),
             "intelligence_items": len(intelligence.get("items") or []),
             "delta_items": len(delta.get("items") or []),
+            "confirmed_event_cves": len(confirmed_event_cves(events)),
+            "unverified_event_cve_mentions": len(_unverified_event_cves(events)),
         },
         "grounding": {
             "requested_mode": search_mode,
@@ -186,20 +199,34 @@ def main() -> int:
     return 0
 
 
-def _verified_scope(intelligence: dict, delta: dict, events: dict) -> dict:
-    items = [
-        *(intelligence.get("items") or []),
-        *(delta.get("items") or []),
-    ]
+def _verified_scope(
+    intelligence: dict,
+    delta: dict,
+    events: dict,
+    *,
+    include_source_mentions: bool,
+) -> dict:
+    items = [*(intelligence.get("items") or []), *(delta.get("items") or [])]
     existing = {
         str((x.get("facts") or {}).get("cve") or x.get("cve") or "").upper()
         for x in items
     }
-    for cve in confirmed_event_cves(events):
-        if cve not in existing:
+    event_cves = set(confirmed_event_cves(events))
+    if include_source_mentions:
+        event_cves.update(_unverified_event_cves(events))
+    for cve in sorted(event_cves):
+        if cve and cve not in existing:
             items.append({"cve": cve, "facts": {"cve": cve}})
             existing.add(cve)
     return {"items": items}
+
+
+def _unverified_event_cves(events: dict) -> set[str]:
+    return {
+        str(cve).upper()
+        for event in events.get("items") or []
+        for cve in event.get("unverified_cve_mentions") or []
+    }
 
 
 def _env_csv(name: str, default: str) -> list[str]:
