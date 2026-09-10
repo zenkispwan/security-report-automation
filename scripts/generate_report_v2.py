@@ -53,6 +53,7 @@ def main() -> int:
         print("ERROR: data/intelligence.json has no items", file=sys.stderr)
         return 2
 
+    verified_scope = _verified_scope(intelligence, delta)
     prompt = build_report_prompt(intelligence, delta)
     print(
         json.dumps(
@@ -101,15 +102,16 @@ def main() -> int:
                 file=sys.stderr,
             )
 
-    unknown = unknown_report_cves(body, intelligence)
+    unknown = unknown_report_cves(body, verified_scope)
     if unknown:
         print(
-            "ERROR: report introduced CVEs outside verified intelligence: " + ", ".join(unknown),
+            "ERROR: report introduced CVEs outside verified intelligence/delta: "
+            + ", ".join(unknown),
             file=sys.stderr,
         )
         return 3
 
-    appendix = render_source_appendix(body, intelligence, response.citations)
+    appendix = render_source_appendix(body, verified_scope, response.citations)
     report_text = body + "\n" + appendix
 
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
@@ -162,6 +164,20 @@ def main() -> int:
     print(f"Grounding mode: {response.grounding_mode}")
     print(f"Grounding citations: {len(response.citations)}")
     return 0
+
+
+def _verified_scope(intelligence: dict, delta: dict) -> dict:
+    """Build the verified CVE/source scope used by validation and appendix.
+
+    Daily Delta is itself a verified collector output. A delta CVE must remain
+    valid even when it falls outside the capped intelligence candidate list.
+    """
+    return {
+        "items": [
+            *(intelligence.get("items") or []),
+            *(delta.get("items") or []),
+        ]
+    }
 
 
 def _env_csv(name: str, default: str) -> list[str]:
