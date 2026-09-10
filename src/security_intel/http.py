@@ -24,13 +24,13 @@ class HttpClient:
             }
         )
 
-    def get_json(
+    def _get(
         self,
         url: str,
         *,
         params: dict[str, Any] | None = None,
         headers: dict[str, str] | None = None,
-    ) -> dict[str, Any]:
+    ) -> requests.Response:
         for attempt in range(self.retries + 1):
             response = self.session.get(
                 url, params=params, headers=headers, timeout=self.timeout
@@ -48,9 +48,29 @@ class HttpClient:
                 continue
 
             response.raise_for_status()
-            payload = response.json()
-            if not isinstance(payload, dict):
-                raise ValueError(f"Expected JSON object from {url}")
-            return payload
+            return response
 
         raise RuntimeError(f"Failed to fetch {url}")
+
+    def get_json(
+        self,
+        url: str,
+        *,
+        params: dict[str, Any] | None = None,
+        headers: dict[str, str] | None = None,
+    ) -> dict[str, Any]:
+        response = self._get(url, params=params, headers=headers)
+        payload = response.json()
+        if not isinstance(payload, dict):
+            raise ValueError(f"Expected JSON object from {url}")
+        return payload
+
+    def get_text(
+        self,
+        url: str,
+        *,
+        params: dict[str, Any] | None = None,
+        headers: dict[str, str] | None = None,
+    ) -> str:
+        response = self._get(url, params=params, headers=headers)
+        return response.text
