@@ -23,7 +23,7 @@ def digest(path: Path) -> str:
 
 
 def validate(root: Path) -> None:
-    required = [root / "index.html", root / "styles.css", root / "app.js", root / "_headers"]
+    required = [root / "index.html", root / "styles.css", root / "events.css", root / "app.js", root / "_headers"]
     required += [root / target for target in COPIES.values()]
     missing = [str(path) for path in required if not path.is_file()]
     if missing:
@@ -54,7 +54,7 @@ def validate(root: Path) -> None:
     index = (root / "index.html").read_text(encoding="utf-8")
     app = (root / "app.js").read_text(encoding="utf-8")
     headers = (root / "_headers").read_text(encoding="utf-8")
-    if "./styles.css" not in index or "./app.js" not in index:
+    if "./styles.css" not in index or "./events.css" not in index or "./app.js" not in index:
         raise SystemExit("Static shell is missing local assets")
     required_fetches = (
         "./data/events.json",
@@ -65,7 +65,8 @@ def validate(root: Path) -> None:
     )
     if any(path not in app for path in required_fetches):
         raise SystemExit("Web app is not wired to event and vulnerability verified inputs")
-    if "https://" in index.replace("https://github.com/zenkispwan/security-report-automation", ""):
+    allowed_repo = "https://github.com/zenkispwan/security-report-automation"
+    if "https://" in index.replace(allowed_repo, ""):
         raise SystemExit("Unexpected external resource in web shell")
     if "<script src=\"http" in index or "<link rel=\"stylesheet\" href=\"http" in index:
         raise SystemExit("External executable/style dependency is not allowed")
