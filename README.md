@@ -76,15 +76,29 @@ Google Search grounding 只用於補充：
 - 近期公開攻擊背景
 - 其他需要即時驗證的脈絡
 
-Gemini API 的 Google Search grounding 可能受方案與 quota 限制，因此 V2 支援三種模式：
+Gemini API 的 Google Search grounding 可能受方案、quota 或 API transport 暫時性問題影響，因此 V2 支援三種模式：
 
 ```text
-GEMINI_SEARCH_MODE=auto      # 預設：先嘗試 Search；quota 429 時安全降級
+GEMINI_SEARCH_MODE=auto      # 預設：優先 Search；不可用時安全降級
 GEMINI_SEARCH_MODE=required  # Search 必須成功，否則 report job 失敗
 GEMINI_SEARCH_MODE=off       # 不呼叫 Search，只使用 verified facts
 ```
 
-`auto` 若因 Google Search quota 不可用而降級，會切換成 `verified_facts_only`：模型不得用既有知識新增近期漏洞事實、版本、修補細節或攻擊事件，只能重述/分析 CISA KEV、NVD、FIRST EPSS 與 deterministic delta/risk 已提供的資料。報告正文與 metadata 都會明確記錄降級狀態，不會靜默假裝已做即時搜尋。
+`auto` 的 transport 順序：
+
+```text
+Interactions API + Google Search
+            ↓ transient transport error
+GenerateContent + Google Search
+            ↓ quota / transient error
+GenerateContent + VERIFIED_FACTS_ONLY
+```
+
+Interactions API 仍是首選。若只是 Interactions transport 暫時失敗，會先使用仍受 Google 支援的 GenerateContent API 保留 Google Search grounding；只有 Search 本身因 quota 或 transport 無法使用時，才降級到 `verified_facts_only`。
+
+`verified_facts_only` 模式下，模型不得用既有知識新增近期漏洞事實、版本、修補細節或攻擊事件，只能重述/分析 CISA KEV、NVD、FIRST EPSS 與 deterministic delta/risk 已提供的資料。報告正文與 metadata 都會明確記錄降級狀態，不會靜默假裝已做即時搜尋。
+
+為避免 SDK transient retry 讓單一報告卡住過久，V2 會限制 Gemini request timeout 與 retry 次數。預設 Search transport timeout 為 45 秒、facts-only 為 120 秒，且認證/參數等非 transient 錯誤不會被 fallback 隱藏。
 
 受影響版本、修補版本、攻擊歸因等若沒有可靠來源，報告必須標示「未確認」。
 
@@ -95,7 +109,7 @@ reports/security_report_latest.md
 reports/security_report_metadata.json
 ```
 
-metadata 會保存 Gemini model、interaction ID、grounding mode / fallback reason、Google Search citations / queries（若有）、token usage，以及輸入 `delta.json` / `intelligence.json` 的 SHA-256，方便驗證報告來源。
+metadata 會保存 Gemini model、API mode、interaction/response ID、grounding mode / fallback reason、Google Search citations / queries（若有）、request timeout、token usage，以及輸入 `delta.json` / `intelligence.json` 的 SHA-256，方便驗證報告來源。
 
 ## 目錄
 
@@ -171,10 +185,12 @@ python scripts/validate_report.py
 API Key 不得 commit 到 repository。GitHub Actions 使用 repository secrets / variables：
 
 ```text
-NVD_API_KEY          # optional
-GEMINI_API_KEY       # required for V2 report
-GEMINI_MODEL         # optional repository variable; default gemini-3.8-flash
-GEMINI_SEARCH_MODE   # optional: auto / required / off; default auto
+NVD_API_KEY                 # optional
+GEMINI_API_KEY              # required for V2 report
+GEMINI_MODEL                # optional; default gemini-3.8-flash
+GEMINI_SEARCH_MODE          # optional: auto / required / off; default auto
+GEMINI_SEARCH_TIMEOUT_MS    # optional; default 45000
+GEMINI_FACTS_TIMEOUT_MS     # optional; default 120000
 ```
 
 ## GitHub Actions
@@ -192,7 +208,9 @@ GEMINI_SEARCH_MODE   # optional: auto / required / off; default auto
 
 - Collector 在 main 成功後自動接續
 - 可手動執行
-- 優先使用 Gemini + Google Search grounding；quota 不允許時可透明降級為 verified-facts-only
+- 優先使用 Gemini Interactions + Google Search grounding
+- Interactions transient failure 時可用 GenerateContent 保留 Search
+- Search quota/transport 不允許時可透明降級為 verified-facts-only
 - 產生 Markdown report + report metadata
 - Validation 會拒絕 LLM 新增未在 verified intelligence 中的 CVE
 - facts-only mode 必須在正文與 metadata 明確標示，且不可留下假的 Search query/citation

@@ -90,6 +90,8 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.8-flash' }}
           GEMINI_SEARCH_MODE: ${{ vars.GEMINI_SEARCH_MODE || 'auto' }}
+          GEMINI_SEARCH_TIMEOUT_MS: ${{ vars.GEMINI_SEARCH_TIMEOUT_MS || '45000' }}
+          GEMINI_FACTS_TIMEOUT_MS: ${{ vars.GEMINI_FACTS_TIMEOUT_MS || '120000' }}
           REPORT_PROVIDER: gemini
         run: python scripts/generate_report_v2.py
 
