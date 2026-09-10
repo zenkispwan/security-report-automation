@@ -6,7 +6,6 @@ from datetime import datetime, timezone
 import json
 import os
 from pathlib import Path
-import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -38,6 +37,8 @@ def main() -> int:
         profile["lookback_hours"] = args.lookback_hours
     intelligence = _load(INTELLIGENCE_PATH)
     previous_state = _load(STATE_PATH) if STATE_PATH.exists() else None
+    if previous_state and previous_state.get("baseline_ready") is not True:
+        previous_state = None
 
     gdelt_rows, gdelt_errors = collect_gdelt_articles(
         profile.get("discovery_queries") or [],
@@ -63,11 +64,12 @@ def main() -> int:
         print(json.dumps(source_health, ensure_ascii=False, indent=2), file=sys.stderr)
         return 2
 
-    verified_cves = {
+    vulnerability_intel_cves = {
         str(row.get("cve")).upper()
         for row in intelligence.get("items") or []
         if isinstance(row, dict) and row.get("cve")
     }
+    verified_cves = set(vulnerability_intel_cves)
     mentioned = sorted({
         cve.upper()
         for article in articles
@@ -96,14 +98,11 @@ def main() -> int:
         now=now,
         max_events=args.max_events,
     )
+    state["baseline_ready"] = True
     events["sources"] = source_health
     events["cve_verification"] = {
         "mentioned": mentioned,
-        "verified_from_vulnerability_intelligence": sorted(set(mentioned).intersection({
-            str(row.get("cve")).upper()
-            for row in intelligence.get("items") or []
-            if isinstance(row, dict) and row.get("cve")
-        })),
+        "verified_from_vulnerability_intelligence": sorted(set(mentioned).intersection(vulnerability_intel_cves)),
         "verified_live_nvd": nvd_verified,
         "nvd_errors": nvd_errors,
         "verification_cap": MAX_EXTRA_NVD_VERIFICATIONS,
@@ -130,6 +129,7 @@ def main() -> int:
         "articles": len(articles),
         "clusters": events["summary"]["cluster_count"],
         "selected": events["summary"]["selected_count"],
+        "event_delta_mode": event_delta.get("mode"),
         "new_notable": event_delta["summary"]["new_notable_count"],
         "p1": events["summary"]["p1"],
         "p2": events["summary"]["p2"],
