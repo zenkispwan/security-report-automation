@@ -33,6 +33,7 @@ def main() -> int:
     delta = json.loads(DELTA.read_text(encoding="utf-8"))
     metadata = json.loads(METADATA.read_text(encoding="utf-8"))
     report = REPORT.read_text(encoding="utf-8")
+    verified_scope = _verified_scope(intelligence, delta)
 
     if len(report.strip()) < 1000:
         errors.append("report is unexpectedly short")
@@ -42,9 +43,9 @@ def main() -> int:
     if "基於 AI 模型知識生成" in report:
         errors.append("legacy AI-knowledge disclaimer is present")
 
-    unknown = unknown_report_cves(report, intelligence)
+    unknown = unknown_report_cves(report, verified_scope)
     if unknown:
-        errors.append("report contains unverified CVEs: " + ", ".join(unknown))
+        errors.append("report contains CVEs outside verified intelligence/delta: " + ", ".join(unknown))
 
     if metadata.get("schema_version") != "2.3-report-metadata":
         errors.append("unexpected report metadata schema_version")
@@ -101,7 +102,7 @@ def main() -> int:
         deterministic_body = render_verified_facts_report(intelligence, delta).rstrip()
         expected_report = deterministic_body + "\n" + render_source_appendix(
             deterministic_body,
-            intelligence,
+            verified_scope,
             [],
         )
         if report != expected_report:
@@ -137,10 +138,20 @@ def main() -> int:
 
     print(
         f"OK: report chars={len(report)} intelligence={len(intelligence.get('items') or [])} "
-        f"renderer={renderer} llm_body_used={llm_body_used} model={actual_model} "
+        f"delta={len(delta.get('items') or [])} renderer={renderer} "
+        f"llm_body_used={llm_body_used} model={actual_model} "
         f"grounding_mode={grounding_mode} grounding_citations={len(citations)}"
     )
     return 0
+
+
+def _verified_scope(intelligence: dict, delta: dict) -> dict:
+    return {
+        "items": [
+            *(intelligence.get("items") or []),
+            *(delta.get("items") or []),
+        ]
+    }
 
 
 def _fail(errors: list[str]) -> int:
