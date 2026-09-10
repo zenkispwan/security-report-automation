@@ -46,16 +46,26 @@ def main() -> int:
     if input_meta.get("delta_sha256") != sha256_file(DELTA):
         errors.append("metadata delta hash does not match current input")
 
-    citations = ((metadata.get("grounding") or {}).get("citations") or [])
-    if not citations:
-        errors.append("no Google Search grounding citations were captured")
+    grounding = metadata.get("grounding") or {}
+    mode = grounding.get("mode")
+    citations = grounding.get("citations") or []
+    if mode == "google_search":
+        if not citations:
+            errors.append("Google Search mode captured no grounding citations")
+    elif mode == "verified_facts_only":
+        if "資料來源模式：Verified facts only" not in report:
+            errors.append("facts-only report is missing the transparent fallback notice")
+        if grounding.get("search_queries"):
+            errors.append("facts-only report unexpectedly contains Google Search queries")
+    else:
+        errors.append(f"unsupported grounding mode in metadata: {mode!r}")
 
     if errors:
         return _fail(errors)
 
     print(
         f"OK: report chars={len(report)} intelligence={len(intelligence.get('items') or [])} "
-        f"grounding_citations={len(citations)}"
+        f"grounding_mode={mode} grounding_citations={len(citations)}"
     )
     return 0
 
