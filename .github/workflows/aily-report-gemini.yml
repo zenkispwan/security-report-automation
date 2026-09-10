@@ -1,11 +1,6 @@
-name: 📊 每日資安威脅情報報告（Gemini）
+name: Legacy Security Report (Gemini)
 
 on:
-  # 每天台北時間早上 9:00 執行（UTC 1:00）
-  schedule:
-    - cron: '0 1 * * *'
-  
-  # 允許手動觸發
   workflow_dispatch:
 
 permissions:
@@ -13,57 +8,46 @@ permissions:
 
 jobs:
   generate-and-send-report:
-    name: 生成並發送報告
+    name: Legacy report generator
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: 📥 Checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: 🐍 Setup Python
+
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      
-      - name: 📦 Install dependencies
+
+      - name: Install legacy dependencies
         run: |
           python -m pip install --upgrade pip
           pip install google-generativeai markdown
-      
-      - name: 📊 Generate security report
+
+      - name: Generate legacy report
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: |
-          python scripts/generate_report_gemini.py
-      
-      - name: 🔍 Verify report
-        run: |
-          if [ -f "reports/security_report_latest.md" ]; then
-            echo "✅ 報告檔案存在"
-            echo "📏 檔案大小: $(wc -c < reports/security_report_latest.md) bytes"
-          else
-            echo "❌ 報告檔案不存在"
-            exit 1
-          fi
-      
-      - name: 💾 Commit report
+        run: python scripts/generate_report_gemini.py
+
+      - name: Verify report
+        run: test -f reports/security_report_latest.md
+
+      - name: Commit report
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add reports/security_report_latest.md
-          
           if git diff --staged --quiet; then
-            echo "ℹ️  報告內容未變更"
+            echo "No report changes."
           else
-            REPORT_DATE=$(date +'%Y-%m-%d %H:%M')
-            git commit -m "📊 更新資安報告 - ${REPORT_DATE}"
+            git commit -m "legacy: update security report"
             git push
-            echo "✅ 報告已提交"
           fi
-      
-      - name: 📧 Send email notification
+
+      - name: Send email
         if: success()
         env:
           EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
@@ -73,14 +57,5 @@ jobs:
           if [ -n "$EMAIL_SENDER" ] && [ -n "$EMAIL_PASSWORD" ]; then
             python scripts/send_email_gemini.py
           else
-            echo "ℹ️  未設定郵件參數，跳過郵件通知"
+            echo "Email settings not configured; skip."
           fi
-      
-      - name: 📋 Summary
-        if: always()
-        run: |
-          echo "## 執行摘要" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- 📅 執行時間: $(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_STEP_SUMMARY
-          echo "- 🤖 使用模型: Google Gemini 2.0 Flash" >> $GITHUB_STEP_SUMMARY
-          echo "- 📁 報告位置: reports/security_report_latest.md" >> $GITHUB_STEP_SUMMARY
