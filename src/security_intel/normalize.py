@@ -112,15 +112,35 @@ def _cvss(cve: dict[str, Any]) -> dict[str, Any] | None:
 def _affected(cve: dict[str, Any]) -> list[dict[str, Any]]:
     direct = cve.get("affected")
     if isinstance(direct, list):
-        return direct
+        flattened = _flatten_affected(direct)
+        if flattened:
+            return flattened
     for obj in _walk_dicts(cve):
-        value = obj.get("affected")
-        if isinstance(value, list) and any(
-            isinstance(x, dict) and ("vendor" in x or "product" in x or "versions" in x)
-            for x in value
-        ):
-            return value
+        value = obj.get("affectedData")
+        if isinstance(value, list):
+            flattened = _flatten_affected([{"source": obj.get("source"), "affectedData": value}])
+            if flattened:
+                return flattened
     return []
+
+
+def _flatten_affected(rows: list[Any]) -> list[dict[str, Any]]:
+    out: list[dict[str, Any]] = []
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        nested = row.get("affectedData")
+        if isinstance(nested, list):
+            for item in nested:
+                if not isinstance(item, dict):
+                    continue
+                normalized = dict(item)
+                if row.get("source") and not normalized.get("source"):
+                    normalized["source"] = row["source"]
+                out.append(normalized)
+        elif any(key in row for key in ("vendor", "product", "versions", "packageName")):
+            out.append(dict(row))
+    return out
 
 
 def _ssvc(cve: dict[str, Any]) -> dict[str, Any] | None:
@@ -158,8 +178,17 @@ def _vendor_product(
         return kev_entry.get("vendorProject"), kev_entry.get("product")
     for item in affected:
         if isinstance(item, dict) and (item.get("vendor") or item.get("product")):
-            return item.get("vendor"), item.get("product")
+            return _known_text(item.get("vendor")), _known_text(item.get("product"))
     return None, None
+
+
+def _known_text(value: Any) -> str | None:
+    if not isinstance(value, str) or not value.strip():
+        return None
+    text = value.strip()
+    if text.lower() in {"n/a", "na"}:
+        return None
+    return text
 
 
 def _kev(entry: dict[str, Any] | None) -> dict[str, Any]:
