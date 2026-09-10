@@ -64,6 +64,30 @@ class NormalizeTests(unittest.TestCase):
         self.assertEqual(row["cvss"]["version"], "4.0")
         self.assertEqual(row["cvss"]["score"], 8.7)
 
+    def test_nvd_2026_affected_data_is_flattened(self) -> None:
+        now = datetime(2026, 9, 10, tzinfo=timezone.utc)
+        row = normalize_record(
+            nvd_wrapper={"cve": {
+                "id": "CVE-2026-22222",
+                "affected": [{
+                    "source": "vendor@example.com",
+                    "affectedData": [{
+                        "vendor": "Example Vendor",
+                        "product": "Example Product",
+                        "versions": [{"version": "1.0", "status": "affected"}],
+                    }],
+                }],
+            }},
+            kev_entry=None,
+            epss_entry=None,
+            collected_at=now,
+            window_start=now,
+            window_end=now,
+        )
+        self.assertEqual(row["vendor"], "Example Vendor")
+        self.assertEqual(row["product"], "Example Product")
+        self.assertEqual(row["affected"][0]["source"], "vendor@example.com")
+
 
 if __name__ == "__main__":
     unittest.main()
