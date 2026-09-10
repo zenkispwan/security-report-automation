@@ -25,7 +25,7 @@ CISA KEV + NVD CVE API 2.0 + FIRST EPSS
         data/intelligence.json
            （最多 30 筆）
                     ↓
- Gemini + Google Search Grounding
+ Gemini + optional Google Search Grounding
                     ↓
  reports/security_report_latest.md
 ```
@@ -76,6 +76,16 @@ Google Search grounding 只用於補充：
 - 近期公開攻擊背景
 - 其他需要即時驗證的脈絡
 
+Gemini API 的 Google Search grounding 可能受方案與 quota 限制，因此 V2 支援三種模式：
+
+```text
+GEMINI_SEARCH_MODE=auto      # 預設：先嘗試 Search；quota 429 時安全降級
+GEMINI_SEARCH_MODE=required  # Search 必須成功，否則 report job 失敗
+GEMINI_SEARCH_MODE=off       # 不呼叫 Search，只使用 verified facts
+```
+
+`auto` 若因 Google Search quota 不可用而降級，會切換成 `verified_facts_only`：模型不得用既有知識新增近期漏洞事實、版本、修補細節或攻擊事件，只能重述/分析 CISA KEV、NVD、FIRST EPSS 與 deterministic delta/risk 已提供的資料。報告正文與 metadata 都會明確記錄降級狀態，不會靜默假裝已做即時搜尋。
+
 受影響版本、修補版本、攻擊歸因等若沒有可靠來源，報告必須標示「未確認」。
 
 生成後另寫：
@@ -85,7 +95,7 @@ reports/security_report_latest.md
 reports/security_report_metadata.json
 ```
 
-metadata 會保存 Gemini model、interaction ID、Google Search citations / queries、token usage，以及輸入 `delta.json` / `intelligence.json` 的 SHA-256，方便驗證報告來源。
+metadata 會保存 Gemini model、interaction ID、grounding mode / fallback reason、Google Search citations / queries（若有）、token usage，以及輸入 `delta.json` / `intelligence.json` 的 SHA-256，方便驗證報告來源。
 
 ## 目錄
 
@@ -132,6 +142,7 @@ tests/
   test_normalize.py
   test_intelligence.py
   test_reporting.py
+  test_gemini.py
 ```
 
 ## 本機執行
@@ -146,12 +157,13 @@ python scripts/build_intelligence.py
 python scripts/validate_intelligence.py
 ```
 
-Grounded report：
+Report：
 
 ```bash
 pip install -r requirements-report.txt
 export GEMINI_API_KEY=...
 export GEMINI_MODEL=gemini-3.8-flash
+export GEMINI_SEARCH_MODE=auto
 python scripts/generate_report_v2.py
 python scripts/validate_report.py
 ```
@@ -159,9 +171,10 @@ python scripts/validate_report.py
 API Key 不得 commit 到 repository。GitHub Actions 使用 repository secrets / variables：
 
 ```text
-NVD_API_KEY       # optional
-GEMINI_API_KEY    # required for V2 grounded report
-GEMINI_MODEL      # optional repository variable; default gemini-3.8-flash
+NVD_API_KEY          # optional
+GEMINI_API_KEY       # required for V2 report
+GEMINI_MODEL         # optional repository variable; default gemini-3.8-flash
+GEMINI_SEARCH_MODE   # optional: auto / required / off; default auto
 ```
 
 ## GitHub Actions
@@ -179,15 +192,16 @@ GEMINI_MODEL      # optional repository variable; default gemini-3.8-flash
 
 - Collector 在 main 成功後自動接續
 - 可手動執行
-- Gemini 使用 Google Search grounding
+- 優先使用 Gemini + Google Search grounding；quota 不允許時可透明降級為 verified-facts-only
 - 產生 Markdown report + report metadata
 - Validation 會拒絕 LLM 新增未在 verified intelligence 中的 CVE
+- facts-only mode 必須在正文與 metadata 明確標示，且不可留下假的 Search query/citation
 
 ## 後續階段
 
-1. 驗證 V2 Grounded Report 每日穩定性與來源品質
+1. 驗證 V2 Report 每日穩定性與來源品質
 2. Cloudflare R2 保存長期 raw / full snapshots
-3. Vendor advisories direct collectors
+3. Vendor advisories direct collectors，降低對付費 Search grounding 的依賴
 4. HTML Email
 5. TWCERT/CC 與其他台灣資安來源
 6. Dashboard / historical trends / D1 評估

@@ -24,6 +24,7 @@ on:
       - 'scripts/generate_report_v2.py'
       - 'scripts/validate_report.py'
       - 'tests/test_reporting.py'
+      - 'tests/test_gemini.py'
       - 'requirements-report.txt'
       - '.github/workflows/v2-report.yml'
 
@@ -88,6 +89,7 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.8-flash' }}
+          GEMINI_SEARCH_MODE: ${{ vars.GEMINI_SEARCH_MODE || 'auto' }}
           REPORT_PROVIDER: gemini
         run: python scripts/generate_report_v2.py
 
