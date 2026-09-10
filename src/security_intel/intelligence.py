@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from typing import Any, Iterable
 
-RISK_VERSION = "1.0"
+RISK_VERSION = "1.1"
 EPSS_JUMP_THRESHOLD = 0.10
 MAX_TRACKED = 1000
 MAX_DELTA_ITEMS = 200
@@ -128,7 +128,7 @@ def detect_events(
 
     if previous_generated_at:
         published = _parse_dt(current.get("published_time"))
-        if published and published > previous_generated_at:
+        if published and published > previous_generated_at and _important_new_cve(current):
             events.append({"type": "NEW_CVE", "from": None, "to": current.get("published_time")})
 
     if previous is None:
@@ -248,7 +248,7 @@ def score_item(item: dict[str, Any], events: Iterable[dict[str, Any]] = ()) -> d
         priority = "P1"
     elif score >= 70:
         priority = "P2"
-    elif score >= 50:
+    elif score >= 35:
         priority = "P3"
     else:
         priority = "WATCH"
@@ -365,6 +365,21 @@ def _sort_key(row: dict[str, Any]) -> tuple[int, int, int, str]:
         priority_rank * 100 + int(row.get("risk", {}).get("score", 0)),
         row.get("cve", ""),
     )
+
+
+def _important_new_cve(item: dict[str, Any]) -> bool:
+    cvss = _cvss_score(item)
+    epss = _as_float(item.get("epss"))
+    percentile = _as_float(item.get("epss_percentile"))
+    if bool((item.get("cisa_kev") or {}).get("listed")):
+        return True
+    if _exploit_status(item) in {"poc", "active", "known_exploited"}:
+        return True
+    if cvss is not None and cvss >= 7.0:
+        return True
+    if epss is not None and epss >= 0.05:
+        return True
+    return percentile is not None and percentile >= 0.90
 
 
 def _synthetic_monitor_item(previous: dict[str, Any], epss_row: dict[str, Any]) -> dict[str, Any]:
