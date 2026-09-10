@@ -15,6 +15,11 @@ on:
       - 'src/security_intel/llm/**'
       - 'scripts/generate_report_v2.py'
       - 'scripts/validate_report.py'
+      - 'scripts/build_web_report.py'
+      - 'scripts/validate_web_report.py'
+      - 'web/**'
+      - 'wrangler.jsonc'
+      - 'package.json'
       - 'requirements-report.txt'
       - '.github/workflows/v2-report.yml'
   pull_request:
@@ -23,8 +28,14 @@ on:
       - 'src/security_intel/llm/**'
       - 'scripts/generate_report_v2.py'
       - 'scripts/validate_report.py'
+      - 'scripts/build_web_report.py'
+      - 'scripts/validate_web_report.py'
+      - 'web/**'
+      - 'wrangler.jsonc'
+      - 'package.json'
       - 'tests/test_reporting.py'
       - 'tests/test_gemini.py'
+      - 'tests/test_web_report.py'
       - 'requirements-report.txt'
       - '.github/workflows/v2-report.yml'
 
@@ -52,7 +63,7 @@ jobs:
           cache-dependency-path: |
             requirements.txt
             requirements-report.txt
-      - name: Install
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt -r requirements-report.txt
@@ -67,6 +78,14 @@ jobs:
         run: |
           python scripts/generate_report_v2.py
           python scripts/validate_report.py
+      - name: Static web report smoke test
+        run: |
+          python scripts/build_web_report.py
+          python scripts/validate_web_report.py
+      - name: Cloudflare Workers Static Assets dry run
+        run: |
+          npm install --ignore-scripts --no-audit --no-fund
+          npx wrangler deploy --dry-run
 
   report:
     name: Generate security intelligence report
