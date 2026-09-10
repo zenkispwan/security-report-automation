@@ -50,33 +50,15 @@ data/delta.json          # 從上一份 state 到現在的重要變化
 data/intelligence.json   # 最多 30 筆，提供給 LLM 的可信候選集
 ```
 
-目前偵測事件包含：
+目前偵測事件包含：`NEW_CVE`、`NEW_KEV`、`EPSS_INCREASED`、`EXPLOITATION_CHANGED`、`CVSS_CHANGED`、`RANSOMWARE_USE_CHANGED`。
 
-- `NEW_CVE`：Critical-first；High 必須搭配 KEV / exploit / EPSS 等額外風險訊號
-- `NEW_KEV`
-- `EPSS_INCREASED`
-- `EXPLOITATION_CHANGED`
-- `CVSS_CHANGED`
-- `RANSOMWARE_USE_CHANGED`
-
-CVE 沒出現在新的 48 小時 NVD window 不代表已修補或風險消失，因此不會產生 resolved 類型推論。
-
-Risk Score 為 deterministic 且可解釋，每筆會保存 `risk.reasons`。KEV、已知利用、勒索軟體使用、CVSS、EPSS 與重大狀態變化依固定權重加分，不交給 LLM 黑箱打分。
+CVE 沒出現在新的 48 小時 NVD window 不代表已修補或風險消失，因此不會產生 resolved 類型推論。Risk Score 為 deterministic 且可解釋，每筆保存 `risk.reasons`，不交給 LLM 黑箱打分。
 
 ## Grounded Report
 
-V2 報告使用獨立 workflow，不與 Collector 綁死。Collector 失敗與 Gemini / Search 失敗會分開處理。
-
 報告輸入只有 `data/intelligence.json` 與 `data/delta.json`。Gemini 不允許新增輸入之外的 CVE，也不得覆寫 CVSS、EPSS、KEV、exploit status 等核心 Facts。
 
-Google Search grounding 只用於補充：
-
-- Vendor Security Advisory
-- 修補 / 緩解建議
-- 近期公開攻擊背景
-- 其他需要即時驗證的脈絡
-
-Gemini API 的 Google Search grounding 可能受方案、quota 或 API transport 暫時性問題影響，因此 V2 支援三種模式：
+Google Search grounding 只用於補充 Vendor Security Advisory、修補/緩解建議、近期公開攻擊背景與其他需要即時驗證的脈絡。
 
 ```text
 GEMINI_SEARCH_MODE=auto      # 預設：優先 Search；不可用時安全降級
@@ -84,32 +66,42 @@ GEMINI_SEARCH_MODE=required  # Search 必須成功，否則 report job 失敗
 GEMINI_SEARCH_MODE=off       # 不呼叫 Search，只使用 verified facts
 ```
 
-`auto` 的 transport 順序：
+`auto` transport 順序：
 
 ```text
 Interactions API + Google Search
             ↓ transient transport error
 GenerateContent + Google Search
-            ↓ quota / transient error
+            ↓ Search quota / transient error
 GenerateContent + VERIFIED_FACTS_ONLY
 ```
 
-Interactions API 仍是首選。若只是 Interactions transport 暫時失敗，會先使用仍受 Google 支援的 GenerateContent API 保留 Google Search grounding；只有 Search 本身因 quota 或 transport 無法使用時，才降級到 `verified_facts_only`。
+`verified_facts_only` 模式下，模型不得用既有知識新增近期漏洞事實、版本、修補細節或攻擊事件，只能重述/分析 CISA KEV、NVD、FIRST EPSS 與 deterministic delta/risk 已提供的資料；不知道的資訊維持「未確認」。正文與 metadata 都會明確記錄降級狀態。
 
-`verified_facts_only` 模式下，模型不得用既有知識新增近期漏洞事實、版本、修補細節或攻擊事件，只能重述/分析 CISA KEV、NVD、FIRST EPSS 與 deterministic delta/risk 已提供的資料。報告正文與 metadata 都會明確記錄降級狀態，不會靜默假裝已做即時搜尋。
+### Model fallback
 
-為避免 SDK transient retry 讓單一報告卡住過久，V2 會限制 Gemini request timeout 與 retry 次數。預設 Search transport timeout 為 45 秒、facts-only 為 120 秒，且認證/參數等非 transient 錯誤不會被 fallback 隱藏。
+模型本身也可能因 high demand 暫時回 503。V2 因此把 model fallback 與 fact fallback 分開：只有 transient 429/5xx/timeout/connection error 才能切換模型，401/403/400 等認證、權限或參數錯誤會直接失敗。
 
-受影響版本、修補版本、攻擊歸因等若沒有可靠來源，報告必須標示「未確認」。
+預設 stable model chain：
 
-生成後另寫：
+```text
+gemini-3.8-flash
+  → gemini-3.7-flash
+  → gemini-3.6-flash
+```
+
+fallback chain 由 `GEMINI_FALLBACK_MODELS` 控制，不綁死程式。Google Search 路徑若直接遇到 quota 429，不會輪替模型浪費 Search request；進入 facts-only 後若模型本身暫時不可用，才會依序嘗試 fallback model。metadata 會保存 requested model、actual model、attempted models 與 fallback reason。
+
+為避免 SDK transient retry 讓單一報告卡住過久，Search request 預設 timeout 45 秒、facts-only 120 秒，SDK 僅做有限重試，再交由明確的 transport/model fallback 策略處理。
+
+生成後寫入：
 
 ```text
 reports/security_report_latest.md
 reports/security_report_metadata.json
 ```
 
-metadata 會保存 Gemini model、API mode、interaction/response ID、grounding mode / fallback reason、Google Search citations / queries（若有）、request timeout、token usage，以及輸入 `delta.json` / `intelligence.json` 的 SHA-256，方便驗證報告來源。
+metadata 保存 Gemini requested/actual model、model fallback trace、API mode、interaction/response ID、grounding mode/fallback reason、Google Search citations/queries（若有）、request timeout、token usage，以及 `delta.json` / `intelligence.json` 的 SHA-256。
 
 ## 目錄
 
@@ -139,8 +131,6 @@ scripts/
   validate_intelligence.py
   generate_report_v2.py
   validate_report.py
-  generate_report_gemini.py    # legacy
-  send_email_gemini.py         # legacy
 
 data/
   state.json
@@ -151,12 +141,6 @@ data/
 reports/
   security_report_latest.md
   security_report_metadata.json
-
-tests/
-  test_normalize.py
-  test_intelligence.py
-  test_reporting.py
-  test_gemini.py
 ```
 
 ## 本機執行
@@ -177,6 +161,7 @@ Report：
 pip install -r requirements-report.txt
 export GEMINI_API_KEY=...
 export GEMINI_MODEL=gemini-3.8-flash
+export GEMINI_FALLBACK_MODELS=gemini-3.7-flash,gemini-3.6-flash
 export GEMINI_SEARCH_MODE=auto
 python scripts/generate_report_v2.py
 python scripts/validate_report.py
@@ -186,8 +171,9 @@ API Key 不得 commit 到 repository。GitHub Actions 使用 repository secrets 
 
 ```text
 NVD_API_KEY                 # optional
-GEMINI_API_KEY              # required for V2 report
+GEMINI_API_KEY              # required
 GEMINI_MODEL                # optional; default gemini-3.8-flash
+GEMINI_FALLBACK_MODELS      # optional; default 3.7 Flash, 3.6 Flash
 GEMINI_SEARCH_MODE          # optional: auto / required / off; default auto
 GEMINI_SEARCH_TIMEOUT_MS    # optional; default 45000
 GEMINI_FACTS_TIMEOUT_MS     # optional; default 120000
@@ -195,25 +181,9 @@ GEMINI_FACTS_TIMEOUT_MS     # optional; default 120000
 
 ## GitHub Actions
 
-### V2 Security Intelligence Collector
+`V2 Security Intelligence Collector` 每天台北時間 09:00 執行，產生 full artifact、compact state、Daily Delta 與最多 30 筆 intelligence candidates。
 
-- 每天台北時間 09:00（UTC 01:00）
-- 支援手動執行
-- 程式更新 merge 到 main 時自動重新跑一次
-- Unit tests、Collector、JSON validation、Daily Delta、Risk Scoring
-- full snapshot / raw payload 保存為 artifact
-- main 只 commit `state.json`、`delta.json`、`intelligence.json`
-
-### V2 Grounded Security Intelligence Report
-
-- Collector 在 main 成功後自動接續
-- 可手動執行
-- 優先使用 Gemini Interactions + Google Search grounding
-- Interactions transient failure 時可用 GenerateContent 保留 Search
-- Search quota/transport 不允許時可透明降級為 verified-facts-only
-- 產生 Markdown report + report metadata
-- Validation 會拒絕 LLM 新增未在 verified intelligence 中的 CVE
-- facts-only mode 必須在正文與 metadata 明確標示，且不可留下假的 Search query/citation
+`V2 Grounded Security Intelligence Report` 在 main Collector 成功後接續執行，也可手動執行。Validation 會拒絕 LLM 新增未在 verified intelligence 中的 CVE，並檢查 input hash、grounding mode 與 model fallback metadata 一致性。
 
 ## 後續階段
 

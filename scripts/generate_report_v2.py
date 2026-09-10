@@ -24,6 +24,7 @@ DELTA_PATH = ROOT / "data" / "delta.json"
 REPORT_DIR = ROOT / "reports"
 REPORT_PATH = REPORT_DIR / "security_report_latest.md"
 METADATA_PATH = REPORT_DIR / "security_report_metadata.json"
+DEFAULT_FALLBACK_MODELS = "gemini-3.7-flash,gemini-3.6-flash"
 
 
 def main() -> int:
@@ -38,6 +39,7 @@ def main() -> int:
         return 2
 
     model = os.getenv("GEMINI_MODEL", "gemini-3.8-flash").strip()
+    fallback_models = _env_csv("GEMINI_FALLBACK_MODELS", DEFAULT_FALLBACK_MODELS)
     search_mode = os.getenv("GEMINI_SEARCH_MODE", "auto").strip().lower()
     search_timeout_ms = _env_int("GEMINI_SEARCH_TIMEOUT_MS", 45_000)
     facts_timeout_ms = _env_int("GEMINI_FACTS_TIMEOUT_MS", 120_000)
@@ -54,6 +56,7 @@ def main() -> int:
             {
                 "provider": provider,
                 "model": model,
+                "fallback_models": fallback_models,
                 "search_mode": search_mode,
                 "search_timeout_ms": search_timeout_ms,
                 "facts_timeout_ms": facts_timeout_ms,
@@ -67,6 +70,7 @@ def main() -> int:
     response = generate_grounded_markdown(
         api_key=api_key,
         model=model,
+        fallback_models=fallback_models,
         prompt=prompt,
         system_instruction=SYSTEM_INSTRUCTION,
         search_mode=search_mode,
@@ -101,6 +105,13 @@ def main() -> int:
             file=sys.stderr,
         )
 
+    if response.model_fallback_reason:
+        print(
+            "WARNING: requested Gemini model was transiently unavailable; "
+            f"selected {response.model} after attempts {response.attempted_models}",
+            file=sys.stderr,
+        )
+
     appendix = render_source_appendix(
         response.text,
         intelligence,
@@ -115,7 +126,13 @@ def main() -> int:
         "schema_version": "2.2-report-metadata",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "provider": provider,
+        "requested_model": response.requested_model,
         "model": response.model,
+        "model_fallback": {
+            "used": response.model != response.requested_model,
+            "attempted_models": response.attempted_models,
+            "reason": response.model_fallback_reason,
+        },
         "api_mode": response.api_mode,
         "interaction_id": response.interaction_id,
         "input": {
@@ -146,10 +163,16 @@ def main() -> int:
 
     print(f"OK: wrote {REPORT_PATH.relative_to(ROOT)}")
     print(f"OK: wrote {METADATA_PATH.relative_to(ROOT)}")
+    print(f"Gemini model: {response.model}")
     print(f"Gemini API mode: {response.api_mode}")
     print(f"Grounding mode: {response.grounding_mode}")
     print(f"Grounding citations: {len(response.citations)}")
     return 0
+
+
+def _env_csv(name: str, default: str) -> list[str]:
+    raw = os.getenv(name, default)
+    return list(dict.fromkeys(x.strip() for x in raw.split(",") if x.strip()))
 
 
 def _env_int(name: str, default: int) -> int:

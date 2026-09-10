@@ -46,6 +46,27 @@ def main() -> int:
     if input_meta.get("delta_sha256") != sha256_file(DELTA):
         errors.append("metadata delta hash does not match current input")
 
+    requested_model = metadata.get("requested_model")
+    actual_model = metadata.get("model")
+    model_fallback = metadata.get("model_fallback") or {}
+    attempted_models = model_fallback.get("attempted_models") or []
+    fallback_used = model_fallback.get("used")
+    fallback_reason = model_fallback.get("reason")
+
+    if not requested_model or not actual_model:
+        errors.append("metadata is missing requested/actual Gemini model")
+    if actual_model and actual_model not in attempted_models:
+        errors.append("actual Gemini model is not present in attempted_models")
+    if requested_model and attempted_models and attempted_models[0] != requested_model:
+        errors.append("attempted_models does not start with requested Gemini model")
+    expected_fallback = bool(requested_model and actual_model and requested_model != actual_model)
+    if fallback_used is not expected_fallback:
+        errors.append("model_fallback.used does not match requested/actual model")
+    if expected_fallback and fallback_reason != "transient_model_unavailable":
+        errors.append("model fallback is missing transient_model_unavailable reason")
+    if not expected_fallback and fallback_reason:
+        errors.append("model fallback reason is present although requested model was used")
+
     grounding = metadata.get("grounding") or {}
     mode = grounding.get("mode")
     citations = grounding.get("citations") or []
@@ -65,6 +86,7 @@ def main() -> int:
 
     print(
         f"OK: report chars={len(report)} intelligence={len(intelligence.get('items') or [])} "
+        f"model={actual_model} fallback={expected_fallback} "
         f"grounding_mode={mode} grounding_citations={len(citations)}"
     )
     return 0
