@@ -5,10 +5,6 @@ const text = (value, fallback = '未確認') => {
   if (value === null || value === undefined || value === '') return fallback;
   return String(value);
 };
-const fmtNumber = (value, digits = 2) => {
-  if (value === null || value === undefined || Number.isNaN(Number(value))) return '未確認';
-  return Number(value).toFixed(digits);
-};
 const fmtPercent = (value) => {
   if (value === null || value === undefined || Number.isNaN(Number(value))) return '未確認';
   return `${(Number(value) * 100).toFixed(2)}%`;
@@ -31,6 +27,25 @@ const safeUrl = (value) => {
   }
 };
 
+const EVENT_LABELS = {
+  active_exploitation: 'Active exploitation',
+  zero_day: 'Zero-day',
+  ransomware: 'Ransomware',
+  supply_chain: 'Supply chain',
+  data_breach: 'Data breach',
+  malware_campaign: 'Malware campaign',
+  phishing: 'Phishing',
+  ddos_disruption: 'DDoS / disruption',
+  vulnerability: 'Vulnerability',
+  general: 'Security event',
+};
+const VERIFY_LABELS = {
+  official_confirmed: '官方來源確認',
+  corroborated: '多來源交叉確認',
+  single_trusted_source: '單一可信來源',
+  discovery_only: '僅搜尋發現',
+};
+
 function el(tag, className, value) {
   const node = document.createElement(tag);
   if (className) node.className = className;
@@ -40,7 +55,6 @@ function el(tag, className, value) {
 
 function append(parent, ...children) {
   for (const child of children) if (child) parent.append(child);
-  return parent;
 }
 
 function metric(label, value, note) {
@@ -57,7 +71,30 @@ function tag(label, kind = '') {
   return el('span', `tag ${kind}`.trim(), label);
 }
 
-function sourceLinks(facts) {
+function verificationBadge(event) {
+  const status = event.verification?.status || 'discovery_only';
+  const kind = status === 'official_confirmed' || status === 'corroborated' ? 'good' : status === 'single_trusted_source' ? 'info' : '';
+  return tag(VERIFY_LABELS[status] || status, kind);
+}
+
+function eventSourceLinks(event) {
+  const box = el('div', 'source-links');
+  const seen = new Set();
+  for (const source of event.sources || []) {
+    const url = safeUrl(source.url);
+    if (!url || seen.has(url)) continue;
+    seen.add(url);
+    const label = source.publisher || source.domain || '來源';
+    const a = el('a', '', label);
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    box.append(a);
+  }
+  return box;
+}
+
+function vulnerabilitySourceLinks(facts) {
   const box = el('div', 'source-links');
   const candidates = [
     ['NVD', facts?.provenance?.nvd || facts?.source_url],
@@ -91,54 +128,123 @@ function itemTags(item) {
   return tags;
 }
 
-function renderMetrics(intelligence, delta, metadata) {
+function renderMetrics(events, eventDelta, intelligence, metadata) {
   const root = $('metrics');
   root.replaceChildren();
-  const summary = intelligence.summary || {};
-  const watch = Math.max(0, (intelligence.selection?.selected_count || intelligence.items?.length || 0) - (summary.p1 || 0) - (summary.p2 || 0) - (summary.p3 || 0));
+  const eventSummary = events.summary || {};
+  const intelSummary = intelligence.summary || {};
+  const official = (events.items || []).filter((x) => x.verification?.status === 'official_confirmed').length;
+  const active = (events.items || []).filter((x) => x.event_type === 'active_exploitation').length;
   root.append(
-    metric('Daily Delta', delta.summary?.included_count ?? delta.items?.length ?? 0, '重要變化'),
-    metric('P1', summary.p1 || 0, '立即優先'),
-    metric('P2', summary.p2 || 0, '高優先'),
-    metric('P3', summary.p3 || 0, '追蹤處理'),
-    metric('WATCH', watch, '持續觀察'),
+    metric('New events', eventDelta.summary?.new_notable_count ?? eventDelta.items?.length ?? 0, '相對上次新增'),
+    metric('P1 events', eventSummary.p1 || 0, '今日事件最高優先'),
+    metric('Active exploit', active, '過去 24h 事件'),
+    metric('Verified', official, '官方來源確認'),
+    metric('CVE P1', intelSummary.p1 || 0, '漏洞處理層'),
   );
 
   const deterministic = metadata.renderer === 'deterministic' || metadata.llm_body_used === false;
-  $('modeBadge').textContent = deterministic ? 'Verified facts only · deterministic' : 'Grounded LLM enrichment';
-  $('updatedAt').textContent = `報告更新：${fmtTime(metadata.generated_at || intelligence.generated_at)}`;
-  $('footerGenerated').textContent = `Intelligence generated: ${fmtTime(intelligence.generated_at)} · Report generated: ${fmtTime(metadata.generated_at)}`;
+  const mode = deterministic ? 'Verified facts · event-first' : 'Grounded LLM · event-first';
+  $('modeBadge').textContent = mode;
+  $('updatedAt').textContent = `事件更新：${fmtTime(events.generated_at)} · 報告：${fmtTime(metadata.generated_at)}`;
+  $('footerGenerated').textContent = `Events: ${fmtTime(events.generated_at)} · Vulnerability intelligence: ${fmtTime(intelligence.generated_at)} · Report: ${fmtTime(metadata.generated_at)}`;
 }
 
-function renderDelta(delta) {
-  const root = $('deltaList');
+function eventTags(event) {
+  const tags = el('div', 'tag-row');
+  tags.append(tag(EVENT_LABELS[event.event_type] || event.event_type, event.event_type === 'active_exploitation' || event.event_type === 'zero_day' ? 'danger' : 'info'));
+  tags.append(verificationBadge(event));
+  tags.append(tag(`Relevance: ${text(event.relevance?.level, 'low')}`, event.relevance?.level === 'high' ? 'good' : ''));
+  if (event.is_new) tags.append(tag('NEW', 'danger'));
+  for (const signal of event.signals || []) {
+    if (signal !== event.event_type) tags.append(tag(EVENT_LABELS[signal] || signal));
+  }
+  return tags;
+}
+
+function eventCard(event) {
+  const card = el('article', `event-card ${String(event.priority || 'WATCH').toLowerCase()}`);
+  const top = el('div', 'event-head');
+  const titleBox = el('div', 'event-title-box');
+  append(titleBox, el('h3', 'event-title', event.title), el('p', 'event-meta', `${fmtTime(event.last_seen)} · ${text(event.verification?.source_count, 0)} source(s)`));
+  const score = el('div', 'event-score');
+  append(score, priorityBadge(event.priority), el('strong', '', `Score ${text(event.score)}`));
+  append(top, titleBox, score);
+  card.append(top, eventTags(event));
+
+  if (event.summary) card.append(el('p', 'event-summary', event.summary));
+
+  const factGrid = el('div', 'event-fact-grid');
+  const relevanceText = event.relevance?.scope === 'profile_matched'
+    ? `${text(event.relevance?.level)} · profile matched`
+    : event.relevance?.scope === 'general_enterprise'
+      ? `${text(event.relevance?.level)} · general enterprise`
+      : '未確認';
+  factGrid.append(
+    detailBox('Event type', EVENT_LABELS[event.event_type] || event.event_type),
+    detailBox('Verification', VERIFY_LABELS[event.verification?.status] || text(event.verification?.status)),
+    detailBox('Relevance', relevanceText),
+    detailBox('First / last seen', `${fmtTime(event.first_seen)} / ${fmtTime(event.last_seen)}`),
+  );
+  card.append(factGrid);
+
+  const confirmed = event.confirmed_cves || [];
+  const unverified = event.unverified_cve_mentions || [];
+  if (confirmed.length || unverified.length) {
+    const cveBox = el('div', 'event-cves');
+    if (confirmed.length) append(cveBox, el('span', 'event-cve-label', '已由 NVD / vulnerability layer 驗證'), el('strong', '', confirmed.join(', ')));
+    if (unverified.length) append(cveBox, el('span', 'event-cve-label warning', '來源提及但尚未驗證'), el('strong', '', unverified.join(', ')));
+    card.append(cveBox);
+  }
+
+  if ((event.linked_vulnerabilities || []).length) {
+    const linked = el('div', 'linked-vulns');
+    linked.append(el('span', 'event-cve-label', '關聯漏洞優先級'));
+    for (const vuln of event.linked_vulnerabilities) {
+      const row = el('span', 'linked-vuln');
+      append(row, el('strong', '', text(vuln.cve)), priorityBadge(vuln.risk?.priority));
+      linked.append(row);
+    }
+    card.append(linked);
+  }
+
+  const relevanceReasons = event.relevance?.reasons || [];
+  if (relevanceReasons.length) {
+    const reasons = el('ul', 'reason-list');
+    for (const reason of relevanceReasons) reasons.append(el('li', '', `${text(reason.code)}: ${text(reason.detail)}`));
+    card.append(el('h4', 'minor-heading', '相關性依據'), reasons);
+  }
+  card.append(eventSourceLinks(event));
+  return card;
+}
+
+function renderEvents(events) {
+  const root = $('eventList');
   root.replaceChildren();
-  const items = delta.items || [];
-  $('deltaCount').textContent = `${items.length} changes`;
+  const items = events.items || [];
+  $('eventCount').textContent = `${items.length} events`;
+  $('eventEmpty').hidden = items.length !== 0;
+  for (const event of items) root.append(eventCard(event));
+}
+
+function renderEventDelta(eventDelta) {
+  const root = $('eventDeltaList');
+  root.replaceChildren();
+  const items = eventDelta.items || [];
+  $('eventDeltaCount').textContent = `${items.length} new`;
   if (!items.length) {
     const empty = el('article', 'delta-card');
-    append(empty, el('h3', '', '目前沒有符合門檻的重大變化'), el('p', 'card-summary', '系統不會為了產生日報而重複或硬湊事件。'));
+    append(empty, el('h3', '', '目前沒有新的重大資安事件'), el('p', 'card-summary', '這代表相對上一份 event state 沒有新增達 P1/P2/P3 門檻的事件；不會為了日報硬湊新聞。'));
     root.append(empty);
     return;
   }
-
-  for (const item of items) {
-    const facts = item.facts || {};
+  for (const event of items) {
     const card = el('article', 'delta-card');
     const top = el('div', 'card-top');
-    const titleBox = el('div');
-    const link = el('a', 'cve-link', item.cve || facts.cve || '未確認 CVE');
-    const url = safeUrl(facts.source_url || facts.provenance?.nvd);
-    if (url) { link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; }
-    append(titleBox, link, el('p', 'product-line', `${text(facts.vendor)} / ${text(facts.product)}`));
-    append(top, titleBox, priorityBadge(item.risk?.priority));
-    card.append(top);
-
-    const eventNames = (item.events || []).map((event) => event.type).filter(Boolean);
-    card.append(el('p', 'card-summary', eventNames.length ? eventNames.join(' · ') : '狀態變化'));
-    card.append(itemTags(item));
-    const desc = el('p', 'card-summary', text(facts.description));
-    card.append(desc, sourceLinks(facts));
+    append(top, el('h3', '', event.title), priorityBadge(event.priority));
+    card.append(top, eventTags(event));
+    card.append(el('p', 'card-summary', `${EVENT_LABELS[event.event_type] || event.event_type} · ${VERIFY_LABELS[event.verification?.status] || event.verification?.status}`));
+    card.append(eventSourceLinks(event));
     root.append(card);
   }
 }
@@ -159,10 +265,7 @@ function intelligenceCard(item) {
 
   const head = el('div', 'intel-head');
   const title = el('div', 'intel-title');
-  const cve = el('strong', '', item.cve || facts.cve || '未確認 CVE');
-  const subtitle = el('span', '', `${text(facts.vendor)} / ${text(facts.product)}`);
-  append(title, cve, subtitle);
-
+  append(title, el('strong', '', item.cve || facts.cve || '未確認 CVE'), el('span', '', `${text(facts.vendor)} / ${text(facts.product)}`));
   const riskStat = el('div', 'intel-stat');
   append(riskStat, el('span', '', 'Priority / Score'), priorityBadge(risk.priority), el('strong', '', `Score ${text(risk.score)}`));
   const cvssStat = el('div', 'intel-stat');
@@ -175,9 +278,7 @@ function intelligenceCard(item) {
   const details = el('details');
   details.append(el('summary', '', '查看 verified facts、risk reasons 與來源'));
   const body = el('div', 'detail-body');
-  body.append(itemTags(item));
-  body.append(el('p', '', text(facts.description)));
-
+  body.append(itemTags(item), el('p', '', text(facts.description)));
   const grid = el('div', 'detail-grid');
   grid.append(
     detailBox('Exploitation', `${text(facts.exploitation_status?.status)} · ${text(facts.exploitation_status?.source)}`),
@@ -188,15 +289,10 @@ function intelligenceCard(item) {
     detailBox('CWE', (facts.cwes || []).join(', ') || '未確認'),
   );
   body.append(grid);
-
   const reasons = el('ul', 'reason-list');
-  for (const reason of risk.reasons || []) {
-    reasons.append(el('li', '', `${text(reason.code)} (${Number(reason.points || 0) >= 0 ? '+' : ''}${text(reason.points, '0')})`));
-  }
-  if (reasons.children.length) {
-    body.append(el('h3', '', 'Risk reasons'), reasons);
-  }
-  body.append(sourceLinks(facts));
+  for (const reason of risk.reasons || []) reasons.append(el('li', '', `${text(reason.code)} (${Number(reason.points || 0) >= 0 ? '+' : ''}${text(reason.points, '0')})`));
+  if (reasons.children.length) body.append(el('h3', '', 'Risk reasons'), reasons);
+  body.append(vulnerabilitySourceLinks(facts));
   details.append(body);
   card.append(details);
   return card;
@@ -245,21 +341,27 @@ function wireFilters() {
 
 async function load() {
   try {
-    const [intelResp, deltaResp, metaResp] = await Promise.all([
+    const responses = await Promise.all([
+      fetch('./data/events.json', { cache: 'no-store' }),
+      fetch('./data/event_delta.json', { cache: 'no-store' }),
       fetch('./data/intelligence.json', { cache: 'no-store' }),
       fetch('./data/delta.json', { cache: 'no-store' }),
       fetch('./data/report_metadata.json', { cache: 'no-store' }),
     ]);
-    if (!intelResp.ok || !deltaResp.ok || !metaResp.ok) throw new Error('無法讀取報告資料');
-    const [intelligence, delta, metadata] = await Promise.all([intelResp.json(), deltaResp.json(), metaResp.json()]);
-    renderMetrics(intelligence, delta, metadata);
-    renderDelta(delta);
+    if (responses.some((response) => !response.ok)) throw new Error('無法讀取完整事件 / 漏洞情報資料');
+    const [events, eventDelta, intelligence, vulnerabilityDelta, metadata] = await Promise.all(responses.map((response) => response.json()));
+    renderMetrics(events, eventDelta, intelligence, metadata);
+    renderEvents(events);
+    renderEventDelta(eventDelta);
     renderIntelligence(intelligence);
     wireFilters();
+    void vulnerabilityDelta;
   } catch (error) {
     $('modeBadge').textContent = '資料載入失敗';
-    $('deltaList').replaceChildren(el('article', 'delta-card', error.message || '無法載入資料'));
+    $('eventList').replaceChildren(el('article', 'event-card', error.message || '無法載入資料'));
+    $('eventDeltaList').replaceChildren();
     $('intelligenceList').replaceChildren();
+    $('eventEmpty').hidden = false;
     $('emptyState').hidden = false;
     $('emptyState').textContent = '目前無法載入情報資料，請稍後再試。';
     console.error(error);
