@@ -32,7 +32,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: security-intelligence-report-v2-${{ github.event.workflow_run.head_branch || github.head_ref || github.ref_name || github.event_name }}
+  group: security-intelligence-report-v2-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'main' }}
   cancel-in-progress: true
 
 jobs:
