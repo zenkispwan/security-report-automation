@@ -1,7 +1,14 @@
+from __future__ import annotations
+
+import sys
 import unittest
 from datetime import datetime, timezone
+from pathlib import Path
 
-from src.security_intel.events import (
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
+
+from security_intel.events import (  # noqa: E402
     build_event_outputs,
     canonical_url,
     cluster_articles,
