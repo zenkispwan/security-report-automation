@@ -4,9 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark light">
-  <meta name="description" content="每日資安威脅情報：CISA KEV、NVD、FIRST EPSS、Daily Delta 與 deterministic risk scoring。">
+  <meta name="description" content="每日資安威脅情報：最新重大資安事件、CISA KEV、NVD、FIRST EPSS、Daily Delta 與 deterministic risk scoring。">
   <title>每日資安威脅情報｜Security Intelligence Automation V2</title>
   <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./events.css">
 </head>
 <body>
   <div class="page-shell">
@@ -14,13 +15,14 @@
       <div class="hero-copy">
         <p class="eyebrow">Security Intelligence Automation V2</p>
         <h1>每日資安威脅情報</h1>
-        <p class="lede">以官方 Facts 為基礎，先做 Daily Delta、風險排序與候選收斂，再產生可驗證的每日情報。</p>
+        <p class="lede">以官方 Facts 為基礎，先回答今天真正發生了什麼變化，再提供 Daily Delta、風險排序與可驗證的處置線索。</p>
         <div class="status-row">
           <span id="modeBadge" class="status-badge">載入中</span>
           <span id="updatedAt" class="muted">更新時間載入中</span>
         </div>
       </div>
       <div class="hero-actions">
+        <a class="button secondary" href="#security-events">最新事件</a>
         <a class="button secondary" href="./security_report_latest.md">Markdown 原始報告</a>
         <a class="button ghost" href="https://github.com/zenkispwan/security-report-automation" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
       </div>
@@ -37,12 +39,25 @@
         <div id="metrics" class="metric-grid" aria-live="polite"></div>
       </section>
 
+      <section id="security-events" aria-labelledby="events-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">LATEST SECURITY EVENTS</p>
+            <h2 id="events-title">最新重大資安事件</h2>
+            <p>從 verified Daily Delta 中挑出最值得先看的事件：新 CISA KEV、利用狀態變更、EPSS 顯著上升、勒索軟體關聯變化，以及具明確風險訊號的新 Critical CVE。</p>
+          </div>
+          <span id="securityEventCount" class="count-chip">—</span>
+        </div>
+        <div id="securityEventList" class="security-event-grid" aria-live="polite"></div>
+        <p class="event-trust-note">目前此區只呈現 Collector / deterministic delta 可驗證的事件。外部攻擊新聞、勒索軟體與供應鏈事件，只有在 direct collector 或有來源的即時搜尋資料進入 pipeline 後才會加入。</p>
+      </section>
+
       <section aria-labelledby="delta-title">
         <div class="section-heading">
           <div>
             <p class="section-kicker">WHAT CHANGED</p>
             <h2 id="delta-title">Daily Delta</h2>
-            <p>只顯示自上一份 state 之後符合目前門檻的重要變化；沒有變化時不硬湊事件。</p>
+            <p>完整保留自上一份 state 之後符合目前門檻的重要變化；沒有變化時不硬湊事件。</p>
           </div>
           <span id="deltaCount" class="count-chip">—</span>
         </div>
@@ -89,7 +104,7 @@
           </article>
           <article>
             <h3>Deterministic Intelligence</h3>
-            <p>Daily Delta、Risk Score、Priority 與候選選擇由程式規則產生，可重現、可測試。</p>
+            <p>Security Events、Daily Delta、Risk Score、Priority 與候選選擇由程式規則產生，可重現、可測試。</p>
           </article>
           <article>
             <h3>LLM Enrichment</h3>
@@ -106,5 +121,6 @@
   </div>
   <noscript>此頁需要 JavaScript 才能從已驗證的 JSON 資料產生互動式報告。</noscript>
   <script src="./app.js" defer></script>
+  <script src="./events.js" defer></script>
 </body>
 </html>
