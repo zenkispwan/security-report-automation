@@ -14,6 +14,8 @@ class WebReportTests(unittest.TestCase):
             build(root)
             validate(root)
             self.assertTrue((root / "index.html").is_file())
+            self.assertTrue((root / "events.css").is_file())
+            self.assertTrue((root / "events.js").is_file())
             self.assertTrue((root / "_headers").is_file())
             self.assertTrue((root / "data/intelligence.json").is_file())
             self.assertEqual(
@@ -26,7 +28,20 @@ class WebReportTests(unittest.TestCase):
         self.assertNotIn('<script src="http', index)
         self.assertNotIn('<link rel="stylesheet" href="http', index)
         self.assertIn('./app.js', index)
+        self.assertIn('./events.js', index)
         self.assertIn('./styles.css', index)
+        self.assertIn('./events.css', index)
+        self.assertIn('securityEventList', index)
+
+    def test_security_events_use_verified_delta_only(self):
+        events = Path("web/events.js").read_text(encoding="utf-8")
+        self.assertIn("fetch('./data/delta.json'", events)
+        self.assertNotIn('fetch("http', events)
+        self.assertNotIn("fetch('http", events)
+        self.assertIn('EPSS_INCREASED', events)
+        self.assertIn('NEW_KEV', events)
+        self.assertIn('RANSOMWARE_USE_CHANGED', events)
+        self.assertIn('EXPLOITATION_CHANGED', events)
 
     def test_cloudflare_static_assets_config_has_no_worker_script(self):
         config = json.loads(Path("wrangler.jsonc").read_text(encoding="utf-8"))
