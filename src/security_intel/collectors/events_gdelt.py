@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 from typing import Any
+from urllib.parse import urlparse
 
 from security_intel.http import HttpClient
 
@@ -45,6 +46,13 @@ def collect_gdelt_articles(
             title = article.get("title")
             if not url or not title:
                 continue
+
+            # The public web report only emits clickable HTTPS sources. GDELT can
+            # occasionally return legacy http:// article URLs; keep them out of
+            # the verified event dataset instead of silently rewriting transport.
+            if urlparse(str(url)).scheme.lower() != "https":
+                continue
+
             rows.append(
                 {
                     "title": title,
