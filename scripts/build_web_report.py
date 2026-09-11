@@ -9,8 +9,11 @@ from pathlib import Path
 STATIC_FILES = {
     Path("web/index.html"): Path("index.html"),
     Path("web/styles.css"): Path("styles.css"),
+    Path("web/events.css"): Path("events.css"),
     Path("web/app.js"): Path("app.js"),
     Path("web/_headers"): Path("_headers"),
+    Path("data/events.json"): Path("data/events.json"),
+    Path("data/event_delta.json"): Path("data/event_delta.json"),
     Path("data/intelligence.json"): Path("data/intelligence.json"),
     Path("data/delta.json"): Path("data/delta.json"),
     Path("reports/security_report_metadata.json"): Path("data/report_metadata.json"),
@@ -34,7 +37,7 @@ def build(output: Path) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Build the static Security Intelligence web report for Cloudflare Workers Static Assets.")
+    parser = argparse.ArgumentParser(description="Build the event-first Security Intelligence site for Cloudflare Workers Static Assets.")
     parser.add_argument("--output", default="_site", help="Output directory (default: _site)")
     args = parser.parse_args()
     output = Path(args.output)

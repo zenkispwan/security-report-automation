@@ -4,25 +4,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark light">
-  <meta name="description" content="每日資安威脅情報：CISA KEV、NVD、FIRST EPSS、Daily Delta 與 deterministic risk scoring。">
-  <title>每日資安威脅情報｜Security Intelligence Automation V2</title>
+  <meta name="description" content="過去 24 小時資安事件、來源驗證、組織相關性與關聯 CVE 的每日資安情報。">
+  <title>每日資安事件情報｜Security Intelligence Automation</title>
   <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./events.css">
 </head>
 <body>
   <div class="page-shell">
     <header class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">Security Intelligence Automation V2</p>
-        <h1>每日資安威脅情報</h1>
-        <p class="lede">以官方 Facts 為基礎，先做 Daily Delta、風險排序與候選收斂，再產生可驗證的每日情報。</p>
+        <p class="eyebrow">Security Intelligence Automation V2.5</p>
+        <h1>今天發生了什麼？</h1>
+        <p class="lede">以最近 24 小時的資安事件為主體，先做來源驗證、事件聚合與相關性排序；CVE / KEV / EPSS 則作為事件背後的可執行漏洞情報。</p>
         <div class="status-row">
           <span id="modeBadge" class="status-badge">載入中</span>
           <span id="updatedAt" class="muted">更新時間載入中</span>
         </div>
       </div>
       <div class="hero-actions">
-        <a class="button secondary" href="./security_report_latest.md">Markdown 原始報告</a>
-        <a class="button ghost" href="https://github.com/zenkispwan/security-report-automation" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+        <a class="button secondary" href="#events">查看今日事件</a>
+        <a class="button ghost" href="./security_report_latest.md">Markdown 報告</a>
+        <a class="button ghost" href="https://github.com/zenkispwan/security-report-automation" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </header>
 
@@ -30,36 +32,50 @@
       <section aria-labelledby="summary-title">
         <div class="section-heading compact-heading">
           <div>
-            <p class="section-kicker">TODAY AT A GLANCE</p>
-            <h2 id="summary-title">今日概況</h2>
+            <p class="section-kicker">24H SITUATION AWARENESS</p>
+            <h2 id="summary-title">今日態勢</h2>
+            <p>先回答最近 24 小時有哪些事件值得注意，再往下看相關漏洞。</p>
           </div>
         </div>
         <div id="metrics" class="metric-grid" aria-live="polite"></div>
       </section>
 
-      <section aria-labelledby="delta-title">
+      <section id="events" aria-labelledby="events-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">TODAY'S SECURITY EVENTS</p>
+            <h2 id="events-title">今日重要資安事件</h2>
+            <p>事件可沒有 CVE；來源可信度、事件嚴重度與設定檔相關性分開呈現，不把「高風險」誤寫成「一定影響我們」。</p>
+          </div>
+          <span id="eventCount" class="count-chip">—</span>
+        </div>
+        <div id="eventList" class="event-list" aria-live="polite"></div>
+        <p id="eventEmpty" class="empty-state" hidden>最近 24 小時沒有符合目前收斂條件的事件。</p>
+      </section>
+
+      <section aria-labelledby="event-delta-title">
         <div class="section-heading">
           <div>
             <p class="section-kicker">WHAT CHANGED</p>
-            <h2 id="delta-title">Daily Delta</h2>
-            <p>只顯示自上一份 state 之後符合目前門檻的重要變化；沒有變化時不硬湊事件。</p>
+            <h2 id="event-delta-title">24 小時新事件</h2>
+            <p>只有相對於前一次 event state 新出現、且達 P1/P2/P3 的事件會列在這裡；重複報導不會算多個事件。</p>
           </div>
-          <span id="deltaCount" class="count-chip">—</span>
+          <span id="eventDeltaCount" class="count-chip">—</span>
         </div>
-        <div id="deltaList" class="card-grid" aria-live="polite"></div>
+        <div id="eventDeltaList" class="card-grid" aria-live="polite"></div>
       </section>
 
-      <section aria-labelledby="intel-title">
+      <section aria-labelledby="vuln-title">
         <div class="section-heading">
           <div>
-            <p class="section-kicker">PRIORITIZED INTELLIGENCE</p>
-            <h2 id="intel-title">優先處理清單</h2>
-            <p>最多 30 筆，由 deterministic risk engine 排序；EPSS 不會被當成已遭利用的證據。</p>
+            <p class="section-kicker">ACTIONABLE VULNERABILITIES</p>
+            <h2 id="vuln-title">漏洞處理清單</h2>
+            <p>這是事件情報的第二層：CISA KEV、NVD、FIRST EPSS 與 deterministic risk engine 所選出的可執行漏洞，最多 30 筆。</p>
           </div>
           <span id="intelCount" class="count-chip">—</span>
         </div>
 
-        <div class="toolbar" aria-label="情報篩選">
+        <div class="toolbar" aria-label="漏洞情報篩選">
           <label class="search-box">
             <span class="sr-only">搜尋 CVE、Vendor 或 Product</span>
             <input id="searchInput" type="search" placeholder="搜尋 CVE、Vendor、Product…" autocomplete="off">
@@ -74,33 +90,33 @@
         </div>
 
         <div id="intelligenceList" class="intel-list" aria-live="polite"></div>
-        <p id="emptyState" class="empty-state" hidden>目前沒有符合此篩選條件的項目。</p>
+        <p id="emptyState" class="empty-state" hidden>目前沒有符合此篩選條件的漏洞。</p>
       </section>
 
       <section class="methodology" aria-labelledby="method-title">
         <div>
-          <p class="section-kicker">TRUST BOUNDARY</p>
-          <h2 id="method-title">資料與模型邊界</h2>
+          <p class="section-kicker">TRUST & RELEVANCE BOUNDARY</p>
+          <h2 id="method-title">我們如何決定「值得注意」</h2>
         </div>
         <div class="method-grid">
           <article>
-            <h3>Facts</h3>
-            <p>CISA KEV、NVD、FIRST EPSS 與後續 Vendor Advisory 提供可追溯事實。未知欄位維持「未確認」。</p>
+            <h3>Event Discovery</h3>
+            <p>GDELT 24h Web/News Search 用於發現事件，並搭配 TWCERT/CC、Google Threat Intelligence、Cisco Talos 等來源。搜尋結果本身不等於已確認事實。</p>
           </article>
           <article>
-            <h3>Deterministic Intelligence</h3>
-            <p>Daily Delta、Risk Score、Priority 與候選選擇由程式規則產生，可重現、可測試。</p>
+            <h3>Verification</h3>
+            <p>官方來源可標示 official confirmed；兩個不同可信媒體來源才標示 corroborated。單一來源或 discovery-only 會清楚降級可信度。</p>
           </article>
           <article>
-            <h3>LLM Enrichment</h3>
-            <p>只有可驗證 grounding 成功時才允許 LLM 產生 enrichment；否則網站與報告直接使用 verified facts。</p>
+            <h3>Relevance</h3>
+            <p>事件嚴重度與組織相關性分開計算。尚未設定實際技術/產業清單時，只能顯示一般企業或 Taiwan/APAC 相關性，不會聲稱環境中一定存在該產品。</p>
           </article>
         </div>
       </section>
     </main>
 
     <footer>
-      <p>Generated from compact verified intelligence. Source code and methodology are versioned in GitHub.</p>
+      <p>Event-first security intelligence · Facts are traceable to source URLs.</p>
       <p id="footerGenerated" class="muted"></p>
     </footer>
   </div>

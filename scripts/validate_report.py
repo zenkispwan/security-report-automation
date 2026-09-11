@@ -8,59 +8,88 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+from security_intel.event_reporting import (  # noqa: E402
+    confirmed_event_cves,
+    render_event_first_verified_report,
+)
 from security_intel.reporting import (  # noqa: E402
     render_source_appendix,
-    render_verified_facts_report,
     sha256_file,
     unknown_report_cves,
 )
 
 INTELLIGENCE = ROOT / "data" / "intelligence.json"
 DELTA = ROOT / "data" / "delta.json"
+EVENTS = ROOT / "data" / "events.json"
+EVENT_DELTA = ROOT / "data" / "event_delta.json"
 REPORT = ROOT / "reports" / "security_report_latest.md"
 METADATA = ROOT / "reports" / "security_report_metadata.json"
 
 
 def main() -> int:
     errors: list[str] = []
-    for path in (INTELLIGENCE, DELTA, REPORT, METADATA):
+    for path in (INTELLIGENCE, DELTA, EVENTS, EVENT_DELTA, REPORT, METADATA):
         if not path.exists():
             errors.append(f"missing {path.relative_to(ROOT)}")
     if errors:
         return _fail(errors)
 
-    intelligence = json.loads(INTELLIGENCE.read_text(encoding="utf-8"))
-    delta = json.loads(DELTA.read_text(encoding="utf-8"))
-    metadata = json.loads(METADATA.read_text(encoding="utf-8"))
+    intelligence = _load(INTELLIGENCE)
+    delta = _load(DELTA)
+    events = _load(EVENTS)
+    event_delta = _load(EVENT_DELTA)
+    metadata = _load(METADATA)
     report = REPORT.read_text(encoding="utf-8")
-    verified_scope = _verified_scope(intelligence, delta)
+
+    if events.get("schema_version") != "2.5-events":
+        errors.append("unexpected events schema_version")
+    if event_delta.get("schema_version") != "2.5-event-delta":
+        errors.append("unexpected event delta schema_version")
 
     if len(report.strip()) < 1000:
         errors.append("report is unexpectedly short")
-    for required in ("Daily Delta", "P1", "建議行動", "資料品質", "可驗證資料來源"):
+    for required in (
+        "24 小時態勢摘要",
+        "今日重要資安事件",
+        "24 小時新事件",
+        "關聯漏洞與處理優先級",
+        "建議行動",
+        "資料品質",
+        "可驗證事件來源",
+        "可驗證資料來源",
+    ):
         if required not in report:
             errors.append(f"report missing required section marker: {required}")
     if "基於 AI 模型知識生成" in report:
         errors.append("legacy AI-knowledge disclaimer is present")
 
-    unknown = unknown_report_cves(report, verified_scope)
-    if unknown:
-        errors.append("report contains CVEs outside verified intelligence/delta: " + ", ".join(unknown))
-
-    if metadata.get("schema_version") != "2.3-report-metadata":
+    if metadata.get("schema_version") != "2.5-report-metadata":
         errors.append("unexpected report metadata schema_version")
     if metadata.get("provider") != "gemini":
         errors.append("unexpected report provider")
+    if metadata.get("report_mode") != "event_first":
+        errors.append("report_mode must be event_first")
 
     input_meta = metadata.get("input") or {}
-    if input_meta.get("intelligence_sha256") != sha256_file(INTELLIGENCE):
-        errors.append("metadata intelligence hash does not match current input")
-    if input_meta.get("delta_sha256") != sha256_file(DELTA):
-        errors.append("metadata delta hash does not match current input")
-    if input_meta.get("intelligence_items") != len(intelligence.get("items") or []):
-        errors.append("metadata intelligence item count does not match current input")
-    if input_meta.get("delta_items") != len(delta.get("items") or []):
-        errors.append("metadata delta item count does not match current input")
+    expected_hashes = {
+        "events_sha256": sha256_file(EVENTS),
+        "event_delta_sha256": sha256_file(EVENT_DELTA),
+        "intelligence_sha256": sha256_file(INTELLIGENCE),
+        "delta_sha256": sha256_file(DELTA),
+    }
+    for key, expected in expected_hashes.items():
+        if input_meta.get(key) != expected:
+            errors.append(f"metadata {key} does not match current input")
+
+    expected_counts = {
+        "event_items": len(events.get("items") or []),
+        "event_delta_items": len(event_delta.get("items") or []),
+        "intelligence_items": len(intelligence.get("items") or []),
+        "delta_items": len(delta.get("items") or []),
+    }
+    for key, expected in expected_counts.items():
+        if input_meta.get(key) != expected:
+            errors.append(f"metadata {key} does not match current input")
 
     requested_model = metadata.get("requested_model")
     actual_model = metadata.get("model")
@@ -81,6 +110,9 @@ def main() -> int:
     if attempted_models and attempted_models[0] != requested_model:
         errors.append("attempted_models does not start with requested Gemini model")
 
+    confirmed_scope = _verified_scope(intelligence, delta, events, include_source_mentions=False)
+    source_scope = _verified_scope(intelligence, delta, events, include_source_mentions=True)
+
     if api_mode == "deterministic_facts_only":
         if renderer != "deterministic" or llm_body_used is not False:
             errors.append("deterministic mode must declare renderer=deterministic and llm_body_used=false")
@@ -99,15 +131,21 @@ def main() -> int:
         if "資料來源模式：Verified facts only（deterministic）" not in report:
             errors.append("deterministic report is missing the transparent renderer notice")
 
-        deterministic_body = render_verified_facts_report(intelligence, delta).rstrip()
+        unknown = unknown_report_cves(report, source_scope)
+        if unknown:
+            errors.append("deterministic report contains CVEs not present in verified/source event inputs: " + ", ".join(unknown))
+
+        deterministic_body = render_event_first_verified_report(
+            events, event_delta, intelligence, delta
+        ).rstrip()
         expected_report = deterministic_body + "\n" + render_source_appendix(
             deterministic_body,
-            verified_scope,
+            source_scope,
             [],
         )
         if report != expected_report:
             errors.append(
-                "deterministic report does not exactly match renderer output; "
+                "deterministic event-first report does not exactly match renderer output; "
                 "unexpected text may have been introduced"
             )
     else:
@@ -117,9 +155,7 @@ def main() -> int:
             errors.append("grounded LLM report is missing actual Gemini model")
         if actual_model and actual_model not in attempted_models:
             errors.append("actual Gemini model is not present in attempted_models")
-        expected_fallback = bool(
-            requested_model and actual_model and requested_model != actual_model
-        )
+        expected_fallback = bool(requested_model and actual_model and requested_model != actual_model)
         if fallback_used is not expected_fallback:
             errors.append("model_fallback.used does not match requested/actual model")
         if expected_fallback and fallback_reason != "transient_model_unavailable":
@@ -133,25 +169,57 @@ def main() -> int:
         if not citations:
             errors.append("Google Search mode captured no grounding citations")
 
+        unknown = unknown_report_cves(report, confirmed_scope)
+        if unknown:
+            errors.append("grounded report contains CVEs outside confirmed event/vulnerability scope: " + ", ".join(unknown))
+        for cve in _unverified_event_cves(events):
+            if cve in report.upper():
+                errors.append(f"grounded report exposed source-mentioned but unverified CVE: {cve}")
+
     if errors:
         return _fail(errors)
 
     print(
-        f"OK: report chars={len(report)} intelligence={len(intelligence.get('items') or [])} "
-        f"delta={len(delta.get('items') or [])} renderer={renderer} "
-        f"llm_body_used={llm_body_used} model={actual_model} "
+        f"OK: event-first report chars={len(report)} events={len(events.get('items') or [])} "
+        f"event_delta={len(event_delta.get('items') or [])} vulnerabilities={len(intelligence.get('items') or [])} "
+        f"renderer={renderer} llm_body_used={llm_body_used} model={actual_model} "
         f"grounding_mode={grounding_mode} grounding_citations={len(citations)}"
     )
     return 0
 
 
-def _verified_scope(intelligence: dict, delta: dict) -> dict:
-    return {
-        "items": [
-            *(intelligence.get("items") or []),
-            *(delta.get("items") or []),
-        ]
+def _verified_scope(
+    intelligence: dict,
+    delta: dict,
+    events: dict,
+    *,
+    include_source_mentions: bool,
+) -> dict:
+    items = [*(intelligence.get("items") or []), *(delta.get("items") or [])]
+    existing = {
+        str((x.get("facts") or {}).get("cve") or x.get("cve") or "").upper()
+        for x in items
     }
+    event_cves = set(confirmed_event_cves(events))
+    if include_source_mentions:
+        event_cves.update(_unverified_event_cves(events))
+    for cve in sorted(event_cves):
+        if cve and cve not in existing:
+            items.append({"cve": cve, "facts": {"cve": cve}})
+            existing.add(cve)
+    return {"items": items}
+
+
+def _unverified_event_cves(events: dict) -> set[str]:
+    return {
+        str(cve).upper()
+        for event in events.get("items") or []
+        for cve in event.get("unverified_cve_mentions") or []
+    }
+
+
+def _load(path: Path) -> dict:
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def _fail(errors: list[str]) -> int:

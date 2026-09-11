@@ -18,13 +18,18 @@ on:
       - 'src/security_intel/normalize.py'
       - 'src/security_intel/pipeline.py'
       - 'src/security_intel/intelligence.py'
+      - 'src/security_intel/events.py'
       - 'src/security_intel/collectors/**'
       - 'scripts/collect_v2.py'
       - 'scripts/validate_latest.py'
       - 'scripts/build_intelligence.py'
       - 'scripts/validate_intelligence.py'
+      - 'scripts/collect_events.py'
+      - 'scripts/validate_events.py'
+      - 'config/event_profile.json'
       - 'tests/test_normalize.py'
       - 'tests/test_intelligence.py'
+      - 'tests/test_events.py'
       - 'requirements.txt'
       - 'data/.gitignore'
       - '.github/workflows/v2-collect.yml'
@@ -35,13 +40,18 @@ on:
       - 'src/security_intel/normalize.py'
       - 'src/security_intel/pipeline.py'
       - 'src/security_intel/intelligence.py'
+      - 'src/security_intel/events.py'
       - 'src/security_intel/collectors/**'
       - 'scripts/collect_v2.py'
       - 'scripts/validate_latest.py'
       - 'scripts/build_intelligence.py'
       - 'scripts/validate_intelligence.py'
+      - 'scripts/collect_events.py'
+      - 'scripts/validate_events.py'
+      - 'config/event_profile.json'
       - 'tests/test_normalize.py'
       - 'tests/test_intelligence.py'
+      - 'tests/test_events.py'
       - 'requirements.txt'
       - 'data/.gitignore'
       - '.github/workflows/v2-collect.yml'
@@ -56,7 +66,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
 
@@ -83,24 +93,33 @@ jobs:
         run: |
           python -m unittest discover -s tests -p 'test_normalize.py' -v
           python -m unittest discover -s tests -p 'test_intelligence.py' -v
+          python -m unittest discover -s tests -p 'test_events.py' -v
 
-      - name: Collect facts
+      - name: Collect vulnerability facts
         env:
           NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
         run: |
           LOOKBACK="${{ github.event.inputs.lookback_hours || '48' }}"
           python scripts/collect_v2.py --lookback-hours "$LOOKBACK"
 
-      - name: Validate normalized facts
+      - name: Validate normalized vulnerability facts
         run: python scripts/validate_latest.py
 
-      - name: Build Daily Delta and Intelligence
+      - name: Build vulnerability Daily Delta and Intelligence
         run: |
           python scripts/build_intelligence.py \
             --previous-snapshot /tmp/previous_latest.json
 
-      - name: Validate compact intelligence
+      - name: Validate compact vulnerability intelligence
         run: python scripts/validate_intelligence.py
+
+      - name: Collect 24h security events
+        env:
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+        run: python scripts/collect_events.py --lookback-hours 24
+
+      - name: Validate security events
+        run: python scripts/validate_events.py
 
       - name: Preserve full snapshots and intelligence outputs
         uses: actions/upload-artifact@v4
@@ -111,7 +130,11 @@ jobs:
             data/state.json
             data/delta.json
             data/intelligence.json
+            data/event_state.json
+            data/events.json
+            data/event_delta.json
             data/raw/latest/
+            data/raw/events/latest/
           retention-days: 7
           if-no-files-found: error
 
@@ -121,7 +144,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add data/state.json data/delta.json data/intelligence.json
+          git add \
+            data/state.json data/delta.json data/intelligence.json \
+            data/event_state.json data/events.json data/event_delta.json
 
           # The first V2.1 main run retires the large tracked snapshot.
           # The newly generated file remains in the workspace/artifact, but future runs do not commit it.
