@@ -21,7 +21,14 @@ def digest(path: Path) -> str:
 
 
 def validate(root: Path) -> None:
-    required = [root / "index.html", root / "styles.css", root / "app.js", root / "_headers"]
+    required = [
+        root / "index.html",
+        root / "styles.css",
+        root / "events.css",
+        root / "app.js",
+        root / "events.js",
+        root / "_headers",
+    ]
     required += [root / target for target in COPIES.values()]
     missing = [str(path) for path in required if not path.is_file()]
     if missing:
@@ -45,11 +52,16 @@ def validate(root: Path) -> None:
 
     index = (root / "index.html").read_text(encoding="utf-8")
     app = (root / "app.js").read_text(encoding="utf-8")
+    events = (root / "events.js").read_text(encoding="utf-8")
     headers = (root / "_headers").read_text(encoding="utf-8")
-    if "./styles.css" not in index or "./app.js" not in index:
+    if "./styles.css" not in index or "./events.css" not in index or "./app.js" not in index or "./events.js" not in index:
         raise SystemExit("Static shell is missing local assets")
+    if "securityEventList" not in index or "securityEventCount" not in index:
+        raise SystemExit("Static shell is missing security event containers")
     if "./data/intelligence.json" not in app or "./data/delta.json" not in app or "./data/report_metadata.json" not in app:
         raise SystemExit("Web app is not wired to verified compact inputs")
+    if "./data/delta.json" not in events:
+        raise SystemExit("Security events are not wired to verified Daily Delta")
     if "https://" in index.replace("https://github.com/zenkispwan/security-report-automation", ""):
         raise SystemExit("Unexpected external resource in web shell")
     if "<script src=\"http" in index or "<link rel=\"stylesheet\" href=\"http" in index:
