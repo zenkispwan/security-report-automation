@@ -186,7 +186,7 @@ class EventReportingTests(unittest.TestCase):
             events_payload(), event_delta(), vulnerability_intelligence(), {"items": []}
         )
         self.assertIn("CVE-2026-99999", report)
-        self.assertIn("尚未驗證", report)
+        self.assertIn("尚未由 NVD / vulnerability layer 驗證", report)
 
 
 if __name__ == "__main__":
