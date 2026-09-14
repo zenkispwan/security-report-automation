@@ -1,30 +1,30 @@
 {
   "schema_version": "2.1-delta",
-  "generated_at": "2026-09-13T05:30:44.355904+00:00",
+  "generated_at": "2026-09-14T05:34:43.748576+00:00",
   "baseline": {
     "type": "state",
-    "generated_at": "2026-09-12T05:16:44.587798+00:00",
+    "generated_at": "2026-09-13T05:30:44.355904+00:00",
     "available": true
   },
   "summary": {
-    "current_snapshot_count": 1448,
-    "tracked_previous_count": 1000,
-    "epss_monitored_count": 731,
-    "meaningful_change_count": 11,
-    "included_count": 11,
+    "current_snapshot_count": 586,
+    "tracked_previous_count": 866,
+    "epss_monitored_count": 725,
+    "meaningful_change_count": 4,
+    "included_count": 4,
     "truncated": false,
     "events": {
-      "NEW_CVE": 11
+      "NEW_CVE": 4
     }
   },
   "items": [
     {
-      "cve": "CVE-2026-90647",
+      "cve": "CVE-2026-90680",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-09-12T23:17:01.490"
+          "to": "2026-09-14T04:16:36.353"
         }
       ],
       "risk": {
@@ -42,17 +42,17 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-90647",
-        "vendor": "Kalkitech",
-        "product": "ASE2000 V2 Communication Test Set",
+        "cve": "CVE-2026-90680",
+        "vendor": "D-Link",
+        "product": "DIR-823G",
         "title": null,
-        "description": "ASE/Kalkitech ASE2000 V2 Communication Test Set 2.35 through 2.37 on Windows contains an improper certificate validation vulnerability in the IEC 60870-5-104 TLS client (Task Mode). This allows a network-positioned attacker to bypass certificate validation via a certificate with multiple simultaneous faults, enabling a Man-in-the-Middle attack on protected communications.",
+        "description": "A security flaw has been discovered in D-Link DIR-823G 1.0.2B05_20181207. The impacted element is the function strcpy of the file /HNAP1/SetStaticRouteSettings of the component HNAP1. The manipulation of the argument PAddress/SubnetMask/Gateway results in stack-based buffer overflow. The attack can be launched remotely.",
         "cvss": {
           "version": "4.0",
-          "score": 9.1,
+          "score": 9.4,
           "severity": "CRITICAL",
-          "vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-          "source": "cve@mitre.org",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "cna@vuldb.com",
           "type": "Secondary"
         },
         "epss": null,
@@ -65,29 +65,30 @@
           "source": null,
           "ssvc": null
         },
-        "published_time": "2026-09-12T23:17:01.490",
-        "updated_time": "2026-09-12T23:17:01.490",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90647",
+        "published_time": "2026-09-14T04:16:36.353",
+        "updated_time": "2026-09-14T04:16:36.353",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90680",
         "source_type": [
           "nvd"
         ],
         "cwes": [
-          "CWE-295"
+          "CWE-119",
+          "CWE-121"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-90647",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-90680",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-90558",
+      "cve": "CVE-2026-90562",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-09-12T18:16:44.587"
+          "to": "2026-09-13T11:17:00.780"
         }
       ],
       "risk": {
@@ -105,16 +106,16 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-90558",
-        "vendor": "irontec",
-        "product": "sngrep",
+        "cve": "CVE-2026-90562",
+        "vendor": "langbot-app",
+        "product": "LangBot",
         "title": null,
-        "description": "sngrep through 1.8.4 contains stack buffer overflow vulnerabilities in SIP attribute formatting routines when header values exceed the 255-byte buffer limit. Attackers can craft malicious SIP packets with oversized Call-ID, X-Call-ID, or other header fields to overflow stack buffers and cause crashes or execute arbitrary code during packet parsing and rendering.",
+        "description": "LangBot before 4.10.11 generates password recovery keys with only 24 bits of entropy and applies no rate limiting to the unauthenticated reset-password endpoint. Remote attackers knowing the administrator email can exhaust the keyspace through concurrent requests to reset the admin password and gain account access.",
         "cvss": {
           "version": "4.0",
-          "score": 9.3,
+          "score": 9.2,
           "severity": "CRITICAL",
-          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
           "source": "disclosure@vulncheck.com",
           "type": "Secondary"
         },
@@ -128,29 +129,29 @@
           "source": null,
           "ssvc": null
         },
-        "published_time": "2026-09-12T18:16:44.587",
-        "updated_time": "2026-09-12T18:16:44.587",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90558",
+        "published_time": "2026-09-13T11:17:00.780",
+        "updated_time": "2026-09-13T11:17:00.780",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90562",
         "source_type": [
           "nvd"
         ],
         "cwes": [
-          "CWE-121"
+          "CWE-331"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-90558",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-90562",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-85681",
+      "cve": "CVE-2026-90561",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-09-12T06:16:27.250"
+          "to": "2026-09-13T11:17:00.613"
         }
       ],
       "risk": {
@@ -168,304 +169,21 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-85681",
-        "vendor": "Unknown",
-        "product": "WP Component",
+        "cve": "CVE-2026-90561",
+        "vendor": "strapi",
+        "product": "strapi",
         "title": null,
-        "description": "The WP Component WordPress plugin through 2.2.4 does not have any capability or nonce checks on one of the actions it makes available to unauthenticated users, and it takes both the option name and the option value from the request, allowing unauthenticated attackers to overwrite any of the site's options. On a single site installation this leads to a full takeover, as registration can be enabled with a default role of administrator.",
+        "description": "Strapi versions 4.x through 4.26.2 and 5.x before 5.48.1 contain a stored cross-site scripting vulnerability in the content manager WYSIWYG preview component that fails to strip script tags from rich text. An Author-role user can store malicious script tags in rich text fields that execute in an Editor or Super Admin's session when the preview pane is expanded, enabling account takeover.",
         "cvss": {
-          "version": "3.1",
-          "score": 9.8,
+          "version": "4.0",
+          "score": 9.3,
           "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
           "type": "Secondary"
         },
         "epss": null,
         "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "none",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "none",
-            "automatable": "yes",
-            "technical_impact": "total",
-            "timestamp": "2026-09-12T15:18:38.634427Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2026-09-12T06:16:27.250",
-        "updated_time": "2026-09-12T16:16:42.170",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85681",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [
-          "CWE-269"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-85681",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-84171",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-09-12T06:16:27.137"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-84171",
-        "vendor": "Unknown",
-        "product": "WP images upload on piclect",
-        "title": null,
-        "description": "The WP images upload on piclect WordPress plugin through 1.0 does not validate the name or type of uploaded files before writing them to a publicly accessible directory, allowing unauthenticated attackers to upload arbitrary files and execute arbitrary code on the server.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.8,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
-          "type": "Secondary"
-        },
-        "epss": 0.00162,
-        "epss_percentile": 0.05674,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "none",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "none",
-            "automatable": "yes",
-            "technical_impact": "total",
-            "timestamp": "2026-09-12T15:18:56.202479Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2026-09-12T06:16:27.137",
-        "updated_time": "2026-09-12T16:16:41.897",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84171",
-        "source_type": [
-          "nvd",
-          "first_epss"
-        ],
-        "cwes": [
-          "CWE-434"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-84171",
-          "cisa_kev": null,
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-84171"
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-82845",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-09-12T06:16:26.043"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-82845",
-        "vendor": "Unknown",
-        "product": "Masteriyo LMS",
-        "title": null,
-        "description": "The Masteriyo LMS  WordPress plugin before 3.4.1 does not prevent user-supplied values held as metadata from being deserialized when they are read back, allowing users with a minimal account to inject arbitrary PHP objects and, by way of a class shipped in a library bundled with the Masteriyo LMS  WordPress plugin before 3.4.1, write and execute arbitrary code on the server. A weaker form of the same issue is reachable without an account and yields an arbitrary file write rather than code execution.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.9,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-          "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
-          "type": "Secondary"
-        },
-        "epss": 0.00167,
-        "epss_percentile": 0.06224,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "none",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "none",
-            "automatable": "no",
-            "technical_impact": "total",
-            "timestamp": "2026-09-12T15:22:11.992349Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2026-09-12T06:16:26.043",
-        "updated_time": "2026-09-12T16:16:40.557",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82845",
-        "source_type": [
-          "nvd",
-          "first_epss"
-        ],
-        "cwes": [
-          "CWE-502"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-82845",
-          "cisa_kev": null,
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-82845"
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-81402",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-09-12T06:16:25.730"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-81402",
-        "vendor": "Unknown",
-        "product": "DS Ad Rotator",
-        "title": null,
-        "description": "The DS Ad Rotator WordPress plugin through 0.8 does not perform any capability check, nonce verification, or file-type validation on its image upload handler, allowing unauthenticated attackers to upload arbitrary files, including PHP, to a web-accessible directory, which can lead to remote code execution.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.8,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
-          "type": "Secondary"
-        },
-        "epss": 0.00197,
-        "epss_percentile": 0.09584,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "none",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "none",
-            "automatable": "yes",
-            "technical_impact": "total",
-            "timestamp": "2026-09-12T15:23:15.722218Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2026-09-12T06:16:25.730",
-        "updated_time": "2026-09-12T16:16:40.140",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81402",
-        "source_type": [
-          "nvd",
-          "first_epss"
-        ],
-        "cwes": [
-          "CWE-434"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-81402",
-          "cisa_kev": null,
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-81402"
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-78159",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-09-12T08:16:24.377"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-78159",
-        "vendor": "stellarwp",
-        "product": "The Events Calendar",
-        "title": null,
-        "description": "The The Events Calendar plugin for WordPress is vulnerable to Remote Code Execution in all versions up to, and including, 6.17.3 via the parse_array function. This is due to insufficient validation of the widget 'classes' map, allowing a plain-array payload to bypass the is_safe_widget_instance() object check and reach the callable-invocation sink in Element_Classes::parse_array(). This makes it possible for unauthenticated attackers to execute code on the server. Exploitation requires that the targeted site has comments enabled on tribe_events posts and that at least one comment containing a crafted wp:legacy-widget block has been submitted, as the attack chain is triggered when do_blocks() processes the single-event HTML including the comment area.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.8,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "security@wordfence.com",
-          "type": "Primary"
-        },
-        "epss": 0.00762,
-        "epss_percentile": 0.53333,
         "cisa_kev": {
           "listed": false
         },
@@ -474,30 +192,29 @@
           "source": null,
           "ssvc": null
         },
-        "published_time": "2026-09-12T08:16:24.377",
-        "updated_time": "2026-09-12T08:16:24.377",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78159",
+        "published_time": "2026-09-13T11:17:00.613",
+        "updated_time": "2026-09-13T11:17:00.613",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90561",
         "source_type": [
-          "nvd",
-          "first_epss"
+          "nvd"
         ],
         "cwes": [
-          "CWE-94"
+          "CWE-79"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-78159",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-90561",
           "cisa_kev": null,
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-78159"
+          "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-78006",
+      "cve": "CVE-2026-81648",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-09-12T08:16:24.240"
+          "to": "2026-09-13T21:17:01.930"
         }
       ],
       "risk": {
@@ -515,21 +232,21 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-78006",
-        "vendor": "stellarwp",
-        "product": "The Events Calendar",
+        "cve": "CVE-2026-81648",
+        "vendor": "Unknown",
+        "product": "CryptoPayment Gateway",
         "title": null,
-        "description": "The The Events Calendar plugin for WordPress is vulnerable to Remote Code Execution in all versions up to, and including, 6.17.4 via the is_safe_widget_instance function. This is due to insufficient protection in is_safe_widget_instance, which can be bypassed because PHP fires magic methods during its pre-parse, combined with enable_rendering_widget_copied() forging a valid wp_hash integrity attribute before unserialize() is reached. This makes it possible for unauthenticated attackers to execute code on the server. This is exploitable without authentication or approval because the plugin's V2 single-event template runs do_blocks() over buffered comment HTML, and WordPress returns a moderation-hash URL that allows an unauthenticated commenter to immediately view their own pending comment, delivering the injected block markup to the vulnerable code path before any moderation occurs. This does require comments to be enabled and visible on events.",
+        "description": "The CryptoPayment Gateway WordPress plugin from 1.2.1 to 1.2.2 does not apply an authorization check on one of its AJAX endpoints, allowing unauthenticated users to invoke administrative operations, including deleting arbitrary files on the server, overwriting the payment gateway configuration and recovering stored wallet credentials in cleartext.",
         "cvss": {
           "version": "3.1",
-          "score": 9.8,
+          "score": 10.0,
           "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "security@wordfence.com",
-          "type": "Primary"
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+          "source": "contact@wpscan.com",
+          "type": "Secondary"
         },
-        "epss": 0.00778,
-        "epss_percentile": 0.53841,
+        "epss": null,
+        "epss_percentile": null,
         "cisa_kev": {
           "listed": false
         },
@@ -538,231 +255,17 @@
           "source": null,
           "ssvc": null
         },
-        "published_time": "2026-09-12T08:16:24.240",
-        "updated_time": "2026-09-12T08:16:24.240",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78006",
-        "source_type": [
-          "nvd",
-          "first_epss"
-        ],
-        "cwes": [
-          "CWE-502"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-78006",
-          "cisa_kev": null,
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-78006"
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-77006",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-09-12T06:16:24.733"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-77006",
-        "vendor": "Unknown",
-        "product": "WebTotem Backups",
-        "title": null,
-        "description": "The WebTotem Backups WordPress plugin through 1.0.1 does not validate a user-supplied file path, does not check the capability of the user making the request, and discards the result of its own CSRF check, allowing any authenticated user, such as a subscriber, to delete arbitrary files on the server, which can lead to a site takeover.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.6,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:H/A:H",
-          "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "none",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "none",
-            "automatable": "no",
-            "technical_impact": "partial",
-            "timestamp": "2026-09-12T15:26:41.546465Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2026-09-12T06:16:24.733",
-        "updated_time": "2026-09-12T16:16:38.670",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77006",
+        "published_time": "2026-09-13T21:17:01.930",
+        "updated_time": "2026-09-13T21:17:01.930",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81648",
         "source_type": [
           "nvd"
         ],
-        "cwes": [
-          "CWE-73"
-        ],
+        "cwes": [],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-77006",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-81648",
           "cisa_kev": null,
           "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-77005",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-09-12T06:16:24.623"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-77005",
-        "vendor": "Unknown",
-        "product": "CODE MONKEYS PROPOSALS",
-        "title": null,
-        "description": "The CODE MONKEYS PROPOSALS  WordPress plugin through 1.0.1 does not validate a user-supplied file path before deleting a file, and does not check the capability of the user making the request, allowing any authenticated user, such as a subscriber, to delete arbitrary files on the server, which can lead to a site takeover.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.6,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:H/A:H",
-          "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "none",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "none",
-            "automatable": "no",
-            "technical_impact": "partial",
-            "timestamp": "2026-09-12T15:26:56.950449Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2026-09-12T06:16:24.623",
-        "updated_time": "2026-09-12T16:16:38.523",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77005",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [
-          "CWE-73"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-77005",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-75800",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-09-12T06:16:23.340"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-75800",
-        "vendor": "Unknown",
-        "product": "Frontegg SAML SSO",
-        "title": null,
-        "description": "The Frontegg SAML SSO WordPress plugin through 1.0.1 does not verify the signature or issuer of SAML authentication responses before establishing a session, allowing unauthenticated attackers to log in as any user, including administrators, as well as to create arbitrary accounts.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.8,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
-          "type": "Secondary"
-        },
-        "epss": 0.00187,
-        "epss_percentile": 0.08433,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "none",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "none",
-            "automatable": "yes",
-            "technical_impact": "total",
-            "timestamp": "2026-09-12T15:27:14.882259Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2026-09-12T06:16:23.340",
-        "updated_time": "2026-09-12T16:16:38.363",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75800",
-        "source_type": [
-          "nvd",
-          "first_epss"
-        ],
-        "cwes": [
-          "CWE-287"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-75800",
-          "cisa_kev": null,
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-75800"
         }
       }
     }
