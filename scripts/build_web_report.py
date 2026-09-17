@@ -44,7 +44,7 @@ def build(output: Path) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Build the static Security Intelligence web report for Cloudflare Workers Static Assets.")
-    parser.add_argument("--output", default="_site", help="Output directory (default: _site")
+    parser.add_argument("--output", default="_site", help="Output directory (default: _site)")
     args = parser.parse_args()
     output = Path(args.output)
     build(output)
