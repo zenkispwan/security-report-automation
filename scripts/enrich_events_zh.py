@@ -50,11 +50,11 @@ def main() -> None:
     path = Path(os.getenv("EVENTS_PATH", "data/events.json"))
     payload = json.loads(path.read_text(encoding="utf-8"))
 
-    model = os.getenv("GEMINI_TRANSLATION_MODEL") or os.getenv("GEMINI_MODEL") or "gemini-3.8-flash"
-    # Translation is optional and latency-sensitive. Do not inherit the report's
-    # multi-model fallback chain unless a dedicated translation fallback list is
-    # explicitly configured.
-    fallback_raw = os.getenv("GEMINI_TRANSLATION_FALLBACK_MODELS", "")
+    # Translation is intentionally decoupled from the report model. It is a
+    # lightweight text transformation, so use a smaller model unless explicitly
+    # overridden by GEMINI_TRANSLATION_MODEL.
+    model = os.getenv("GEMINI_TRANSLATION_MODEL") or "gemini-3.7-flash"
+    fallback_raw = os.getenv("GEMINI_TRANSLATION_FALLBACK_MODELS", "gemini-3.6-flash")
     fallback_models = [value.strip() for value in fallback_raw.split(",") if value.strip()]
     timeout_ms = int(os.getenv("GEMINI_TRANSLATION_TIMEOUT_MS", "90000"))
     max_items = max(1, int(os.getenv("EVENT_TRANSLATION_MAX_ITEMS", "6")))
