@@ -1,0 +1,127 @@
+.cve-page-hero {
+  margin-bottom: 34px;
+}
+
+.cve-summary-card,
+.cve-fact-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(17, 31, 51, 0.96), rgba(9, 21, 37, 0.96));
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.16);
+}
+
+.cve-summary-card {
+  padding: 22px;
+}
+
+.cve-summary-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.45;
+}
+
+.cve-description {
+  margin: 14px 0 0;
+  color: #b9c8da;
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.cve-original-text {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(34, 50, 74, 0.82);
+}
+
+.cve-original-text summary {
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.cve-original-body {
+  margin-top: 12px;
+  color: #8fa4be;
+  font-size: 0.8rem;
+  line-height: 1.65;
+}
+
+.cve-original-body p {
+  margin-bottom: 0;
+}
+
+.cve-fact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.cve-fact-card {
+  min-height: 112px;
+  padding: 16px;
+}
+
+.cve-fact-label,
+.cve-fact-note {
+  display: block;
+}
+
+.cve-fact-label {
+  color: #7890ac;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.cve-fact-value {
+  display: block;
+  margin-top: 9px;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.cve-fact-note {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  line-height: 1.45;
+}
+
+.cve-chip-link {
+  text-decoration: none;
+  transition: border-color 120ms ease, background 120ms ease, color 120ms ease;
+}
+
+.cve-chip-link:hover {
+  border-color: rgba(104, 182, 255, 0.65);
+  background: rgba(104, 182, 255, 0.14);
+  color: #fff;
+}
+
+@media (max-width: 980px) {
+  .cve-fact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .cve-fact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media print {
+  .cve-summary-card,
+  .cve-fact-card {
+    box-shadow: none;
+    background: #fff;
+  }
+
+  .cve-description,
+  .cve-original-body,
+  .cve-fact-note {
+    color: #4b5563;
+  }
+}
