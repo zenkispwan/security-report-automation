@@ -18,6 +18,8 @@ on:
       - 'scripts/build_events.py'
       - 'scripts/enrich_events_zh.py'
       - 'scripts/build_cve_enrichment_zh.py'
+      - 'scripts/build_daily_brief.py'
+      - 'scripts/validate_daily_brief.py'
       - 'scripts/validate_report.py'
       - 'scripts/build_web_report.py'
       - 'scripts/validate_web_report.py'
@@ -35,11 +37,14 @@ on:
       - 'scripts/build_events.py'
       - 'scripts/enrich_events_zh.py'
       - 'scripts/build_cve_enrichment_zh.py'
+      - 'scripts/build_daily_brief.py'
+      - 'scripts/validate_daily_brief.py'
       - 'scripts/validate_report.py'
       - 'scripts/build_web_report.py'
       - 'scripts/validate_web_report.py'
       - 'data/events.json'
       - 'data/cve_enrichment_zh.json'
+      - 'data/daily_brief.json'
       - 'web/**'
       - 'wrangler.jsonc'
       - 'package.json'
@@ -48,6 +53,7 @@ on:
       - 'tests/test_news.py'
       - 'tests/test_event_translation.py'
       - 'tests/test_cve_translation.py'
+      - 'tests/test_daily_brief.py'
       - 'tests/test_web_report.py'
       - 'requirements-report.txt'
       - '.github/workflows/v2-report.yml'
@@ -89,6 +95,8 @@ jobs:
           GEMINI_FALLBACK_MODELS: gemini-3.7-flash,gemini-3.6-flash
           REPORT_PROVIDER: gemini
         run: |
+          python scripts/build_daily_brief.py
+          python scripts/validate_daily_brief.py
           python scripts/generate_report_v2.py
           python scripts/validate_report.py
       - name: Static web report smoke test
@@ -148,6 +156,11 @@ jobs:
           EVENT_TRANSLATION_BATCH_SIZE: ${{ vars.EVENT_TRANSLATION_BATCH_SIZE || '5' }}
         run: python scripts/enrich_events_zh.py
 
+      - name: Build deterministic daily security brief
+        run: |
+          python scripts/build_daily_brief.py
+          python scripts/validate_daily_brief.py
+
       - name: Generate security intelligence report
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -168,6 +181,7 @@ jobs:
           path: |
             data/events.json
             data/cve_enrichment_zh.json
+            data/daily_brief.json
             reports/security_report_latest.md
             reports/security_report_metadata.json
           retention-days: 14
@@ -177,10 +191,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/events.json data/cve_enrichment_zh.json reports/security_report_latest.md reports/security_report_metadata.json
+          git add data/events.json data/cve_enrichment_zh.json data/daily_brief.json reports/security_report_latest.md reports/security_report_metadata.json
 
           if git diff --cached --quiet; then
-            echo "No report, event, or CVE translation changes."
+            echo "No report, event, daily brief, or CVE translation changes."
             exit 0
           fi
 
