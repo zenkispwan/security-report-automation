@@ -34,6 +34,21 @@ class EventTranslationTests(unittest.TestCase):
         self.assertIn("do not add, infer, remove, or update facts", prompt)
         self.assertIn("CVE-2026-84869", prompt)
         self.assertIn("Traditional Chinese", prompt)
+        self.assertNotIn("related_cves", prompt)
+
+    def test_article_only_cve_is_not_passed_to_translation(self):
+        payload = {
+            "items": [
+                {
+                    "id": "event-article-cve",
+                    "title": "Vendor releases emergency security update",
+                    "summary": "The issue is being exploited in attacks.",
+                    "related_cves": ["CVE-2026-99999"],
+                }
+            ]
+        }
+        prompt = build_translation_prompt(payload)
+        self.assertNotIn("CVE-2026-99999", prompt)
 
     def test_valid_translation_is_added_without_overwriting_source(self):
         translated = {
