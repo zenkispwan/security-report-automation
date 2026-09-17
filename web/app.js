@@ -5,10 +5,6 @@ const text = (value, fallback = '未確認') => {
   if (value === null || value === undefined || value === '') return fallback;
   return String(value);
 };
-const fmtNumber = (value, digits = 2) => {
-  if (value === null || value === undefined || Number.isNaN(Number(value))) return '未確認';
-  return Number(value).toFixed(digits);
-};
 const fmtPercent = (value) => {
   if (value === null || value === undefined || Number.isNaN(Number(value))) return '未確認';
   return `${(Number(value) * 100).toFixed(2)}%`;
@@ -91,23 +87,26 @@ function itemTags(item) {
   return tags;
 }
 
-function renderMetrics(intelligence, delta, metadata) {
+function renderMetrics(events, intelligence, metadata) {
   const root = $('metrics');
   root.replaceChildren();
-  const summary = intelligence.summary || {};
-  const watch = Math.max(0, (intelligence.selection?.selected_count || intelligence.items?.length || 0) - (summary.p1 || 0) - (summary.p2 || 0) - (summary.p3 || 0));
+  const items = events.items || [];
+  const critical = items.filter((item) => item.priority === 'CRITICAL').length;
+  const cveLinked = items.filter((item) => (item.related_cves || []).length > 0).length;
+  const incidents = items.filter((item) => ['RANSOMWARE', 'SUPPLY_CHAIN', 'DATA_BREACH', 'THREAT_ACTIVITY', 'ACTIVE_EXPLOITATION'].includes(item.event_type)).length;
+  const sources = new Set(items.map((item) => item.source_name).filter(Boolean)).size;
+
   root.append(
-    metric('Daily Delta', delta.summary?.included_count ?? delta.items?.length ?? 0, '重要變化'),
-    metric('P1', summary.p1 || 0, '立即優先'),
-    metric('P2', summary.p2 || 0, '高優先'),
-    metric('P3', summary.p3 || 0, '追蹤處理'),
-    metric('WATCH', watch, '持續觀察'),
+    metric('最新事件', items.length, '近 7 日來源'),
+    metric('重大', critical, '優先閱讀'),
+    metric('含 CVE', cveLinked, '來源有明確提及'),
+    metric('攻擊 / 事件', incidents, '非單純 CVE 清單'),
+    metric('來源', sources, '新聞與官方 Feed'),
   );
 
-  const deterministic = metadata.renderer === 'deterministic' || metadata.llm_body_used === false;
-  $('modeBadge').textContent = deterministic ? 'Verified facts only · deterministic' : 'Grounded LLM enrichment';
-  $('updatedAt').textContent = `報告更新：${fmtTime(metadata.generated_at || intelligence.generated_at)}`;
-  $('footerGenerated').textContent = `Intelligence generated: ${fmtTime(intelligence.generated_at)} · Report generated: ${fmtTime(metadata.generated_at)}`;
+  $('modeBadge').textContent = 'News / Incident first · verified sources';
+  $('updatedAt').textContent = `事件更新：${fmtTime(events.generated_at || metadata.generated_at || intelligence.generated_at)}`;
+  $('footerGenerated').textContent = `Events: ${fmtTime(events.generated_at)} · Intelligence: ${fmtTime(intelligence.generated_at)} · Report: ${fmtTime(metadata.generated_at)}`;
 }
 
 function renderDelta(delta) {
@@ -137,8 +136,7 @@ function renderDelta(delta) {
     const eventNames = (item.events || []).map((event) => event.type).filter(Boolean);
     card.append(el('p', 'card-summary', eventNames.length ? eventNames.join(' · ') : '狀態變化'));
     card.append(itemTags(item));
-    const desc = el('p', 'card-summary', text(facts.description));
-    card.append(desc, sourceLinks(facts));
+    card.append(el('p', 'card-summary', text(facts.description)), sourceLinks(facts));
     root.append(card);
   }
 }
@@ -159,9 +157,7 @@ function intelligenceCard(item) {
 
   const head = el('div', 'intel-head');
   const title = el('div', 'intel-title');
-  const cve = el('strong', '', item.cve || facts.cve || '未確認 CVE');
-  const subtitle = el('span', '', `${text(facts.vendor)} / ${text(facts.product)}`);
-  append(title, cve, subtitle);
+  append(title, el('strong', '', item.cve || facts.cve || '未確認 CVE'), el('span', '', `${text(facts.vendor)} / ${text(facts.product)}`));
 
   const riskStat = el('div', 'intel-stat');
   append(riskStat, el('span', '', 'Priority / Score'), priorityBadge(risk.priority), el('strong', '', `Score ${text(risk.score)}`));
@@ -193,9 +189,7 @@ function intelligenceCard(item) {
   for (const reason of risk.reasons || []) {
     reasons.append(el('li', '', `${text(reason.code)} (${Number(reason.points || 0) >= 0 ? '+' : ''}${text(reason.points, '0')})`));
   }
-  if (reasons.children.length) {
-    body.append(el('h3', '', 'Risk reasons'), reasons);
-  }
+  if (reasons.children.length) body.append(el('h3', '', 'Risk reasons'), reasons);
   body.append(sourceLinks(facts));
   details.append(body);
   card.append(details);
@@ -245,14 +239,17 @@ function wireFilters() {
 
 async function load() {
   try {
-    const [intelResp, deltaResp, metaResp] = await Promise.all([
+    const [eventsResp, intelResp, deltaResp, metaResp] = await Promise.all([
+      fetch('./data/events.json', { cache: 'no-store' }),
       fetch('./data/intelligence.json', { cache: 'no-store' }),
       fetch('./data/delta.json', { cache: 'no-store' }),
       fetch('./data/report_metadata.json', { cache: 'no-store' }),
     ]);
-    if (!intelResp.ok || !deltaResp.ok || !metaResp.ok) throw new Error('無法讀取報告資料');
-    const [intelligence, delta, metadata] = await Promise.all([intelResp.json(), deltaResp.json(), metaResp.json()]);
-    renderMetrics(intelligence, delta, metadata);
+    if (!eventsResp.ok || !intelResp.ok || !deltaResp.ok || !metaResp.ok) throw new Error('無法讀取報告資料');
+    const [events, intelligence, delta, metadata] = await Promise.all([
+      eventsResp.json(), intelResp.json(), deltaResp.json(), metaResp.json(),
+    ]);
+    renderMetrics(events, intelligence, metadata);
     renderDelta(delta);
     renderIntelligence(intelligence);
     wireFilters();
