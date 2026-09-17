@@ -129,9 +129,9 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.8-flash' }}
-          GEMINI_FALLBACK_MODELS: ${{ vars.GEMINI_FALLBACK_MODELS || 'gemini-3.7-flash,gemini-3.6-flash' }}
           GEMINI_TRANSLATION_MODEL: ${{ vars.GEMINI_TRANSLATION_MODEL || vars.GEMINI_MODEL || 'gemini-3.8-flash' }}
-          GEMINI_TRANSLATION_TIMEOUT_MS: ${{ vars.GEMINI_TRANSLATION_TIMEOUT_MS || '30000' }}
+          GEMINI_TRANSLATION_FALLBACK_MODELS: ${{ vars.GEMINI_TRANSLATION_FALLBACK_MODELS || '' }}
+          GEMINI_TRANSLATION_TIMEOUT_MS: ${{ vars.GEMINI_TRANSLATION_TIMEOUT_MS || '60000' }}
         run: python scripts/enrich_events_zh.py
 
       - name: Generate security intelligence report

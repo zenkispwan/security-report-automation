@@ -17,9 +17,12 @@ def main() -> None:
     payload = json.loads(path.read_text(encoding="utf-8"))
 
     model = os.getenv("GEMINI_TRANSLATION_MODEL") or os.getenv("GEMINI_MODEL") or "gemini-3.8-flash"
-    fallback_raw = os.getenv("GEMINI_TRANSLATION_FALLBACK_MODELS") or os.getenv("GEMINI_FALLBACK_MODELS") or ""
+    # Translation is optional and latency-sensitive. Do not inherit the report's
+    # multi-model fallback chain unless a dedicated translation fallback list is
+    # explicitly configured.
+    fallback_raw = os.getenv("GEMINI_TRANSLATION_FALLBACK_MODELS", "")
     fallback_models = [value.strip() for value in fallback_raw.split(",") if value.strip()]
-    timeout_ms = int(os.getenv("GEMINI_TRANSLATION_TIMEOUT_MS", "30000"))
+    timeout_ms = int(os.getenv("GEMINI_TRANSLATION_TIMEOUT_MS", "60000"))
 
     enriched = translate_events(
         payload,

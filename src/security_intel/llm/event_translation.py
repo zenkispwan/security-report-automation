@@ -51,10 +51,6 @@ def _model_candidates(primary: str, fallback_models: Sequence[str]) -> list[str]
 def build_translation_prompt(payload: dict[str, Any]) -> str:
     items = []
     for item in payload.get("items", []) or []:
-        # Deliberately pass only the source text being translated. Article-only
-        # related_cves and other enrichment fields are not translation input,
-        # otherwise the model may correctly repeat them but still introduce facts
-        # that were absent from the title/summary being translated.
         items.append(
             {
                 "id": item.get("id"),
@@ -159,7 +155,7 @@ def translate_events(
     api_key: str | None,
     model: str,
     fallback_models: Sequence[str] = (),
-    timeout_ms: int = 30_000,
+    timeout_ms: int = 60_000,
 ) -> dict[str, Any]:
     items = payload.get("items", []) or []
     if not items:
@@ -183,6 +179,7 @@ def translate_events(
                     "You are a translation layer in a verified cybersecurity intelligence pipeline. "
                     "Translate faithfully into Traditional Chinese (Taiwan). Never introduce facts."
                 ),
+                generation_config={"thinking_level": "low"},
                 response_format={
                     "type": "text",
                     "mime_type": "application/json",
@@ -199,7 +196,7 @@ def translate_events(
                 return merged
             last_rejected = rejected
             last_error = RuntimeError("Gemini returned no valid translations")
-        except Exception as exc:  # translation is optional; preserve verified source text on failure
+        except Exception as exc:
             last_error = exc
 
     reason = "translation_failed"
