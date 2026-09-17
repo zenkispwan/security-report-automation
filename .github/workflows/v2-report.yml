@@ -128,9 +128,8 @@ jobs:
       - name: Enrich event text in Traditional Chinese
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.8-flash' }}
-          GEMINI_TRANSLATION_MODEL: ${{ vars.GEMINI_TRANSLATION_MODEL || vars.GEMINI_MODEL || 'gemini-3.8-flash' }}
-          GEMINI_TRANSLATION_FALLBACK_MODELS: ${{ vars.GEMINI_TRANSLATION_FALLBACK_MODELS || '' }}
+          GEMINI_TRANSLATION_MODEL: ${{ vars.GEMINI_TRANSLATION_MODEL || 'gemini-3.7-flash' }}
+          GEMINI_TRANSLATION_FALLBACK_MODELS: ${{ vars.GEMINI_TRANSLATION_FALLBACK_MODELS || 'gemini-3.6-flash' }}
           GEMINI_TRANSLATION_TIMEOUT_MS: ${{ vars.GEMINI_TRANSLATION_TIMEOUT_MS || '90000' }}
           EVENT_TRANSLATION_MAX_ITEMS: ${{ vars.EVENT_TRANSLATION_MAX_ITEMS || '6' }}
         run: python scripts/enrich_events_zh.py
