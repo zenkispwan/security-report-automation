@@ -24,6 +24,7 @@ def digest(path: Path) -> str:
 def validate(root: Path) -> None:
     required = [
         root / "index.html",
+        root / "events.html",
         root / "styles.css",
         root / "events.css",
         root / "app.js",
@@ -61,23 +62,29 @@ def validate(root: Path) -> None:
             raise SystemExit("Security event related_cves must be a list")
 
     index = (root / "index.html").read_text(encoding="utf-8")
+    events_page = (root / "events.html").read_text(encoding="utf-8")
     app = (root / "app.js").read_text(encoding="utf-8")
     events_js = (root / "events.js").read_text(encoding="utf-8")
     headers = (root / "_headers").read_text(encoding="utf-8")
     if "./styles.css" not in index or "./events.css" not in index or "./app.js" not in index or "./events.js" not in index:
         raise SystemExit("Static shell is missing local assets")
-    if "securityEventList" not in index or "securityEventCount" not in index:
-        raise SystemExit("Static shell is missing security event containers")
+    if "securityEventList" not in index or "securityEventCount" not in index or "./events.html" not in index:
+        raise SystemExit("Homepage is missing security event containers or full-feed navigation")
     if "technical-panel" not in index:
         raise SystemExit("Technical CVE data is not collapsed behind the event-first homepage")
+    if "allSecurityEventList" not in events_page or "allEventTypeFilters" not in events_page or "allEventSource" not in events_page:
+        raise SystemExit("Full events page is missing event list or filters")
+    if "./styles.css" not in events_page or "./events.css" not in events_page or "./events.js" not in events_page:
+        raise SystemExit("Full events page is missing local assets")
     if "./data/events.json" not in app or "./data/intelligence.json" not in app or "./data/delta.json" not in app or "./data/report_metadata.json" not in app:
         raise SystemExit("Web app is not wired to verified compact inputs")
-    if "./data/events.json" not in events_js:
-        raise SystemExit("Security event cards are not wired to generated events.json")
-    if "https://" in index.replace("https://github.com/zenkispwan/security-report-automation", ""):
-        raise SystemExit("Unexpected external resource in web shell")
-    if "<script src=\"http" in index or "<link rel=\"stylesheet\" href=\"http" in index:
-        raise SystemExit("External executable/style dependency is not allowed")
+    if "./data/events.json" not in events_js or "allSecurityEventList" not in events_js:
+        raise SystemExit("Security event views are not wired to generated events.json")
+    for shell in (index, events_page):
+        if "https://" in shell.replace("https://github.com/zenkispwan/security-report-automation", ""):
+            raise SystemExit("Unexpected external resource in web shell")
+        if "<script src=\"http" in shell or "<link rel=\"stylesheet\" href=\"http" in shell:
+            raise SystemExit("External executable/style dependency is not allowed")
     if "Content-Security-Policy:" not in headers or "Cache-Control: no-cache" not in headers:
         raise SystemExit("Cloudflare Workers Static Assets security/cache headers are missing")
 
