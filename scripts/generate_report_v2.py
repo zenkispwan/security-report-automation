@@ -14,6 +14,7 @@ from security_intel.llm.gemini import generate_grounded_markdown  # noqa: E402
 from security_intel.reporting import (  # noqa: E402
     SYSTEM_INSTRUCTION,
     build_report_prompt,
+    ordered_cves,
     render_source_appendix,
     render_verified_facts_report,
     sha256_file,
@@ -171,13 +172,27 @@ def _verified_scope(intelligence: dict, delta: dict) -> dict:
 
     Daily Delta is itself a verified collector output. A delta CVE must remain
     valid even when it falls outside the capped intelligence candidate list.
+    CVE identifiers that occur inside verified source text (for example an NVD
+    description that references a related CVE) are also part of the input fact
+    boundary. They are admitted only for anti-hallucination validation and do
+    not gain fabricated metadata or provenance of their own.
     """
-    return {
+    scope = {
         "items": [
             *(intelligence.get("items") or []),
             *(delta.get("items") or []),
         ]
     }
+    primary = {
+        str((row.get("facts") or {}).get("cve") or row.get("cve") or "").upper()
+        for row in scope["items"]
+    }
+    verified_text = json.dumps(scope, ensure_ascii=False, separators=(",", ":"))
+    for cve in ordered_cves(verified_text):
+        if cve not in primary:
+            scope["items"].append({"cve": cve, "facts": {"cve": cve}})
+            primary.add(cve)
+    return scope
 
 
 def _env_csv(name: str, default: str) -> list[str]:
