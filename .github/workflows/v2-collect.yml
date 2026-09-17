@@ -57,7 +57,7 @@ permissions:
 
 concurrency:
   group: security-intelligence-v2-${{ github.head_ref || github.ref_name || github.event_name }}
-  cancel-in-progress: false
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   collect:
