@@ -17,7 +17,12 @@ class WebReportTests(unittest.TestCase):
             self.assertTrue((root / "events.css").is_file())
             self.assertTrue((root / "events.js").is_file())
             self.assertTrue((root / "_headers").is_file())
+            self.assertTrue((root / "data/events.json").is_file())
             self.assertTrue((root / "data/intelligence.json").is_file())
+            self.assertEqual(
+                Path("data/events.json").read_bytes(),
+                (root / "data/events.json").read_bytes(),
+            )
             self.assertEqual(
                 Path("data/intelligence.json").read_bytes(),
                 (root / "data/intelligence.json").read_bytes(),
@@ -32,16 +37,24 @@ class WebReportTests(unittest.TestCase):
         self.assertIn('./styles.css', index)
         self.assertIn('./events.css', index)
         self.assertIn('securityEventList', index)
+        self.assertIn('technical-panel', index)
 
-    def test_security_events_use_verified_delta_only(self):
+    def test_security_events_use_generated_event_feed(self):
         events = Path("web/events.js").read_text(encoding="utf-8")
-        self.assertIn("fetch('./data/delta.json'", events)
+        self.assertIn("fetch('./data/events.json'", events)
         self.assertNotIn('fetch("http', events)
         self.assertNotIn("fetch('http", events)
-        self.assertIn('EPSS_INCREASED', events)
-        self.assertIn('NEW_KEV', events)
-        self.assertIn('RANSOMWARE_USE_CHANGED', events)
-        self.assertIn('EXPLOITATION_CHANGED', events)
+        self.assertIn('RANSOMWARE', events)
+        self.assertIn('ACTIVE_EXPLOITATION', events)
+        self.assertIn('SUPPLY_CHAIN', events)
+        self.assertIn('DATA_BREACH', events)
+        self.assertIn('related_cves', events)
+
+    def test_homepage_metrics_use_event_feed(self):
+        app = Path("web/app.js").read_text(encoding="utf-8")
+        self.assertIn("fetch('./data/events.json'", app)
+        self.assertIn("metric('最新事件'", app)
+        self.assertIn("metric('含 CVE'", app)
 
     def test_cloudflare_static_assets_config_has_no_worker_script(self):
         config = json.loads(Path("wrangler.jsonc").read_text(encoding="utf-8"))
