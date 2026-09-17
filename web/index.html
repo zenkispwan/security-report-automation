@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark light">
-  <meta name="description" content="每日資安威脅情報：最新重大資安事件、CISA KEV、NVD、FIRST EPSS、Daily Delta 與 deterministic risk scoring。">
-  <title>每日資安威脅情報｜Security Intelligence Automation V2</title>
+  <meta name="description" content="每日資安事件情報：重大攻擊、勒索軟體、供應鏈、資料外洩、主動利用與相關 CVE。">
+  <title>每日資安事件情報｜Security Intelligence Automation V2</title>
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./events.css">
 </head>
@@ -14,17 +14,16 @@
     <header class="hero">
       <div class="hero-copy">
         <p class="eyebrow">Security Intelligence Automation V2</p>
-        <h1>每日資安威脅情報</h1>
-        <p class="lede">以官方 Facts 為基礎，先回答今天真正發生了什麼變化，再提供 Daily Delta、風險排序與可驗證的處置線索。</p>
+        <h1>每日資安事件情報</h1>
+        <p class="lede">先看今天真正發生的資安新聞與事件。CVE 只有在新聞、攻擊事件或官方公告實際提到時，才會成為首頁的技術關聯。</p>
         <div class="status-row">
           <span id="modeBadge" class="status-badge">載入中</span>
           <span id="updatedAt" class="muted">更新時間載入中</span>
         </div>
       </div>
       <div class="hero-actions">
-        <a class="button secondary" href="#security-events">最新事件</a>
-        <a class="button secondary" href="./security_report_latest.md">Markdown 原始報告</a>
-        <a class="button ghost" href="https://github.com/zenkispwan/security-report-automation" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+        <a class="button secondary" href="#security-events">今日事件</a>
+        <a class="button ghost" href="https://github.com/zenkispwan/security-report-automation" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </header>
 
@@ -33,7 +32,7 @@
         <div class="section-heading compact-heading">
           <div>
             <p class="section-kicker">TODAY AT A GLANCE</p>
-            <h2 id="summary-title">今日概況</h2>
+            <h2 id="summary-title">今日事件概況</h2>
           </div>
         </div>
         <div id="metrics" class="metric-grid" aria-live="polite"></div>
@@ -42,80 +41,80 @@
       <section id="security-events" aria-labelledby="events-title">
         <div class="section-heading">
           <div>
-            <p class="section-kicker">LATEST SECURITY EVENTS</p>
+            <p class="section-kicker">LATEST SECURITY NEWS & INCIDENTS</p>
             <h2 id="events-title">最新重大資安事件</h2>
-            <p>從 verified Daily Delta 中挑出最值得先看的事件：新 CISA KEV、利用狀態變更、EPSS 顯著上升、勒索軟體關聯變化，以及具明確風險訊號的新 Critical CVE。</p>
+            <p>來源來自即時資安新聞與官方公告 Feed；首頁最多顯示 6 筆。單純新增的 CVE 不會被當成新聞。</p>
+            <p id="securityEventFreshness" class="muted">事件更新時間載入中</p>
           </div>
           <span id="securityEventCount" class="count-chip">—</span>
         </div>
         <div id="securityEventList" class="security-event-grid" aria-live="polite"></div>
-        <p class="event-trust-note">目前此區只呈現 Collector / deterministic delta 可驗證的事件。外部攻擊新聞、勒索軟體與供應鏈事件，只有在 direct collector 或有來源的即時搜尋資料進入 pipeline 後才會加入。</p>
+        <p class="event-trust-note">事件標題、來源與 CVE 關聯來自 Collector 抓取的目前來源。CVE 標籤只在來源文章／公告實際出現該 CVE 時顯示；未知資訊不補猜。</p>
       </section>
 
-      <section aria-labelledby="delta-title">
-        <div class="section-heading">
-          <div>
-            <p class="section-kicker">WHAT CHANGED</p>
-            <h2 id="delta-title">Daily Delta</h2>
-            <p>完整保留自上一份 state 之後符合目前門檻的重要變化；沒有變化時不硬湊事件。</p>
-          </div>
-          <span id="deltaCount" class="count-chip">—</span>
+      <details class="technical-panel">
+        <summary>
+          <span>
+            <strong>技術漏洞資料</strong>
+            <small>需要時再展開 Daily Delta、CVSS、EPSS、KEV 與完整 CVE 優先清單</small>
+          </span>
+          <span class="technical-panel-action">展開</span>
+        </summary>
+
+        <div class="technical-panel-body">
+          <section aria-labelledby="delta-title">
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">TECHNICAL DELTA</p>
+                <h2 id="delta-title">Daily Delta</h2>
+                <p>這裡保留完整漏洞狀態變化，但不再主導首頁。</p>
+              </div>
+              <span id="deltaCount" class="count-chip">—</span>
+            </div>
+            <div id="deltaList" class="card-grid" aria-live="polite"></div>
+          </section>
+
+          <section aria-labelledby="intel-title">
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">PRIORITIZED CVE INTELLIGENCE</p>
+                <h2 id="intel-title">CVE 優先處理清單</h2>
+                <p>最多 30 筆，由 deterministic risk engine 排序。此區是技術資料，不等同新聞事件。</p>
+              </div>
+              <span id="intelCount" class="count-chip">—</span>
+            </div>
+
+            <div class="toolbar" aria-label="情報篩選">
+              <label class="search-box">
+                <span class="sr-only">搜尋 CVE、Vendor 或 Product</span>
+                <input id="searchInput" type="search" placeholder="搜尋 CVE、Vendor、Product…" autocomplete="off">
+              </label>
+              <div id="priorityFilters" class="filter-group" role="group" aria-label="依優先級篩選">
+                <button type="button" class="filter active" data-priority="ALL">全部</button>
+                <button type="button" class="filter" data-priority="P1">P1</button>
+                <button type="button" class="filter" data-priority="P2">P2</button>
+                <button type="button" class="filter" data-priority="P3">P3</button>
+                <button type="button" class="filter" data-priority="WATCH">WATCH</button>
+              </div>
+            </div>
+
+            <div id="intelligenceList" class="intel-list" aria-live="polite"></div>
+            <p id="emptyState" class="empty-state" hidden>目前沒有符合此篩選條件的項目。</p>
+          </section>
         </div>
-        <div id="deltaList" class="card-grid" aria-live="polite"></div>
-      </section>
+      </details>
 
-      <section aria-labelledby="intel-title">
-        <div class="section-heading">
-          <div>
-            <p class="section-kicker">PRIORITIZED INTELLIGENCE</p>
-            <h2 id="intel-title">優先處理清單</h2>
-            <p>最多 30 筆，由 deterministic risk engine 排序；EPSS 不會被當成已遭利用的證據。</p>
-          </div>
-          <span id="intelCount" class="count-chip">—</span>
-        </div>
-
-        <div class="toolbar" aria-label="情報篩選">
-          <label class="search-box">
-            <span class="sr-only">搜尋 CVE、Vendor 或 Product</span>
-            <input id="searchInput" type="search" placeholder="搜尋 CVE、Vendor、Product…" autocomplete="off">
-          </label>
-          <div id="priorityFilters" class="filter-group" role="group" aria-label="依優先級篩選">
-            <button type="button" class="filter active" data-priority="ALL">全部</button>
-            <button type="button" class="filter" data-priority="P1">P1</button>
-            <button type="button" class="filter" data-priority="P2">P2</button>
-            <button type="button" class="filter" data-priority="P3">P3</button>
-            <button type="button" class="filter" data-priority="WATCH">WATCH</button>
-          </div>
-        </div>
-
-        <div id="intelligenceList" class="intel-list" aria-live="polite"></div>
-        <p id="emptyState" class="empty-state" hidden>目前沒有符合此篩選條件的項目。</p>
-      </section>
-
-      <section class="methodology" aria-labelledby="method-title">
+      <section class="methodology compact-methodology" aria-labelledby="method-title">
         <div>
           <p class="section-kicker">TRUST BOUNDARY</p>
-          <h2 id="method-title">資料與模型邊界</h2>
-        </div>
-        <div class="method-grid">
-          <article>
-            <h3>Facts</h3>
-            <p>CISA KEV、NVD、FIRST EPSS 與後續 Vendor Advisory 提供可追溯事實。未知欄位維持「未確認」。</p>
-          </article>
-          <article>
-            <h3>Deterministic Intelligence</h3>
-            <p>Security Events、Daily Delta、Risk Score、Priority 與候選選擇由程式規則產生，可重現、可測試。</p>
-          </article>
-          <article>
-            <h3>LLM Enrichment</h3>
-            <p>只有可驗證 grounding 成功時才允許 LLM 產生 enrichment；否則網站與報告直接使用 verified facts。</p>
-          </article>
+          <h2 id="method-title">Facts 與 Intelligence 分離</h2>
+          <p>新聞與公告提供事件 Facts；CISA KEV、NVD、FIRST EPSS 提供漏洞 Facts。LLM 只負責後續摘要與分析，不產生不存在的事件或 CVE。</p>
         </div>
       </section>
     </main>
 
     <footer>
-      <p>Generated from compact verified intelligence. Source code and methodology are versioned in GitHub.</p>
+      <p>Search / feeds provide Facts. LLM provides Intelligence.</p>
       <p id="footerGenerated" class="muted"></p>
     </footer>
   </div>
