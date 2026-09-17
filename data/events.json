@@ -1,11 +1,11 @@
 {
   "schema_version": "1.1-security-events",
-  "generated_at": "2026-09-17T14:06:43.028240+00:00",
+  "generated_at": "2026-09-17T14:17:13.209393+00:00",
   "selection": {
     "window_days": 7,
     "max_items": 20,
     "rule": "Homepage events come from current RSS/advisory sources. CVEs are shown only when the source article/advisory mentions them.",
-    "tracked_cve_count": 123
+    "tracked_cve_count": 30
   },
   "sources": [
     {
@@ -33,9 +33,10 @@
     "fetched_entries": 65,
     "included_items": 20,
     "linked_cve_items": 16,
-    "matched_intelligence_items": 4,
+    "matched_intelligence_items": 5,
     "successful_sources": 4,
-    "source_errors": []
+    "source_errors": [],
+    "preserved_translations": 15
   },
   "items": [
     {
@@ -58,14 +59,10 @@
         "CVE-2026-76460"
       ],
       "matched_intelligence_cves": [
-        "CVE-2026-20176",
-        "CVE-2026-20211",
         "CVE-2026-20284",
-        "CVE-2026-20307",
-        "CVE-2026-76423",
         "CVE-2026-76460"
       ],
-      "score": 122,
+      "score": 117,
       "cve_evidence": "source_article",
       "title_zh": "Cisco 警告 ISE 零日漏洞遭到利用，嚴重程度達最高等級",
       "summary_zh": "Cisco 已發布安全更新，以修補攻擊者正在野外積極利用的最高嚴重程度 Identity Services Engine 漏洞。[...]"
@@ -170,6 +167,27 @@
       "summary_zh": "CISA 根據已被積極利用的證據，將一項新漏洞加入其「已知被利用漏洞」（KEV）目錄。CVE-2026-58704 Google Pixel 授權不當漏洞。此類漏洞是惡意網路攻擊者的常見攻擊向量，並對聯邦企業構成重大風險。強制性營運指引..."
     },
     {
+      "id": "710ba5f0ab3e57e9",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-14T12:00:00+00:00",
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-76461 Cisco Secure Email Gateway SQL Injection Vulnerability This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal enterprise. Binding Operatio...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/14/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "related_cves": [
+        "CVE-2026-76461"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-76461"
+      ],
+      "score": 106,
+      "cve_evidence": "source_title_or_summary",
+      "title_zh": "CISA 將一項已知被利用的漏洞加入目錄",
+      "summary_zh": "CISA 根據已被積極利用的證據，將一項新漏洞加入其「已知被利用漏洞」（KEV）目錄。CVE-2026-76461 Cisco Secure Email Gateway SQL 注入漏洞。此類漏洞是惡意網路攻擊者的常見攻擊向量，並對聯邦企業構成重大風險。強制性營運..."
+    },
+    {
       "id": "392afd7c15f5f526",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
@@ -190,25 +208,6 @@
       "cve_evidence": "source_article",
       "title_zh": "嚴重 ScreenConnect 漏洞現已在攻擊中被積極利用",
       "summary_zh": "根據美國網路安全暨基礎設施安全局（CISA）的說法，攻擊者目前正在野外利用一個嚴重等級的 ConnectWise ScreenConnect 漏洞。[...]"
-    },
-    {
-      "id": "710ba5f0ab3e57e9",
-      "event_type": "ACTIVE_EXPLOITATION",
-      "priority": "CRITICAL",
-      "published_at": "2026-09-14T12:00:00+00:00",
-      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
-      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-76461 Cisco Secure Email Gateway SQL Injection Vulnerability This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal enterprise. Binding Operatio...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/14/cisa-adds-one-known-exploited-vulnerability-catalog",
-      "related_cves": [
-        "CVE-2026-76461"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 101,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "CISA 將一項已知被利用的漏洞加入目錄",
-      "summary_zh": "CISA 根據已被積極利用的證據，將一項新漏洞加入其「已知被利用漏洞」（KEV）目錄。CVE-2026-76461 Cisco Secure Email Gateway SQL 注入漏洞。此類漏洞是惡意網路攻擊者的常見攻擊向量，並對聯邦企業構成重大風險。強制性營運..."
     },
     {
       "id": "00a28ca612699554",
@@ -452,23 +451,5 @@
       "score": 96,
       "cve_evidence": null
     }
-  ],
-  "translation": {
-    "language": "zh-Hant-TW",
-    "status": "partial",
-    "provider": "gemini",
-    "model": "gemini-3.6-flash",
-    "models_used": [
-      "gemini-3.6-flash"
-    ],
-    "translated_items": 15,
-    "total_items": 20,
-    "attempted_items": 20,
-    "batch_size": 5,
-    "rejected_item_ids": [],
-    "fallback_reason": "partial_translation",
-    "batch_fallback_reasons": [
-      "translation_timeout"
-    ]
-  }
+  ]
 }
