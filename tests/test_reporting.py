@@ -7,6 +7,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+from scripts.generate_report_v2 import _verified_scope as generation_verified_scope  # noqa: E402
+from scripts.validate_report import _verified_scope as validation_verified_scope  # noqa: E402
 from security_intel.reporting import (  # noqa: E402
     build_report_prompt,
     render_source_appendix,
@@ -145,6 +147,17 @@ class ReportingTests(unittest.TestCase):
         intelligence = sample_intelligence()
         report = "CVE-2026-20079 is verified. CVE-2026-99999 is not in input."
         self.assertEqual(unknown_report_cves(report, intelligence), ["CVE-2026-99999"])
+
+    def test_verified_free_text_cve_is_allowed_but_new_cve_is_rejected(self) -> None:
+        intelligence = sample_intelligence()
+        intelligence["items"][0]["facts"]["description"] += " Related issue CVE-2026-50197 is referenced by the official source."
+        delta = zero_delta(intelligence["generated_at"])
+        report = "CVE-2026-20079 and CVE-2026-50197 are in verified input; CVE-2026-99999 is not."
+
+        for build_scope in (generation_verified_scope, validation_verified_scope):
+            with self.subTest(build_scope=build_scope.__module__):
+                scope = build_scope(intelligence, delta)
+                self.assertEqual(unknown_report_cves(report, scope), ["CVE-2026-99999"])
 
     def test_source_appendix_uses_deterministic_fact_sources(self) -> None:
         intelligence = sample_intelligence()
