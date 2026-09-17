@@ -1,6 +1,18 @@
-import unittest
+from __future__ import annotations
 
-from security_intel.collectors.news import classify_event, extract_cves, parse_feed, priority_for
+import sys
+import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
+
+from security_intel.collectors.news import (  # noqa: E402
+    classify_event,
+    extract_cves,
+    parse_feed,
+    priority_for,
+)
 
 
 RSS = """<?xml version=\"1.0\"?>
