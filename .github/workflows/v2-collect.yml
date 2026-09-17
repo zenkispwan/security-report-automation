@@ -23,8 +23,11 @@ on:
       - 'scripts/validate_latest.py'
       - 'scripts/build_intelligence.py'
       - 'scripts/validate_intelligence.py'
+      - 'scripts/build_events.py'
+      - 'scripts/validate_events.py'
       - 'tests/test_normalize.py'
       - 'tests/test_intelligence.py'
+      - 'tests/test_news.py'
       - 'requirements.txt'
       - 'data/.gitignore'
       - '.github/workflows/v2-collect.yml'
@@ -40,8 +43,11 @@ on:
       - 'scripts/validate_latest.py'
       - 'scripts/build_intelligence.py'
       - 'scripts/validate_intelligence.py'
+      - 'scripts/build_events.py'
+      - 'scripts/validate_events.py'
       - 'tests/test_normalize.py'
       - 'tests/test_intelligence.py'
+      - 'tests/test_news.py'
       - 'requirements.txt'
       - 'data/.gitignore'
       - '.github/workflows/v2-collect.yml'
@@ -83,6 +89,7 @@ jobs:
         run: |
           python -m unittest discover -s tests -p 'test_normalize.py' -v
           python -m unittest discover -s tests -p 'test_intelligence.py' -v
+          python -m unittest discover -s tests -p 'test_news.py' -v
 
       - name: Collect facts
         env:
@@ -102,6 +109,16 @@ jobs:
       - name: Validate compact intelligence
         run: python scripts/validate_intelligence.py
 
+      - name: Collect current security news and events
+        env:
+          SECURITY_EVENT_WINDOW_DAYS: ${{ vars.SECURITY_EVENT_WINDOW_DAYS || '7' }}
+          SECURITY_EVENT_MAX_ITEMS: ${{ vars.SECURITY_EVENT_MAX_ITEMS || '20' }}
+        run: |
+          python scripts/build_events.py \
+            --window-days "$SECURITY_EVENT_WINDOW_DAYS" \
+            --max-items "$SECURITY_EVENT_MAX_ITEMS"
+          python scripts/validate_events.py
+
       - name: Preserve full snapshots and intelligence outputs
         uses: actions/upload-artifact@v4
         with:
@@ -111,6 +128,7 @@ jobs:
             data/state.json
             data/delta.json
             data/intelligence.json
+            data/events.json
             data/raw/latest/
           retention-days: 7
           if-no-files-found: error
@@ -121,7 +139,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add data/state.json data/delta.json data/intelligence.json
+          git add data/state.json data/delta.json data/intelligence.json data/events.json
 
           # The first V2.1 main run retires the large tracked snapshot.
           # The newly generated file remains in the workspace/artifact, but future runs do not commit it.
@@ -134,7 +152,7 @@ jobs:
             exit 0
           fi
 
-          git commit -m "data: refresh security intelligence delta"
+          git commit -m "data: refresh security intelligence delta and events"
 
           # Report and Collector can finish close together and both write to main.
           # Rebase this data-only commit onto the newest main and retry a bounded
