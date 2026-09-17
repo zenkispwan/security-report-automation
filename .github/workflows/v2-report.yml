@@ -13,10 +13,13 @@ on:
     paths:
       - 'src/security_intel/reporting.py'
       - 'src/security_intel/llm/**'
+      - 'src/security_intel/collectors/news.py'
       - 'scripts/generate_report_v2.py'
+      - 'scripts/build_events.py'
       - 'scripts/validate_report.py'
       - 'scripts/build_web_report.py'
       - 'scripts/validate_web_report.py'
+      - 'data/events.json'
       - 'web/**'
       - 'wrangler.jsonc'
       - 'package.json'
@@ -26,15 +29,19 @@ on:
     paths:
       - 'src/security_intel/reporting.py'
       - 'src/security_intel/llm/**'
+      - 'src/security_intel/collectors/news.py'
       - 'scripts/generate_report_v2.py'
+      - 'scripts/build_events.py'
       - 'scripts/validate_report.py'
       - 'scripts/build_web_report.py'
       - 'scripts/validate_web_report.py'
+      - 'data/events.json'
       - 'web/**'
       - 'wrangler.jsonc'
       - 'package.json'
       - 'tests/test_reporting.py'
       - 'tests/test_gemini.py'
+      - 'tests/test_news.py'
       - 'tests/test_web_report.py'
       - 'requirements-report.txt'
       - '.github/workflows/v2-report.yml'
@@ -111,7 +118,10 @@ jobs:
       - name: Install report dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements-report.txt
+          pip install -r requirements.txt -r requirements-report.txt
+
+      - name: Collect current security news and events
+        run: python scripts/build_events.py
 
       - name: Generate security intelligence report
         env:
@@ -131,33 +141,34 @@ jobs:
         with:
           name: security-intelligence-report-${{ github.run_id }}
           path: |
+            data/events.json
             reports/security_report_latest.md
             reports/security_report_metadata.json
           retention-days: 14
           if-no-files-found: error
 
-      - name: Commit report
+      - name: Commit report and current events
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add reports/security_report_latest.md reports/security_report_metadata.json
+          git add data/events.json reports/security_report_latest.md reports/security_report_metadata.json
 
           if git diff --cached --quiet; then
-            echo "No report changes."
+            echo "No report or event changes."
             exit 0
           fi
 
-          git commit -m "report: refresh grounded security intelligence brief"
+          git commit -m "report: refresh security intelligence and current events"
 
           # Collector may publish refreshed data while this report is finishing.
-          # Rebase the report-only commit onto newest main rather than racing with
+          # Rebase the report/event commit onto newest main rather than racing with
           # or overwriting a concurrent data commit.
           for attempt in 1 2 3; do
             echo "Push attempt ${attempt}/3"
             git fetch origin main
             if ! git rebase origin/main; then
               git rebase --abort || true
-              echo "ERROR: report commit conflicts with current main; refusing to overwrite remote state."
+              echo "ERROR: report/event commit conflicts with current main; refusing to overwrite remote state."
               exit 1
             fi
             if git push origin HEAD:main; then
@@ -168,5 +179,5 @@ jobs:
             fi
           done
 
-          echo "ERROR: failed to push report after 3 race-safe attempts."
+          echo "ERROR: failed to push report/events after 3 race-safe attempts."
           exit 1
