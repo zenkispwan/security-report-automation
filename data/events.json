@@ -1,11 +1,11 @@
 {
   "schema_version": "1.1-security-events",
-  "generated_at": "2026-09-17T08:50:00+00:00",
+  "generated_at": "2026-09-17T09:53:39.062247+00:00",
   "selection": {
     "window_days": 7,
     "max_items": 20,
-    "rule": "News/event first. CVEs are linked only when the source article or advisory explicitly mentions them.",
-    "tracked_cve_count": 0
+    "rule": "Homepage events come from current RSS/advisory sources. CVEs are shown only when the source article/advisory mentions them.",
+    "tracked_cve_count": 123
   },
   "sources": [
     {
@@ -17,91 +17,424 @@
       "name": "SecurityWeek",
       "url": "https://www.securityweek.com/feed/",
       "source_type": "security_media"
+    },
+    {
+      "name": "CISA Advisories",
+      "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
+      "source_type": "official_advisory"
+    },
+    {
+      "name": "CISA News",
+      "url": "https://www.cisa.gov/news.xml",
+      "source_type": "official_news"
     }
   ],
   "summary": {
-    "fetched_entries": 5,
-    "included_items": 5,
-    "linked_cve_items": 5,
-    "matched_intelligence_items": 0,
-    "successful_sources": 2,
+    "fetched_entries": 65,
+    "included_items": 20,
+    "linked_cve_items": 19,
+    "matched_intelligence_items": 7,
+    "successful_sources": 4,
     "source_errors": []
   },
   "items": [
     {
-      "id": "cisco-ise-2026-76460",
+      "id": "e274e5a9f192dd5a",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "published_at": "2026-09-17T07:20:00+00:00",
-      "title": "Cisco ISE 零時差遭實際利用，官方釋出緊急修補",
-      "summary": "Cisco 修補 Identity Services Engine 與 ISE-PIC 的重大驗證繞過漏洞；公開報導指出攻擊者已在野外利用。此事件的來源文章明確提及 CVE-2026-76460。",
+      "published_at": "2026-09-17T07:20:54+00:00",
+      "title": "Cisco warns of max severity ISE zero-day exploited in attacks",
+      "summary": "Cisco has released security updates to address a maximum-severity Identity Services Engine vulnerability that attackers are actively exploiting in the wild. [...]",
       "source_name": "BleepingComputer",
       "source_type": "security_media",
       "source_url": "https://www.bleepingcomputer.com/news/security/cisco-warns-of-identity-service-engine-zero-day-exploited-in-attacks/",
-      "related_cves": ["CVE-2026-76460"],
-      "matched_intelligence_cves": [],
-      "score": 107,
+      "related_cves": [
+        "CVE-2025-20337",
+        "CVE-2026-20176",
+        "CVE-2026-20211",
+        "CVE-2026-20284",
+        "CVE-2026-20307",
+        "CVE-2026-76423",
+        "CVE-2026-76460"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-20176",
+        "CVE-2026-20211",
+        "CVE-2026-20284",
+        "CVE-2026-20307",
+        "CVE-2026-76423",
+        "CVE-2026-76460"
+      ],
+      "score": 122,
       "cve_evidence": "source_article"
     },
     {
-      "id": "screenconnect-2026-84869",
+      "id": "04b422a9d7cc6680",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "published_at": "2026-09-16T11:14:00+00:00",
-      "title": "ConnectWise ScreenConnect 重大漏洞已遭利用",
-      "summary": "CISA 將 ScreenConnect 漏洞列為已遭利用，ConnectWise 已提供修補與緩解建議。來源報導明確提及 CVE-2026-84869。",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-hackers-exploiting-critical-screenconnect-flaw/",
-      "related_cves": ["CVE-2026-84869"],
-      "matched_intelligence_cves": [],
-      "score": 104,
-      "cve_evidence": "source_article"
+      "published_at": "2026-09-16T12:00:00+00:00",
+      "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
+      "summary": "CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-76460 Cisco Identity Services Engine Incorrect Use of Privileged APIs Vulnerability CVE-2026-87886 Acronis Backup Incorrect Default Permissions Vulnerability These types of vulnerabilities are a frequent attack v...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/16/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+      "related_cves": [
+        "CVE-2026-76460",
+        "CVE-2026-87886"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-76460",
+        "CVE-2026-87886"
+      ],
+      "score": 116,
+      "cve_evidence": "source_title_or_summary"
     },
     {
-      "id": "cisco-seg-2026-76461",
+      "id": "aed55b9ef088f17e",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "published_at": "2026-09-15T07:31:00+00:00",
-      "title": "Cisco Secure Email Gateway 零時差可取得 root 權限",
-      "summary": "Cisco 警告 Secure Email Gateway 的 AsyncOS 漏洞已遭攻擊者利用，未驗證遠端攻擊者可透過特製郵件觸發任意命令執行。來源明確提及 CVE-2026-76461。",
-      "source_name": "BleepingComputer",
+      "published_at": "2026-09-17T06:19:52+00:00",
+      "title": "Active Exploitation Triggers Emergency Patch for Cisco ISE Zero-Day",
+      "summary": "Remote, unauthenticated attackers can exploit the vulnerability to bypass authentication via crafted requests. The post Active Exploitation Triggers Emergency Patch for Cisco ISE Zero-Day appeared first on SecurityWeek .",
+      "source_name": "SecurityWeek",
       "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/new-cisco-secure-email-zero-day-exploited-to-execute-commands-as-root/",
-      "related_cves": ["CVE-2026-76461"],
-      "matched_intelligence_cves": [],
-      "score": 103,
+      "source_url": "https://www.securityweek.com/active-exploitation-triggers-emergency-patch-for-cisco-ise-zero-day/",
+      "related_cves": [
+        "CVE-2026-76460"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-76460"
+      ],
+      "score": 112,
       "cve_evidence": "source_article"
     },
     {
-      "id": "vmware-vcenter-2026-59310",
+      "id": "df68e97f1c7644dd",
       "event_type": "RANSOMWARE",
       "priority": "CRITICAL",
-      "published_at": "2026-09-15T12:16:00+00:00",
-      "title": "VMware vCenter 漏洞遭勒索軟體集團利用",
-      "summary": "CISA 警告已有勒索軟體集團加入對 VMware vCenter 漏洞的利用活動；相關報導提到先前已有大量主機遭入侵。來源明確提及 CVE-2026-59310。",
+      "published_at": "2026-09-16T14:00:10+00:00",
+      "title": "The true cost of a ransomware attack, with and without BCDR",
+      "summary": "The ransom itself can be only a fraction of the total cost of a ransomware attack, with downtime, recovery, remediation, and legal obligations adding millions to the bill. Datto explains how a mature BCDR strategy can reduce downtime and provide a faster, more predictable path to recovery. [...]",
       "source_name": "BleepingComputer",
       "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/cisa-critical-vmware-vcenter-rce-flaw-now-exploited-by-ransomware-gangs/",
-      "related_cves": ["CVE-2026-59310"],
+      "source_url": "https://www.bleepingcomputer.com/news/security/the-true-cost-of-a-ransomware-attack-with-and-without-bcdr/",
+      "related_cves": [],
       "matched_intelligence_cves": [],
-      "score": 105,
+      "score": 111,
+      "cve_evidence": null
+    },
+    {
+      "id": "9a262ecad05f6188",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-16T13:10:54+00:00",
+      "title": "Pixel Modem Zero-Day Exploited in Targeted Attacks",
+      "summary": "Google announced patches for the exploited privilege escalation vulnerability (CVE-2026-58704) on September 15. The post Pixel Modem Zero-Day Exploited in Targeted Attacks appeared first on SecurityWeek .",
+      "source_name": "SecurityWeek",
+      "source_type": "security_media",
+      "source_url": "https://www.securityweek.com/pixel-modem-zero-day-exploited-in-targeted-attacks/",
+      "related_cves": [
+        "CVE-2026-58704"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-58704"
+      ],
+      "score": 111,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "3c232ce3f43d8ba8",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-16T12:00:00+00:00",
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-58704 Google Pixel Improper Authorization Vulnerability This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal enterprise. Binding Operational D...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/16/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "related_cves": [
+        "CVE-2026-58704"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-58704"
+      ],
+      "score": 111,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "a267aa5e6441e01f",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-16T07:00:19+00:00",
+      "title": "Google fixes actively exploited Android zero-day on Pixel devices",
+      "summary": "Google has released the September 2026 security patches to address 110 vulnerabilities affecting its Pixel devices, including one zero-day flaw actively exploited in targeted attacks. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/google-fixes-actively-exploited-android-zero-day-on-pixel-devices/",
+      "related_cves": [
+        "CVE-2025-48595",
+        "CVE-2026-58704"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-58704"
+      ],
+      "score": 110,
       "cve_evidence": "source_article"
     },
     {
-      "id": "acronis-2026-87886",
+      "id": "61abe81ccc88a573",
       "event_type": "ACTIVE_EXPLOITATION",
-      "priority": "HIGH",
-      "published_at": "2026-09-15T09:37:00+00:00",
-      "title": "Acronis cPanel 備份外掛漏洞出現實際利用",
-      "summary": "Acronis 更新 cPanel/WHM 與 Plesk 備份外掛的安全公告，指出 Linux 本機權限提升漏洞已在有限、具針對性的攻擊中被觀察到。來源明確提及 CVE-2026-87886。",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-15T21:37:35+00:00",
+      "title": "Acronis warns of actively exploited flaw in its cPanel backup plugin",
+      "summary": "Acronis disclosed a high-severity Linux local privilege escalation vulnerability in its backup plugin for cPanel, WebHost Manager (WHM), and Plesk that may be exploited in the wild. [...]",
       "source_name": "BleepingComputer",
       "source_type": "security_media",
       "source_url": "https://www.bleepingcomputer.com/news/security/acronis-warns-of-actively-exploited-flaw-in-its-cpanel-backup-plugin/",
-      "related_cves": ["CVE-2026-87886"],
+      "related_cves": [
+        "CVE-2026-87886"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-87886"
+      ],
+      "score": 109,
+      "cve_evidence": "source_article"
+    },
+    {
+      "id": "392afd7c15f5f526",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-16T11:14:28+00:00",
+      "title": "Critical ScreenConnect flaw now actively exploited in attacks",
+      "summary": "Attackers now exploit a critical-severity ConnectWise ScreenConnect vulnerability in the wild, according to the U.S. Cybersecurity and Infrastructure Security Agency (CISA). [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-hackers-exploiting-critical-screenconnect-flaw/",
+      "related_cves": [
+        "CVE-2024-1709",
+        "CVE-2025-3935",
+        "CVE-2026-3564",
+        "CVE-2026-84869"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 106,
+      "cve_evidence": "source_article"
+    },
+    {
+      "id": "710ba5f0ab3e57e9",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-14T12:00:00+00:00",
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-76461 Cisco Secure Email Gateway SQL Injection Vulnerability This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal enterprise. Binding Operatio...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/14/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "related_cves": [
+        "CVE-2026-76461"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 102,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "00a28ca612699554",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-11T12:00:00+00:00",
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-85706 GitLab Community Edition and Enterprise Edition Path Traversal Vulnerability This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal enterp...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/11/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "related_cves": [
+        "CVE-2026-85706"
+      ],
       "matched_intelligence_cves": [],
       "score": 96,
-      "cve_evidence": "source_article"
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "e863896e826d2567",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-11T12:00:00+00:00",
+      "title": "CISA Adds Three Known Exploited Vulnerabilities to Catalog",
+      "summary": "CISA has added three new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-42016 JFrog Artifactory Incorrect Authorization Vulnerability CVE-2026-42018 JFrog Artifactory Improper Authentication Vulnerability CVE-2026-84869 ConnectWise ScreenConnect Improper Privilege Management and Mi...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/11/cisa-adds-three-known-exploited-vulnerabilities-catalog",
+      "related_cves": [
+        "CVE-2026-42016",
+        "CVE-2026-42018",
+        "CVE-2026-84869"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 96,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "89afc6a28a51a8ea",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-10T12:00:00+00:00",
+      "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
+      "summary": "CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-67277 MikroTik RouterOS Missing Authentication for Critical Function Vulnerability CVE-2026-86060 MikroTik RouterOS Improper Neutralization of Argument Delimiters in a Command Vulnerability These types of vulnera...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/10/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+      "related_cves": [
+        "CVE-2026-67277",
+        "CVE-2026-86060"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 95,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "8cca7e0997a098a7",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-15T12:00:00+00:00",
+      "title": "CareCam CM2507",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to access live video and sensitive device information, enable unauthorized services, execute arbitrary code, modify device operation, and recover stored credentials. The following versions of CareCam CM2507 are affected: HMT.CM2507 Firmware v251211.1507 (CVE-2026-88...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-258-08",
+      "related_cves": [
+        "CVE-2026-81305",
+        "CVE-2026-81321",
+        "CVE-2026-84398",
+        "CVE-2026-84400",
+        "CVE-2026-85478",
+        "CVE-2026-85497",
+        "CVE-2026-88259"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 84,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "2f5bf3d050804bd8",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-15T12:00:00+00:00",
+      "title": "Wärtsilä FOS-Onboard",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to deliver an unauthorized update, execute code, or extract credentials to allow the attacker to impersonate a privileged client. The following versions of Wärtsilä FOS-Onboard are affected: FOS-Onboard 5.07.0923.01 (CVE-2026-78225, CVE-2026-81855) CVSS Vendor Equip...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-258-02",
+      "related_cves": [
+        "CVE-2026-78225",
+        "CVE-2026-81855"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 84,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "315dc3f8943e0a17",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-15T12:00:00+00:00",
+      "title": "mySCADA myPRO Manager",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to access privileged management functions or send arbitrary SMS messages through the connected GSM modem. The following versions of mySCADA myPRO Manager are affected: mySCADA myPRO Manager <=2.1 (CVE-2026-73807, CVE-2026-82567) CVSS Vendor Equipment Vulnerabilities...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-258-03",
+      "related_cves": [
+        "CVE-2026-73807",
+        "CVE-2026-82567"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 84,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "cac98fd9896d9379",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-15T12:00:00+00:00",
+      "title": "Digital Watchdog VMAX DVR and NVR Product Lineups",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could grant full administrative control of the device, allowing an attacker to view live and recorded surveillance, alter device configurations, and use the device as a network pivot point. The following versions of Digital Watchdog VMAX DVR and NVR Product Lineups are affected: VMAX A1 G4...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-258-01",
+      "related_cves": [
+        "CVE-2026-66372",
+        "CVE-2026-66887",
+        "CVE-2026-66890",
+        "CVE-2026-68070",
+        "CVE-2026-68950",
+        "CVE-2026-68953"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 84,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "eb2518d5a0fbcc4b",
+      "event_type": "VULNERABILITY_NEWS",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-15T12:00:00+00:00",
+      "title": "Siemens Reyrolle 7SR5",
+      "summary": "View CSAF Summary Siemens Reyrolle 7SR5 Before V2.70 is affected by multiple vulnerabilities. Siemens has released a new version for Reyrolle 7SR5 and recommends to update to the latest version. The following versions of Siemens Reyrolle 7SR5 are affected: Reyrolle 7SR5 vers:intdot/<2.70 (CVE-2024-42384, CVE-2024-42385, CVE-2024-42386, CVE-2024-42391, CVE...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-258-05",
+      "related_cves": [
+        "CVE-2024-42384",
+        "CVE-2024-42385",
+        "CVE-2024-42386",
+        "CVE-2024-42391",
+        "CVE-2024-42392",
+        "CVE-2026-62645",
+        "CVE-2026-62646",
+        "CVE-2026-62647",
+        "CVE-2026-62648",
+        "CVE-2026-62649",
+        "CVE-2026-62650",
+        "CVE-2026-62652",
+        "CVE-2026-62653",
+        "CVE-2026-62654"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 79,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "46ee0ae2bb5a08c3",
+      "event_type": "VULNERABILITY_NEWS",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-15T12:00:00+00:00",
+      "title": "Siemens Mendix SAML",
+      "summary": "View CSAF Summary Mendix SAML module contains a vulnerability that could allow unauthenticated remote attackers to hijack an account in specific SSO configurations. Mendix has provided fix releases for the Mendix SAML module and recommends to update to the latest version. The following versions of Siemens Mendix SAML are affected: Mendix SAML (Mendix 10 c...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-258-06",
+      "related_cves": [
+        "CVE-2026-80465"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 79,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "affe174619afa835",
+      "event_type": "VULNERABILITY_NEWS",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-15T12:00:00+00:00",
+      "title": "Siemens Teamcenter",
+      "summary": "View CSAF Summary A reflected cross site scripting vulnerability in the authentication redirect flow (/auth/) of Teamcenter allows an unauthenticated remote attacker to inject JavaScript into an authenticated user's session by crafting a malicious URL. Successful exploitation may enable the attacker to read data or perform actions within the victim's Team...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-258-07",
+      "related_cves": [
+        "CVE-2026-58113"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 79,
+      "cve_evidence": "source_title_or_summary"
     }
   ]
 }
