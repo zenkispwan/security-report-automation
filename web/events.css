@@ -5,7 +5,8 @@
 }
 
 .security-event-card,
-.security-event-empty {
+.security-event-empty,
+.technical-panel {
   position: relative;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -15,8 +16,8 @@
 }
 
 .security-event-card {
-  min-height: 320px;
-  padding: 20px;
+  min-height: 270px;
+  padding: 18px;
 }
 
 .security-event-card::before {
@@ -27,17 +28,18 @@
   background: var(--accent);
 }
 
-.security-event-card.event-new_kev::before,
-.security-event-card.event-ransomware_use_changed::before,
-.security-event-card.event-exploitation_changed::before {
+.security-event-card.event-ransomware::before,
+.security-event-card.event-active_exploitation::before {
   background: var(--p1);
 }
 
-.security-event-card.event-epss_increased::before {
+.security-event-card.event-supply_chain::before,
+.security-event-card.event-data_breach::before {
   background: var(--p2);
 }
 
-.security-event-card.event-new_cve::before {
+.security-event-card.event-threat_activity::before,
+.security-event-card.event-vulnerability_news::before {
   background: var(--p3);
 }
 
@@ -48,42 +50,57 @@
   gap: 12px;
 }
 
-.security-event-badge {
+.security-event-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.security-event-badge,
+.security-event-priority {
   display: inline-flex;
   align-items: center;
-  min-height: 28px;
-  padding: 4px 9px;
-  border: 1px solid rgba(104, 182, 255, 0.34);
+  min-height: 26px;
+  padding: 4px 8px;
   border-radius: 999px;
-  background: rgba(104, 182, 255, 0.1);
-  color: #cbe8ff;
-  font-size: 0.74rem;
+  font-size: 0.7rem;
   font-weight: 850;
 }
 
-.event-new_kev .security-event-badge,
-.event-ransomware_use_changed .security-event-badge,
-.event-exploitation_changed .security-event-badge {
-  border-color: rgba(255, 107, 107, 0.4);
-  background: rgba(255, 107, 107, 0.1);
+.security-event-badge {
+  border: 1px solid rgba(104, 182, 255, 0.34);
+  background: rgba(104, 182, 255, 0.1);
+  color: #cbe8ff;
+}
+
+.priority-critical {
+  border: 1px solid rgba(255, 107, 107, 0.42);
+  background: rgba(255, 107, 107, 0.12);
   color: #ffd5d5;
 }
 
-.event-epss_increased .security-event-badge {
-  border-color: rgba(255, 180, 84, 0.42);
+.priority-high {
+  border: 1px solid rgba(255, 180, 84, 0.42);
   background: rgba(255, 180, 84, 0.1);
   color: #ffe0b5;
 }
 
+.priority-medium {
+  border: 1px solid rgba(104, 182, 255, 0.3);
+  background: rgba(104, 182, 255, 0.08);
+  color: #cbe8ff;
+}
+
 .security-event-time {
   color: #7f91aa;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   white-space: nowrap;
 }
 
 .security-event-title {
-  margin: 18px 0 0;
-  font-size: 1.22rem;
+  margin: 15px 0 0;
+  font-size: 1.08rem;
+  line-height: 1.45;
 }
 
 .security-event-title a {
@@ -96,47 +113,62 @@
 }
 
 .security-event-product {
-  margin: 5px 0 0;
-  color: #c6d4e7;
-  font-size: 0.9rem;
+  margin: 7px 0 0;
+  color: #9fb3cb;
+  font-size: 0.78rem;
 }
 
 .security-event-summary {
-  margin: 16px 0 0;
+  display: -webkit-box;
+  margin: 13px 0 0;
+  overflow: hidden;
   color: #afbed2;
-  font-size: 0.91rem;
+  font-size: 0.86rem;
+  line-height: 1.6;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
 }
 
 .security-event-facts {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
-  margin-top: 16px;
+  margin-top: 14px;
 }
 
-.security-event-facts span {
+.security-event-chip {
   display: inline-flex;
   padding: 4px 8px;
   border: 1px solid #1f3148;
   border-radius: 8px;
   background: rgba(7, 17, 31, 0.72);
   color: #b7c8dd;
-  font-size: 0.72rem;
-  font-weight: 700;
+  font-size: 0.68rem;
+  font-weight: 750;
+}
+
+.security-event-chip.cve-chip {
+  border-color: rgba(104, 182, 255, 0.28);
+  color: #cbe8ff;
+}
+
+.security-event-chip.tracked-chip {
+  border-color: rgba(90, 210, 160, 0.3);
+  color: #baf4d8;
 }
 
 .security-event-sources {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 17px;
-  padding-top: 14px;
+  margin-top: 15px;
+  padding-top: 12px;
   border-top: 1px solid rgba(34, 50, 74, 0.82);
 }
 
 .security-event-sources a {
   color: var(--accent);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 800;
   text-decoration: none;
 }
@@ -159,7 +191,82 @@
   border-radius: 12px;
   background: rgba(104, 182, 255, 0.05);
   color: #8fa4be;
-  font-size: 0.79rem;
+  font-size: 0.78rem;
+}
+
+.technical-panel {
+  margin-top: 30px;
+}
+
+.technical-panel > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 20px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.technical-panel > summary::-webkit-details-marker {
+  display: none;
+}
+
+.technical-panel > summary strong,
+.technical-panel > summary small {
+  display: block;
+}
+
+.technical-panel > summary strong {
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.technical-panel > summary small {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 500;
+}
+
+.technical-panel-action {
+  flex: 0 0 auto;
+  padding: 5px 9px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 0.74rem;
+  font-weight: 800;
+}
+
+.technical-panel[open] .technical-panel-action::after {
+  content: "中";
+}
+
+.technical-panel[open] .technical-panel-action {
+  font-size: 0;
+}
+
+.technical-panel[open] .technical-panel-action::before {
+  content: "收合";
+  font-size: 0.74rem;
+}
+
+.technical-panel-body {
+  padding: 0 20px 22px;
+  border-top: 1px solid rgba(34, 50, 74, 0.82);
+}
+
+.technical-panel-body > section {
+  margin-top: 26px;
+}
+
+.compact-methodology {
+  margin-top: 30px;
+}
+
+.compact-methodology p:last-child {
+  margin-bottom: 0;
 }
 
 @media (max-width: 980px) {
@@ -177,23 +284,34 @@
     min-height: 0;
   }
 
-  .security-event-top {
+  .security-event-top,
+  .technical-panel > summary {
     align-items: flex-start;
     flex-direction: column;
-    gap: 7px;
+    gap: 8px;
+  }
+
+  .security-event-time {
+    white-space: normal;
+  }
+
+  .technical-panel-action {
+    align-self: flex-start;
   }
 }
 
 @media print {
   .security-event-card,
-  .security-event-empty {
+  .security-event-empty,
+  .technical-panel {
     box-shadow: none;
     background: #fff;
   }
 
   .security-event-summary,
   .security-event-product,
-  .event-trust-note {
+  .event-trust-note,
+  .technical-panel > summary small {
     color: #4b5563;
   }
 }
