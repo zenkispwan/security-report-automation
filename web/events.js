@@ -115,6 +115,12 @@ function securityEventCard(item) {
   return card;
 }
 
+async function fetchSecurityEvents() {
+  const response = await fetch('./data/events.json', { cache: 'no-store' });
+  if (!response.ok) throw new Error('無法讀取最新資安事件');
+  return response.json();
+}
+
 async function loadSecurityEvents() {
   const root = document.getElementById('securityEventList');
   const count = document.getElementById('securityEventCount');
@@ -122,9 +128,7 @@ async function loadSecurityEvents() {
   if (!root || !count) return;
 
   try {
-    const response = await fetch('./data/events.json', { cache: 'no-store' });
-    if (!response.ok) throw new Error('無法讀取最新資安事件');
-    const payload = await response.json();
+    const payload = await fetchSecurityEvents();
     const events = payload.items || [];
     const visible = events.slice(0, EVENT_LIMIT);
 
@@ -156,4 +160,80 @@ async function loadSecurityEvents() {
   }
 }
 
+function searchableEventText(item) {
+  return [
+    item.title,
+    item.title_zh,
+    item.summary,
+    item.summary_zh,
+    item.source_name,
+    item.event_type,
+    ...(item.related_cves || []),
+  ].filter(Boolean).join(' ').toLowerCase();
+}
+
+async function loadAllSecurityEvents() {
+  const root = document.getElementById('allSecurityEventList');
+  const count = document.getElementById('allEventCount');
+  const freshness = document.getElementById('allEventFreshness');
+  const search = document.getElementById('allEventSearch');
+  const sourceSelect = document.getElementById('allEventSource');
+  const filterGroup = document.getElementById('allEventTypeFilters');
+  const empty = document.getElementById('allEventEmpty');
+  if (!root || !count || !search || !sourceSelect || !filterGroup) return;
+
+  try {
+    const payload = await fetchSecurityEvents();
+    const events = payload.items || [];
+    let activeType = 'ALL';
+
+    const sources = [...new Set(events.map((item) => item.source_name).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+    for (const sourceName of sources) {
+      const option = document.createElement('option');
+      option.value = sourceName;
+      option.textContent = sourceName;
+      sourceSelect.append(option);
+    }
+
+    if (freshness) {
+      const translated = payload.translation?.translated_items || 0;
+      const translationNote = translated ? ` · ${translated} 筆繁中翻譯` : '';
+      freshness.textContent = payload.generated_at ? `更新 ${eventTime(payload.generated_at)}${translationNote}` : '等待第一次事件收集';
+    }
+
+    const render = () => {
+      const query = search.value.trim().toLowerCase();
+      const source = sourceSelect.value;
+      const filtered = events.filter((item) => {
+        if (activeType !== 'ALL' && item.event_type !== activeType) return false;
+        if (source !== 'ALL' && item.source_name !== source) return false;
+        if (query && !searchableEventText(item).includes(query)) return false;
+        return true;
+      });
+
+      root.replaceChildren();
+      count.textContent = `顯示 ${filtered.length} / ${events.length} 筆`;
+      if (empty) empty.hidden = filtered.length > 0;
+      for (const item of filtered) root.append(securityEventCard(item));
+    };
+
+    filterGroup.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-event-type]');
+      if (!button) return;
+      activeType = button.dataset.eventType || 'ALL';
+      for (const item of filterGroup.querySelectorAll('[data-event-type]')) item.classList.toggle('active', item === button);
+      render();
+    });
+    search.addEventListener('input', render);
+    sourceSelect.addEventListener('change', render);
+    render();
+  } catch (error) {
+    root.replaceChildren();
+    root.append(eventEl('article', 'security-event-empty', error.message || '目前無法載入事件清單'));
+    count.textContent = '載入失敗';
+    console.error(error);
+  }
+}
+
 loadSecurityEvents();
+loadAllSecurityEvents();
