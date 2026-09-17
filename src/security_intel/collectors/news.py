@@ -6,8 +6,9 @@ import re
 import time
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
+from html.parser import HTMLParser
 from typing import Iterable
 
 import requests
@@ -46,6 +47,16 @@ EVENT_KEYWORDS = {
         "ransomware",
         "encryptor",
     ),
+    "ACTIVE_EXPLOITATION": (
+        "actively exploited",
+        "active exploitation",
+        "exploited in attacks",
+        "exploited in the wild",
+        "under active attack",
+        "zero-day",
+        "zero day",
+        "0-day",
+    ),
     "SUPPLY_CHAIN": (
         "supply chain",
         "supply-chain",
@@ -61,16 +72,6 @@ EVENT_KEYWORDS = {
         "data stolen",
         "data leak",
         "leaked data",
-    ),
-    "ACTIVE_EXPLOITATION": (
-        "actively exploited",
-        "active exploitation",
-        "exploited in attacks",
-        "exploited in the wild",
-        "under active attack",
-        "zero-day",
-        "zero day",
-        "0-day",
     ),
     "THREAT_ACTIVITY": (
         "malware",
@@ -95,12 +96,62 @@ EVENT_WEIGHT = {
 }
 
 
+class _ArticleTextParser(HTMLParser):
+    IGNORED = {"script", "style", "svg", "nav", "footer", "header", "noscript", "form"}
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.ignored_depth = 0
+        self.article_depth = 0
+        self.seen_article = False
+        self.article_parts: list[str] = []
+        self.fallback_parts: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs) -> None:  # noqa: ANN001 - HTMLParser signature
+        tag = tag.lower()
+        if tag in self.IGNORED:
+            self.ignored_depth += 1
+        if tag == "article":
+            self.seen_article = True
+            self.article_depth += 1
+
+    def handle_endtag(self, tag: str) -> None:
+        tag = tag.lower()
+        if tag == "article" and self.article_depth:
+            self.article_depth -= 1
+        if tag in self.IGNORED and self.ignored_depth:
+            self.ignored_depth -= 1
+
+    def handle_data(self, data: str) -> None:
+        if self.ignored_depth:
+            return
+        value = SPACE_RE.sub(" ", data).strip()
+        if not value:
+            return
+        self.fallback_parts.append(value)
+        if self.article_depth:
+            self.article_parts.append(value)
+
+    def text(self) -> str:
+        parts = self.article_parts if self.seen_article and self.article_parts else self.fallback_parts
+        return " ".join(parts)[:60000]
+
+
 def clean_text(value: str | None) -> str:
     if not value:
         return ""
     value = TAG_RE.sub(" ", value)
     value = html.unescape(value)
     return SPACE_RE.sub(" ", value).strip()
+
+
+def article_visible_text(value: str) -> str:
+    parser = _ArticleTextParser()
+    try:
+        parser.feed(value)
+        return parser.text()
+    except Exception:  # noqa: BLE001 - fall back to conservative text cleanup
+        return clean_text(value[:60000])
 
 
 def local_name(tag: str) -> str:
@@ -138,7 +189,7 @@ def extract_cves(*values: str) -> list[str]:
 
 def classify_event(text: str, related_cves: Iterable[str]) -> str | None:
     lowered = text.lower()
-    for event_type in ("RANSOMWARE", "SUPPLY_CHAIN", "DATA_BREACH", "ACTIVE_EXPLOITATION", "THREAT_ACTIVITY"):
+    for event_type in ("RANSOMWARE", "ACTIVE_EXPLOITATION", "SUPPLY_CHAIN", "DATA_BREACH", "THREAT_ACTIVITY"):
         if any(keyword in lowered for keyword in EVENT_KEYWORDS[event_type]):
             return event_type
     if any(related_cves):
@@ -182,8 +233,7 @@ def parse_feed(xml_text: str, source: dict[str, str]) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
 
     for node in root.iter():
-        node_name = local_name(node.tag)
-        if node_name not in {"item", "entry"}:
+        if local_name(node.tag) not in {"item", "entry"}:
             continue
 
         title = clean_text(_child_text(node, {"title"}))
@@ -214,7 +264,7 @@ class NewsCollectionResult:
 
 
 class NewsCollector:
-    def __init__(self, timeout: int = 30, retries: int = 2, article_limit: int = 40) -> None:
+    def __init__(self, timeout: int = 20, retries: int = 1, article_limit: int = 24) -> None:
         self.timeout = timeout
         self.retries = retries
         self.article_limit = article_limit
@@ -279,21 +329,24 @@ class NewsCollector:
                 continue
 
             base_text = f"{entry['title']} {entry.get('summary', '')}".strip()
-            related_cves = extract_cves(base_text)
-            preliminary_type = classify_event(base_text, related_cves)
-            looks_relevant = preliminary_type is not None or any(token in base_text.lower() for token in ("vulnerability", "exploit", "attack", "cyber"))
+            feed_cves = extract_cves(base_text)
+            preliminary_type = classify_event(base_text, feed_cves)
+            looks_relevant = (
+                preliminary_type is not None
+                or entry.get("source_type") == "official_advisory"
+                or any(token in base_text.lower() for token in ("vulnerability", "exploit", "attack", "cyber"))
+            )
 
             article_text = ""
             if looks_relevant and article_fetches < self.article_limit:
                 try:
-                    article_text = self._get_text(url)
+                    article_text = article_visible_text(self._get_text(url))
                     article_fetches += 1
                 except Exception:  # noqa: BLE001 - feed metadata remains usable
                     article_text = ""
 
-            all_text = f"{base_text} {article_text}"
-            related_cves = extract_cves(all_text)
-            event_type = classify_event(base_text + " " + clean_text(article_text[:12000]), related_cves)
+            related_cves = extract_cves(base_text, article_text)
+            event_type = classify_event(base_text, related_cves)
             if not event_type:
                 continue
 
@@ -322,6 +375,7 @@ class NewsCollector:
                     "related_cves": related_cves,
                     "matched_intelligence_cves": matched_cves,
                     "score": score,
+                    "cve_evidence": "source_title_or_summary" if feed_cves else ("source_article" if related_cves else None),
                 }
             )
 
