@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta name="description" content="CVE 技術詳情：繁中漏洞說明、CVSS、EPSS、CISA KEV、利用狀態與相關資安事件。">
+  <title>CVE 詳情｜Security Intelligence Automation V2</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./events.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero cve-page-hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Security Intelligence Automation V2</p>
+        <h1 id="cvePageTitle">CVE 詳情</h1>
+        <p id="cvePageSubtitle" class="lede">正在載入已驗證的漏洞 Facts 與繁中說明。</p>
+        <div class="status-row">
+          <span id="cvePriorityBadge" class="status-badge">載入中</span>
+          <span id="cveUpdatedAt" class="muted"></span>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a class="button secondary" href="./events.html">全部事件</a>
+        <a class="button ghost" href="./index.html#security-events">今日重點</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="cveOverview" aria-labelledby="cve-overview-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">VERIFIED CVE FACTS</p>
+            <h2 id="cve-overview-title">漏洞說明</h2>
+          </div>
+        </div>
+        <div id="cveSummaryCard" class="cve-summary-card" aria-live="polite"></div>
+      </section>
+
+      <section aria-labelledby="cve-facts-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">TECHNICAL SIGNALS</p>
+            <h2 id="cve-facts-title">技術與風險資料</h2>
+          </div>
+        </div>
+        <div id="cveFactGrid" class="cve-fact-grid" aria-live="polite"></div>
+      </section>
+
+      <section aria-labelledby="cve-events-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">RELATED SECURITY EVENTS</p>
+            <h2 id="cve-events-title">相關新聞與事件</h2>
+            <p>只列出來源文章或官方公告實際提到此 CVE 的事件。</p>
+          </div>
+          <span id="cveEventCount" class="count-chip">—</span>
+        </div>
+        <div id="cveRelatedEvents" class="security-event-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="methodology compact-methodology" aria-labelledby="cve-trust-title">
+        <div>
+          <p class="section-kicker">TRUST BOUNDARY</p>
+          <h2 id="cve-trust-title">Facts 與翻譯分離</h2>
+          <p>CVSS、EPSS、KEV、利用狀態與來源皆來自 Collector。繁中標題與說明是對既有文字的翻譯 enrichment，不會改寫原始 Facts；翻譯失敗時顯示英文原文。</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Search / feeds provide Facts. LLM provides Intelligence.</p>
+      <p class="muted"><a href="./events.html">返回全部資安事件</a></p>
+    </footer>
+  </div>
+  <noscript>此頁需要 JavaScript 才能載入 CVE 詳情。</noscript>
+  <script src="./cve.js" defer></script>
+</body>
+</html>
