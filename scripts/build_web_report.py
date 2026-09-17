@@ -17,6 +17,7 @@ STATIC_FILES = {
     Path("web/events.js"): Path("events.js"),
     Path("web/cve.js"): Path("cve.js"),
     Path("web/_headers"): Path("_headers"),
+    Path("data/daily_brief.json"): Path("data/daily_brief.json"),
     Path("data/events.json"): Path("data/events.json"),
     Path("data/cve_enrichment_zh.json"): Path("data/cve_enrichment_zh.json"),
     Path("data/intelligence.json"): Path("data/intelligence.json"),
@@ -43,7 +44,7 @@ def build(output: Path) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Build the static Security Intelligence web report for Cloudflare Workers Static Assets.")
-    parser.add_argument("--output", default="_site", help="Output directory (default: _site)")
+    parser.add_argument("--output", default="_site", help="Output directory (default: _site")
     args = parser.parse_args()
     output = Path(args.output)
     build(output)
