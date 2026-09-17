@@ -1,0 +1,109 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import json
+from datetime import datetime, timezone
+from pathlib import Path
+
+from security_intel.collectors.news import DEFAULT_NEWS_SOURCES, NewsCollector
+
+
+def load_json(path: Path) -> dict:
+    if not path.is_file():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def tracked_cves(intelligence: dict, delta: dict) -> set[str]:
+    values: set[str] = set()
+    for payload in (intelligence, delta):
+        for item in payload.get("items", []) or []:
+            cve = item.get("cve") or (item.get("facts") or {}).get("cve")
+            if cve:
+                values.add(str(cve).upper())
+    return values
+
+
+def build_events(
+    *,
+    output: Path,
+    intelligence_path: Path,
+    delta_path: Path,
+    window_days: int,
+    max_items: int,
+) -> dict:
+    intelligence = load_json(intelligence_path)
+    delta = load_json(delta_path)
+    tracked = tracked_cves(intelligence, delta)
+
+    collector = NewsCollector()
+    result = collector.collect(
+        sources=DEFAULT_NEWS_SOURCES,
+        window_days=window_days,
+        max_items=max_items,
+        tracked_cves=tracked,
+    )
+
+    if result.successful_sources == 0 and output.is_file():
+        print("WARNING: all news sources failed; preserving previous data/events.json")
+        return load_json(output)
+
+    payload = {
+        "schema_version": "1.1-security-events",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "selection": {
+            "window_days": window_days,
+            "max_items": max_items,
+            "rule": "Homepage events come from current RSS/advisory sources. CVEs are shown only when the source article/advisory mentions them.",
+            "tracked_cve_count": len(tracked),
+        },
+        "sources": [
+            {
+                "name": source["name"],
+                "url": source["url"],
+                "source_type": source["source_type"],
+            }
+            for source in DEFAULT_NEWS_SOURCES
+        ],
+        "summary": {
+            "fetched_entries": result.fetched_entries,
+            "included_items": len(result.items),
+            "linked_cve_items": sum(1 for item in result.items if item.get("related_cves")),
+            "matched_intelligence_items": sum(1 for item in result.items if item.get("matched_intelligence_cves")),
+            "successful_sources": result.successful_sources,
+            "source_errors": result.source_errors,
+        },
+        "items": result.items,
+    }
+
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return payload
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Build the current security news/events feed.")
+    parser.add_argument("--output", default="data/events.json")
+    parser.add_argument("--intelligence", default="data/intelligence.json")
+    parser.add_argument("--delta", default="data/delta.json")
+    parser.add_argument("--window-days", type=int, default=7)
+    parser.add_argument("--max-items", type=int, default=20)
+    args = parser.parse_args()
+
+    payload = build_events(
+        output=Path(args.output),
+        intelligence_path=Path(args.intelligence),
+        delta_path=Path(args.delta),
+        window_days=max(1, args.window_days),
+        max_items=max(1, args.max_items),
+    )
+    print(
+        "OK: security events "
+        f"items={len(payload.get('items', []))} "
+        f"generated_at={payload.get('generated_at')}"
+    )
+
+
+if __name__ == "__main__":
+    main()
