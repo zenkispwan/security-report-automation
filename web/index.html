@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark light">
-  <meta name="description" content="每日資安事件情報：重大攻擊、勒索軟體、供應鏈、資料外洩、主動利用與相關 CVE。">
-  <title>每日資安事件情報｜Security Intelligence Automation V2</title>
+  <meta name="description" content="每日自動產生的繁中資安事件情報報告：重大攻擊、勒索軟體、資料外洩、主動利用、Daily Delta 與相關 CVE。">
+  <title>每日資安事件報告｜Security Intelligence Automation V2</title>
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./events.css">
 </head>
@@ -14,15 +14,16 @@
     <header class="hero">
       <div class="hero-copy">
         <p class="eyebrow">Security Intelligence Automation V2</p>
-        <h1>每日資安事件情報</h1>
-        <p class="lede">先看今天真正發生的資安新聞與事件。CVE 只有在新聞、攻擊事件或官方公告實際提到時，才會成為首頁的技術關聯。</p>
+        <h1>每日資安事件報告</h1>
+        <p class="lede">每天自動整合即時資安新聞、官方公告、CISA KEV、NVD、FIRST EPSS 與 Daily Delta。先回答今天發生了什麼，再往下追到相關 CVE 與技術處置依據。</p>
         <div class="status-row">
           <span id="modeBadge" class="status-badge">載入中</span>
-          <span id="updatedAt" class="muted">更新時間載入中</span>
+          <span id="updatedAt" class="muted">Daily Brief 更新時間載入中</span>
         </div>
       </div>
       <div class="hero-actions">
-        <a class="button secondary" href="#security-events">今日事件</a>
+        <a class="button secondary" href="#security-events">今日重大事件</a>
+        <a class="button secondary" href="./security_report_latest.md">Markdown 報告</a>
         <a class="button ghost" href="https://github.com/zenkispwan/security-report-automation" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </header>
@@ -31,8 +32,9 @@
       <section aria-labelledby="summary-title">
         <div class="section-heading compact-heading">
           <div>
-            <p class="section-kicker">TODAY AT A GLANCE</p>
-            <h2 id="summary-title">今日事件概況</h2>
+            <p class="section-kicker">DAILY SECURITY BRIEF</p>
+            <h2 id="summary-title">今日情報摘要</h2>
+            <p>數字直接取自每日 deterministic brief；不由前端或 LLM 自行推算漏洞事實。</p>
           </div>
         </div>
         <div id="metrics" class="metric-grid" aria-live="polite"></div>
@@ -41,9 +43,9 @@
       <section id="security-events" aria-labelledby="events-title">
         <div class="section-heading">
           <div>
-            <p class="section-kicker">LATEST SECURITY NEWS & INCIDENTS</p>
-            <h2 id="events-title">最新重大資安事件</h2>
-            <p>來源來自即時資安新聞與官方公告 Feed；首頁最多顯示 6 筆。單純新增的 CVE 不會被當成新聞。</p>
+            <p class="section-kicker">HEADLINE SECURITY EVENTS</p>
+            <h2 id="events-title">本期重大資安事件</h2>
+            <p>Daily Brief 挑出的前 6 筆重大事件。CVE 只有在來源文章或官方公告實際提到時才會關聯顯示。</p>
             <p id="securityEventFreshness" class="muted">事件更新時間載入中</p>
           </div>
           <a id="securityEventCount" class="count-chip event-count-link" href="./events.html" aria-label="查看全部資安事件">—</a>
@@ -52,13 +54,13 @@
         <div class="event-more-actions">
           <a class="button secondary" href="./events.html">查看全部事件</a>
         </div>
-        <p class="event-trust-note">事件標題、來源與 CVE 關聯來自 Collector 抓取的目前來源。CVE 標籤只在來源文章／公告實際出現該 CVE 時顯示；未知資訊不補猜。</p>
+        <p class="event-trust-note">事件標題、來源與 CVE 關聯來自 Collector 已取得的新聞／官方來源；繁中內容是對既有來源文字的翻譯與整理。未知資訊維持未確認。</p>
       </section>
 
       <details class="technical-panel">
         <summary>
           <span>
-            <strong>技術漏洞資料</strong>
+            <strong>今日技術變化與 CVE 情報</strong>
             <small>需要時再展開 Daily Delta、CVSS、EPSS、KEV 與完整 CVE 優先清單</small>
           </span>
           <span class="technical-panel-action">展開</span>
@@ -68,9 +70,9 @@
           <section aria-labelledby="delta-title">
             <div class="section-heading">
               <div>
-                <p class="section-kicker">TECHNICAL DELTA</p>
-                <h2 id="delta-title">Daily Delta</h2>
-                <p>這裡保留完整漏洞狀態變化，但不再主導首頁。</p>
+                <p class="section-kicker">DAILY DELTA</p>
+                <h2 id="delta-title">自上一份報告的重要變化</h2>
+                <p>只列入 deterministic Daily Delta：新 CVE、新 KEV、EPSS 顯著上升與利用狀態等重要變化。</p>
               </div>
               <span id="deltaCount" class="count-chip">—</span>
             </div>
@@ -111,7 +113,7 @@
         <div>
           <p class="section-kicker">TRUST BOUNDARY</p>
           <h2 id="method-title">Facts 與 Intelligence 分離</h2>
-          <p>新聞與公告提供事件 Facts；CISA KEV、NVD、FIRST EPSS 提供漏洞 Facts。LLM 只負責後續摘要與分析，不產生不存在的事件或 CVE。</p>
+          <p>新聞與官方公告提供事件 Facts；CISA KEV、NVD、FIRST EPSS 提供漏洞 Facts。LLM 只負責翻譯、摘要與分析，不產生不存在的事件、CVE、CVSS、EPSS、KEV、利用狀態或受影響版本。</p>
         </div>
       </section>
     </main>

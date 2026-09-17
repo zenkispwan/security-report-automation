@@ -129,6 +129,12 @@ async function fetchSecurityEvents() {
   return response.json();
 }
 
+async function fetchDailyBrief() {
+  const response = await fetch('./data/daily_brief.json', { cache: 'no-store' });
+  if (!response.ok) throw new Error('無法讀取每日資安事件報告');
+  return response.json();
+}
+
 async function loadSecurityEvents() {
   const root = document.getElementById('securityEventList');
   const count = document.getElementById('securityEventCount');
@@ -136,16 +142,17 @@ async function loadSecurityEvents() {
   if (!root || !count) return;
 
   try {
-    const payload = await fetchSecurityEvents();
-    const events = payload.items || [];
+    const payload = await fetchDailyBrief();
+    const events = payload.headline_events || [];
+    const total = Number(payload.summary?.event_count || events.length);
     const visible = events.slice(0, EVENT_LIMIT);
 
     root.replaceChildren();
-    count.textContent = events.length > visible.length ? `${visible.length} / ${events.length}` : `${visible.length}`;
+    count.textContent = total > visible.length ? `${visible.length} / ${total}` : `${visible.length}`;
     if (freshness) {
-      const translated = payload.translation?.translated_items || 0;
-      const translationNote = translated ? ` · ${translated} 筆繁中翻譯` : '';
-      freshness.textContent = payload.generated_at ? `事件更新：${eventTime(payload.generated_at)}${translationNote}` : '等待第一次事件收集';
+      const translated = Number(payload.summary?.translated_event_count || 0);
+      const translationNote = translated ? ` · ${translated} 筆事件已有繁中` : '';
+      freshness.textContent = payload.generated_at ? `Daily Brief 更新：${eventTime(payload.generated_at)}${translationNote}` : '等待第一次 Daily Brief';
     }
 
     if (!visible.length) {
@@ -153,7 +160,7 @@ async function loadSecurityEvents() {
       eventAppend(
         empty,
         eventEl('h3', '', '目前沒有符合條件的近期事件'),
-        eventEl('p', '', '首頁只顯示即時來源中的資安新聞、攻擊事件或官方公告；不會把單純新增的 CVE 當成新聞。'),
+        eventEl('p', '', '首頁只顯示 Daily Brief 中的重大資安新聞、攻擊事件或官方公告；不會把單純新增的 CVE 當成新聞。'),
       );
       root.append(empty);
       return;

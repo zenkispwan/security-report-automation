@@ -17,6 +17,7 @@ STATIC_FILES = {
     Path("web/events.js"): Path("events.js"),
     Path("web/cve.js"): Path("cve.js"),
     Path("web/_headers"): Path("_headers"),
+    Path("data/daily_brief.json"): Path("data/daily_brief.json"),
     Path("data/events.json"): Path("data/events.json"),
     Path("data/cve_enrichment_zh.json"): Path("data/cve_enrichment_zh.json"),
     Path("data/intelligence.json"): Path("data/intelligence.json"),

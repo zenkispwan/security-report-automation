@@ -8,6 +8,7 @@ from pathlib import Path
 
 
 COPIES = {
+    Path("data/daily_brief.json"): Path("data/daily_brief.json"),
     Path("data/events.json"): Path("data/events.json"),
     Path("data/cve_enrichment_zh.json"): Path("data/cve_enrichment_zh.json"),
     Path("data/intelligence.json"): Path("data/intelligence.json"),
@@ -45,12 +46,19 @@ def validate(root: Path) -> None:
         if digest(source) != digest(built):
             raise SystemExit(f"Built file differs from verified source: {relative_target}")
 
+    daily_brief = json.loads((root / "data/daily_brief.json").read_text(encoding="utf-8"))
     events_payload = json.loads((root / "data/events.json").read_text(encoding="utf-8"))
     cve_zh = json.loads((root / "data/cve_enrichment_zh.json").read_text(encoding="utf-8"))
     intelligence = json.loads((root / "data/intelligence.json").read_text(encoding="utf-8"))
     delta = json.loads((root / "data/delta.json").read_text(encoding="utf-8"))
     metadata = json.loads((root / "data/report_metadata.json").read_text(encoding="utf-8"))
 
+    if daily_brief.get("schema_version") != "1.0-daily-security-brief":
+        raise SystemExit("Invalid daily security brief schema")
+    if not isinstance(daily_brief.get("summary"), dict):
+        raise SystemExit("Daily security brief is missing summary")
+    if not isinstance(daily_brief.get("headline_events"), list) or not isinstance(daily_brief.get("daily_changes"), list):
+        raise SystemExit("Daily security brief is missing headline events or daily changes")
     if not isinstance(events_payload.get("items"), list):
         raise SystemExit("Invalid web security events payload")
     if not isinstance(cve_zh.get("items"), list):
@@ -67,6 +75,9 @@ def validate(root: Path) -> None:
             raise SystemExit("Security event is missing title/source provenance")
         if not isinstance(item.get("related_cves", []), list):
             raise SystemExit("Security event related_cves must be a list")
+    for item in daily_brief.get("headline_events", []):
+        if not item.get("title") or not item.get("source_url") or not item.get("source_name"):
+            raise SystemExit("Daily brief headline event is missing title/source provenance")
     for item in cve_zh.get("items", []):
         if not item.get("cve") or not item.get("title_zh") or "description_zh" not in item:
             raise SystemExit("CVE translation enrichment is missing required fields")
@@ -81,6 +92,8 @@ def validate(root: Path) -> None:
 
     if "./styles.css" not in index or "./events.css" not in index or "./app.js" not in index or "./events.js" not in index:
         raise SystemExit("Static shell is missing local assets")
+    if "每日資安事件報告" not in index or "今日情報摘要" not in index:
+        raise SystemExit("Homepage is not presenting the daily security brief")
     if "securityEventList" not in index or "securityEventCount" not in index or "./events.html" not in index:
         raise SystemExit("Homepage is missing security event containers or full-feed navigation")
     if "technical-panel" not in index:
@@ -93,10 +106,10 @@ def validate(root: Path) -> None:
         raise SystemExit("CVE detail page is missing verified-facts or related-event containers")
     if "./styles.css" not in cve_page or "./events.css" not in cve_page or "./cve.css" not in cve_page or "./cve.js" not in cve_page:
         raise SystemExit("CVE detail page is missing local assets")
-    if "./data/events.json" not in app or "./data/intelligence.json" not in app or "./data/delta.json" not in app or "./data/report_metadata.json" not in app:
-        raise SystemExit("Web app is not wired to verified compact inputs")
-    if "./data/events.json" not in events_js or "allSecurityEventList" not in events_js or "./cve.html?cve=" not in events_js:
-        raise SystemExit("Security event views are not wired to generated events.json and CVE details")
+    if "./data/daily_brief.json" not in app or "./data/intelligence.json" not in app or "./data/report_metadata.json" not in app:
+        raise SystemExit("Homepage app is not wired to daily brief and verified technical inputs")
+    if "./data/daily_brief.json" not in events_js or "./data/events.json" not in events_js or "allSecurityEventList" not in events_js or "./cve.html?cve=" not in events_js:
+        raise SystemExit("Security event views are not wired to daily brief, full event feed, and CVE details")
     if "./data/intelligence.json" not in cve_js or "./data/events.json" not in cve_js or "./data/cve_enrichment_zh.json" not in cve_js:
         raise SystemExit("CVE detail page is not wired to facts, events, and translation enrichment")
 
@@ -110,6 +123,8 @@ def validate(root: Path) -> None:
 
     print(
         "OK: Cloudflare Workers Static Assets web report "
+        f"brief_events={daily_brief['summary'].get('event_count')} "
+        f"headlines={len(daily_brief['headline_events'])} "
         f"events={len(events_payload['items'])} "
         f"cve_zh={len(cve_zh['items'])} "
         f"intelligence={len(intelligence['items'])} "

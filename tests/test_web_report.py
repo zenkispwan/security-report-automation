@@ -21,9 +21,14 @@ class WebReportTests(unittest.TestCase):
             self.assertTrue((root / "events.js").is_file())
             self.assertTrue((root / "cve.js").is_file())
             self.assertTrue((root / "_headers").is_file())
+            self.assertTrue((root / "data/daily_brief.json").is_file())
             self.assertTrue((root / "data/events.json").is_file())
             self.assertTrue((root / "data/cve_enrichment_zh.json").is_file())
             self.assertTrue((root / "data/intelligence.json").is_file())
+            self.assertEqual(
+                Path("data/daily_brief.json").read_bytes(),
+                (root / "data/daily_brief.json").read_bytes(),
+            )
             self.assertEqual(
                 Path("data/events.json").read_bytes(),
                 (root / "data/events.json").read_bytes(),
@@ -52,15 +57,19 @@ class WebReportTests(unittest.TestCase):
         self.assertIn('./cve.js', cve_page)
         self.assertIn('./cve.css', cve_page)
         self.assertIn('./app.js', index)
+        self.assertIn('每日資安事件報告', index)
+        self.assertIn('今日情報摘要', index)
         self.assertIn('securityEventList', index)
         self.assertIn('./events.html', index)
         self.assertIn('technical-panel', index)
 
-    def test_security_events_use_generated_event_feed_and_internal_cve_links(self):
+    def test_security_events_use_daily_brief_for_home_and_full_feed_for_archive(self):
         events = Path("web/events.js").read_text(encoding="utf-8")
+        self.assertIn("fetch('./data/daily_brief.json'", events)
         self.assertIn("fetch('./data/events.json'", events)
         self.assertNotIn('fetch("http', events)
         self.assertNotIn("fetch('http", events)
+        self.assertIn('headline_events', events)
         self.assertIn('RANSOMWARE', events)
         self.assertIn('ACTIVE_EXPLOITATION', events)
         self.assertIn('SUPPLY_CHAIN', events)
@@ -96,11 +105,16 @@ class WebReportTests(unittest.TestCase):
         self.assertIn('related_cves', script)
         self.assertIn('https://nvd.nist.gov/vuln/detail/', script)
 
-    def test_homepage_metrics_use_event_feed(self):
+    def test_homepage_metrics_use_daily_brief(self):
         app = Path("web/app.js").read_text(encoding="utf-8")
-        self.assertIn("fetch('./data/events.json'", app)
-        self.assertIn("metric('最新事件'", app)
-        self.assertIn("metric('含 CVE'", app)
+        self.assertIn("fetch('./data/daily_brief.json'", app)
+        self.assertIn("metric('重大事件'", app)
+        self.assertIn("metric('已遭利用'", app)
+        self.assertIn("metric('勒索軟體'", app)
+        self.assertIn("metric('新 CISA KEV'", app)
+        self.assertIn("metric('新 Critical CVE'", app)
+        self.assertIn('brief.daily_changes', app)
+        self.assertNotIn("fetch('./data/delta.json'", app)
 
     def test_cloudflare_static_assets_config_has_no_worker_script(self):
         config = json.loads(Path("wrangler.jsonc").read_text(encoding="utf-8"))
