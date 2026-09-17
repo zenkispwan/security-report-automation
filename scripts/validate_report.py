@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from security_intel.reporting import (  # noqa: E402
+    ordered_cves,
     render_source_appendix,
     render_verified_facts_report,
     sha256_file,
@@ -146,12 +147,22 @@ def main() -> int:
 
 
 def _verified_scope(intelligence: dict, delta: dict) -> dict:
-    return {
+    scope = {
         "items": [
             *(intelligence.get("items") or []),
             *(delta.get("items") or []),
         ]
     }
+    primary = {
+        str((row.get("facts") or {}).get("cve") or row.get("cve") or "").upper()
+        for row in scope["items"]
+    }
+    verified_text = json.dumps(scope, ensure_ascii=False, separators=(",", ":"))
+    for cve in ordered_cves(verified_text):
+        if cve not in primary:
+            scope["items"].append({"cve": cve, "facts": {"cve": cve}})
+            primary.add(cve)
+    return scope
 
 
 def _fail(errors: list[str]) -> int:
