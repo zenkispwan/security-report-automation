@@ -66,6 +66,14 @@ function eventChip(label, className = '') {
   return eventEl('span', `security-event-chip ${className}`.trim(), label);
 }
 
+function cveEventChip(cve) {
+  const value = String(cve || '').toUpperCase();
+  const link = eventEl('a', 'security-event-chip cve-chip cve-chip-link', value);
+  link.href = `./cve.html?cve=${encodeURIComponent(value)}`;
+  link.title = `查看 ${value} CVE 詳情`;
+  return link;
+}
+
 function securityEventCard(item) {
   const type = String(item.event_type || 'event').toLowerCase();
   const card = eventEl('article', `security-event-card event-${type}`);
@@ -97,7 +105,7 @@ function securityEventCard(item) {
 
   const chips = eventEl('div', 'security-event-facts');
   const cves = item.related_cves || [];
-  for (const cve of cves.slice(0, 6)) chips.append(eventChip(cve, 'cve-chip'));
+  for (const cve of cves.slice(0, 6)) chips.append(cveEventChip(cve));
   if (cves.length > 6) chips.append(eventChip(`+${cves.length - 6} CVE`));
   if ((item.matched_intelligence_cves || []).length) chips.append(eventChip('本日漏洞情報有追蹤', 'tracked-chip'));
   if (!cves.length) chips.append(eventChip('無 CVE 關聯'));
