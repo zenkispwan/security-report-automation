@@ -13,6 +13,15 @@ sys.path.insert(0, str(ROOT / "src"))
 from security_intel.llm.event_translation import translate_events  # noqa: E402
 
 
+def _is_translated(item: dict) -> bool:
+    if not str(item.get("title_zh") or "").strip():
+        return False
+    source_summary = str(item.get("summary") or "").strip()
+    if not source_summary:
+        return "summary_zh" in item
+    return isinstance(item.get("summary_zh"), str) and bool(str(item.get("summary_zh") or "").strip())
+
+
 def _merge_batch(result: dict, translated_batch: dict) -> int:
     translated_by_id = {
         str(item.get("id")): item
@@ -28,7 +37,8 @@ def _merge_batch(result: dict, translated_batch: dict) -> int:
             item["title_zh"] = translated["title_zh"]
         if translated.get("summary_zh") is not None:
             item["summary_zh"] = translated["summary_zh"]
-        merged += 1
+        if _is_translated(item):
+            merged += 1
     return merged
 
 
@@ -44,10 +54,12 @@ def enrich_in_batches(
 ) -> dict:
     result = deepcopy(payload)
     source_items = payload.get("items", []) or []
-    selected_items = source_items if max_items <= 0 else source_items[:max_items]
+    pending_items = [item for item in source_items if not _is_translated(item)]
+    selected_items = pending_items if max_items <= 0 else pending_items[:max_items]
 
+    cached_items = len(source_items) - len(pending_items)
     attempted = 0
-    translated_total = 0
+    translated_total = cached_items
     rejected_ids: set[str] = set()
     fallback_reasons: list[str] = []
     models_used: list[str] = []
@@ -79,10 +91,10 @@ def enrich_in_batches(
         fallback_reason = None
     elif translated_total:
         status = "partial"
-        fallback_reason = "partial_translation" if translated_total < attempted else None
+        fallback_reason = "partial_translation" if selected_items else None
     else:
         status = "source_only"
-        fallback_reason = fallback_reasons[0] if fallback_reasons else ("no_events" if not selected_items else "translation_failed")
+        fallback_reason = fallback_reasons[0] if fallback_reasons else ("no_events" if not source_items else "translation_failed")
 
     result["translation"] = {
         "language": "zh-Hant-TW",
@@ -91,6 +103,8 @@ def enrich_in_batches(
         "model": models_used[-1] if models_used else None,
         "models_used": models_used,
         "translated_items": translated_total,
+        "cached_items": cached_items,
+        "pending_items": max(0, total_items - translated_total),
         "total_items": total_items,
         "attempted_items": attempted,
         "batch_size": batch_size,
@@ -105,8 +119,6 @@ def main() -> None:
     path = Path(os.getenv("EVENTS_PATH", "data/events.json"))
     payload = json.loads(path.read_text(encoding="utf-8"))
 
-    # Event translation is separate from report generation. Production has shown
-    # the lightweight 3.6 Flash model to be the most reliable translation path.
     model = os.getenv("GEMINI_TRANSLATION_MODEL") or "gemini-3.6-flash"
     fallback_raw = os.getenv("GEMINI_TRANSLATION_FALLBACK_MODELS", "")
     fallback_models = [value.strip() for value in fallback_raw.split(",") if value.strip()]
@@ -130,6 +142,7 @@ def main() -> None:
         "OK: event translation "
         f"status={meta.get('status')} "
         f"translated={meta.get('translated_items', 0)}/{meta.get('total_items', 0)} "
+        f"cached={meta.get('cached_items', 0)} "
         f"attempted={meta.get('attempted_items', 0)} "
         f"batch_size={meta.get('batch_size')} "
         f"model={meta.get('model')} "

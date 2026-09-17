@@ -29,6 +29,29 @@ def tracked_cves(intelligence: dict, delta: dict) -> set[str]:
     return values
 
 
+def preserve_event_translations(previous: dict, current_items: list[dict]) -> int:
+    previous_by_id = {
+        str(item.get("id")): item
+        for item in previous.get("items", []) or []
+        if item.get("id")
+    }
+    preserved = 0
+    for item in current_items:
+        old = previous_by_id.get(str(item.get("id") or ""))
+        if not old:
+            continue
+        # Only reuse a translation when the exact source text is unchanged.
+        if old.get("title") != item.get("title") or old.get("summary") != item.get("summary"):
+            continue
+        if old.get("title_zh"):
+            item["title_zh"] = old["title_zh"]
+        if "summary_zh" in old:
+            item["summary_zh"] = old.get("summary_zh")
+        if item.get("title_zh") and (not item.get("summary") or "summary_zh" in item):
+            preserved += 1
+    return preserved
+
+
 def build_events(
     *,
     output: Path,
@@ -39,6 +62,7 @@ def build_events(
 ) -> dict:
     intelligence = load_json(intelligence_path)
     delta = load_json(delta_path)
+    previous = load_json(output)
     tracked = tracked_cves(intelligence, delta)
 
     collector = NewsCollector()
@@ -51,8 +75,10 @@ def build_events(
 
     if result.successful_sources == 0 and output.is_file():
         print("WARNING: all news sources failed; preserving previous data/events.json")
-        return load_json(output)
+        return previous
 
+    current_items = result.items
+    preserved_translations = preserve_event_translations(previous, current_items)
     payload = {
         "schema_version": "1.1-security-events",
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -72,13 +98,14 @@ def build_events(
         ],
         "summary": {
             "fetched_entries": result.fetched_entries,
-            "included_items": len(result.items),
-            "linked_cve_items": sum(1 for item in result.items if item.get("related_cves")),
-            "matched_intelligence_items": sum(1 for item in result.items if item.get("matched_intelligence_cves")),
+            "included_items": len(current_items),
+            "linked_cve_items": sum(1 for item in current_items if item.get("related_cves")),
+            "matched_intelligence_items": sum(1 for item in current_items if item.get("matched_intelligence_cves")),
             "successful_sources": result.successful_sources,
             "source_errors": result.source_errors,
+            "preserved_translations": preserved_translations,
         },
-        "items": result.items,
+        "items": current_items,
     }
 
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -105,6 +132,7 @@ def main() -> None:
     print(
         "OK: security events "
         f"items={len(payload.get('items', []))} "
+        f"preserved_zh={(payload.get('summary') or {}).get('preserved_translations', 0)} "
         f"generated_at={payload.get('generated_at')}"
     )
 
