@@ -87,32 +87,28 @@ function itemTags(item) {
   return tags;
 }
 
-function renderMetrics(events, intelligence, metadata) {
+function renderMetrics(brief, intelligence, metadata) {
   const root = $('metrics');
   root.replaceChildren();
-  const items = events.items || [];
-  const critical = items.filter((item) => item.priority === 'CRITICAL').length;
-  const cveLinked = items.filter((item) => (item.related_cves || []).length > 0).length;
-  const incidents = items.filter((item) => ['RANSOMWARE', 'SUPPLY_CHAIN', 'DATA_BREACH', 'THREAT_ACTIVITY', 'ACTIVE_EXPLOITATION'].includes(item.event_type)).length;
-  const sources = new Set(items.map((item) => item.source_name).filter(Boolean)).size;
+  const summary = brief.summary || {};
 
   root.append(
-    metric('最新事件', items.length, '近 7 日來源'),
-    metric('重大', critical, '優先閱讀'),
-    metric('含 CVE', cveLinked, '來源有明確提及'),
-    metric('攻擊 / 事件', incidents, '非單純 CVE 清單'),
-    metric('來源', sources, '新聞與官方 Feed'),
+    metric('重大事件', text(summary.event_count, '0'), `${text(summary.critical_events, '0')} 件 Critical`),
+    metric('已遭利用', text(summary.active_exploitation_events, '0'), 'Active exploitation / zero-day'),
+    metric('勒索軟體', text(summary.ransomware_events, '0'), '本期事件'),
+    metric('新 CISA KEV', text(summary.new_kev_count, '0'), '自上一份報告'),
+    metric('新 Critical CVE', text(summary.new_critical_cve_count, '0'), 'Daily Delta'),
   );
 
-  $('modeBadge').textContent = 'News / Incident first · verified sources';
-  $('updatedAt').textContent = `事件更新：${fmtTime(events.generated_at || metadata.generated_at || intelligence.generated_at)}`;
-  $('footerGenerated').textContent = `Events: ${fmtTime(events.generated_at)} · Intelligence: ${fmtTime(intelligence.generated_at)} · Report: ${fmtTime(metadata.generated_at)}`;
+  $('modeBadge').textContent = 'Daily Brief · verified facts';
+  $('updatedAt').textContent = `Daily Brief 更新：${fmtTime(brief.generated_at)}`;
+  $('footerGenerated').textContent = `Daily Brief: ${fmtTime(brief.generated_at)} · Intelligence: ${fmtTime(intelligence.generated_at)} · Report: ${fmtTime(metadata.generated_at)}`;
 }
 
-function renderDelta(delta) {
+function renderDelta(dailyChanges) {
   const root = $('deltaList');
   root.replaceChildren();
-  const items = delta.items || [];
+  const items = dailyChanges || [];
   $('deltaCount').textContent = `${items.length} changes`;
   if (!items.length) {
     const empty = el('article', 'delta-card');
@@ -126,9 +122,9 @@ function renderDelta(delta) {
     const card = el('article', 'delta-card');
     const top = el('div', 'card-top');
     const titleBox = el('div');
-    const link = el('a', 'cve-link', item.cve || facts.cve || '未確認 CVE');
-    const url = safeUrl(facts.source_url || facts.provenance?.nvd);
-    if (url) { link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; }
+    const cve = item.cve || facts.cve || '未確認 CVE';
+    const link = el('a', 'cve-link', cve);
+    if (String(cve).startsWith('CVE-')) link.href = `./cve.html?cve=${encodeURIComponent(cve)}`;
     append(titleBox, link, el('p', 'product-line', `${text(facts.vendor)} / ${text(facts.product)}`));
     append(top, titleBox, priorityBadge(item.risk?.priority));
     card.append(top);
@@ -136,7 +132,8 @@ function renderDelta(delta) {
     const eventNames = (item.events || []).map((event) => event.type).filter(Boolean);
     card.append(el('p', 'card-summary', eventNames.length ? eventNames.join(' · ') : '狀態變化'));
     card.append(itemTags(item));
-    card.append(el('p', 'card-summary', text(facts.description)), sourceLinks(facts));
+    const description = facts.description_zh || facts.description;
+    card.append(el('p', 'card-summary', text(description)), sourceLinks(facts));
     root.append(card);
   }
 }
@@ -157,7 +154,10 @@ function intelligenceCard(item) {
 
   const head = el('div', 'intel-head');
   const title = el('div', 'intel-title');
-  append(title, el('strong', '', item.cve || facts.cve || '未確認 CVE'), el('span', '', `${text(facts.vendor)} / ${text(facts.product)}`));
+  const cveValue = item.cve || facts.cve || '未確認 CVE';
+  const cveLink = el('a', 'cve-link', cveValue);
+  if (String(cveValue).startsWith('CVE-')) cveLink.href = `./cve.html?cve=${encodeURIComponent(cveValue)}`;
+  append(title, cveLink, el('span', '', `${text(facts.vendor)} / ${text(facts.product)}`));
 
   const riskStat = el('div', 'intel-stat');
   append(riskStat, el('span', '', 'Priority / Score'), priorityBadge(risk.priority), el('strong', '', `Score ${text(risk.score)}`));
@@ -239,18 +239,17 @@ function wireFilters() {
 
 async function load() {
   try {
-    const [eventsResp, intelResp, deltaResp, metaResp] = await Promise.all([
-      fetch('./data/events.json', { cache: 'no-store' }),
+    const [briefResp, intelResp, metaResp] = await Promise.all([
+      fetch('./data/daily_brief.json', { cache: 'no-store' }),
       fetch('./data/intelligence.json', { cache: 'no-store' }),
-      fetch('./data/delta.json', { cache: 'no-store' }),
       fetch('./data/report_metadata.json', { cache: 'no-store' }),
     ]);
-    if (!eventsResp.ok || !intelResp.ok || !deltaResp.ok || !metaResp.ok) throw new Error('無法讀取報告資料');
-    const [events, intelligence, delta, metadata] = await Promise.all([
-      eventsResp.json(), intelResp.json(), deltaResp.json(), metaResp.json(),
+    if (!briefResp.ok || !intelResp.ok || !metaResp.ok) throw new Error('無法讀取每日情報資料');
+    const [brief, intelligence, metadata] = await Promise.all([
+      briefResp.json(), intelResp.json(), metaResp.json(),
     ]);
-    renderMetrics(events, intelligence, metadata);
-    renderDelta(delta);
+    renderMetrics(brief, intelligence, metadata);
+    renderDelta(brief.daily_changes || []);
     renderIntelligence(intelligence);
     wireFilters();
   } catch (error) {
