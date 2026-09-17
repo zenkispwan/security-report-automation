@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta name="description" content="完整資安事件清單：即時資安新聞、主動利用、勒索軟體、供應鏈、資料外洩與相關 CVE。">
+  <title>全部資安事件｜Security Intelligence Automation V2</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./events.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero events-page-hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Security Intelligence Automation V2</p>
+        <h1>全部資安事件</h1>
+        <p class="lede">查看目前事件資料集中的完整新聞與官方公告。CVE 只在來源文章或公告實際提到時才顯示。</p>
+        <div class="status-row">
+          <span id="allEventFreshness" class="status-badge">載入中</span>
+          <span id="allEventCount" class="muted">事件數載入中</span>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a class="button secondary" href="./index.html#security-events">回今日重點</a>
+        <a class="button ghost" href="https://github.com/zenkispwan/security-report-automation" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </header>
+
+    <main>
+      <section aria-labelledby="all-events-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">ALL VERIFIED SECURITY EVENTS</p>
+            <h2 id="all-events-title">事件清單</h2>
+            <p>可依事件類型與來源篩選，或搜尋標題、摘要、CVE。事件原文與來源連結永遠保留；沒有繁中欄位時會顯示來源原文。</p>
+          </div>
+        </div>
+
+        <div class="event-toolbar" aria-label="事件篩選">
+          <label class="search-box event-search-box">
+            <span class="sr-only">搜尋事件、CVE 或來源</span>
+            <input id="allEventSearch" type="search" placeholder="搜尋事件、摘要、CVE、來源…" autocomplete="off">
+          </label>
+          <label class="event-source-filter">
+            <span class="sr-only">依來源篩選</span>
+            <select id="allEventSource">
+              <option value="ALL">全部來源</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="allEventTypeFilters" class="event-filter-group" role="group" aria-label="依事件類型篩選">
+          <button type="button" class="event-filter active" data-event-type="ALL">全部</button>
+          <button type="button" class="event-filter" data-event-type="ACTIVE_EXPLOITATION">已遭利用</button>
+          <button type="button" class="event-filter" data-event-type="RANSOMWARE">勒索軟體</button>
+          <button type="button" class="event-filter" data-event-type="SUPPLY_CHAIN">供應鏈</button>
+          <button type="button" class="event-filter" data-event-type="DATA_BREACH">資料外洩</button>
+          <button type="button" class="event-filter" data-event-type="THREAT_ACTIVITY">攻擊活動</button>
+          <button type="button" class="event-filter" data-event-type="VULNERABILITY_NEWS">漏洞新聞</button>
+        </div>
+
+        <div id="allSecurityEventList" class="security-event-grid all-events-grid" aria-live="polite"></div>
+        <p id="allEventEmpty" class="empty-state" hidden>目前沒有符合此篩選條件的事件。</p>
+        <p class="event-trust-note">Facts 來自 Collector 抓取的新聞與官方公告。繁中內容只翻譯既有文字；來源、日期、事件類型與 CVE 關聯不由 LLM 產生。</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Search / feeds provide Facts. LLM provides Intelligence.</p>
+      <p class="muted"><a href="./index.html">返回每日資安事件情報</a></p>
+    </footer>
+  </div>
+  <noscript>此頁需要 JavaScript 才能載入事件清單。</noscript>
+  <script src="./events.js" defer></script>
+</body>
+</html>

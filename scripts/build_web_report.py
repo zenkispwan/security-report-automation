@@ -8,6 +8,7 @@ from pathlib import Path
 
 STATIC_FILES = {
     Path("web/index.html"): Path("index.html"),
+    Path("web/events.html"): Path("events.html"),
     Path("web/styles.css"): Path("styles.css"),
     Path("web/events.css"): Path("events.css"),
     Path("web/app.js"): Path("app.js"),
