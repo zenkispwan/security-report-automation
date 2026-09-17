@@ -15,14 +15,22 @@ class WebReportTests(unittest.TestCase):
             validate(root)
             self.assertTrue((root / "index.html").is_file())
             self.assertTrue((root / "events.html").is_file())
+            self.assertTrue((root / "cve.html").is_file())
             self.assertTrue((root / "events.css").is_file())
+            self.assertTrue((root / "cve.css").is_file())
             self.assertTrue((root / "events.js").is_file())
+            self.assertTrue((root / "cve.js").is_file())
             self.assertTrue((root / "_headers").is_file())
             self.assertTrue((root / "data/events.json").is_file())
+            self.assertTrue((root / "data/cve_enrichment_zh.json").is_file())
             self.assertTrue((root / "data/intelligence.json").is_file())
             self.assertEqual(
                 Path("data/events.json").read_bytes(),
                 (root / "data/events.json").read_bytes(),
+            )
+            self.assertEqual(
+                Path("data/cve_enrichment_zh.json").read_bytes(),
+                (root / "data/cve_enrichment_zh.json").read_bytes(),
             )
             self.assertEqual(
                 Path("data/intelligence.json").read_bytes(),
@@ -32,18 +40,23 @@ class WebReportTests(unittest.TestCase):
     def test_web_shell_has_no_external_executable_dependency(self):
         index = Path("web/index.html").read_text(encoding="utf-8")
         events_page = Path("web/events.html").read_text(encoding="utf-8")
-        for shell in (index, events_page):
+        cve_page = Path("web/cve.html").read_text(encoding="utf-8")
+        for shell in (index, events_page, cve_page):
             self.assertNotIn('<script src="http', shell)
             self.assertNotIn('<link rel="stylesheet" href="http', shell)
-            self.assertIn('./events.js', shell)
             self.assertIn('./styles.css', shell)
-            self.assertIn('./events.css', shell)
+        self.assertIn('./events.js', index)
+        self.assertIn('./events.css', index)
+        self.assertIn('./events.js', events_page)
+        self.assertIn('./events.css', events_page)
+        self.assertIn('./cve.js', cve_page)
+        self.assertIn('./cve.css', cve_page)
         self.assertIn('./app.js', index)
         self.assertIn('securityEventList', index)
         self.assertIn('./events.html', index)
         self.assertIn('technical-panel', index)
 
-    def test_security_events_use_generated_event_feed(self):
+    def test_security_events_use_generated_event_feed_and_internal_cve_links(self):
         events = Path("web/events.js").read_text(encoding="utf-8")
         self.assertIn("fetch('./data/events.json'", events)
         self.assertNotIn('fetch("http', events)
@@ -53,6 +66,8 @@ class WebReportTests(unittest.TestCase):
         self.assertIn('SUPPLY_CHAIN', events)
         self.assertIn('DATA_BREACH', events)
         self.assertIn('related_cves', events)
+        self.assertIn('./cve.html?cve=', events)
+        self.assertIn('cveEventChip', events)
 
     def test_full_event_page_has_filters_and_renders_entire_feed(self):
         page = Path("web/events.html").read_text(encoding="utf-8")
@@ -67,6 +82,19 @@ class WebReportTests(unittest.TestCase):
         self.assertIn('searchableEventText', events)
         self.assertIn('sourceSelect.addEventListener', events)
         self.assertIn("for (const item of filtered) root.append(securityEventCard(item))", events)
+
+    def test_cve_detail_page_joins_facts_translation_and_related_events(self):
+        page = Path("web/cve.html").read_text(encoding="utf-8")
+        script = Path("web/cve.js").read_text(encoding="utf-8")
+        self.assertIn('cveSummaryCard', page)
+        self.assertIn('cveFactGrid', page)
+        self.assertIn('cveRelatedEvents', page)
+        self.assertIn("fetch('./data/intelligence.json'", script)
+        self.assertIn("fetch('./data/events.json'", script)
+        self.assertIn("fetch('./data/cve_enrichment_zh.json'", script)
+        self.assertIn('description_zh', script)
+        self.assertIn('related_cves', script)
+        self.assertIn('https://nvd.nist.gov/vuln/detail/', script)
 
     def test_homepage_metrics_use_event_feed(self):
         app = Path("web/app.js").read_text(encoding="utf-8")
