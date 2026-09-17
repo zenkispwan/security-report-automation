@@ -160,7 +160,6 @@ def translate_events(
                         "You are a translation layer in a verified cybersecurity intelligence pipeline. "
                         "Translate faithfully into Traditional Chinese (Taiwan). Never introduce facts."
                     ),
-                    temperature=0.0,
                     response_mime_type="application/json",
                 ),
             )
@@ -183,4 +182,6 @@ def translate_events(
             reason = "translation_quota_unavailable"
         elif "timeout" in name or "timed out" in text:
             reason = "translation_timeout"
+        elif "temperature" in text or "top_p" in text or "top_k" in text:
+            reason = "translation_config_incompatible"
     return _source_only(payload, reason)
