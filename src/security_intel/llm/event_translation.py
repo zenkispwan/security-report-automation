@@ -7,6 +7,27 @@ from typing import Any, Sequence
 
 CVE_RE = re.compile(r"\bCVE-\d{4}-\d{4,7}\b", re.IGNORECASE)
 
+TRANSLATION_RESPONSE_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "items": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {"type": "string"},
+                    "title_zh": {"type": "string"},
+                    "summary_zh": {"type": "string"},
+                },
+                "required": ["id", "title_zh", "summary_zh"],
+                "additionalProperties": False,
+            },
+        }
+    },
+    "required": ["items"],
+    "additionalProperties": False,
+}
+
 
 def _cves(*values: str | None) -> set[str]:
     found: set[str] = set()
@@ -44,14 +65,13 @@ def build_translation_prompt(payload: dict[str, Any]) -> str:
 
     return (
         "Translate the following verified cybersecurity event text into natural Traditional Chinese "
-        "for readers in Taiwan. Return JSON only with the shape "
-        '{"items":[{"id":"...","title_zh":"...","summary_zh":"..."}]}. '
-        "Rules: translate only; do not add, infer, remove, or update facts. Preserve every CVE identifier "
-        "that appears in the supplied title or summary exactly. Do not introduce CVE identifiers that are not "
-        "present in that title or summary. Keep vendor, product, malware, threat actor, and protocol names in "
-        "their official form when appropriate. Do not add remediation advice unless it exists in the source "
-        "text. Keep title_zh concise. summary_zh should faithfully reflect only the supplied summary; if summary "
-        "is empty, return an empty summary_zh. Return one item for every input id.\n\nINPUT:\n"
+        "for readers in Taiwan. Rules: translate only; do not add, infer, remove, or update facts. "
+        "Preserve every CVE identifier that appears in the supplied title or summary exactly. Do not "
+        "introduce CVE identifiers that are not present in that title or summary. Keep vendor, product, "
+        "malware, threat actor, and protocol names in their official form when appropriate. Do not add "
+        "remediation advice unless it exists in the source text. Keep title_zh concise. summary_zh should "
+        "faithfully reflect only the supplied summary; if summary is empty, return an empty summary_zh. "
+        "Return one item for every input id.\n\nINPUT:\n"
         + json.dumps(items, ensure_ascii=False, separators=(",", ":"))
     )
 
@@ -148,7 +168,6 @@ def translate_events(
         return _source_only(payload, "missing_api_key")
 
     from google import genai
-    from google.genai import types
 
     prompt = build_translation_prompt(payload)
     client = genai.Client(api_key=api_key, http_options={"timeout": timeout_ms})
@@ -157,18 +176,21 @@ def translate_events(
 
     for candidate in _model_candidates(model, fallback_models):
         try:
-            response = client.models.generate_content(
+            interaction = client.interactions.create(
                 model=candidate,
-                contents=prompt,
-                config=types.GenerateContentConfig(
-                    system_instruction=(
-                        "You are a translation layer in a verified cybersecurity intelligence pipeline. "
-                        "Translate faithfully into Traditional Chinese (Taiwan). Never introduce facts."
-                    ),
-                    response_mime_type="application/json",
+                input=prompt,
+                system_instruction=(
+                    "You are a translation layer in a verified cybersecurity intelligence pipeline. "
+                    "Translate faithfully into Traditional Chinese (Taiwan). Never introduce facts."
                 ),
+                response_format={
+                    "type": "text",
+                    "mime_type": "application/json",
+                    "schema": TRANSLATION_RESPONSE_SCHEMA,
+                },
+                store=False,
             )
-            raw = (getattr(response, "text", None) or "").strip()
+            raw = (getattr(interaction, "output_text", None) or "").strip()
             if not raw:
                 raise RuntimeError("Gemini returned an empty translation response")
             translated = json.loads(raw)
@@ -188,8 +210,6 @@ def translate_events(
             reason = "translation_quota_unavailable"
         elif "timeout" in name or "timed out" in text:
             reason = "translation_timeout"
-        elif "temperature" in text or "top_p" in text or "top_k" in text:
-            reason = "translation_config_incompatible"
         elif last_rejected:
             reason = "translation_validation_rejected"
 
