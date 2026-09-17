@@ -30,12 +30,15 @@ def _model_candidates(primary: str, fallback_models: Sequence[str]) -> list[str]
 def build_translation_prompt(payload: dict[str, Any]) -> str:
     items = []
     for item in payload.get("items", []) or []:
+        # Deliberately pass only the source text being translated. Article-only
+        # related_cves and other enrichment fields are not translation input,
+        # otherwise the model may correctly repeat them but still introduce facts
+        # that were absent from the title/summary being translated.
         items.append(
             {
                 "id": item.get("id"),
                 "title": item.get("title"),
                 "summary": item.get("summary"),
-                "related_cves": item.get("related_cves", []),
             }
         )
 
@@ -44,10 +47,11 @@ def build_translation_prompt(payload: dict[str, Any]) -> str:
         "for readers in Taiwan. Return JSON only with the shape "
         '{"items":[{"id":"...","title_zh":"...","summary_zh":"..."}]}. '
         "Rules: translate only; do not add, infer, remove, or update facts. Preserve every CVE identifier "
-        "exactly. Keep vendor, product, malware, threat actor, and protocol names in their official form when "
-        "appropriate. Do not add remediation advice unless it exists in the source text. Keep title_zh concise. "
-        "summary_zh should faithfully reflect only the supplied summary; if summary is empty, return an empty "
-        "summary_zh. Return one item for every input id.\n\nINPUT:\n"
+        "that appears in the supplied title or summary exactly. Do not introduce CVE identifiers that are not "
+        "present in that title or summary. Keep vendor, product, malware, threat actor, and protocol names in "
+        "their official form when appropriate. Do not add remediation advice unless it exists in the source "
+        "text. Keep title_zh concise. summary_zh should faithfully reflect only the supplied summary; if summary "
+        "is empty, return an empty summary_zh. Return one item for every input id.\n\nINPUT:\n"
         + json.dumps(items, ensure_ascii=False, separators=(",", ":"))
     )
 
@@ -149,6 +153,7 @@ def translate_events(
     prompt = build_translation_prompt(payload)
     client = genai.Client(api_key=api_key, http_options={"timeout": timeout_ms})
     last_error: Exception | None = None
+    last_rejected: list[str] = []
 
     for candidate in _model_candidates(model, fallback_models):
         try:
@@ -167,9 +172,10 @@ def translate_events(
             if not raw:
                 raise RuntimeError("Gemini returned an empty translation response")
             translated = json.loads(raw)
-            merged, accepted, _ = merge_translations(payload, translated, model=candidate)
+            merged, accepted, rejected = merge_translations(payload, translated, model=candidate)
             if accepted:
                 return merged
+            last_rejected = rejected
             last_error = RuntimeError("Gemini returned no valid translations")
         except Exception as exc:  # translation is optional; preserve verified source text on failure
             last_error = exc
@@ -184,4 +190,10 @@ def translate_events(
             reason = "translation_timeout"
         elif "temperature" in text or "top_p" in text or "top_k" in text:
             reason = "translation_config_incompatible"
-    return _source_only(payload, reason)
+        elif last_rejected:
+            reason = "translation_validation_rejected"
+
+    result = _source_only(payload, reason)
+    if last_rejected:
+        result["translation"]["rejected_item_ids"] = sorted(set(last_rejected))
+    return result
