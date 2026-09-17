@@ -8,6 +8,7 @@ from pathlib import Path
 
 
 COPIES = {
+    Path("data/events.json"): Path("data/events.json"),
     Path("data/intelligence.json"): Path("data/intelligence.json"),
     Path("data/delta.json"): Path("data/delta.json"),
     Path("reports/security_report_metadata.json"): Path("data/report_metadata.json"),
@@ -39,10 +40,13 @@ def validate(root: Path) -> None:
         if digest(source) != digest(built):
             raise SystemExit(f"Built file differs from verified source: {relative_target}")
 
+    events_payload = json.loads((root / "data/events.json").read_text(encoding="utf-8"))
     intelligence = json.loads((root / "data/intelligence.json").read_text(encoding="utf-8"))
     delta = json.loads((root / "data/delta.json").read_text(encoding="utf-8"))
     metadata = json.loads((root / "data/report_metadata.json").read_text(encoding="utf-8"))
 
+    if not isinstance(events_payload.get("items"), list):
+        raise SystemExit("Invalid web security events payload")
     if not isinstance(intelligence.get("items"), list):
         raise SystemExit("Invalid web intelligence payload")
     if not isinstance(delta.get("items"), list):
@@ -50,18 +54,26 @@ def validate(root: Path) -> None:
     if not metadata.get("generated_at"):
         raise SystemExit("Missing report metadata generated_at")
 
+    for item in events_payload.get("items", []):
+        if not item.get("title") or not item.get("source_url") or not item.get("source_name"):
+            raise SystemExit("Security event is missing title/source provenance")
+        if not isinstance(item.get("related_cves", []), list):
+            raise SystemExit("Security event related_cves must be a list")
+
     index = (root / "index.html").read_text(encoding="utf-8")
     app = (root / "app.js").read_text(encoding="utf-8")
-    events = (root / "events.js").read_text(encoding="utf-8")
+    events_js = (root / "events.js").read_text(encoding="utf-8")
     headers = (root / "_headers").read_text(encoding="utf-8")
     if "./styles.css" not in index or "./events.css" not in index or "./app.js" not in index or "./events.js" not in index:
         raise SystemExit("Static shell is missing local assets")
     if "securityEventList" not in index or "securityEventCount" not in index:
         raise SystemExit("Static shell is missing security event containers")
-    if "./data/intelligence.json" not in app or "./data/delta.json" not in app or "./data/report_metadata.json" not in app:
+    if "technical-panel" not in index:
+        raise SystemExit("Technical CVE data is not collapsed behind the event-first homepage")
+    if "./data/events.json" not in app or "./data/intelligence.json" not in app or "./data/delta.json" not in app or "./data/report_metadata.json" not in app:
         raise SystemExit("Web app is not wired to verified compact inputs")
-    if "./data/delta.json" not in events:
-        raise SystemExit("Security events are not wired to verified Daily Delta")
+    if "./data/events.json" not in events_js:
+        raise SystemExit("Security event cards are not wired to generated events.json")
     if "https://" in index.replace("https://github.com/zenkispwan/security-report-automation", ""):
         raise SystemExit("Unexpected external resource in web shell")
     if "<script src=\"http" in index or "<link rel=\"stylesheet\" href=\"http" in index:
@@ -71,6 +83,7 @@ def validate(root: Path) -> None:
 
     print(
         "OK: Cloudflare Workers Static Assets web report "
+        f"events={len(events_payload['items'])} "
         f"intelligence={len(intelligence['items'])} "
         f"delta={len(delta['items'])} "
         f"renderer={metadata.get('renderer')} "
