@@ -14,6 +14,7 @@ class WebReportTests(unittest.TestCase):
             build(root)
             validate(root)
             self.assertTrue((root / "index.html").is_file())
+            self.assertTrue((root / "events.html").is_file())
             self.assertTrue((root / "events.css").is_file())
             self.assertTrue((root / "events.js").is_file())
             self.assertTrue((root / "_headers").is_file())
@@ -30,13 +31,16 @@ class WebReportTests(unittest.TestCase):
 
     def test_web_shell_has_no_external_executable_dependency(self):
         index = Path("web/index.html").read_text(encoding="utf-8")
-        self.assertNotIn('<script src="http', index)
-        self.assertNotIn('<link rel="stylesheet" href="http', index)
+        events_page = Path("web/events.html").read_text(encoding="utf-8")
+        for shell in (index, events_page):
+            self.assertNotIn('<script src="http', shell)
+            self.assertNotIn('<link rel="stylesheet" href="http', shell)
+            self.assertIn('./events.js', shell)
+            self.assertIn('./styles.css', shell)
+            self.assertIn('./events.css', shell)
         self.assertIn('./app.js', index)
-        self.assertIn('./events.js', index)
-        self.assertIn('./styles.css', index)
-        self.assertIn('./events.css', index)
         self.assertIn('securityEventList', index)
+        self.assertIn('./events.html', index)
         self.assertIn('technical-panel', index)
 
     def test_security_events_use_generated_event_feed(self):
@@ -49,6 +53,20 @@ class WebReportTests(unittest.TestCase):
         self.assertIn('SUPPLY_CHAIN', events)
         self.assertIn('DATA_BREACH', events)
         self.assertIn('related_cves', events)
+
+    def test_full_event_page_has_filters_and_renders_entire_feed(self):
+        page = Path("web/events.html").read_text(encoding="utf-8")
+        events = Path("web/events.js").read_text(encoding="utf-8")
+        self.assertIn('allSecurityEventList', page)
+        self.assertIn('allEventSearch', page)
+        self.assertIn('allEventSource', page)
+        self.assertIn('allEventTypeFilters', page)
+        self.assertIn("data-event-type=\"ACTIVE_EXPLOITATION\"", page)
+        self.assertIn("data-event-type=\"RANSOMWARE\"", page)
+        self.assertIn('loadAllSecurityEvents', events)
+        self.assertIn('searchableEventText', events)
+        self.assertIn('sourceSelect.addEventListener', events)
+        self.assertIn("for (const item of filtered) root.append(securityEventCard(item))", events)
 
     def test_homepage_metrics_use_event_feed(self):
         app = Path("web/app.js").read_text(encoding="utf-8")
