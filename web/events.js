@@ -80,7 +80,9 @@ function securityEventCard(item) {
   eventAppend(top, badges, time);
 
   const heading = eventEl('h3', 'security-event-title');
-  const link = eventEl('a', '', eventText(item.title, '未命名事件'));
+  const displayTitle = item.title_zh || item.title;
+  const displaySummary = item.summary_zh || item.summary;
+  const link = eventEl('a', '', eventText(displayTitle, '未命名事件'));
   const sourceUrl = eventSafeUrl(item.source_url);
   if (sourceUrl) {
     link.href = sourceUrl;
@@ -89,8 +91,9 @@ function securityEventCard(item) {
   }
   heading.append(link);
 
-  const source = eventEl('p', 'security-event-product', `${eventText(item.source_name)} · ${eventTypeLabel(item.event_type)}`);
-  const summary = eventEl('p', 'security-event-summary', eventText(item.summary, '來源未提供摘要，請開啟原始報導查看細節。'));
+  const translationLabel = item.title_zh || item.summary_zh ? ' · 繁中翻譯' : '';
+  const source = eventEl('p', 'security-event-product', `${eventText(item.source_name)} · ${eventTypeLabel(item.event_type)}${translationLabel}`);
+  const summary = eventEl('p', 'security-event-summary', eventText(displaySummary, '來源未提供摘要，請開啟原始報導查看細節。'));
 
   const chips = eventEl('div', 'security-event-facts');
   const cves = item.related_cves || [];
@@ -101,7 +104,7 @@ function securityEventCard(item) {
 
   const footer = eventEl('div', 'security-event-sources');
   if (sourceUrl) {
-    const sourceLink = eventEl('a', '', `閱讀來源 · ${eventText(item.source_name)}`);
+    const sourceLink = eventEl('a', '', `閱讀原文 · ${eventText(item.source_name)}`);
     sourceLink.href = sourceUrl;
     sourceLink.target = '_blank';
     sourceLink.rel = 'noopener noreferrer';
@@ -127,7 +130,11 @@ async function loadSecurityEvents() {
 
     root.replaceChildren();
     count.textContent = events.length > visible.length ? `${visible.length} / ${events.length}` : `${visible.length}`;
-    if (freshness) freshness.textContent = payload.generated_at ? `事件更新：${eventTime(payload.generated_at)}` : '等待第一次事件收集';
+    if (freshness) {
+      const translated = payload.translation?.translated_items || 0;
+      const translationNote = translated ? ` · ${translated} 筆繁中翻譯` : '';
+      freshness.textContent = payload.generated_at ? `事件更新：${eventTime(payload.generated_at)}${translationNote}` : '等待第一次事件收集';
+    }
 
     if (!visible.length) {
       const empty = eventEl('article', 'security-event-empty');
