@@ -3,10 +3,14 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from security_intel.collectors.news import DEFAULT_NEWS_SOURCES, NewsCollector
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
+
+from security_intel.collectors.news import DEFAULT_NEWS_SOURCES, NewsCollector  # noqa: E402
 
 
 def load_json(path: Path) -> dict:
