@@ -16,10 +16,10 @@ on:
       - 'src/security_intel/collectors/news.py'
       - 'scripts/generate_report_v2.py'
       - 'scripts/build_events.py'
+      - 'scripts/enrich_events_zh.py'
       - 'scripts/validate_report.py'
       - 'scripts/build_web_report.py'
       - 'scripts/validate_web_report.py'
-      - 'data/events.json'
       - 'web/**'
       - 'wrangler.jsonc'
       - 'package.json'
@@ -32,6 +32,7 @@ on:
       - 'src/security_intel/collectors/news.py'
       - 'scripts/generate_report_v2.py'
       - 'scripts/build_events.py'
+      - 'scripts/enrich_events_zh.py'
       - 'scripts/validate_report.py'
       - 'scripts/build_web_report.py'
       - 'scripts/validate_web_report.py'
@@ -42,6 +43,7 @@ on:
       - 'tests/test_reporting.py'
       - 'tests/test_gemini.py'
       - 'tests/test_news.py'
+      - 'tests/test_event_translation.py'
       - 'tests/test_web_report.py'
       - 'requirements-report.txt'
       - '.github/workflows/v2-report.yml'
@@ -122,6 +124,15 @@ jobs:
 
       - name: Collect current security news and events
         run: python scripts/build_events.py
+
+      - name: Enrich event text in Traditional Chinese
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.8-flash' }}
+          GEMINI_FALLBACK_MODELS: ${{ vars.GEMINI_FALLBACK_MODELS || 'gemini-3.7-flash,gemini-3.6-flash' }}
+          GEMINI_TRANSLATION_MODEL: ${{ vars.GEMINI_TRANSLATION_MODEL || vars.GEMINI_MODEL || 'gemini-3.8-flash' }}
+          GEMINI_TRANSLATION_TIMEOUT_MS: ${{ vars.GEMINI_TRANSLATION_TIMEOUT_MS || '30000' }}
+        run: python scripts/enrich_events_zh.py
 
       - name: Generate security intelligence report
         env:
