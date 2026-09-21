@@ -1,30 +1,30 @@
 {
   "schema_version": "2.1-delta",
-  "generated_at": "2026-09-20T05:33:34.476819+00:00",
+  "generated_at": "2026-09-21T05:41:16.010287+00:00",
   "baseline": {
     "type": "state",
-    "generated_at": "2026-09-19T05:19:08.035619+00:00",
+    "generated_at": "2026-09-20T05:33:34.476819+00:00",
     "available": true
   },
   "summary": {
-    "current_snapshot_count": 2135,
-    "tracked_previous_count": 1000,
-    "epss_monitored_count": 635,
-    "meaningful_change_count": 6,
-    "included_count": 6,
+    "current_snapshot_count": 428,
+    "tracked_previous_count": 908,
+    "epss_monitored_count": 754,
+    "meaningful_change_count": 8,
+    "included_count": 8,
     "truncated": false,
     "events": {
-      "NEW_CVE": 6
+      "NEW_CVE": 8
     }
   },
   "items": [
     {
-      "cve": "CVE-2026-94084",
+      "cve": "CVE-2026-94107",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-09-20T02:16:53.717"
+          "to": "2026-09-20T12:17:06.277"
         }
       ],
       "risk": {
@@ -42,142 +42,16 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-94084",
-        "vendor": "OISF",
-        "product": "Suricata",
+        "cve": "CVE-2026-94107",
+        "vendor": "nivocart",
+        "product": "nivocart",
         "title": null,
-        "description": "Suricata before 8.0.7 has an Http2ThreadMultiBuf use-after-free when a transaction is inspected by rules that use http.response_header with and without a transform.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.4,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L",
-          "source": "cve@mitre.org",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-09-20T02:16:53.717",
-        "updated_time": "2026-09-20T02:16:53.717",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94084",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [
-          "CWE-416"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-94084",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-94083",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-09-20T02:16:53.520"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-94083",
-        "vendor": "OISF",
-        "product": "Suricata",
-        "title": null,
-        "description": "Suricata before 8.0.7 has a DoH2 type confusion that can cause an invalid free, because cleanup code for the HTTP2 state is executed even though the actual state is HTTP1 (when there is a DoH2 request with an HTTP1 to HTTP2 upgrade). This requires app-layer.protocols.doh2 to be enabled, which is the default in 8.x versions.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.4,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L",
-          "source": "cve@mitre.org",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-09-20T02:16:53.520",
-        "updated_time": "2026-09-20T02:16:53.520",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94083",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [
-          "CWE-843"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-94083",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-93985",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-09-19T12:16:41.873"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-93985",
-        "vendor": "Openpanel-dev",
-        "product": "openpanel",
-        "title": null,
-        "description": "OpenPanel js-runtime through commit bad75bdd contains a sandbox escape vulnerability in the JavaScript webhook template validator that fails to block computed member access to constructor chains. Attackers with project write access can create webhook templates using computed property notation to access Function constructor and execute arbitrary code in the worker process.",
+        "description": "NivoCart through 2.4.0 contains a predictable password reset token vulnerability in the forgotten.php endpoint that generates recovery codes using substr(md5(mt_rand()), 0, 10). Attackers who know an administrator's email address can request a password reset and predict the token to gain administrative account access without rate limiting or expiration.",
         "cvss": {
           "version": "4.0",
-          "score": 9.4,
+          "score": 9.2,
           "severity": "CRITICAL",
-          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
           "source": "disclosure@vulncheck.com",
           "type": "Secondary"
         },
@@ -191,29 +65,29 @@
           "source": null,
           "ssvc": null
         },
-        "published_time": "2026-09-19T12:16:41.873",
-        "updated_time": "2026-09-19T12:16:41.873",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93985",
+        "published_time": "2026-09-20T12:17:06.277",
+        "updated_time": "2026-09-20T12:17:06.277",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94107",
         "source_type": [
           "nvd"
         ],
         "cwes": [
-          "CWE-94"
+          "CWE-338"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-93985",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-94107",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-93741",
+      "cve": "CVE-2026-94097",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-09-19T06:16:30.557"
+          "to": "2026-09-21T00:16:59.793"
         }
       ],
       "risk": {
@@ -231,11 +105,11 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-93741",
-        "vendor": "Totolink",
-        "product": "A3002MU",
+        "cve": "CVE-2026-94097",
+        "vendor": "Netcore",
+        "product": "NBR200V2",
         "title": null,
-        "description": "A security flaw has been discovered in Totolink A3002MU Hh-B20211125.1046. Affected by this vulnerability is the function formWlWds of the file /boafrm/formWlWds. The manipulation of the argument submit-url results in buffer overflow. It is possible to launch the attack remotely. The exploit has been released to the public and may be used for attacks.",
+        "description": "A vulnerability was determined in Netcore NBR200V2 1.3.241127.071246. This affects an unknown part of the file /www/cgi-bin/network_tools of the component CGI Diagnostic Endpoint. This manipulation of the argument param/key/val causes command injection. Remote exploitation of the attack is possible. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
         "cvss": {
           "version": "4.0",
           "score": 9.3,
@@ -244,8 +118,8 @@
           "source": "cna@vuldb.com",
           "type": "Secondary"
         },
-        "epss": 0.00644,
-        "epss_percentile": 0.49421,
+        "epss": null,
+        "epss_percentile": null,
         "cisa_kev": {
           "listed": false
         },
@@ -254,31 +128,30 @@
           "source": null,
           "ssvc": null
         },
-        "published_time": "2026-09-19T06:16:30.557",
-        "updated_time": "2026-09-19T06:16:30.557",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93741",
+        "published_time": "2026-09-21T00:16:59.793",
+        "updated_time": "2026-09-21T00:16:59.793",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94097",
         "source_type": [
-          "nvd",
-          "first_epss"
+          "nvd"
         ],
         "cwes": [
-          "CWE-119",
-          "CWE-120"
+          "CWE-74",
+          "CWE-77"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-93741",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-94097",
           "cisa_kev": null,
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-93741"
+          "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-86591",
+      "cve": "CVE-2026-94089",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-09-19T07:16:33.063"
+          "to": "2026-09-20T21:16:55.780"
         }
       ],
       "risk": {
@@ -296,88 +169,17 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-86591",
-        "vendor": "Unknown",
-        "product": "Botiga Pro",
+        "cve": "CVE-2026-94089",
+        "vendor": "D-Link",
+        "product": "DIR-868L",
         "title": null,
-        "description": "The Botiga Pro WordPress plugin before 1.6.5 does not perform any authorisation checks on one of its REST routes, allowing unauthenticated users to update arbitrary WordPress options with arbitrary values, which could lead to privilege escalation and a full site takeover.\nThe same route also allows unauthenticated users to store arbitrary web scripts which are then executed on every page of the site's front end, as well as to move arbitrary posts to the trash.",
+        "description": "A vulnerability was determined in D-Link DIR-868L 2.01b05. This issue affects the function strcpy of the file /webfa_authentication.cgi of the component Authentication Handler. Executing a manipulation of the argument id/password can lead to stack-based buffer overflow. The attack can be executed remotely. The exploit has been publicly disclosed and may be utilized.",
         "cvss": {
-          "version": "3.1",
-          "score": 9.8,
+          "version": "4.0",
+          "score": 9.3,
           "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
-          "type": "Secondary"
-        },
-        "epss": 0.00184,
-        "epss_percentile": 0.08209,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "none",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "none",
-            "automatable": "yes",
-            "technical_impact": "total",
-            "timestamp": "2026-09-19T13:12:32.907519Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2026-09-19T07:16:33.063",
-        "updated_time": "2026-09-19T14:17:00.907",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86591",
-        "source_type": [
-          "nvd",
-          "first_epss"
-        ],
-        "cwes": [
-          "CWE-862"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-86591",
-          "cisa_kev": null,
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-86591"
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-78030",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-09-19T11:16:37.667"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-78030",
-        "vendor": null,
-        "product": null,
-        "title": null,
-        "description": "DBI versions before 1.653 for Perl load arbitrary modules via unvalidated dbm_type and dbm_mldbm attributes in DBD::DBM.\n\nDBD::DBM passes the dbm_type and dbm_mldbm connect attributes to require without checking that the value names a module. require treats a path-shaped string as a literal filename and does not consult @INC, so the attribute chooses the file that Perl loads and runs.\n\nThe MLDBM::Serializer:: prefix that DBD::DBM prepends to dbm_mldbm is not a boundary: only the :: separators are rewritten to /, so a value containing / traverses out of the serializer directory. The value is also assigned to $MLDBM::Serializer, which MLDBM requires the same way when it ties the table.\n\nA caller that lets an untrusted party influence either attribute, for example through a DSN fragment or a parameter that selects a storage backend, runs the file-scope code of whatever module the value names.\n\nFor example,\n\n    my $dsn = \"dbi:DBM:f_dir=/var/db;dbm_type=../../Untrusted.pm\"\n    my $dbh = DBI->connect( $dsn );\n\nNote that DBD::Gofer forwards connect attributes to the server side, and DBI::ProxyServer checks only that a DSN starts with a driver prefix.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.8,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "cna@vuldb.com",
           "type": "Secondary"
         },
         "epss": null,
@@ -386,28 +188,339 @@
           "listed": false
         },
         "exploitation_status": {
-          "status": "none",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "none",
-            "automatable": "yes",
-            "technical_impact": "total",
-            "timestamp": "2026-09-20T00:05:25.993244Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
         },
-        "published_time": "2026-09-19T11:16:37.667",
-        "updated_time": "2026-09-20T01:16:30.017",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78030",
+        "published_time": "2026-09-20T21:16:55.780",
+        "updated_time": "2026-09-20T21:16:55.780",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94089",
         "source_type": [
           "nvd"
         ],
         "cwes": [
-          "CWE-470"
+          "CWE-119",
+          "CWE-121"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-78030",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-94089",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-94003",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-09-20T12:17:05.403"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-94003",
+        "vendor": "Comfast",
+        "product": "CF-N1-S",
+        "title": null,
+        "description": "A vulnerability has been found in Comfast CF-N1-S 2.6.0.1. Impacted is the function get_css_path_from_uri of the file /cgi-bin/mbox-config of the component Web Management Interface. The manipulation leads to stack-based buffer overflow. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "cna@vuldb.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-09-20T12:17:05.403",
+        "updated_time": "2026-09-20T12:17:05.403",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94003",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-119",
+          "CWE-121"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-94003",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-90817",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-09-20T13:17:44.973"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-90817",
+        "vendor": "Vanderbilt University",
+        "product": "REDCap",
+        "title": null,
+        "description": "An unauthenticated Remote Code Execution vulnerability was found in the survey passthrough routing and Data Import processing logic, in which a malicious user could potentially exploit it by manipulating HTTP requests to access an unintended controller route from a public survey context and by supplying a crafted file-path/stream parameter during import handling. If successfully exploited, this could allow the attacker to remotely execute arbitrary code on the REDCap server. The attacker does not have to be authenticated in order to exploit this, but exploitation requires knowledge of a valid public survey hash. This vulnerability exists in REDCap 13.3.0 and higher.",
+        "cvss": {
+          "version": "3.1",
+          "score": 9.8,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "source": "contact@securifera.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-09-20T13:17:44.973",
+        "updated_time": "2026-09-20T13:17:44.973",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90817",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-73",
+          "CWE-94"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-90817",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-88857",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-09-20T18:16:54.443"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-88857",
+        "vendor": "OrdaSoft.com",
+        "product": "OrdaSoft Joomla Gallery free extension for Joomla",
+        "title": null,
+        "description": "Joomla Extension - OrdaSoft.com - Authenticated, Privileged Remote Code Execution in OrdaSoft Joomla Gallery extension for Joomla < 6.2.7 - The extensions saveWatermark() copied an uploaded file into a web-accessible directory using the client-supplied filename exactly as sent, with no extension check, no content check, and no filename sanitisation of any kind. An authenticated core.manage user could upload a .php file disguised with an image Content-Type header and execute it directly by requesting the resulting path.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.4,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "security@joomla.org",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-09-20T18:16:54.443",
+        "updated_time": "2026-09-20T18:16:54.443",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88857",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-434"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-88857",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-88856",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-09-20T18:16:54.280"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-88856",
+        "vendor": "OrdaSoft.com",
+        "product": "OrdaSoft Joomla Gallery free extension for Joomla",
+        "title": null,
+        "description": "Joomla Extension - OrdaSoft.com - Authenticated, Privileged Remote Code Execution in OrdaSoft Joomla Gallery extension for Joomla < 6.2.7 - The extensions updateOSGallery(), reached via task=update_osgallery, read a JSON request body and called the value of a method field as a live PHP function, passing the value of a package field as its single argument, with no allow-list or is_callable() check of any kind. Any function name compatible with a single argument was directly reachable, including system, exec, shell_exec, and passthru.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.4,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "security@joomla.org",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-09-20T18:16:54.280",
+        "updated_time": "2026-09-20T18:16:54.280",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88856",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-94"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-88856",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-88854",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-09-20T18:16:53.987"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-88854",
+        "vendor": "OrdaSoft.com",
+        "product": "OrdaSoft Joomla Gallery free extension for Joomla",
+        "title": null,
+        "description": "Joomla Extension - OrdaSoft.com - Unauthenticated SQL Injection in OrdaSoft Joomla Gallery extension for Joomla < 6.2.7 - The extensions showSearchResult() and showSearchResultAjax() read the textsearch/searchText request parameter with $input->getVar(), which is not a real Joomla filter method and falls through to a filter that strips HTML tags but does not touch quotes or SQL syntax. The value is concatenated directly into a LIKE clause with no escaping. The endpoint requires no login of any kind: mod_osgallery_search is a public, commonly-published search box. Any anonymous site visitor can inject a UNION SELECT and read arbitrary database content.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "security@joomla.org",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-09-20T18:16:53.987",
+        "updated_time": "2026-09-20T18:16:53.987",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88854",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-89"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-88854",
           "cisa_kev": null,
           "epss": null
         }
