@@ -1,11 +1,11 @@
 {
   "schema_version": "1.1-security-events",
-  "generated_at": "2026-09-22T05:39:51.046597+00:00",
+  "generated_at": "2026-09-23T05:26:05.030178+00:00",
   "selection": {
     "window_days": 7,
     "max_items": 20,
     "rule": "Homepage events come from current RSS/advisory sources. CVEs are shown only when the source article/advisory mentions them.",
-    "tracked_cve_count": 55
+    "tracked_cve_count": 117
   },
   "sources": [
     {
@@ -32,33 +32,110 @@
   "summary": {
     "fetched_entries": 65,
     "included_items": 20,
-    "linked_cve_items": 20,
-    "matched_intelligence_items": 1,
+    "linked_cve_items": 17,
+    "matched_intelligence_items": 3,
     "successful_sources": 4,
     "source_errors": [],
-    "preserved_translations": 14
+    "preserved_translations": 6
   },
   "items": [
     {
-      "id": "8377f7a889b77f9e",
+      "id": "eba42a3506b305ee",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "published_at": "2026-09-21T12:00:00+00:00",
-      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
-      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-7273 Zyxel GS1900 Series Switches Stack-Based Buffer Overflow Vulnerability This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal enterprise. B...",
+      "published_at": "2026-09-22T12:00:00+00:00",
+      "title": "CISA Adds Four Known Exploited Vulnerabilities to Catalog",
+      "summary": "CISA has added four new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-85102 Check Point Multiple Products Improper Certificate Validation Vulnerability CVE-2026-93616 Check Point Multiple Products Path Traversal Vulnerability CVE-2026-93952 Arista VeloCloud Orchestrator Improper I...",
       "source_name": "CISA Advisories",
       "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/21/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/22/cisa-adds-four-known-exploited-vulnerabilities-catalog",
       "related_cves": [
-        "CVE-2026-7273"
+        "CVE-2026-85102",
+        "CVE-2026-93616",
+        "CVE-2026-93952",
+        "CVE-2026-94127"
       ],
       "matched_intelligence_cves": [
-        "CVE-2026-7273"
+        "CVE-2026-85102",
+        "CVE-2026-93616",
+        "CVE-2026-93952",
+        "CVE-2026-94127"
       ],
-      "score": 111,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "CISA 將一項已知被利用的漏洞納入目錄",
-      "summary_zh": "根據存在主動利用的證據，CISA 已在其已知被利用漏洞（KEV）目錄中新增一項新漏洞：CVE-2026-7273 Zyxel GS1900 系列交換器堆疊緩衝區溢位漏洞。此類漏洞是惡意網路入侵者的常見攻擊途徑，並對聯邦企業構成重大風險。B..."
+      "score": 121,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "20fee5056b0e598b",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-22T16:32:47+00:00",
+      "title": "Check Point warns of Management Server zero-day exploited in attacks",
+      "summary": "Check Point Software released emergency hotfixes to address a critical Security Management Server vulnerability that could let attackers run arbitrary scripts. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/check-point-patches-management-server-zero-day-exploited-in-attacks/",
+      "related_cves": [
+        "CVE-2024-24919",
+        "CVE-2026-16232",
+        "CVE-2026-50751",
+        "CVE-2026-85102",
+        "CVE-2026-85103",
+        "CVE-2026-93616"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-85102",
+        "CVE-2026-93616"
+      ],
+      "score": 116,
+      "cve_evidence": "source_article"
+    },
+    {
+      "id": "5204aaedc51d4d0b",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-22T19:13:29+00:00",
+      "title": "ShinyHunters claims FBI hack, data theft in PeopleSoft zero-day breach",
+      "summary": "The ShinyHunters extortion gang claims it breached FBI systems using a new Oracle PeopleSoft zero-day vulnerability, gaining access to internal services and stealing sensitive data on employees and job applicants. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/shinyhunters-claims-fbi-hack-data-theft-in-peoplesoft-zero-day-breach/",
+      "related_cves": [],
+      "matched_intelligence_cves": [],
+      "score": 107,
+      "cve_evidence": null
+    },
+    {
+      "id": "16a35ceaca982db3",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-22T12:48:06+00:00",
+      "title": "D-Link warns of max severity zero-day bug in DIR-822A routers",
+      "summary": "D-Link warned customers of a maximum-severity vulnerability (CVE-2026-86296) with public proof-of-concept (PoC) exploit code and no patch, affecting legacy DIR-822A dual-band Wi-Fi routers. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/d-link-warns-of-max-severity-zero-day-bug-in-dir-822a-routers/",
+      "related_cves": [
+        "CVE-2026-86296",
+        "CVE-2026-86510"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 106,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "9228fd09d5251b13",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-22T09:55:11+00:00",
+      "title": "New Windows Defender zero-day blocks Microsoft antivirus updates",
+      "summary": "Over the weekend, security researcher Abdelhamid Naceri (also known as Nightmare Eclipse) released another Microsoft Defender zero-day exploit that blocks antivirus updates. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/new-windows-defender-zero-day-blocks-microsoft-antivirus-updates/",
+      "related_cves": [],
+      "matched_intelligence_cves": [],
+      "score": 106,
+      "cve_evidence": null
     },
     {
       "id": "522af8b6ffea78c3",
@@ -76,29 +153,48 @@
         "CVE-2026-53266"
       ],
       "matched_intelligence_cves": [],
-      "score": 107,
+      "score": 105,
       "cve_evidence": "source_article",
       "title_zh": "CISA 警告三項 Linux Kernel 漏洞正遭主動利用",
       "summary_zh": "美國網路安全暨基礎設施安全局（CISA）警告，駭客正在利用三項 Linux kernel 漏洞，其中一項被評為嚴重等級。[...]"
     },
     {
-      "id": "14e87e3a15b5ebd6",
-      "event_type": "RANSOMWARE",
+      "id": "8377f7a889b77f9e",
+      "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "published_at": "2026-09-19T13:48:32+00:00",
-      "title": "ShinyHunters hacks Clop leak site, threatens to extort ransomware gang",
-      "summary": "The ShinyHunters extortion gang breached the Clop (aka Cl0p) ransomware operation's data leak site, defacing the Tor site and allegedly stealing server data and the private keys for its onion service. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/shinyhunters-hacks-clop-leak-site-threatens-to-extort-ransomware-gang/",
+      "published_at": "2026-09-21T12:00:00+00:00",
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-7273 Zyxel GS1900 Series Switches Stack-Based Buffer Overflow Vulnerability This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal enterprise. B...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/21/cisa-adds-one-known-exploited-vulnerability-catalog",
       "related_cves": [
-        "CVE-2025-61882"
+        "CVE-2026-7273"
       ],
       "matched_intelligence_cves": [],
-      "score": 107,
-      "cve_evidence": "source_article",
-      "title_zh": "ShinyHunters 入侵 Clop 勒索軟體洩漏網站並威脅進行勒索",
-      "summary_zh": "ShinyHunters 勒索團夥入侵了 Clop（又名 Cl0p）勒索軟體營運團隊的資料洩漏網站，竄改了該 Tor 網站的頁面，並聲稱竊取了伺服器資料及其 onion 服務的私鑰。[...]"
+      "score": 104,
+      "cve_evidence": "source_title_or_summary",
+      "title_zh": "CISA 將一項已知被利用的漏洞納入目錄",
+      "summary_zh": "根據存在主動利用的證據，CISA 已在其已知被利用漏洞（KEV）目錄中新增一項新漏洞：CVE-2026-7273 Zyxel GS1900 系列交換器堆疊緩衝區溢位漏洞。此類漏洞是惡意網路入侵者的常見攻擊途徑，並對聯邦企業構成重大風險。B..."
+    },
+    {
+      "id": "70afa7c8667ce0e2",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-18T12:00:00+00:00",
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2025-39682 Linux Kernel Improper Check for Unusual or Exceptional Conditions Vulnerability This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal ent...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/18/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "related_cves": [
+        "CVE-2025-39682"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 98,
+      "cve_evidence": "source_title_or_summary",
+      "title_zh": "CISA 將一宗已知被利用漏洞納入目錄",
+      "summary_zh": "CISA 根據已被積極利用的證據，在其已知被利用漏洞（KEV）目錄中新增了一宗新漏洞：CVE-2025-39682 Linux Kernel 異常或特殊條件檢查不當漏洞。此類漏洞是惡意網路威脅者常用的攻擊途徑，並對聯邦機構帶來重大風險..."
     },
     {
       "id": "16075ef8dec8361f",
@@ -115,29 +211,25 @@
         "CVE-2026-53266"
       ],
       "matched_intelligence_cves": [],
-      "score": 100,
+      "score": 98,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 將兩宗已知被利用漏洞納入目錄",
       "summary_zh": "CISA 根據已被積極利用的證據，在其已知被利用漏洞（KEV）目錄中新增了兩宗新漏洞：CVE-2025-39964 Linux Kernel 競態條件（Race Condition）漏洞，以及 CVE-2026-53266 Linux Kernel 越界寫入漏洞。此類漏洞是惡意網路威脅者常用的攻擊途徑，並構成重大風險..."
     },
     {
-      "id": "70afa7c8667ce0e2",
-      "event_type": "ACTIVE_EXPLOITATION",
+      "id": "eac3948f2b433c24",
+      "event_type": "DATA_BREACH",
       "priority": "CRITICAL",
-      "published_at": "2026-09-18T12:00:00+00:00",
-      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
-      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2025-39682 Linux Kernel Improper Check for Unusual or Exceptional Conditions Vulnerability This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal ent...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/18/cisa-adds-one-known-exploited-vulnerability-catalog",
-      "related_cves": [
-        "CVE-2025-39682"
-      ],
+      "published_at": "2026-09-22T12:57:07+00:00",
+      "title": "Webinar tomorrow: Inside real-world Google Workspace breaches",
+      "summary": "Tomorrow's webinar examines real Google Workspace breaches involving social engineering and malicious OAuth applications, from initial access through the critical first hours of incident response. Learn which security controls and response decisions can make the greatest difference. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/webinar-tomorrow-inside-real-world-google-workspace-breaches/",
+      "related_cves": [],
       "matched_intelligence_cves": [],
-      "score": 100,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "CISA 將一宗已知被利用漏洞納入目錄",
-      "summary_zh": "CISA 根據已被積極利用的證據，在其已知被利用漏洞（KEV）目錄中新增了一宗新漏洞：CVE-2025-39682 Linux Kernel 異常或特殊條件檢查不當漏洞。此類漏洞是惡意網路威脅者常用的攻擊途徑，並對聯邦機構帶來重大風險..."
+      "score": 96,
+      "cve_evidence": null
     },
     {
       "id": "3c232ce3f43d8ba8",
@@ -153,7 +245,7 @@
         "CVE-2026-58704"
       ],
       "matched_intelligence_cves": [],
-      "score": 96,
+      "score": 95,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 將一項已知被利用的漏洞加入目錄",
       "summary_zh": "CISA 根據已被積極利用的證據，將一項新漏洞加入其「已知被利用漏洞」（KEV）目錄。CVE-2026-58704 Google Pixel 授權不當漏洞。此類漏洞是惡意網路攻擊者的常見攻擊向量，並對聯邦企業構成重大風險。強制性營運指引..."
@@ -173,295 +265,148 @@
         "CVE-2026-87886"
       ],
       "matched_intelligence_cves": [],
-      "score": 96,
+      "score": 95,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 將兩項已遭利用的漏洞納入目錄",
       "summary_zh": "CISA 根據積極利用的證據，在其已知被利用漏洞（KEV）目錄中新增了兩項新漏洞：CVE-2026-76460 Cisco Identity Services Engine 特權 API 使用不當漏洞，以及 CVE-2026-87886 Acronis Backup 預設權限不當漏洞。這類漏洞是常見的攻擊途徑..."
     },
     {
-      "id": "7110c4c77632bb04",
+      "id": "30aad928e8244cb1",
       "event_type": "THREAT_ACTIVITY",
       "priority": "CRITICAL",
-      "published_at": "2026-09-17T12:00:00+00:00",
-      "title": "Bransys ELD",
-      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow unauthorized access to telemetry data and firmware. The following versions of Bransys ELD are affected: Android <11.00.00 (CVE-2026-86520, CVE-2026-86689, CVE-2026-77960) iOS <1.1.54 (CVE-2026-86520, CVE-2026-86689, CVE-2026-77960) CVSS Vendor Equipment Vulnerabilities v3 7.5 B...",
+      "published_at": "2026-09-22T12:00:00+00:00",
+      "title": "lwIP TCP/IP Stack MQTT Client Application",
+      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow an attacker to gain full code execution on the device. The following versions of lwIP TCP/IP Stack MQTT Client Application are affected: MQTT Client Application >=2.0.1|<=2.2.1 (CVE-2026-87121) CVSS Vendor Equipment Vulnerabilities v3 9.8 lwIP lwIP TCP/IP Stack MQTT Client Applica...",
       "source_name": "CISA Advisories",
       "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-260-01",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-265-01",
       "related_cves": [
-        "CVE-2026-77960",
-        "CVE-2026-86520",
-        "CVE-2026-86689"
+        "CVE-2026-87121"
       ],
-      "matched_intelligence_cves": [],
-      "score": 78,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Bransys ELD",
-      "summary_zh": "檢視 CSAF 摘要。成功利用這些漏洞可能會導致未經授權存取遙測資料與韌體。以下版本的 Bransys ELD 受到影響：Android <11.00.00 (CVE-2026-86520、CVE-2026-86689、CVE-2026-77960)、iOS <1.1.54 (CVE-2026-86520、CVE-2026-86689、CVE-2026-77960)。CVSS 廠商設備漏洞 v3 7.5 B..."
+      "matched_intelligence_cves": [
+        "CVE-2026-87121"
+      ],
+      "score": 91,
+      "cve_evidence": "source_title_or_summary"
     },
     {
-      "id": "4fdefba1eb2b25aa",
+      "id": "e3c7e0e08ab6f19d",
       "event_type": "THREAT_ACTIVITY",
       "priority": "CRITICAL",
-      "published_at": "2026-09-17T12:00:00+00:00",
-      "title": "Hitachi Energy FACTS Control Platform (FCP)",
-      "summary": "View CSAF Summary Hitachi Energy is aware of vulnerabilities that affect the FACTS Control systems with GWS component listed in this document. An attacker exploiting these vulnerabilities can cause impact on confidentiality, integrity and availability of the product. Following FACTS Control systems with GWS component deployed from year 2020 onwards are li...",
+      "published_at": "2026-09-22T12:00:00+00:00",
+      "title": "OpenPLC Runtime v3",
+      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow an attacker to hijack session cookies and issue state-changing requests as an operator which would allow the attacker to control the programmable logic controller and the physical processes it drives. The following versions of OpenPLC Runtime v3 are affected: OpenPLC 3 (CVE-2026-8...",
       "source_name": "CISA Advisories",
       "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-260-03",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-265-09",
       "related_cves": [
-        "CVE-2024-3980",
-        "CVE-2024-3982",
-        "CVE-2024-4872",
-        "CVE-2024-7940",
-        "CVE-2024-7941"
+        "CVE-2026-88020"
       ],
       "matched_intelligence_cves": [],
-      "score": 78,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Hitachi Energy FACTS Control Platform (FCP)",
-      "summary_zh": "檢視 CSAF 摘要。Hitachi Energy 已意識到影響本文件中列出包含 GWS 元件的 FACTS Control 系統漏洞。攻擊者利用這些漏洞可能會對產品的機密性、完整性和可用性造成影響。自 2020 年起部署的以下包含 GWS 元件的 FACTS Control 系統受到影響..."
+      "score": 86,
+      "cve_evidence": "source_title_or_summary"
     },
     {
-      "id": "8cca7e0997a098a7",
+      "id": "2830a7fcaaeb3584",
       "event_type": "THREAT_ACTIVITY",
       "priority": "CRITICAL",
-      "published_at": "2026-09-15T12:00:00+00:00",
-      "title": "CareCam CM2507",
-      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to access live video and sensitive device information, enable unauthorized services, execute arbitrary code, modify device operation, and recover stored credentials. The following versions of CareCam CM2507 are affected: HMT.CM2507 Firmware v251211.1507 (CVE-2026-88...",
+      "published_at": "2026-09-22T12:00:00+00:00",
+      "title": "lwIP (Lightweight IP)",
+      "summary": "View CSAF Summary Successful exploitation of this vulnerability could result in a system crash, a DoS, or memory corruption, which could lead to code execution on the victim system. The following versions of lwIP (Lightweight IP) are affected: API >=2.0.1|<=2.2.1 (CVE-2026-91018) CVSS Vendor Equipment Vulnerabilities v3 8.8 lwIP lwIP (Lightweight IP) Doub...",
       "source_name": "CISA Advisories",
       "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-258-08",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-265-02",
       "related_cves": [
-        "CVE-2026-81305",
-        "CVE-2026-81321",
-        "CVE-2026-84398",
-        "CVE-2026-84400",
-        "CVE-2026-85478",
-        "CVE-2026-85497",
-        "CVE-2026-88259"
+        "CVE-2026-91018"
       ],
       "matched_intelligence_cves": [],
-      "score": 75,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "CareCam CM2507",
-      "summary_zh": "查看 CSAF 摘要 成功利用這些漏洞可能允許攻擊者存取即時視訊與敏感裝置資訊、啟用未授權的服務、執行任意程式碼、修改裝置運作並復原儲存的憑證。以下版本的 CareCam CM2507 受影響：HMT.CM2507 韌體 v251211.1507 (CVE-2026-88..."
+      "score": 86,
+      "cve_evidence": "source_title_or_summary"
     },
     {
-      "id": "315dc3f8943e0a17",
-      "event_type": "THREAT_ACTIVITY",
-      "priority": "CRITICAL",
-      "published_at": "2026-09-15T12:00:00+00:00",
-      "title": "mySCADA myPRO Manager",
-      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to access privileged management functions or send arbitrary SMS messages through the connected GSM modem. The following versions of mySCADA myPRO Manager are affected: mySCADA myPRO Manager <=2.1 (CVE-2026-73807, CVE-2026-82567) CVSS Vendor Equipment Vulnerabilities...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-258-03",
-      "related_cves": [
-        "CVE-2026-73807",
-        "CVE-2026-82567"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 75,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "mySCADA myPRO Manager",
-      "summary_zh": "查看 CSAF 摘要 成功利用這些漏洞可能允許攻擊者存取特權管理功能，或透過連接的 GSM 數據機傳送任意 SMS 簡訊。以下版本的 mySCADA myPRO Manager 受影響：mySCADA myPRO Manager <=2.1 (CVE-2026-73807, CVE-2026-82567) CVSS 廠商設備漏洞..."
-    },
-    {
-      "id": "2f5bf3d050804bd8",
-      "event_type": "THREAT_ACTIVITY",
-      "priority": "CRITICAL",
-      "published_at": "2026-09-15T12:00:00+00:00",
-      "title": "Wärtsilä FOS-Onboard",
-      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to deliver an unauthorized update, execute code, or extract credentials to allow the attacker to impersonate a privileged client. The following versions of Wärtsilä FOS-Onboard are affected: FOS-Onboard 5.07.0923.01 (CVE-2026-78225, CVE-2026-81855) CVSS Vendor Equip...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-258-02",
-      "related_cves": [
-        "CVE-2026-78225",
-        "CVE-2026-81855"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 75,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Wärtsilä FOS-Onboard",
-      "summary_zh": "查看 CSAF 摘要 成功利用這些漏洞可能允許攻擊者遞送未授權的更新、執行程式碼，或擷取憑證以允許攻擊者冒充特權用戶端。以下版本的 Wärtsilä FOS-Onboard 受影響：FOS-Onboard 5.07.0923.01 (CVE-2026-78225, CVE-2026-81855) CVSS 廠商設備..."
-    },
-    {
-      "id": "cac98fd9896d9379",
-      "event_type": "THREAT_ACTIVITY",
-      "priority": "CRITICAL",
-      "published_at": "2026-09-15T12:00:00+00:00",
-      "title": "Digital Watchdog VMAX DVR and NVR Product Lineups",
-      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could grant full administrative control of the device, allowing an attacker to view live and recorded surveillance, alter device configurations, and use the device as a network pivot point. The following versions of Digital Watchdog VMAX DVR and NVR Product Lineups are affected: VMAX A1 G4...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-258-01",
-      "related_cves": [
-        "CVE-2026-66372",
-        "CVE-2026-66887",
-        "CVE-2026-66890",
-        "CVE-2026-68070",
-        "CVE-2026-68950",
-        "CVE-2026-68953"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 75,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Digital Watchdog VMAX DVR 與 NVR 產品系列",
-      "summary_zh": "查看 CSAF 摘要 成功利用這些漏洞可授予裝置的完全管理控制權，允許攻擊者檢視即時和已錄製的監視畫面、變更裝置設定，並將該裝置用作網路樞紐點。以下版本的 Digital Watchdog VMAX DVR 與 NVR 產品系列受影響：VMAX A1 G4..."
-    },
-    {
-      "id": "b9c2dc21c2a5a55a",
+      "id": "27c5d6b01859ae55",
       "event_type": "VULNERABILITY_NEWS",
       "priority": "CRITICAL",
-      "published_at": "2026-09-17T12:00:00+00:00",
-      "title": "Schneider Electric Modicon M340 Controller and Communication Modules",
-      "summary": "View CSAF Summary Schneider Electric is aware of a vulnerability in its Modicon M340 https://www.se.com/ww/en/product-range/1468-modicon-m340-pac/ , BMXNOR0200H https://www.se.com/us/en/product/BMXNOR0200H/communication-module-modicon-m340-iec-608705101-104-dnp3-for-severe-environments/ : Modicon M340 X80 Ethernet Communication Modules, BMXNGD0100 https:/...",
+      "published_at": "2026-09-22T12:00:00+00:00",
+      "title": "Siemens Industrial Edge Management",
+      "summary": "View CSAF Summary Industrial Edge Management contains an authentication bypass vulnerability that could allow an unauthenticated remote attacker to perform full account takeover by resetting user credentials without completing email verification. Siemens has released new versions for the affected products and recommends to update to the latest versions. T...",
       "source_name": "CISA Advisories",
       "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-260-04",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-265-06",
       "related_cves": [
-        "CVE-2025-6625"
+        "CVE-2026-18963"
       ],
       "matched_intelligence_cves": [],
-      "score": 73,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Schneider Electric Modicon M340 控制器與通訊模組",
-      "summary_zh": "檢視 CSAF 摘要。Schneider Electric 已知悉其 Modicon M340、BMXNOR0200H（用於嚴苛環境的 Modicon M340 IEC 608705101-104 DNP3 通訊模組）以及 BMXNGD0100 Modicon M340 X80 乙太網路通訊模組中存在一項漏洞..."
+      "score": 81,
+      "cve_evidence": "source_title_or_summary"
     },
     {
-      "id": "cd402b8952c09075",
+      "id": "2e43af6896cc3b9f",
       "event_type": "VULNERABILITY_NEWS",
       "priority": "CRITICAL",
-      "published_at": "2026-09-17T12:00:00+00:00",
-      "title": "ABB Ability Edgenius",
-      "summary": "View CSAF Summary ABB is aware of public reports of a vulnerability CVE‑2026‑31431 (Copy Fail) in the product versions listed as affected in the advisory. An update is available that resolves a publicly reported vulnerability. CVE‑2026‑31431 (Copy Fail) is a Linux kernel vulnerability that may allow a locally authenticated user or compromised container wo...",
+      "published_at": "2026-09-22T12:00:00+00:00",
+      "title": "Siemens WTV676 and WTV776",
+      "summary": "View CSAF Summary The products listed below contain a denial of service vulnerability that could allow an attacker to force the devices into protection mode under certain conditions. This disables remote connectivity functions (Web Access) to the devices. Siemens has released new versions for the affected products and recommends to update to the latest ve...",
       "source_name": "CISA Advisories",
       "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-260-06",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-265-08",
+      "related_cves": [
+        "CVE-2026-89207"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 81,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "5897c7f1e9130c0a",
+      "event_type": "VULNERABILITY_NEWS",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-22T12:00:00+00:00",
+      "title": "Siemens SIPLUS and SIMATIC Products",
+      "summary": "View CSAF Summary Multiple Siemens products are vulnerable to the \"Copy Fail\" vulnerability. Siemens has released new versions for several affected products and recommends to update to the latest versions. Siemens is preparing further fix versions and recommends specific countermeasures for products where fixes are not, or not yet available. The following...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-265-04",
       "related_cves": [
         "CVE-2026-31431"
       ],
       "matched_intelligence_cves": [],
-      "score": 73,
+      "score": 81,
       "cve_evidence": "source_title_or_summary"
     },
     {
-      "id": "3e6245c7837b8698",
+      "id": "2fc28f57f3275c0d",
       "event_type": "VULNERABILITY_NEWS",
       "priority": "CRITICAL",
-      "published_at": "2026-09-17T12:00:00+00:00",
-      "title": "Schneider Electric PowerChute Serial Shutdown",
-      "summary": "View CSAF Summary Schneider Electric is aware of vulnerabilities in its PowerChute Serial Shutdown product. The PowerChute Serial Shutdown product is a UPS management software enabling graceful system shutdown and energy management capabilities for desktops, servers and workstations. Failure to apply the remediation provided below may risk improper authen...",
+      "published_at": "2026-09-22T12:00:00+00:00",
+      "title": "Siemens Desigo CC family",
+      "summary": "View CSAF Summary A Client Code Execution (CCE) vulnerability has been identified in Desigo CC, potentially allowing malicious actors to execute arbitrary code on client devices through specially crafted graphics documents. This vulnerability leverages user-defined graphics containing embedded scripts that are executed on client application instances. Suc...",
       "source_name": "CISA Advisories",
       "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-260-07",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-265-05",
       "related_cves": [
-        "CVE-2026-13348"
+        "CVE-2026-34223"
       ],
       "matched_intelligence_cves": [],
-      "score": 73,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Schneider Electric PowerChute Serial Shutdown",
-      "summary_zh": "檢視 CSAF 摘要：Schneider Electric 已注意到其 PowerChute Serial Shutdown 產品中存在的安全漏洞。PowerChute Serial Shutdown 產品是一款 UPS 管理軟體，能為桌上型電腦、伺服器和工作站提供妥善的系統關機與能源管理功能。若未套用下方提供的修補措施，可能會面臨不當身分驗證的風險..."
+      "score": 81,
+      "cve_evidence": "source_title_or_summary"
     },
     {
-      "id": "e8c8fa03b84316e1",
+      "id": "75702abc871bd7d3",
       "event_type": "VULNERABILITY_NEWS",
       "priority": "CRITICAL",
-      "published_at": "2026-09-17T12:00:00+00:00",
-      "title": "Schneider Electric NetBotz 5 750/755",
-      "summary": "View CSAF Summary Schneider Electric is aware of multiple vulnerabilities in its NetBotz 5 – 750/755 products.The NetBotz 5 – 750/755 products are security and environmental monitors providing temperature, humidity, leak, smoke, vibration, door contact, and video monitoring capabilities. Failure to apply the remediation provided below may risk arbitrary o...",
+      "published_at": "2026-09-22T12:00:00+00:00",
+      "title": "Siemens SIMOVE Fleetmanager and SIPLANT",
+      "summary": "View CSAF Summary SIMOVE Fleetmanager and SIPLANT contain a path traversal vulnerability that could allow an attacker to access files outside of intended scope. Siemens has released new versions for the affected products and recommends to update to the latest versions. The following versions of Siemens SIMOVE Fleetmanager and SIPLANT are affected: SIMOVE...",
       "source_name": "CISA Advisories",
       "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-260-05",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-265-07",
       "related_cves": [
-        "CVE-2026-13336",
-        "CVE-2026-13337"
+        "CVE-2026-67367"
       ],
       "matched_intelligence_cves": [],
-      "score": 73,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Schneider Electric NetBotz 5 750/755",
-      "summary_zh": "檢視 CSAF 摘要。Schneider Electric 已知悉其 NetBotz 5 – 750/755 產品中存在多個漏洞。NetBotz 5 – 750/755 產品為安全與環境監控器，提供溫度、濕度、漏水、煙霧、震動、門禁接點及視訊監控功能。若未套用下方提供的修復措施，可能會面臨任意或..."
-    },
-    {
-      "id": "54365cf04dd3084f",
-      "event_type": "VULNERABILITY_NEWS",
-      "priority": "CRITICAL",
-      "published_at": "2026-09-17T12:00:00+00:00",
-      "title": "Mitsubishi Electric GX Works3 and Motion Control Settings",
-      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow a local attacker to successfully authenticate even with an invalid block password by executing the affected product and modify part of the executable module in memory, and thereby allows the attacker to view, tamper with, destroy, or delete control programs. The following versions...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-260-02",
-      "related_cves": [
-        "CVE-2026-15688"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 73,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Mitsubishi Electric GX Works3 與 Motion Control Settings",
-      "summary_zh": "檢視 CSAF 摘要。成功利用此漏洞可能允許本機攻擊者即使在區塊密碼無效的情況下，透過執行受影響的產品並修改記憶體中部分可執行模組來成功通過身分驗證，從而允許攻擊者檢視、篡改、破壞或刪除控制程式。以下版本..."
-    },
-    {
-      "id": "d012ec8fda85f292",
-      "event_type": "VULNERABILITY_NEWS",
-      "priority": "CRITICAL",
-      "published_at": "2026-09-17T12:00:00+00:00",
-      "title": "Mitsubishi Electric CC-Link IE TSN Communication Protocol (Update A)",
-      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow an attacker with access to the same network segment to tamper with communication data in the affected product by sending specially crafted packets under specific timing conditions. This could allow the attacker to cause a denial-of-service (DoS) condition in the affected product b...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-211-07",
-      "related_cves": [
-        "CVE-2026-13584"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 73,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Mitsubishi Electric CC-Link IE TSN 通訊協定（更新 A）",
-      "summary_zh": "檢視 CSAF 摘要。成功利用此漏洞可能允許存取同一網路區段的攻擊者，透過在特定時間條件下傳送特製封包，篡改受影響產品中的通訊資料。這可能允許攻擊者在受影響產品中引發阻斷服務 (DoS) 狀況..."
-    },
-    {
-      "id": "d5273067115a6325",
-      "event_type": "VULNERABILITY_NEWS",
-      "priority": "CRITICAL",
-      "published_at": "2026-09-15T12:00:00+00:00",
-      "title": "Schneider Electric SCADAPack x70 Products",
-      "summary": "View CSAF Summary Schneider Electric is aware of a vulnerability in its SCADAPack x70 products. The SCADAPack 47x, SCADAPack 47xi, SCADAPack 47xd, SCADAPack 470R and SCADAPack 57x products are Remote Terminal Units that provide communication capabilities for remote monitoring and control. Failure to apply the mitigations provided below may increase the ri...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-258-04",
-      "related_cves": [
-        "CVE-2026-81861"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 70,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Schneider Electric SCADAPack x70 產品漏洞",
-      "summary_zh": "檢視 CSAF 摘要：Schneider Electric 已注意到其 SCADAPack x70 產品存在漏洞。SCADAPack 47x、SCADAPack 47xi、SCADAPack 47xd、SCADAPack 470R 和 SCADAPack 57x 產品為遠端終端單元 (RTU)，提供用於遠端監控與控制的通訊功能。若未實施下方提供的緩解措施，可能會增加風險……"
+      "score": 81,
+      "cve_evidence": "source_title_or_summary"
     }
-  ],
-  "translation": {
-    "language": "zh-Hant-TW",
-    "status": "partial",
-    "provider": "gemini",
-    "model": "gemini-3.6-flash",
-    "models_used": [
-      "gemini-3.6-flash"
-    ],
-    "translated_items": 19,
-    "cached_items": 14,
-    "pending_items": 1,
-    "total_items": 20,
-    "attempted_items": 6,
-    "batch_size": 5,
-    "rejected_item_ids": [
-      "cd402b8952c09075"
-    ],
-    "fallback_reason": "partial_translation",
-    "batch_fallback_reasons": []
-  }
+  ]
 }
