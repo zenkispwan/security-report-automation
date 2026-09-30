@@ -1,11 +1,11 @@
 {
   "schema_version": "1.1-security-events",
-  "generated_at": "2026-09-29T06:26:19.295583+00:00",
+  "generated_at": "2026-09-30T06:12:24.509543+00:00",
   "selection": {
     "window_days": 7,
     "max_items": 20,
     "rule": "Homepage events come from current RSS/advisory sources. CVEs are shown only when the source article/advisory mentions them.",
-    "tracked_cve_count": 74
+    "tracked_cve_count": 101
   },
   "sources": [
     {
@@ -32,13 +32,60 @@
   "summary": {
     "fetched_entries": 65,
     "included_items": 20,
-    "linked_cve_items": 17,
-    "matched_intelligence_items": 0,
+    "linked_cve_items": 18,
+    "matched_intelligence_items": 5,
     "successful_sources": 4,
     "source_errors": [],
-    "preserved_translations": 15
+    "preserved_translations": 10
   },
   "items": [
+    {
+      "id": "494ffde2d5ef60f2",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-29T12:00:00+00:00",
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-86950 Apple Multiple Products Out-of-Bounds Write Vulnerability This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal enterprise. Binding Opera...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/29/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "related_cves": [
+        "CVE-2026-86950"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-86950"
+      ],
+      "score": 111,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "bfc2554a53b3995f",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-29T07:33:12+00:00",
+      "title": "Apple patches CoreGraphics zero-day flaw exploited in attacks",
+      "summary": "Apple released security updates to fix a zero-day vulnerability exploited in \"extremely sophisticated\" targeted attacks on iOS devices. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/apple-patches-coregraphics-zero-day-flaw-exploited-in-attacks/",
+      "related_cves": [
+        "CVE-2025-14174",
+        "CVE-2025-20701",
+        "CVE-2025-24085",
+        "CVE-2025-24200",
+        "CVE-2025-24201",
+        "CVE-2025-31200",
+        "CVE-2025-31201",
+        "CVE-2025-43529",
+        "CVE-2026-20700",
+        "CVE-2026-86950"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-86950"
+      ],
+      "score": 111,
+      "cve_evidence": "source_article"
+    },
     {
       "id": "ccc11f98d4a8d3b3",
       "event_type": "RANSOMWARE",
@@ -51,92 +98,48 @@
       "source_url": "https://www.bleepingcomputer.com/news/security/japans-keio-confirms-ransomware-attack-disrupted-business-systems/",
       "related_cves": [],
       "matched_intelligence_cves": [],
-      "score": 112,
+      "score": 110,
       "cve_evidence": null,
       "title_zh": "日本京王電鐵確認勒索軟體攻擊導致業務系統中斷",
       "summary_zh": "日本大型私鐵業者京王電鐵（Keio）表示，其網路在週末遭到勒索軟體攻擊，導致部分業務系統中斷。[...]"
     },
     {
-      "id": "178f19609d472e57",
-      "event_type": "RANSOMWARE",
-      "priority": "CRITICAL",
-      "published_at": "2026-09-28T15:49:27+00:00",
-      "title": "JadePuffer agentic AI attacks target Azure, destroy cloud resources",
-      "summary": "The JadePuffer ransomware operator is targeting Azure tenants with agent-driven attacks that conduct reconnaissance, steal credentials, and destroy core components. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/jadepuffer-agentic-ai-attacks-target-azure-destroy-cloud-resources/",
-      "related_cves": [],
-      "matched_intelligence_cves": [],
-      "score": 111,
-      "cve_evidence": null,
-      "title_zh": "JadePuffer 代理型 AI 攻擊針對 Azure 並摧毀雲端資源",
-      "summary_zh": "JadePuffer 勒索軟體營運者正透過代理驅動（agent-driven）的攻擊針對 Azure 租戶，進行偵察、竊取憑證並摧毀核心組件。[...]"
-    },
-    {
-      "id": "cb061ceb53a9d351",
+      "id": "3cb734ba29cf05d4",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "published_at": "2026-09-29T06:18:27+00:00",
-      "title": "Apple Patches Meta-Reported Zero-Day Linked to ‘Extremely Sophisticated Attack’",
-      "summary": "Apple has released iOS and macOS updates to patch the zero-day vulnerability tracked as CVE-2026-86950. The post Apple Patches Meta-Reported Zero-Day Linked to ‘Extremely Sophisticated Attack’ appeared first on SecurityWeek .",
-      "source_name": "SecurityWeek",
+      "published_at": "2026-09-29T18:37:12+00:00",
+      "title": "Hackers exploit Citrix NetScaler zero-day to deploy web shells",
+      "summary": "Cybersecurity firms say attackers exploited the Citrix NetScaler CVE-2026-88772 zero-day to deploy custom web shells and tunneling malware, gain root access, steal credentials, and spread into internal networks. [...]",
+      "source_name": "BleepingComputer",
       "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/apple-patches-meta-reported-zero-day-linked-to-extremely-sophisticated-attack/",
+      "source_url": "https://www.bleepingcomputer.com/news/security/hackers-exploit-citrix-netscaler-zero-day-to-deploy-web-shells/",
       "related_cves": [
-        "CVE-2025-43300",
-        "CVE-2025-55177",
-        "CVE-2026-65660",
-        "CVE-2026-86950"
+        "CVE-2026-88771",
+        "CVE-2026-88772"
       ],
       "matched_intelligence_cves": [],
       "score": 107,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Apple 修補 Meta 通報且與「極度複雜攻擊」相關的零日漏洞",
-      "summary_zh": "Apple 已釋出 iOS 與 macOS 更新，以修補追蹤為 CVE-2026-86950 的零日漏洞。這篇《Apple Patches Meta-Reported Zero-Day Linked to ‘Extremely Sophisticated Attack’》文章首次出現於 SecurityWeek。"
+      "cve_evidence": "source_title_or_summary"
     },
     {
-      "id": "8742de811d755b3a",
+      "id": "4aac976e74b6f04f",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "published_at": "2026-09-28T07:29:51+00:00",
-      "title": "Citrix Confirms 2 NetScaler Zero-Days After Admins Pulled the Plug",
-      "summary": "Citrix has released patches for the critical NetScaler vulnerabilities tracked as CVE-2026-88771 and CVE-2026-88772. The post Citrix Confirms 2 NetScaler Zero-Days After Admins Pulled the Plug appeared first on SecurityWeek .",
-      "source_name": "SecurityWeek",
-      "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/citrix-confirms-2-netscaler-zero-days-after-admins-pulled-the-plug/",
-      "related_cves": [
-        "CVE-2026-19490",
-        "CVE-2026-65660",
-        "CVE-2026-8452",
-        "CVE-2026-88771",
-        "CVE-2026-88772"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 106,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "管理員拔除電源後 Citrix 確認 2 個 NetScaler 零日漏洞",
-      "summary_zh": "Citrix 已針對追蹤為 CVE-2026-88771 和 CVE-2026-88772 的關鍵 NetScaler 漏洞釋出修補程式。這篇《Citrix Confirms 2 NetScaler Zero-Days After Admins Pulled the Plug》文章首次出現於 SecurityWeek。"
-    },
-    {
-      "id": "0954e8dba9d8d673",
-      "event_type": "ACTIVE_EXPLOITATION",
-      "priority": "CRITICAL",
-      "published_at": "2026-09-27T16:02:37+00:00",
-      "title": "Citrix confirms two NetScaler RCE zero-days exploited in attacks",
-      "summary": "Citrix has confirmed that two critical NetScaler remote code execution vulnerabilities, tracked as CVE-2026-88771 and CVE-2026-88772, are being exploited in attacks and that it has released security updates to fix the flaws. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/citrix-admins-warned-to-shut-down-netscalers-over-2-exploited-zero-days/",
+      "published_at": "2026-09-27T12:00:00+00:00",
+      "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
+      "summary": "CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-88771 Citrix NetScaler Improper Input Validation Vulnerability CVE-2026-88772 Citrix NetScaler Improper Restriction of Operations within the Bounds of a Memory Buffer Vulnerability These types of vulnerabilities...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/27/cisa-adds-two-known-exploited-vulnerabilities-catalog",
       "related_cves": [
         "CVE-2026-88771",
         "CVE-2026-88772"
       ],
       "matched_intelligence_cves": [],
-      "score": 104,
+      "score": 102,
       "cve_evidence": "source_title_or_summary",
-      "title_zh": "Citrix 證實兩項 NetScaler RCE 零日漏洞已於攻擊中遭利用",
-      "summary_zh": "Citrix 已證實追蹤為 CVE-2026-88771 與 CVE-2026-88772 的兩項嚴重 NetScaler 遠端執行程式碼漏洞正於攻擊中遭利用，且已發布安全更新以修復這些缺陷。[...]"
+      "title_zh": "CISA 新增兩項已知被利用漏洞至目錄",
+      "summary_zh": "CISA 根據活躍利用的證據，已將兩項新漏洞新增至其已知被利用漏洞（KEV）目錄。CVE-2026-88771 Citrix NetScaler 輸入驗證不當漏洞；CVE-2026-88772 Citrix NetScaler 記憶體緩衝區邊界內操作限制不當漏洞。這些類型的漏洞..."
     },
     {
       "id": "ef6b1694e1397f08",
@@ -159,30 +162,10 @@
         "CVE-2026-88778"
       ],
       "matched_intelligence_cves": [],
-      "score": 104,
+      "score": 102,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Citrix NetScaler ADC 與 Gateway 遭利用之嚴重零日漏洞",
       "summary_zh": "CISA 正在進一步推廣 Citrix 所揭露影響 Citrix NetScaler ADC 和 Citrix NetScaler Gateway 產品的 8 個新漏洞：CVE-2026-88771、CVE-2026-88772、CVE-2026-88773、CVE-2026-88774、CVE-2026-88775、CVE-2026-88776、CVE-2026-88777 及 CVE-2026-88778。CISA 已將 CVE-2026-88771 和 CVE-2026-88772 加入其已知被利用漏洞目錄..."
-    },
-    {
-      "id": "4aac976e74b6f04f",
-      "event_type": "ACTIVE_EXPLOITATION",
-      "priority": "CRITICAL",
-      "published_at": "2026-09-27T12:00:00+00:00",
-      "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
-      "summary": "CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-88771 Citrix NetScaler Improper Input Validation Vulnerability CVE-2026-88772 Citrix NetScaler Improper Restriction of Operations within the Bounds of a Memory Buffer Vulnerability These types of vulnerabilities...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/27/cisa-adds-two-known-exploited-vulnerabilities-catalog",
-      "related_cves": [
-        "CVE-2026-88771",
-        "CVE-2026-88772"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 104,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "CISA 新增兩項已知被利用漏洞至目錄",
-      "summary_zh": "CISA 根據活躍利用的證據，已將兩項新漏洞新增至其已知被利用漏洞（KEV）目錄。CVE-2026-88771 Citrix NetScaler 輸入驗證不當漏洞；CVE-2026-88772 Citrix NetScaler 記憶體緩衝區邊界內操作限制不當漏洞。這些類型的漏洞..."
     },
     {
       "id": "2432248e2b723547",
@@ -199,7 +182,7 @@
         "CVE-2026-67279"
       ],
       "matched_intelligence_cves": [],
-      "score": 100,
+      "score": 98,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 將兩項已知的被利用漏洞納入目錄",
       "summary_zh": "CISA 根據已遭積極利用的證據，在其「已知的被利用漏洞」（KEV）目錄中增加了兩項新漏洞：CVE-2026-65660 Microsoft SharePoint 程式碼注入漏洞，以及 CVE-2026-67279 Mikrotik RouterOS 行為工作流程不當強制執行漏洞。此類漏洞是惡意網路攻擊者的常用攻擊向量..."
@@ -218,10 +201,39 @@
         "CVE-2026-87902"
       ],
       "matched_intelligence_cves": [],
-      "score": 100,
+      "score": 98,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 將一項已知的被利用漏洞納入目錄",
       "summary_zh": "CISA 根據已遭積極利用的證據，在其「已知的被利用漏洞」（KEV）目錄中增加了一項新漏洞：CVE-2026-87902 WordPress Core 遠端檔案包含漏洞。此類漏洞是惡意網路攻擊者的常用攻擊向量，對聯邦企業構成重大風險。強制性營運指令..."
+    },
+    {
+      "id": "c8fcbf0e2df6a700",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-29T12:00:00+00:00",
+      "title": "Toptech TMS7 and TopHAT",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to access critical data or execute arbitrary code. The following versions of Toptech TMS7 and TopHAT are affected: TMS7 7.6.3 (CVE-2026-71379, CVE-2026-70356, CVE-2026-72510, CVE-2026-63713, CVE-2026-68954, CVE-2026-68068, CVE-2026-72507, CVE-2026-71302, CVE-2026-69...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-272-02",
+      "related_cves": [
+        "CVE-2026-63713",
+        "CVE-2026-68068",
+        "CVE-2026-68954",
+        "CVE-2026-69662",
+        "CVE-2026-70356",
+        "CVE-2026-71189",
+        "CVE-2026-71302",
+        "CVE-2026-71379",
+        "CVE-2026-72507",
+        "CVE-2026-72510"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-70356",
+        "CVE-2026-71379"
+      ],
+      "score": 96,
+      "cve_evidence": "source_title_or_summary"
     },
     {
       "id": "031361bd43801c01",
@@ -238,32 +250,57 @@
         "CVE-2026-71362"
       ],
       "matched_intelligence_cves": [],
-      "score": 98,
+      "score": 96,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 將兩項已遭利用漏洞加入目錄",
       "summary_zh": "CISA 根據主動利用的證據，在其已知的被利用漏洞（KEV）目錄中新增了兩項新漏洞。CVE-2026-5430 WSO2 多款產品路徑穿越漏洞；CVE-2026-71362 Adobe Commerce 與 Magento 授權不當漏洞。這些類型的漏洞是惡意攻擊者常採用的攻擊途徑……"
     },
     {
-      "id": "eba42a3506b305ee",
-      "event_type": "ACTIVE_EXPLOITATION",
+      "id": "fbfa52177ee528e6",
+      "event_type": "THREAT_ACTIVITY",
       "priority": "CRITICAL",
-      "published_at": "2026-09-22T12:00:00+00:00",
-      "title": "CISA Adds Four Known Exploited Vulnerabilities to Catalog",
-      "summary": "CISA has added four new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-85102 Check Point Multiple Products Improper Certificate Validation Vulnerability CVE-2026-93616 Check Point Multiple Products Path Traversal Vulnerability CVE-2026-93952 Arista VeloCloud Orchestrator Improper I...",
+      "published_at": "2026-09-29T12:00:00+00:00",
+      "title": "Anjvision YSSD-RTMP-H5",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to access sensitive information, access user accounts, execute OS-level commands, or take full control over the device. The following versions of Anjvision YSSD-RTMP-H5 are affected: YSSD-RTMP-H5 firmware 3.3.2.4_build_2024-12-26 (CVE-2026-100291, CVE-2026-100292, C...",
       "source_name": "CISA Advisories",
       "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/22/cisa-adds-four-known-exploited-vulnerabilities-catalog",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-272-05",
       "related_cves": [
-        "CVE-2026-85102",
-        "CVE-2026-93616",
-        "CVE-2026-93952",
-        "CVE-2026-94127"
+        "CVE-2026-100291",
+        "CVE-2026-100292",
+        "CVE-2026-100293",
+        "CVE-2026-100294",
+        "CVE-2026-100295",
+        "CVE-2026-100296",
+        "CVE-2026-100297",
+        "CVE-2026-100298",
+        "CVE-2026-100299"
       ],
-      "matched_intelligence_cves": [],
-      "score": 95,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "CISA 將四個已知已被利用的漏洞加入目錄",
-      "summary_zh": "CISA 根據已被活躍利用的證據，在其已知已被利用的漏洞（KEV）目錄中增加了四個新漏洞。CVE-2026-85102 Check Point 多款產品不當憑證驗證漏洞、CVE-2026-93616 Check Point 多款產品路徑遍歷漏洞、CVE-2026-93952 Arista VeloCloud Orchestrator 不當..."
+      "matched_intelligence_cves": [
+        "CVE-2026-100291"
+      ],
+      "score": 91,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "faadc0b2b19a69a4",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-29T12:00:00+00:00",
+      "title": "Viidure Dashcam Android Application",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow attackers to access, modify, or delete sensitive user data and critical system files, potentially compromising the operation of the entire platform. The following versions of Viidure Dashcam Android Application are affected: Dashcam Android Application <=3.3.1.260403 (CVE-2026-...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-272-07",
+      "related_cves": [
+        "CVE-2026-94204",
+        "CVE-2026-96587"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-96587"
+      ],
+      "score": 91,
+      "cve_evidence": "source_title_or_summary"
     },
     {
       "id": "2aa1989c56b2a4e9",
@@ -277,33 +314,79 @@
       "source_url": "https://www.cisa.gov/resources-tools/resources/considerations-critical-infrastructure-operators-working-third-party-ics-integrators",
       "related_cves": [],
       "matched_intelligence_cves": [],
-      "score": 91,
+      "score": 90,
       "cve_evidence": null,
       "title_zh": "關鍵基礎設施營運商與第三方 ICS 整合商合作之考量事項",
       "summary_zh": "簡介：聯邦調查局 (FBI) 與網路安全和基礎設施安全局 (CISA)（以下簡稱「撰寫機構」）發布了此事實清單，旨在提點關鍵基礎設施實體在與第三方工業控制系統整合商合作時，降低風險並儘可能減少漏洞的考量事項... [ICS 整合商...]"
     },
     {
-      "id": "2e6e934ea7b88452",
-      "event_type": "VULNERABILITY_NEWS",
+      "id": "ef19b502f5a8b531",
+      "event_type": "THREAT_ACTIVITY",
       "priority": "CRITICAL",
-      "published_at": "2026-09-28T06:24:19+00:00",
-      "title": "CISA orders feds to patch exploited Citrix flaws by Wednesday",
-      "summary": "The Cybersecurity and Infrastructure Security Agency (CISA) has ordered U.S. government agencies over the weekend to secure their systems against attacks exploiting two critical Citrix NetScaler vulnerabilities. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/cisa-orders-feds-to-patch-exploited-citrix-flaws-by-wednesday/",
+      "published_at": "2026-09-29T12:00:00+00:00",
+      "title": "Baicells Nova 430H",
+      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow an attacker to inject malformed messages which may lead to a denial-of-service condition. The following versions of Baicells Nova 430H are affected: Nova 430H eNodeB (model pBS3101SH) <=BaiBLQ_3.0.12 (CVE-2026-96274) CVSS Vendor Equipment Vulnerabilities v3 7.4 Baicells Technologi...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-272-04",
       "related_cves": [
-        "CVE-2026-19490",
-        "CVE-2026-3055",
-        "CVE-2026-4368",
-        "CVE-2026-88771",
-        "CVE-2026-88772"
+        "CVE-2026-96274"
       ],
       "matched_intelligence_cves": [],
-      "score": 80,
-      "cve_evidence": "source_article",
-      "title_zh": "CISA 命令聯邦機構於週三前修補已遭利用的 Citrix 漏洞",
-      "summary_zh": "美國網路安全暨基礎設施安全局（CISA）已於週末命令美國政府機構採取安全措施，保護其系統免於利用兩個關鍵 Citrix NetScaler 漏洞進行的攻擊。[...]"
+      "score": 86,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "b99a27d23f5221f3",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-29T12:00:00+00:00",
+      "title": "Lantronix G520 Series Cellular Gateway",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to replace software and execute arbitrary code with root privileges. The following versions of Lantronix G520 Series Cellular Gateway are affected: G520 Series 2.6.0.4R6_stable (CVE-2026-84409, CVE-2026-91191) CVSS Vendor Equipment Vulnerabilities v3 7.5 Lantronix L...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-272-01",
+      "related_cves": [
+        "CVE-2026-84409",
+        "CVE-2026-91191"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 86,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "4325786426012c69",
+      "event_type": "VULNERABILITY_NEWS",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-29T12:00:00+00:00",
+      "title": "MikroTik RouterOS",
+      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow an attacker to achieve remote code execution or cause a denial of service. The following versions of MikroTik RouterOS are affected: RouterOS <7.24 (CVE-2026-84411) CVSS Vendor Equipment Vulnerabilities v3 9.8 MikroTik MikroTik RouterOS Integer Underflow (Wrap or Wraparound) Backg...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-272-06",
+      "related_cves": [
+        "CVE-2026-84411"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 81,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "6c7ec78480f96d0e",
+      "event_type": "VULNERABILITY_NEWS",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-29T12:00:00+00:00",
+      "title": "VIVOTEK Camera Firmware",
+      "summary": "View CSAF Summary Successful exploitation of this vulnerability may allow attackers to achieve remote command execution on affected devices, potentially with root privileges, leading to full compromise of the camera system. The following versions of VIVOTEK Camera Firmware are affected: V Series model_FD9187 (CVE-2026-22755) V Series model_FD9189 (CVE-202...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-272-03",
+      "related_cves": [
+        "CVE-2026-22755"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 81,
+      "cve_evidence": "source_title_or_summary"
     },
     {
       "id": "2f1910289d0ad2a2",
@@ -332,7 +415,7 @@
         "CVE-2026-88956"
       ],
       "matched_intelligence_cves": [],
-      "score": 78,
+      "score": 76,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Botslab G980H 行車記錄器漏洞",
       "summary_zh": "檢視 CSAF 摘要：成功利用這些漏洞可能允許攻擊者繞過身分驗證控制、未經授權存取敏感資料與特權裝置功能、修改裝置設定，以及中斷裝置運作。受影響的 Botslab G980H 行車記錄器版本如下：G980H 行車記錄器系列 30010_QHG98..."
@@ -351,67 +434,10 @@
         "CVE-2026-7891"
       ],
       "matched_intelligence_cves": [],
-      "score": 78,
+      "score": 76,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Siemens Mendix Runtime（更新 A）",
       "summary_zh": "檢視 CSAF 摘要：本諮訊已撤銷。經重新調查確認，舉報的行為屬於預期的平台設定，不會暴露受保護的屬性。受影響的 Siemens Mendix Runtime 版本如下：Siemens Mendix Runtime 所有版本 (CVE-2026-7891) CVSS 廠商設備漏洞 v3 9.1 Siemens Siemens Mendix Run..."
-    },
-    {
-      "id": "30aad928e8244cb1",
-      "event_type": "THREAT_ACTIVITY",
-      "priority": "CRITICAL",
-      "published_at": "2026-09-22T12:00:00+00:00",
-      "title": "lwIP TCP/IP Stack MQTT Client Application",
-      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow an attacker to gain full code execution on the device. The following versions of lwIP TCP/IP Stack MQTT Client Application are affected: MQTT Client Application >=2.0.1|<=2.2.1 (CVE-2026-87121) CVSS Vendor Equipment Vulnerabilities v3 9.8 lwIP lwIP TCP/IP Stack MQTT Client Applica...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-265-01",
-      "related_cves": [
-        "CVE-2026-87121"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 75,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "lwIP TCP/IP Stack MQTT 客戶端應用程式",
-      "summary_zh": "檢視 CSAF 摘要。成功利用此漏洞可能允許攻擊者在裝置上取得完整程式碼執行權限。受影響的 lwIP TCP/IP Stack MQTT 客戶端應用程式版本如下：MQTT Client Application >=2.0.1|<=2.2.1 (CVE-2026-87121) CVSS 廠商設備漏洞 v3 9.8 lwIP lwIP TCP/IP Stack MQTT Client Applica..."
-    },
-    {
-      "id": "2830a7fcaaeb3584",
-      "event_type": "THREAT_ACTIVITY",
-      "priority": "CRITICAL",
-      "published_at": "2026-09-22T12:00:00+00:00",
-      "title": "lwIP (Lightweight IP)",
-      "summary": "View CSAF Summary Successful exploitation of this vulnerability could result in a system crash, a DoS, or memory corruption, which could lead to code execution on the victim system. The following versions of lwIP (Lightweight IP) are affected: API >=2.0.1|<=2.2.1 (CVE-2026-91018) CVSS Vendor Equipment Vulnerabilities v3 8.8 lwIP lwIP (Lightweight IP) Doub...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-265-02",
-      "related_cves": [
-        "CVE-2026-91018"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 75,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "lwIP (Lightweight IP)",
-      "summary_zh": "檢視 CSAF 摘要。成功利用此漏洞可能導致系統當機、阻斷服務（DoS）或記憶體損壞，進而可能在受害者系統上執行程式碼。受影響的 lwIP (Lightweight IP) 版本如下：API >=2.0.1|<=2.2.1 (CVE-2026-91018) CVSS 廠商設備漏洞 v3 8.8 lwIP lwIP (Lightweight IP) Doub..."
-    },
-    {
-      "id": "e3c7e0e08ab6f19d",
-      "event_type": "THREAT_ACTIVITY",
-      "priority": "CRITICAL",
-      "published_at": "2026-09-22T12:00:00+00:00",
-      "title": "OpenPLC Runtime v3",
-      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow an attacker to hijack session cookies and issue state-changing requests as an operator which would allow the attacker to control the programmable logic controller and the physical processes it drives. The following versions of OpenPLC Runtime v3 are affected: OpenPLC 3 (CVE-2026-8...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-265-09",
-      "related_cves": [
-        "CVE-2026-88020"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 75,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "OpenPLC Runtime v3",
-      "summary_zh": "檢視 CSAF 摘要。成功利用此漏洞可能允許攻擊者劫持工作階段 Cookie，並以操作員身分發送改變狀態的請求，從而允許攻擊者控制可程式化邏輯控制器（PLC）及其驅動的實體流程。受影響的 OpenPLC Runtime v3 版本如下：OpenPLC 3 (CVE-2026-8..."
     },
     {
       "id": "7075b981cb319001",
@@ -429,47 +455,10 @@
         "CVE-2026-93291"
       ],
       "matched_intelligence_cves": [],
-      "score": 73,
+      "score": 71,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Eufy Omni C20、Omni X10 Pro 漏洞",
       "summary_zh": "檢視 CSAF 摘要。成功利用這些漏洞可能允許攻擊者執行系統級命令或執行任意程式碼。以下版本的 Eufy Omni C20、Omni X10 Pro 受影響：Omni C20 <1.6.4 (CVE-2026-93289, CVE-2026-93290, CVE-2026-93291)；Omni X10 Pro <1.6.4 (CVE-2026-93289)。CVSS 廠商設備漏洞 v3..."
-    },
-    {
-      "id": "2e43af6896cc3b9f",
-      "event_type": "VULNERABILITY_NEWS",
-      "priority": "CRITICAL",
-      "published_at": "2026-09-22T12:00:00+00:00",
-      "title": "Siemens WTV676 and WTV776",
-      "summary": "View CSAF Summary The products listed below contain a denial of service vulnerability that could allow an attacker to force the devices into protection mode under certain conditions. This disables remote connectivity functions (Web Access) to the devices. Siemens has released new versions for the affected products and recommends to update to the latest ve...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-265-08",
-      "related_cves": [
-        "CVE-2026-89207"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 70,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Siemens WTV676 與 WTV776",
-      "summary_zh": "檢視 CSAF 摘要 下列產品包含一項阻斷服務（Denial of Service）漏洞，可能允許攻擊者在特定條件下迫使裝置進入保護模式。這會停用裝置的遠端連線功能（Web 存取）。Siemens 已針對受影響的產品發布新版本，並建議更新至最新版本..."
     }
-  ],
-  "translation": {
-    "language": "zh-Hant-TW",
-    "status": "translated",
-    "provider": "gemini",
-    "model": "gemini-3.6-flash",
-    "models_used": [
-      "gemini-3.6-flash"
-    ],
-    "translated_items": 20,
-    "cached_items": 15,
-    "pending_items": 0,
-    "total_items": 20,
-    "attempted_items": 5,
-    "batch_size": 5,
-    "rejected_item_ids": [],
-    "fallback_reason": null,
-    "batch_fallback_reasons": []
-  }
+  ]
 }
