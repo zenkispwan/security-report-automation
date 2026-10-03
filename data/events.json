@@ -1,11 +1,11 @@
 {
   "schema_version": "1.1-security-events",
-  "generated_at": "2026-10-02T06:29:56.402279+00:00",
+  "generated_at": "2026-10-03T05:54:59.351648+00:00",
   "selection": {
     "window_days": 7,
     "max_items": 20,
     "rule": "Homepage events come from current RSS/advisory sources. CVEs are shown only when the source article/advisory mentions them.",
-    "tracked_cve_count": 52
+    "tracked_cve_count": 64
   },
   "sources": [
     {
@@ -32,33 +32,54 @@
   "summary": {
     "fetched_entries": 65,
     "included_items": 20,
-    "linked_cve_items": 18,
-    "matched_intelligence_items": 2,
+    "linked_cve_items": 19,
+    "matched_intelligence_items": 3,
     "successful_sources": 4,
     "source_errors": [],
-    "preserved_translations": 9
+    "preserved_translations": 12
   },
   "items": [
     {
-      "id": "b4ba5b4eb39d7246",
+      "id": "0ed309bdb2fbe9f4",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "published_at": "2026-10-01T22:42:49+00:00",
-      "title": "Fortinet warns of critical FortiMail flaw exploited in zero-day attacks",
-      "summary": "Fortinet is warning customers of a critical FortiMail vulnerability, tracked as CVE-2026-104286, that is being actively exploited in zero-day attacks to execute unauthorized code or commands on vulnerable devices. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/fortinet-warns-of-critical-fortimail-flaw-exploited-in-zero-day-attacks/",
+      "published_at": "2026-10-02T12:00:00+00:00",
+      "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
+      "summary": "CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-102489 Zammad GmbH Zammad Session Fixation Vulnerability CVE-2026-102490 Zammad GmbH Zammad Improper Privilege Management Vulnerability These types of vulnerabilities are frequent attack vectors for malicious cyb...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/10/02/cisa-adds-two-known-exploited-vulnerabilities-catalog",
       "related_cves": [
-        "CVE-2026-104286"
+        "CVE-2026-102489",
+        "CVE-2026-102490"
       ],
       "matched_intelligence_cves": [
-        "CVE-2026-104286"
+        "CVE-2026-102489",
+        "CVE-2026-102490"
       ],
+      "score": 116,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "e611cb20ae49777d",
+      "event_type": "RANSOMWARE",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-02T18:33:01+00:00",
+      "title": "Warlock ransomware breach SharePoint in water, telecom operator attacks",
+      "summary": "The China-linked ransomware group Warlock targeted a water utility, a telecom provider, a regional government body, and a university by exploiting SharePoint vulnerabilities to gain initial access. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/warlock-ransomware-breach-sharepoint-in-water-telecom-operator-attacks/",
+      "related_cves": [
+        "CVE-2025-1055",
+        "CVE-2025-49704",
+        "CVE-2025-49706",
+        "CVE-2025-53770",
+        "CVE-2025-53771"
+      ],
+      "matched_intelligence_cves": [],
       "score": 112,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Fortinet 警告已遭零日攻擊利用的 FortiMail 重大漏洞",
-      "summary_zh": "Fortinet 正警告客戶注意一個追蹤為 CVE-2026-104286 的 FortiMail 重大漏洞，該漏洞正於零日攻擊中遭積極利用，用以在受影響的裝置上執行未授權的程式碼或指令。[...]"
+      "cve_evidence": "source_article"
     },
     {
       "id": "624e1a7a08049095",
@@ -72,27 +93,10 @@
       "source_url": "https://www.bleepingcomputer.com/news/security/police-dismantle-killsec-ransomware-gang-allegedly-led-by-16-year-old/",
       "related_cves": [],
       "matched_intelligence_cves": [],
-      "score": 111,
+      "score": 109,
       "cve_evidence": null,
       "title_zh": "警方瓦解涉嫌由 16 歲少年領導的 KillSec 勒索軟體集團",
       "summary_zh": "一項代號為「Operation KillSwitch」的國際執法行動，扣押了 KillSec 勒索軟體集團的資料外洩網站與伺服器，逮捕了三人，並確認一名 16 歲少年為該集團的涉案管理者。[...]"
-    },
-    {
-      "id": "35f80672fffac92c",
-      "event_type": "RANSOMWARE",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-01T14:17:07+00:00",
-      "title": "Police Shut Down KillSec Ransomware, Identify Alleged Teen Leader",
-      "summary": "Police took control of KillSec’s leak site and secured at least 110 terabytes of data stolen from victims. The post Police Shut Down KillSec Ransomware, Identify Alleged Teen Leader appeared first on SecurityWeek .",
-      "source_name": "SecurityWeek",
-      "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/police-shut-down-killsec-ransomware-identify-alleged-teen-leader/",
-      "related_cves": [],
-      "matched_intelligence_cves": [],
-      "score": 111,
-      "cve_evidence": null,
-      "title_zh": "警方關閉 KillSec 勒索軟體並確認涉案青少年首腦",
-      "summary_zh": "警方掌握了 KillSec 外洩網站的控制權，並查獲至少 110 TB 從受害者處竊取的資料。這篇《Police Shut Down KillSec Ransomware, Identify Alleged Teen Leader》文章首次出現於 SecurityWeek。"
     },
     {
       "id": "9bacd2ea82527c90",
@@ -112,10 +116,46 @@
         "CVE-2026-94594"
       ],
       "matched_intelligence_cves": [],
-      "score": 111,
+      "score": 109,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Armatura LLC Armatura One",
       "summary_zh": "檢視 CSAF 摘要。成功利用這些漏洞可能允許攻擊者取得資料庫的未授權存取權限、在主機上以最高權限等級執行任意程式碼，或取得實體門禁控制系統的控制權。以下版本的 Armatura LLC Armatura One 受影響：Armatura One <4.7.2 (CVE-202..."
+    },
+    {
+      "id": "37b7c89f6a86075c",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-02T08:07:33+00:00",
+      "title": "Exploited Fortinet FortiMail Zero-Day Calls for Urgent Action",
+      "summary": "CVE-2026-104286 is a critical-severity path traversal vulnerability that could allow attackers to write arbitrary files to the system. The post Exploited Fortinet FortiMail Zero-Day Calls for Urgent Action appeared first on SecurityWeek .",
+      "source_name": "SecurityWeek",
+      "source_type": "security_media",
+      "source_url": "https://www.securityweek.com/exploited-fortinet-fortimail-zero-day-calls-for-urgent-action/",
+      "related_cves": [
+        "CVE-2026-104286"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 106,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "b4ba5b4eb39d7246",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-01T22:42:49+00:00",
+      "title": "Fortinet warns of critical FortiMail flaw exploited in zero-day attacks",
+      "summary": "Fortinet is warning customers of a critical FortiMail vulnerability, tracked as CVE-2026-104286, that is being actively exploited in zero-day attacks to execute unauthorized code or commands on vulnerable devices. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/fortinet-warns-of-critical-fortimail-flaw-exploited-in-zero-day-attacks/",
+      "related_cves": [
+        "CVE-2026-104286"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 105,
+      "cve_evidence": "source_title_or_summary",
+      "title_zh": "Fortinet 警告已遭零日攻擊利用的 FortiMail 重大漏洞",
+      "summary_zh": "Fortinet 正警告客戶注意一個追蹤為 CVE-2026-104286 的 FortiMail 重大漏洞，該漏洞正於零日攻擊中遭積極利用，用以在受影響的裝置上執行未授權的程式碼或指令。[...]"
     },
     {
       "id": "176ef43f137e903d",
@@ -130,95 +170,11 @@
       "related_cves": [
         "CVE-2026-104286"
       ],
-      "matched_intelligence_cves": [
-        "CVE-2026-104286"
-      ],
-      "score": 111,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "CISA 將一個已遭利用漏洞新增至目錄",
-      "summary_zh": "CISA 根據積極利用的證據，在其已已知遭利用漏洞（KEV）目錄中新增了一個新漏洞。CVE-2026-104286 Fortinet FortiMail 路徑穿越漏洞。此類型的漏洞是惡意網路攻擊者常用的攻擊途徑，對聯邦企業構成了重大風險。約束性營運指令..."
-    },
-    {
-      "id": "bb1cb46b2e505a51",
-      "event_type": "ACTIVE_EXPLOITATION",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-01T12:55:57+00:00",
-      "title": "Zimbra Vulnerability Exploited in the Wild Prior to Public Disclosure",
-      "summary": "Under certain conditions, CVE-2026-73570 can be exploited via specially crafted emails without user interaction. The post Zimbra Vulnerability Exploited in the Wild Prior to Public Disclosure appeared first on SecurityWeek .",
-      "source_name": "SecurityWeek",
-      "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/zimbra-vulnerability-exploited-in-the-wild-prior-to-public-disclosure/",
-      "related_cves": [
-        "CVE-2026-73570"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 106,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Zimbra 漏洞在公開披露前已遭野外利用",
-      "summary_zh": "在特定條件下，CVE-2026-73570 可透過特製的電子郵件在無需使用者互動的情況下被利用。Zimbra Vulnerability Exploited in the Wild Prior to Public Disclosure 文章最早出現於 SecurityWeek。"
-    },
-    {
-      "id": "c06bed30eaaa8439",
-      "event_type": "ACTIVE_EXPLOITATION",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-01T10:42:49+00:00",
-      "title": "Zammad Zero-Days Exploited in AI-Powered DIVD Hack",
-      "summary": "The flaws were chained to hijack sessions, achieve remote code execution, and elevate privileges to root. The post Zammad Zero-Days Exploited in AI-Powered DIVD Hack appeared first on SecurityWeek .",
-      "source_name": "SecurityWeek",
-      "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/zammad-zero-days-exploited-in-ai-powered-divd-hack/",
-      "related_cves": [
-        "CVE-2026-102489",
-        "CVE-2026-102490"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 106,
-      "cve_evidence": "source_article",
-      "title_zh": "Zammad 零日漏洞於 AI 驅動的 DIVD 黑客活動中遭利用",
-      "summary_zh": "這些漏洞被串聯用於劫持會話、實現遠端執行程式碼，並將權限提升至 root。Zammad Zero-Days Exploited in AI-Powered DIVD Hack 文章最早出現於 SecurityWeek。"
-    },
-    {
-      "id": "3776ad1cae04a940",
-      "event_type": "ACTIVE_EXPLOITATION",
-      "priority": "CRITICAL",
-      "published_at": "2026-09-30T19:49:15+00:00",
-      "title": "DIVD says Zammad zero-days enabled AI-driven network breach",
-      "summary": "The Dutch Institute for Vulnerability Disclosure (DIVD) says that the breach of its network was possible by exploiting a chain of two zero-day vulnerabilities in the open-source Zammad ticketing system. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/divd-says-zammad-zero-days-enabled-ai-driven-network-breach/",
-      "related_cves": [
-        "CVE-2026-102489",
-        "CVE-2026-102490"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 105,
-      "cve_evidence": "source_article",
-      "title_zh": "DIVD 表示 Zammad 零日漏洞導致 AI 驅動的網路入侵",
-      "summary_zh": "荷蘭漏洞披露研究所（DIVD）表示，攻擊者透過利用開源 Zammad 工單系統中的兩個零日漏洞鏈，入侵了其網路。[...]"
-    },
-    {
-      "id": "8f1d5c9abb635858",
-      "event_type": "ACTIVE_EXPLOITATION",
-      "priority": "CRITICAL",
-      "published_at": "2026-09-30T14:46:40+00:00",
-      "title": "Cisco warns of new SD-WAN zero-day exploited in attacks",
-      "summary": "Cisco released security updates to address a critical zero-day in the Catalyst SD-WAN Manager (tracked as CVE-2026-76504) that attackers are actively exploiting to escalate to admin privileges. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/cisco-warns-of-new-sd-wan-authentication-bypass-zero-day-exploited-in-attacks/",
-      "related_cves": [
-        "CVE-2026-20127",
-        "CVE-2026-20182",
-        "CVE-2026-20245",
-        "CVE-2026-20262",
-        "CVE-2026-76504"
-      ],
       "matched_intelligence_cves": [],
       "score": 104,
       "cve_evidence": "source_title_or_summary",
-      "title_zh": "思科針對已被利用於攻擊的新 SD-WAN 零日漏洞發出警告",
-      "summary_zh": "思科發布了安全性更新，以修復 Catalyst SD-WAN Manager 中的一個嚴重零日漏洞（追蹤為 CVE-2026-76504），攻擊者目前正積極利用該漏洞來提升至管理員權限。[...]"
+      "title_zh": "CISA 將一個已遭利用漏洞新增至目錄",
+      "summary_zh": "CISA 根據積極利用的證據，在其已已知遭利用漏洞（KEV）目錄中新增了一個新漏洞。CVE-2026-104286 Fortinet FortiMail 路徑穿越漏洞。此類型的漏洞是惡意網路攻擊者常用的攻擊途徑，對聯邦企業構成了重大風險。約束性營運指令..."
     },
     {
       "id": "13e00ab44d20734e",
@@ -234,7 +190,7 @@
         "CVE-2026-76504"
       ],
       "matched_intelligence_cves": [],
-      "score": 104,
+      "score": 102,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 將一個已遭利用的漏洞新增至目錄",
       "summary_zh": "CISA 根據活躍利用的證據，在其已已知利用漏洞（KEV）目錄中新增了一個新漏洞：CVE-2026-76504 Cisco Catalyst SD-WAN Manager 十六進位編碼漏洞。此類漏洞是惡意網路攻擊者的常見攻擊途徑，並對聯邦企業構成重大風險。約束性操作指令..."
@@ -253,10 +209,34 @@
         "CVE-2026-86950"
       ],
       "matched_intelligence_cves": [],
-      "score": 102,
+      "score": 100,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 將一個已遭利用的已知漏洞新增至目錄",
       "summary_zh": "CISA 根據主動利用的證據，在其已知被利用漏洞（KEV）目錄中新增了一個新漏洞。CVE-2026-86950 Apple 多項產品越界寫入漏洞。此類漏洞是惡意網路威脅者常使用的攻擊管道，並對聯邦企業構成重大風險。綁定操作..."
+    },
+    {
+      "id": "ef6b1694e1397f08",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-27T12:00:00+00:00",
+      "title": "Critical Zero-Day Vulnerabilities Exploited in Citrix NetScaler ADC, Gateway",
+      "summary": "Update October 2, 2026: CISA has updated this Alert to provide a SIGMA detection rule resource to help identify potentially suspicious activity. CISA is amplifying Citrix’s disclosure of eight new vulnerabilities affecting Citrix NetScaler ADC and Citrix NetScaler Gateway products: CVE-2026-88771 , CVE-2026-88772 , CVE-2026-88773 , CVE-2026-88774 , CVE-20...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/27/critical-zero-day-vulnerabilities-exploited-citrix-netscaler-adc-gateway",
+      "related_cves": [
+        "CVE-2026-88771",
+        "CVE-2026-88772",
+        "CVE-2026-88773",
+        "CVE-2026-88774",
+        "CVE-2026-88775",
+        "CVE-2026-88776",
+        "CVE-2026-88777",
+        "CVE-2026-88778"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 96,
+      "cve_evidence": "source_title_or_summary"
     },
     {
       "id": "4aac976e74b6f04f",
@@ -273,75 +253,52 @@
         "CVE-2026-88772"
       ],
       "matched_intelligence_cves": [],
-      "score": 98,
+      "score": 96,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 新增兩項已知被利用漏洞至目錄",
       "summary_zh": "CISA 根據活躍利用的證據，已將兩項新漏洞新增至其已知被利用漏洞（KEV）目錄。CVE-2026-88771 Citrix NetScaler 輸入驗證不當漏洞；CVE-2026-88772 Citrix NetScaler 記憶體緩衝區邊界內操作限制不當漏洞。這些類型的漏洞..."
     },
     {
-      "id": "ef6b1694e1397f08",
-      "event_type": "ACTIVE_EXPLOITATION",
+      "id": "9814dffcb60cd9ff",
+      "event_type": "VULNERABILITY_NEWS",
       "priority": "CRITICAL",
-      "published_at": "2026-09-27T12:00:00+00:00",
-      "title": "Critical Zero-Day Vulnerabilities Exploited in Citrix NetScaler ADC, Gateway",
-      "summary": "CISA is amplifying Citrix’s disclosure of eight new vulnerabilities affecting Citrix NetScaler ADC and Citrix NetScaler Gateway products: CVE-2026-88771 , CVE-2026-88772 , CVE-2026-88773 , CVE-2026-88774 , CVE-2026-88775 , CVE-2026-88776 , CVE-2026-88777 , and CVE-2026-88778 . CISA has added CVE-2026-88771 and CVE-2026-88772 to its Known Exploited Vulnera...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/27/critical-zero-day-vulnerabilities-exploited-citrix-netscaler-adc-gateway",
+      "published_at": "2026-10-02T16:20:05+00:00",
+      "title": "GitLab warns of critical RCE vulnerability in AI Gateway service",
+      "summary": "GitLab warned customers today to immediately patch a critical AI Gateway vulnerability that could let attackers run arbitrary commands on vulnerable instances. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/gitlab-warns-of-critical-rce-vulnerability-in-ai-gateway-service/",
       "related_cves": [
-        "CVE-2026-88771",
-        "CVE-2026-88772",
-        "CVE-2026-88773",
-        "CVE-2026-88774",
-        "CVE-2026-88775",
-        "CVE-2026-88776",
-        "CVE-2026-88777",
-        "CVE-2026-88778"
+        "CVE-2026-85706",
+        "CVE-2026-90970"
       ],
-      "matched_intelligence_cves": [],
-      "score": 98,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Citrix NetScaler ADC 與 Gateway 遭利用之嚴重零日漏洞",
-      "summary_zh": "CISA 正在進一步推廣 Citrix 所揭露影響 Citrix NetScaler ADC 和 Citrix NetScaler Gateway 產品的 8 個新漏洞：CVE-2026-88771、CVE-2026-88772、CVE-2026-88773、CVE-2026-88774、CVE-2026-88775、CVE-2026-88776、CVE-2026-88777 及 CVE-2026-88778。CISA 已將 CVE-2026-88771 和 CVE-2026-88772 加入其已知被利用漏洞目錄..."
+      "matched_intelligence_cves": [
+        "CVE-2026-90970"
+      ],
+      "score": 86,
+      "cve_evidence": "source_article"
     },
     {
-      "id": "a5a9e1cc2eb446d1",
-      "event_type": "ACTIVE_EXPLOITATION",
+      "id": "dcf8afe15256d1c7",
+      "event_type": "VULNERABILITY_NEWS",
       "priority": "CRITICAL",
-      "published_at": "2026-09-25T12:00:00+00:00",
-      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
-      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-87902 WordPress Core Remote File Inclusion Vulnerability This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal enterprise. Binding Operational...",
+      "published_at": "2026-10-01T12:00:00+00:00",
+      "title": "Monta monta.app",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could enable attackers to gain unauthorized administrative control over vulnerable charging stations or disrupt charging services through denial-of-service attacks. The following versions of Monta monta.app are affected: monta.app vers:all/* (CVE-2026-95102, CVE-2026-97363, CVE-2026-97212,...",
       "source_name": "CISA Advisories",
       "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-274-02",
       "related_cves": [
-        "CVE-2026-87902"
+        "CVE-2026-93474",
+        "CVE-2026-95102",
+        "CVE-2026-97212",
+        "CVE-2026-97363"
       ],
-      "matched_intelligence_cves": [],
-      "score": 95,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "CISA 將一項已知的被利用漏洞納入目錄",
-      "summary_zh": "CISA 根據已遭積極利用的證據，在其「已知的被利用漏洞」（KEV）目錄中增加了一項新漏洞：CVE-2026-87902 WordPress Core 遠端檔案包含漏洞。此類漏洞是惡意網路攻擊者的常用攻擊向量，對聯邦企業構成重大風險。強制性營運指令..."
-    },
-    {
-      "id": "2432248e2b723547",
-      "event_type": "ACTIVE_EXPLOITATION",
-      "priority": "CRITICAL",
-      "published_at": "2026-09-25T12:00:00+00:00",
-      "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
-      "summary": "CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-65660 Microsoft SharePoint Code Injection Vulnerability CVE-2026-67279 Mikrotik RouterOS Improper Enforcement of Behavioral Workflow Vulnerability These types of vulnerabilities are a frequent attack vector for m...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-two-known-exploited-vulnerabilities-catalog",
-      "related_cves": [
-        "CVE-2026-65660",
-        "CVE-2026-67279"
+      "matched_intelligence_cves": [
+        "CVE-2026-95102"
       ],
-      "matched_intelligence_cves": [],
-      "score": 95,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "CISA 將兩項已知的被利用漏洞納入目錄",
-      "summary_zh": "CISA 根據已遭積極利用的證據，在其「已知的被利用漏洞」（KEV）目錄中增加了兩項新漏洞：CVE-2026-65660 Microsoft SharePoint 程式碼注入漏洞，以及 CVE-2026-67279 Mikrotik RouterOS 行為工作流程不當強制執行漏洞。此類漏洞是惡意網路攻擊者的常用攻擊向量..."
+      "score": 84,
+      "cve_evidence": "source_title_or_summary"
     },
     {
       "id": "e6c25c75b7ceaa11",
@@ -358,7 +315,7 @@
         "CVE-2026-15953"
       ],
       "matched_intelligence_cves": [],
-      "score": 86,
+      "score": 84,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "ABB Protection and Control IED Manager PCM600",
       "summary_zh": "檢視 CSAF 摘要。成功利用這些漏洞可能允許攻擊者提升權限或覆寫檔案。以下版本的 ABB Protection and Control IED Manager PCM600 受影響：Protection and Control IED Manager PCM600 <=2.14 (CVE-2026-15952, CVE-2026-15953) CVSS 廠商設備漏洞 v3 6.4 ABB ABB Pr..."
@@ -391,10 +348,32 @@
         "CVE-2026-90457"
       ],
       "matched_intelligence_cves": [],
-      "score": 86,
+      "score": 84,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA Malcolm",
       "summary_zh": "檢視 CSAF 摘要。以下版本的 CISA Malcolm 受影響：Malcolm CVSS 廠商設備漏洞 v3 8.8 CISA CISA Malcolm 網頁生成期間輸入的中和不當（「跨網站指令碼」）、OS 命令中使用的特殊元素中和不當（「OS 命令注入」）、路徑名的限制不當..."
+    },
+    {
+      "id": "d0d10cbad15dcc11",
+      "event_type": "VULNERABILITY_NEWS",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-02T09:34:41+00:00",
+      "title": "Warlock Expands SharePoint Exploitation in Critical Infrastructure Attacks",
+      "summary": "The China-based hacking group has been exploiting SharePoint vulnerabilities since July 2025. The post Warlock Expands SharePoint Exploitation in Critical Infrastructure Attacks appeared first on SecurityWeek .",
+      "source_name": "SecurityWeek",
+      "source_type": "security_media",
+      "source_url": "https://www.securityweek.com/warlock-expands-sharepoint-exploitation-in-critical-infrastructure-attacks/",
+      "related_cves": [
+        "CVE-2026-32201",
+        "CVE-2026-45659",
+        "CVE-2026-50522",
+        "CVE-2026-55040",
+        "CVE-2026-56164",
+        "CVE-2026-58644"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 81,
+      "cve_evidence": "source_article"
     },
     {
       "id": "b99a27d23f5221f3",
@@ -411,30 +390,10 @@
         "CVE-2026-91191"
       ],
       "matched_intelligence_cves": [],
-      "score": 82,
+      "score": 80,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Lantronix G520 系列蜂巢式網關",
       "summary_zh": "檢視 CSAF 摘要 成功利用這些漏洞可能允許攻擊者替換軟體並以 root 權限執行任意程式碼。以下版本的 Lantronix G520 系列蜂巢式網關受影響：G520 系列 2.6.0.4R6_stable (CVE-2026-84409, CVE-2026-91191) CVSS 廠商設備漏洞 v3 7.5 Lantronix L..."
-    },
-    {
-      "id": "faadc0b2b19a69a4",
-      "event_type": "THREAT_ACTIVITY",
-      "priority": "CRITICAL",
-      "published_at": "2026-09-29T12:00:00+00:00",
-      "title": "Viidure Dashcam Android Application",
-      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow attackers to access, modify, or delete sensitive user data and critical system files, potentially compromising the operation of the entire platform. The following versions of Viidure Dashcam Android Application are affected: Dashcam Android Application <=3.3.1.260403 (CVE-2026-...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-272-07",
-      "related_cves": [
-        "CVE-2026-94204",
-        "CVE-2026-96587"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 82,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Viidure Dashcam Android 應用程式",
-      "summary_zh": "檢視 CSAF 摘要 成功利用這些漏洞可能允許攻擊者存取、修改或刪除敏感的使用者資料與關鍵系統檔案，進而可能危及整個平台的運作。以下版本的 Viidure Dashcam Android 應用程式受影響：Dashcam Android 應用程式 <=3.3.1.260403 (CVE-2026-..."
     },
     {
       "id": "c8fcbf0e2df6a700",
@@ -459,28 +418,55 @@
         "CVE-2026-72510"
       ],
       "matched_intelligence_cves": [],
-      "score": 82,
+      "score": 80,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Toptech TMS7 與 TopHAT",
       "summary_zh": "檢視 CSAF 摘要。成功利用這些漏洞可能允許攻擊者存取關鍵資料或執行任意程式碼。以下版本的 Toptech TMS7 與 TopHAT 受影響：TMS7 7.6.3 (CVE-2026-71379, CVE-2026-70356, CVE-2026-72510, CVE-2026-63713, CVE-2026-68954, CVE-2026-68068, CVE-2026-72507, CVE-2026-71302, CVE-2026-69..."
+    },
+    {
+      "id": "faadc0b2b19a69a4",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-29T12:00:00+00:00",
+      "title": "Viidure Dashcam Android Application",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow attackers to access, modify, or delete sensitive user data and critical system files, potentially compromising the operation of the entire platform. The following versions of Viidure Dashcam Android Application are affected: Dashcam Android Application <=3.3.1.260403 (CVE-2026-...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-272-07",
+      "related_cves": [
+        "CVE-2026-94204",
+        "CVE-2026-96587"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 80,
+      "cve_evidence": "source_title_or_summary",
+      "title_zh": "Viidure Dashcam Android 應用程式",
+      "summary_zh": "檢視 CSAF 摘要 成功利用這些漏洞可能允許攻擊者存取、修改或刪除敏感的使用者資料與關鍵系統檔案，進而可能危及整個平台的運作。以下版本的 Viidure Dashcam Android 應用程式受影響：Dashcam Android 應用程式 <=3.3.1.260403 (CVE-2026-..."
+    },
+    {
+      "id": "fbfa52177ee528e6",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "CRITICAL",
+      "published_at": "2026-09-29T12:00:00+00:00",
+      "title": "Anjvision YSSD-RTMP-H5",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to access sensitive information, access user accounts, execute OS-level commands, or take full control over the device. The following versions of Anjvision YSSD-RTMP-H5 are affected: YSSD-RTMP-H5 firmware 3.3.2.4_build_2024-12-26 (CVE-2026-100291, CVE-2026-100292, C...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-272-05",
+      "related_cves": [
+        "CVE-2026-100291",
+        "CVE-2026-100292",
+        "CVE-2026-100293",
+        "CVE-2026-100294",
+        "CVE-2026-100295",
+        "CVE-2026-100296",
+        "CVE-2026-100297",
+        "CVE-2026-100298",
+        "CVE-2026-100299"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 80,
+      "cve_evidence": "source_title_or_summary"
     }
-  ],
-  "translation": {
-    "language": "zh-Hant-TW",
-    "status": "translated",
-    "provider": "gemini",
-    "model": "gemini-3.6-flash",
-    "models_used": [
-      "gemini-3.6-flash"
-    ],
-    "translated_items": 20,
-    "cached_items": 9,
-    "pending_items": 0,
-    "total_items": 20,
-    "attempted_items": 11,
-    "batch_size": 5,
-    "rejected_item_ids": [],
-    "fallback_reason": null,
-    "batch_fallback_reasons": []
-  }
+  ]
 }
