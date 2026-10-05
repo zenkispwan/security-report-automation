@@ -1,233 +1,118 @@
 {
   "schema_version": "2.1-intelligence",
   "risk_version": "1.1",
-  "generated_at": "2026-10-04T06:31:45.846349+00:00",
+  "generated_at": "2026-10-05T06:26:23.594502+00:00",
   "selection": {
     "max_items": 30,
-    "candidate_count": 59,
+    "candidate_count": 46,
     "selected_count": 30
   },
   "summary": {
-    "p1": 26,
+    "p1": 14,
     "p2": 0,
     "p3": 0,
-    "with_delta": 4
+    "with_delta": 17
   },
   "items": [
     {
-      "cve": "CVE-2026-92084",
+      "cve": "CVE-2026-88779",
       "events": [
         {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-03T08:16:26.990"
+          "type": "NEW_KEV",
+          "from": false,
+          "to": true
         }
       ],
       "risk": {
-        "score": 28,
-        "priority": "WATCH",
+        "score": 100,
+        "priority": "P1",
         "reasons": [
           {
-            "code": "CVSS_CRITICAL",
-            "points": 20
+            "code": "CISA_KEV",
+            "points": 45
+          },
+          {
+            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
+            "points": 25
+          },
+          {
+            "code": "CVSS_HIGH",
+            "points": 12
           },
           {
             "code": "RECENTLY_PUBLISHED",
             "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-92084",
-        "vendor": "beaverbuilder",
-        "product": "Beaver Builder Page Builder – Drag and Drop Website Builder",
-        "title": null,
-        "description": "The The Beaver Builder Page Builder – Drag and Drop Website Builder plugin for WordPress is vulnerable to arbitrary shortcode execution in all versions up to, and including, 2.11.0.5. This is due to the software allowing users to execute an action that does not properly validate a value before running do_shortcode. This makes it possible for unauthenticated attackers to execute arbitrary shortcodes. Exploitation requires the target site to have a Beaver Builder page containing the Sidebar module populated with a widget that displays attacker-controllable text, such as the core Recent Comments widget, with comment moderation disabled or the attacker's comment approved.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.1,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-          "source": "security@wordfence.com",
-          "type": "Secondary"
-        },
-        "epss": 0.00531,
-        "epss_percentile": 0.42877,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "none",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "none",
-            "automatable": "yes",
-            "technical_impact": "total",
-            "timestamp": "2026-10-03T15:12:59.078099Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2026-10-03T08:16:26.990",
-        "updated_time": "2026-10-03T16:16:41.610",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92084",
-        "source_type": [
-          "nvd",
-          "first_epss"
-        ],
-        "cwes": [
-          "CWE-94"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-92084",
-          "cisa_kev": null,
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-92084"
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-87115",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-03T07:16:48.347"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
           },
           {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
+            "code": "DELTA_NEW_KEV",
+            "points": 15
           }
         ]
       },
       "facts": {
-        "cve": "CVE-2026-87115",
-        "vendor": "e4jvikwp",
-        "product": "VikAppointments Services Booking Calendar",
-        "title": null,
-        "description": "The VikAppointments Services Booking Calendar plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the extract function in all versions up to, and including, 1.2.21. This makes it possible for unauthenticated attackers to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php). Exploitation requires at least one File-type custom field to be published on the confirmation page shortcode, as this field is not created by default during plugin installation.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.1,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
-          "source": "security@wordfence.com",
-          "type": "Secondary"
-        },
-        "epss": 0.00881,
-        "epss_percentile": 0.57736,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "none",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "none",
-            "automatable": "yes",
-            "technical_impact": "partial",
-            "timestamp": "2026-10-03T15:24:59.440128Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2026-10-03T07:16:48.347",
-        "updated_time": "2026-10-03T16:16:40.057",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-87115",
-        "source_type": [
-          "nvd",
-          "first_epss"
-        ],
-        "cwes": [
-          "CWE-22"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-87115",
-          "cisa_kev": null,
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-87115"
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-71885",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-03T09:17:04.730"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-71885",
-        "vendor": "Legion of the Bouncy Castle Inc.",
-        "product": "BC-JAVA",
-        "title": null,
-        "description": "In Bouncy Castle for Java before 1.86, the Messaging Layer Security (MLS, RFC 9420) implementation did not bind an X.509 credential to a LeafNode's signature_key. LeafNode.verify() checked a leaf's signature against the signature_key carried in the leaf itself, while the credential's X.509 certificate chain was stored but never parsed or validated, so the end-entity certificate's public key was never required to match signature_key as RFC 9420 sec. 5.3 requires. A party could therefore present another party's certificate as its credential while signing the leaf, and the enclosing KeyPackage, with an unrelated key, and be accepted under that other party's identity through KeyPackage.verify() and the Group leaf-validation path. In a deployment that admits external commits without an independent credential-admission check, an unauthenticated attacker could be admitted under a victim's X.509 identity, evict the victim (resynchronization compares whole credentials rather than signing keys), derive the current epoch, decrypt subsequent group messages, and send messages accepted as the victim. TreeKEM.LeafNode now requires the end-entity certificate's subject public key, in the cipher suite's signature encoding, to equal signature_key for an X.509 credential and rejects the leaf otherwise, including an empty chain or a certificate whose key type does not match the cipher suite; certificate-chain and identity validation to a trust anchor remain the application's responsibility per RFC 9420 sec. 5.3.1. Deployments using only basic credentials are unaffected.",
+        "cve": "CVE-2026-88779",
+        "vendor": "Citrix",
+        "product": "NetScaler",
+        "title": "Citrix NetScaler Improper Restriction of Operations within the Bounds of a Memory Buffer Vulnerability",
+        "description": "Citrix NetScaler ADC (formerly Citrix ADC) and Citrix NetScaler Gateway (formerly Citrix Gateway) contain an improper restriction of operations within the bounds of a memory buffer vulnerability that could allow for a denial of service.",
         "cvss": {
           "version": "4.0",
-          "score": 9.2,
-          "severity": "CRITICAL",
-          "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:Amber",
-          "source": "91579145-5d7b-4cc5-b925-a0262ff19630",
+          "score": 8.7,
+          "severity": "HIGH",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "50a63c94-1ea7-4568-8c11-eb79e7c5a2b5",
           "type": "Secondary"
         },
-        "epss": 0.00188,
-        "epss_percentile": 0.07555,
+        "epss": 0.00276,
+        "epss_percentile": 0.18203,
         "cisa_kev": {
-          "listed": false
+          "listed": true,
+          "date_added": "2026-10-04",
+          "due_date": "2026-10-07",
+          "required_action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+          "known_ransomware_campaign_use": "Unknown",
+          "notes": "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697174 ; https://community.citrix.com/techzone-blogs/110_security-updates/understanding-and-addressing-cve-2026-88779-in-citrix-netscaler-adc-and-citrix-netscaler-gateway/ ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https://nvd.nist.gov/vuln/detail/CVE-2026-88779",
+          "cwes": [
+            "CWE-119"
+          ]
         },
         "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
+          "status": "known_exploited",
+          "source": "cisa_kev",
+          "ssvc": {
+            "exploitation": "active",
+            "automatable": "yes",
+            "technical_impact": "partial",
+            "timestamp": "2026-10-04T00:00:00+00:00",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
         },
-        "published_time": "2026-10-03T09:17:04.730",
-        "updated_time": "2026-10-03T09:17:04.730",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71885",
+        "published_time": "2026-10-04T04:16:43.680",
+        "updated_time": "2026-10-05T04:17:08.547",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88779",
         "source_type": [
           "nvd",
+          "cisa_kev",
           "first_epss"
         ],
         "cwes": [
-          "CWE-287",
-          "CWE-295"
+          "CWE-119"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-71885",
-          "cisa_kev": null,
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-71885"
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-88779",
+          "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-88779"
         }
       }
     },
     {
-      "cve": "CVE-2026-105105",
+      "cve": "CVE-2026-105294",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-03T12:16:57.183"
+          "to": "2026-10-05T01:16:28.923"
         }
       ],
       "risk": {
@@ -245,17 +130,17 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-105105",
-        "vendor": "NASA-AMMOS",
-        "product": "AIT-Core",
+        "cve": "CVE-2026-105294",
+        "vendor": "Legcord",
+        "product": "Legcord",
         "title": null,
-        "description": "CWE-306: Missing Authentication for Critical Function in the ait.core.server telemetry and command broker (ait-server) in NASA-AMMOS AIT-Core through 3.1.1 allows an unauthenticated remote attacker with network access to the ZeroMQ message bus to inject spacecraft command data, exfiltrate command and telemetry traffic, inject forged telemetry, or disrupt the command and telemetry bus. The ait-server ZeroMQ broker binds its XSUB and XPUB sockets to all network interfaces by default without authentication or transport security. An attacker able to reach TCP port 5559 can publish messages onto internal topics, including the __commands__ command topic. With the shipped default configuration, command messages are forwarded through command_stream and emitted on the command-uplink UDP path. An attacker able to reach TCP port 5560 can subscribe to command and telemetry traffic on the ground bus. AIT-Core 3.1.2 changes the default ZeroMQ bind addresses to loopback.",
+        "description": "Legcord 1.1.0 through 1.3.0 contains a configuration injection vulnerability that allows script in the Discord page to write any config key via the window.legcord settings.setConfig bridge. Attackers exploiting a Discord XSS can set additionalArguments to persistently add --proxy-server and --ignore-certificate-errors switches, routing all client traffic through an interception proxy.",
         "cvss": {
-          "version": "3.1",
-          "score": 9.8,
+          "version": "4.0",
+          "score": 9.1,
           "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "309f9ea4-e3e9-4c6c-b79d-e8eb01244f2c",
+          "vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
           "type": "Secondary"
         },
         "epss": null,
@@ -264,20 +149,643 @@
           "listed": false
         },
         "exploitation_status": {
-          "status": "none",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "none",
-            "automatable": "yes",
-            "technical_impact": "total",
-            "timestamp": "2026-10-03T15:46:54.964389Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
         },
-        "published_time": "2026-10-03T12:16:57.183",
-        "updated_time": "2026-10-03T16:16:35.200",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105105",
+        "published_time": "2026-10-05T01:16:28.923",
+        "updated_time": "2026-10-05T01:16:28.923",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105294",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-15"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105294",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-105293",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-05T01:16:28.780"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-105293",
+        "vendor": "Legcord",
+        "product": "Legcord",
+        "title": null,
+        "description": "Legcord 1.1.0 through 1.3.0 contains a path traversal vulnerability in theme IPC handlers that allows script in the Discord page to escape the themes directory via unvalidated theme ids. Attackers running script in the Discord origin, such as through XSS, can abuse themes.folder, themes.uninstall, and themes.install to launch local executables, recursively delete directories, and write files outside the themes directory.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.2,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-10-05T01:16:28.780",
+        "updated_time": "2026-10-05T01:16:28.780",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105293",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-22"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105293",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-105223",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-05T01:16:28.480"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-105223",
+        "vendor": "maclof",
+        "product": "kubernetes-client",
+        "title": null,
+        "description": "maclof kubernetes-client 0.17.0 before 0.32.0 disables TLS certificate verification in parseKubeconfig() and parseKubeconfigFile() when a kubeconfig lacks certificate-authority-data, ignoring insecure-skip-tls-verify. On-path attackers can impersonate the Kubernetes API server to capture Bearer tokens or Basic credentials and tamper with WebSocket or REST API traffic.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.1,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-10-05T01:16:28.480",
+        "updated_time": "2026-10-05T01:16:28.480",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105223",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-295"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105223",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-105222",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-04T23:16:59.917"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-105222",
+        "vendor": "alexpechkarev",
+        "product": "google-maps",
+        "title": null,
+        "description": "The alexpechkarev/google-maps Laravel package through 12.16 disables TLS certificate verification by default because the bundled config sets ssl_verify_peer to FALSE, which is passed to CURLOPT_SSL_VERIFYPEER. On-path attackers can present any certificate to intercept Google Maps web-service requests, steal the API key from the query string, and tamper with responses.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.1,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-10-04T23:16:59.917",
+        "updated_time": "2026-10-04T23:16:59.917",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105222",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-295"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105222",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-105221",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-04T23:16:59.770"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-105221",
+        "vendor": "defunkt",
+        "product": "gist",
+        "title": null,
+        "description": "The gist RubyGem before 6.1.0 contains an improper certificate validation vulnerability that allows on-path attackers to intercept HTTPS traffic because http_connection in lib/gist.rb sets VERIFY_NONE. Attackers can present any certificate to read or modify GitHub API traffic, stealing OAuth tokens and login credentials to read and modify the victim's gists.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.1,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-10-04T23:16:59.770",
+        "updated_time": "2026-10-04T23:16:59.770",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105221",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-295"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105221",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-105218",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-04T18:16:34.630"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-105218",
+        "vendor": "go-pay",
+        "product": "gopay",
+        "title": null,
+        "description": "gopay before 1.5.119 disables TLS certificate verification in defaultClient() in pkg/xhttp/client.go, allowing man-in-the-middle attackers to impersonate payment provider APIs. Attackers can present any certificate to read merchant credentials, signatures and transaction data, and modify payment, refund and order query responses.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.1,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-10-04T18:16:34.630",
+        "updated_time": "2026-10-04T18:16:34.630",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105218",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-295"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105218",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-105216",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-04T18:16:34.287"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-105216",
+        "vendor": "micro",
+        "product": "go-micro",
+        "title": null,
+        "description": "go-micro before 6.0.0 contains an improper certificate validation vulnerability that allows network attackers to impersonate services because the shared TLS helper sets InsecureSkipVerify to true by default. Man-in-the-middle attackers can present any certificate to intercept or modify gRPC transport, HTTP and RabbitMQ broker, and Consul or etcd registry traffic, including authentication tokens and credentials.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.1,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-10-04T18:16:34.287",
+        "updated_time": "2026-10-04T18:16:34.287",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105216",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-295"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105216",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-105215",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-04T15:16:32.993"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-105215",
+        "vendor": "zitadel",
+        "product": "zitadel",
+        "title": null,
+        "description": "ZITADEL before 3.4.14 and 4.x before 4.16.2 contains an authentication bypass in the hosted Login V1 UI because the 'external account not found' registration endpoint trusts client-supplied external identity fields without a completed IdP callback. Unauthenticated attackers can submit forged IDPConfigID and ExternalUserID values to pre-create an account bound to a victim's external IdP identity, which the victim's later genuine external login then signs into.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-10-04T15:16:32.993",
+        "updated_time": "2026-10-04T15:16:33.107",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105215",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-290"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105215",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-105211",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-04T15:16:32.333"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-105211",
+        "vendor": "zitadel",
+        "product": "zitadel",
+        "title": null,
+        "description": "ZITADEL before 4.17.1 contains an authentication bypass vulnerability in Login V2 that allows unauthenticated attackers to take over accounts by obtaining OTP codes via the returnCode delivery type. Attackers knowing a login name of a victim with OTP-Email and OTP-SMS enrolled can read both codes from server-action responses to gain MFA-authenticated sessions, including administrator takeover.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.2,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-10-04T15:16:32.333",
+        "updated_time": "2026-10-04T15:16:32.467",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105211",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-200"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105211",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-105209",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-04T15:16:32.007"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-105209",
+        "vendor": "zitadel",
+        "product": "zitadel",
+        "title": null,
+        "description": "ZITADEL 3.x before 3.4.15 and 4.x before 4.17.1 contains an improper authorization vulnerability: when issuing passkey or passwordless enrollment codes, it checks only the organization in the x-zitadel-orgid header, not the target user's organization. Attackers with user-write permission in one organization can obtain an enrollment code for a user in another organization on the same instance and register their own authenticator to take over that account.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-10-04T15:16:32.007",
+        "updated_time": "2026-10-04T15:16:32.127",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105209",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-862"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105209",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-105207",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-04T15:16:31.677"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-105207",
+        "vendor": "zitadel",
+        "product": "zitadel",
+        "title": null,
+        "description": "ZITADEL 3.0.0 through 3.4.15 and 4.0.0 before 4.17.3 creates links between user accounts and external identity providers without verifying a primary factor or the caller's permission, including on identify-only Login V2 sessions and via the User Service V2 AddIDPLink endpoint. An unauthenticated attacker knowing a victim's login name can bind their own external IdP identity to the victim's account and then sign in as the victim.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-10-04T15:16:31.677",
+        "updated_time": "2026-10-04T15:16:31.793",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105207",
         "source_type": [
           "nvd"
         ],
@@ -285,9 +793,329 @@
           "CWE-306"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105105",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105207",
           "cisa_kev": null,
           "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-105135",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-04T07:16:33.693"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-105135",
+        "vendor": "InternLM",
+        "product": "MindSearch",
+        "title": null,
+        "description": "A vulnerability has been found in InternLM MindSearch 0.1.0. This issue affects the function ExecutionAction.run of the file mindsearch/agent/graph.py of the component Planner Agent. The manipulation of the argument inputs leads to code injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "cna@vuldb.com",
+          "type": "Secondary"
+        },
+        "epss": 0.0077,
+        "epss_percentile": 0.54065,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-10-04T07:16:33.693",
+        "updated_time": "2026-10-04T07:16:33.693",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105135",
+        "source_type": [
+          "nvd",
+          "first_epss"
+        ],
+        "cwes": [
+          "CWE-74",
+          "CWE-94"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105135",
+          "cisa_kev": null,
+          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-105135"
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-105134",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-04T07:16:33.480"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-105134",
+        "vendor": "Ahsay",
+        "product": "AhsayCBS",
+        "title": null,
+        "description": "A flaw has been found in Ahsay AhsayCBS up to 10.3.2. This vulnerability affects unknown code of the file /rps/api/json/UpdateReceivers.do of the component Replication Receiver. Executing a manipulation of the argument random can lead to os command injection. It is possible to launch the attack remotely. The exploit has been published and may be used. Upgrading to version 10.3.4 is able to resolve this issue. Upgrading the affected component is advised.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "cna@vuldb.com",
+          "type": "Secondary"
+        },
+        "epss": 0.01843,
+        "epss_percentile": 0.78277,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-10-04T07:16:33.480",
+        "updated_time": "2026-10-04T07:16:33.480",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105134",
+        "source_type": [
+          "nvd",
+          "first_epss"
+        ],
+        "cwes": [
+          "CWE-77",
+          "CWE-78"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105134",
+          "cisa_kev": null,
+          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-105134"
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-105089",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-04T16:16:30.330"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-105089",
+        "vendor": "WWBN",
+        "product": "AVideo",
+        "title": null,
+        "description": "WWBN AVideo through 29.2.0 contains a stored cross-site scripting vulnerability that allows users with upload permission to inject script by setting a malicious video trailer1 URL. The value is rendered unescaped in YouPHPFlix2 templates and channel playlists, letting attackers break out of onclick strings or iframe src attributes to execute JavaScript in victims' browsers.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-10-04T16:16:30.330",
+        "updated_time": "2026-10-04T16:16:30.330",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105089",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-79"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105089",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-105086",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-04T16:16:30.183"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-105086",
+        "vendor": "WWBN",
+        "product": "AVideo",
+        "title": null,
+        "description": "WWBN AVideo 12.4 through 29.2.0 contains a stored cross-site scripting vulnerability that allows authenticated uploaders to inject HTML by submitting doubly-encoded entities in video titles. Because safeString() strips tags before decoding entities and runs twice via setTitle() and save(), attackers can store markup that executes in trending, gallery, embed, and playlist pages.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-10-04T16:16:30.183",
+        "updated_time": "2026-10-04T16:16:30.183",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105086",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-79"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105086",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-103355",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-04T09:16:38.820"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-103355",
+        "vendor": "Unlimited Elements",
+        "product": "Unlimited Elements For Elementor (Free Widgets, Addons, Templates)",
+        "title": null,
+        "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Unlimited Elements Unlimited Elements For Elementor (Free Widgets, Addons, Templates) unlimited-elements-for-elementor allows Blind SQL Injection.This issue affects Unlimited Elements For Elementor (Free Widgets, Addons, Templates): from n/a through 2.0.20.",
+        "cvss": {
+          "version": "3.1",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:L",
+          "source": "audit@patchstack.com",
+          "type": "Secondary"
+        },
+        "epss": 0.0025,
+        "epss_percentile": 0.14812,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-10-04T09:16:38.820",
+        "updated_time": "2026-10-04T09:16:38.820",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103355",
+        "source_type": [
+          "nvd",
+          "first_epss"
+        ],
+        "cwes": [
+          "CWE-89"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-103355",
+          "cisa_kev": null,
+          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-103355"
         }
       }
     },
@@ -814,92 +1642,6 @@
       }
     },
     {
-      "cve": "CVE-2025-21042",
-      "events": [],
-      "risk": {
-        "score": 100,
-        "priority": "P1",
-        "reasons": [
-          {
-            "code": "CISA_KEV",
-            "points": 45
-          },
-          {
-            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
-            "points": 25
-          },
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "EPSS_HIGH",
-            "points": 14
-          },
-          {
-            "code": "EPSS_TOP_5_PERCENT",
-            "points": 5
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2025-21042",
-        "vendor": "Samsung",
-        "product": "Mobile Devices",
-        "title": "Samsung Mobile Devices Out-of-Bounds Write Vulnerability",
-        "description": "Samsung mobile devices contain an out-of-bounds write vulnerability in libimagecodec.quram.so. This vulnerability could allow remote attackers to execute arbitrary code.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.8,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "nvd@nist.gov",
-          "type": "Primary"
-        },
-        "epss": 0.3317,
-        "epss_percentile": 0.98323,
-        "cisa_kev": {
-          "listed": true,
-          "date_added": "2025-11-10",
-          "due_date": "2025-12-01",
-          "required_action": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
-          "known_ransomware_campaign_use": "Unknown",
-          "notes": "https://security.samsungmobile.com/securityUpdate.smsb?year=2025&month=04 ; https://nvd.nist.gov/vuln/detail/CVE-2025-21042",
-          "cwes": [
-            "CWE-787"
-          ]
-        },
-        "exploitation_status": {
-          "status": "known_exploited",
-          "source": "cisa_kev",
-          "ssvc": {
-            "exploitation": "active",
-            "automatable": "no",
-            "technical_impact": "total",
-            "timestamp": "2025-11-11T04:55:33.177810Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2025-09-12T08:15:44.743",
-        "updated_time": "2026-09-30T23:10:00.237",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21042",
-        "source_type": [
-          "nvd",
-          "cisa_kev",
-          "first_epss"
-        ],
-        "cwes": [
-          "CWE-787"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2025-21042",
-          "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2025-21042"
-        }
-      }
-    },
-    {
       "cve": "CVE-2025-14174",
       "events": [],
       "risk": {
@@ -1119,7 +1861,7 @@
           "type": "Primary"
         },
         "epss": 0.43782,
-        "epss_percentile": 0.9871,
+        "epss_percentile": 0.98709,
         "cisa_kev": {
           "listed": true,
           "date_added": "2024-10-09",
@@ -1430,10 +2172,10 @@
       }
     },
     {
-      "cve": "CVE-2022-30333",
+      "cve": "CVE-2026-42018",
       "events": [],
       "risk": {
-        "score": 100,
+        "score": 95,
         "priority": "P1",
         "reasons": [
           {
@@ -1443,873 +2185,6 @@
           {
             "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
             "points": 25
-          },
-          {
-            "code": "KNOWN_RANSOMWARE_USE",
-            "points": 20
-          },
-          {
-            "code": "CVSS_HIGH",
-            "points": 12
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2022-30333",
-        "vendor": "RARLAB",
-        "product": "UnRAR",
-        "title": "RARLAB UnRAR Directory Traversal Vulnerability",
-        "description": "RARLAB UnRAR on Linux and UNIX contains a directory traversal vulnerability, allowing an attacker to write to files during an extract (unpack) operation.",
-        "cvss": {
-          "version": "3.1",
-          "score": 7.5,
-          "severity": "HIGH",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
-          "source": "nvd@nist.gov",
-          "type": "Primary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": true,
-          "date_added": "2022-08-09",
-          "due_date": "2022-08-30",
-          "required_action": "Apply updates per vendor instructions.",
-          "known_ransomware_campaign_use": "Known",
-          "notes": "Vulnerability updated with version 6.12. Accessing link will download update information: https://www.rarlab.com/rar/rarlinux-x32-612.tar.gz;  https://nvd.nist.gov/vuln/detail/CVE-2022-30333",
-          "cwes": [
-            "CWE-22",
-            "CWE-59"
-          ]
-        },
-        "exploitation_status": {
-          "status": "known_exploited",
-          "source": "cisa_kev",
-          "ssvc": {
-            "exploitation": "active",
-            "automatable": "yes",
-            "technical_impact": "total",
-            "timestamp": "2026-08-04T03:55:37.824533Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2022-05-09T08:15:06.937",
-        "updated_time": "2026-10-02T14:54:55.840",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2022-30333",
-        "source_type": [
-          "nvd",
-          "cisa_kev"
-        ],
-        "cwes": [
-          "CWE-22",
-          "CWE-59"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2022-30333",
-          "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2022-27925",
-      "events": [],
-      "risk": {
-        "score": 100,
-        "priority": "P1",
-        "reasons": [
-          {
-            "code": "CISA_KEV",
-            "points": 45
-          },
-          {
-            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
-            "points": 25
-          },
-          {
-            "code": "KNOWN_RANSOMWARE_USE",
-            "points": 20
-          },
-          {
-            "code": "CVSS_HIGH",
-            "points": 12
-          },
-          {
-            "code": "EPSS_VERY_HIGH",
-            "points": 20
-          },
-          {
-            "code": "EPSS_TOP_5_PERCENT",
-            "points": 5
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2022-27925",
-        "vendor": "Synacor",
-        "product": "Zimbra Collaboration Suite (ZCS)",
-        "title": "Synacor Zimbra Collaboration Suite (ZCS) Arbitrary File Upload Vulnerability",
-        "description": "Synacor Zimbra Collaboration Suite (ZCS) contains flaw in the mboximport functionality, allowing an authenticated attacker to upload arbitrary files to perform remote code execution. This vulnerability was chained with CVE-2022-37042 which allows for unauthenticated remote code execution.",
-        "cvss": {
-          "version": "3.1",
-          "score": 7.2,
-          "severity": "HIGH",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
-          "source": "nvd@nist.gov",
-          "type": "Primary"
-        },
-        "epss": 0.98676,
-        "epss_percentile": 0.99923,
-        "cisa_kev": {
-          "listed": true,
-          "date_added": "2022-08-11",
-          "due_date": "2022-09-01",
-          "required_action": "Apply updates per vendor instructions.",
-          "known_ransomware_campaign_use": "Known",
-          "notes": "https://blog.zimbra.com/2022/08/authentication-bypass-in-mailboximportservlet-vulnerability/;  https://nvd.nist.gov/vuln/detail/CVE-2022-27925",
-          "cwes": [
-            "CWE-22"
-          ]
-        },
-        "exploitation_status": {
-          "status": "known_exploited",
-          "source": "cisa_kev",
-          "ssvc": {
-            "exploitation": "active",
-            "automatable": "yes",
-            "technical_impact": "total",
-            "timestamp": "2026-08-04T03:55:47.116222Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2022-04-21T00:15:08.407",
-        "updated_time": "2026-10-01T19:17:14.417",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2022-27925",
-        "source_type": [
-          "nvd",
-          "cisa_kev",
-          "first_epss"
-        ],
-        "cwes": [
-          "CWE-22"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2022-27925",
-          "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2022-27925"
-        }
-      }
-    },
-    {
-      "cve": "CVE-2022-27924",
-      "events": [],
-      "risk": {
-        "score": 100,
-        "priority": "P1",
-        "reasons": [
-          {
-            "code": "CISA_KEV",
-            "points": 45
-          },
-          {
-            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
-            "points": 25
-          },
-          {
-            "code": "KNOWN_RANSOMWARE_USE",
-            "points": 20
-          },
-          {
-            "code": "CVSS_HIGH",
-            "points": 12
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2022-27924",
-        "vendor": "Synacor",
-        "product": "Zimbra Collaboration Suite (ZCS)",
-        "title": "Synacor Zimbra Collaboration Suite (ZCS) Command Injection Vulnerability",
-        "description": "Synacor Zimbra Collaboration Suite (ZCS) allows an attacker to inject memcache commands into a targeted instance which causes an overwrite of arbitrary cached entries.",
-        "cvss": {
-          "version": "3.1",
-          "score": 7.5,
-          "severity": "HIGH",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
-          "source": "nvd@nist.gov",
-          "type": "Primary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": true,
-          "date_added": "2022-08-04",
-          "due_date": "2022-08-25",
-          "required_action": "Apply updates per vendor instructions.",
-          "known_ransomware_campaign_use": "Known",
-          "notes": "https://wiki.zimbra.com/wiki/Zimbra_Releases/9.0.0/P24.1#Security_Fixes;  https://nvd.nist.gov/vuln/detail/CVE-2022-27924",
-          "cwes": [
-            "CWE-93"
-          ]
-        },
-        "exploitation_status": {
-          "status": "known_exploited",
-          "source": "cisa_kev",
-          "ssvc": {
-            "exploitation": "active",
-            "automatable": "yes",
-            "technical_impact": "total",
-            "timestamp": "2026-08-04T03:55:45.696282Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2022-04-21T00:15:08.360",
-        "updated_time": "2026-10-02T14:55:01.717",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2022-27924",
-        "source_type": [
-          "nvd",
-          "cisa_kev"
-        ],
-        "cwes": [
-          "CWE-74"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2022-27924",
-          "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2021-27065",
-      "events": [],
-      "risk": {
-        "score": 100,
-        "priority": "P1",
-        "reasons": [
-          {
-            "code": "CISA_KEV",
-            "points": 45
-          },
-          {
-            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
-            "points": 25
-          },
-          {
-            "code": "KNOWN_RANSOMWARE_USE",
-            "points": 20
-          },
-          {
-            "code": "CVSS_HIGH",
-            "points": 12
-          },
-          {
-            "code": "EPSS_VERY_HIGH",
-            "points": 20
-          },
-          {
-            "code": "EPSS_TOP_5_PERCENT",
-            "points": 5
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2021-27065",
-        "vendor": "Microsoft",
-        "product": "Exchange Server",
-        "title": "Microsoft Exchange Server Remote Code Execution Vulnerability",
-        "description": "Microsoft Exchange Server contains an unspecified vulnerability that allows for remote code execution. This vulnerability is part of the ProxyLogon exploit chain.",
-        "cvss": {
-          "version": "3.1",
-          "score": 7.8,
-          "severity": "HIGH",
-          "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-          "source": "secure@microsoft.com",
-          "type": "Secondary"
-        },
-        "epss": 0.99876,
-        "epss_percentile": 0.99963,
-        "cisa_kev": {
-          "listed": true,
-          "date_added": "2021-11-03",
-          "due_date": "2022-05-03",
-          "required_action": "Apply updates per vendor instructions.",
-          "known_ransomware_campaign_use": "Known",
-          "notes": "Reference CISA's ED 21-02 (https://www.cisa.gov/news-events/directives/ed-21-02-mitigate-microsoft-exchange-premises-product-vulnerabilities) for further guidance and requirements. Note: The due date for addressing this vulnerability aligns with the requirements outlined in ED 21-02. https://nvd.nist.gov/vuln/detail/CVE-2021-27065",
-          "cwes": [
-            "CWE-39"
-          ]
-        },
-        "exploitation_status": {
-          "status": "known_exploited",
-          "source": "cisa_kev",
-          "ssvc": {
-            "exploitation": "active",
-            "automatable": "yes",
-            "technical_impact": "total",
-            "timestamp": "2026-08-12T03:55:34.756939Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2021-03-03T00:15:12.307",
-        "updated_time": "2026-10-01T21:17:17.040",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-27065",
-        "source_type": [
-          "nvd",
-          "cisa_kev",
-          "first_epss"
-        ],
-        "cwes": [
-          "CWE-22"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2021-27065",
-          "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2021-27065"
-        }
-      }
-    },
-    {
-      "cve": "CVE-2021-26858",
-      "events": [],
-      "risk": {
-        "score": 100,
-        "priority": "P1",
-        "reasons": [
-          {
-            "code": "CISA_KEV",
-            "points": 45
-          },
-          {
-            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
-            "points": 25
-          },
-          {
-            "code": "KNOWN_RANSOMWARE_USE",
-            "points": 20
-          },
-          {
-            "code": "CVSS_HIGH",
-            "points": 12
-          },
-          {
-            "code": "EPSS_VERY_HIGH",
-            "points": 20
-          },
-          {
-            "code": "EPSS_TOP_5_PERCENT",
-            "points": 5
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2021-26858",
-        "vendor": "Microsoft",
-        "product": "Exchange Server",
-        "title": "Microsoft Exchange Server Remote Code Execution Vulnerability",
-        "description": "Microsoft Exchange Server contains an unspecified vulnerability that allows for remote code execution. This vulnerability is part of the ProxyLogon exploit chain.",
-        "cvss": {
-          "version": "3.1",
-          "score": 7.8,
-          "severity": "HIGH",
-          "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-          "source": "secure@microsoft.com",
-          "type": "Secondary"
-        },
-        "epss": 0.93651,
-        "epss_percentile": 0.99841,
-        "cisa_kev": {
-          "listed": true,
-          "date_added": "2021-11-03",
-          "due_date": "2022-05-03",
-          "required_action": "Apply updates per vendor instructions.",
-          "known_ransomware_campaign_use": "Known",
-          "notes": "Reference CISA's ED 21-02 (https://www.cisa.gov/news-events/directives/ed-21-02-mitigate-microsoft-exchange-premises-product-vulnerabilities) for further guidance and requirements. Note: The due date for addressing this vulnerability aligns with the requirements outlined in ED 21-02. https://nvd.nist.gov/vuln/detail/CVE-2021-26858",
-          "cwes": []
-        },
-        "exploitation_status": {
-          "status": "known_exploited",
-          "source": "cisa_kev",
-          "ssvc": {
-            "exploitation": "active",
-            "automatable": "yes",
-            "technical_impact": "total",
-            "timestamp": "2026-08-12T03:55:36.937537Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2021-03-03T00:15:12.227",
-        "updated_time": "2026-10-01T21:17:16.777",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-26858",
-        "source_type": [
-          "nvd",
-          "cisa_kev",
-          "first_epss"
-        ],
-        "cwes": [],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2021-26858",
-          "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2021-26858"
-        }
-      }
-    },
-    {
-      "cve": "CVE-2021-26411",
-      "events": [],
-      "risk": {
-        "score": 100,
-        "priority": "P1",
-        "reasons": [
-          {
-            "code": "CISA_KEV",
-            "points": 45
-          },
-          {
-            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
-            "points": 25
-          },
-          {
-            "code": "KNOWN_RANSOMWARE_USE",
-            "points": 20
-          },
-          {
-            "code": "CVSS_HIGH",
-            "points": 12
-          },
-          {
-            "code": "EPSS_VERY_HIGH",
-            "points": 20
-          },
-          {
-            "code": "EPSS_TOP_5_PERCENT",
-            "points": 5
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2021-26411",
-        "vendor": "Microsoft",
-        "product": "Internet Explorer",
-        "title": "Microsoft Internet Explorer Memory Corruption Vulnerability",
-        "description": "Microsoft Internet Explorer contains an unspecified vulnerability that allows for memory corruption.",
-        "cvss": {
-          "version": "3.1",
-          "score": 8.8,
-          "severity": "HIGH",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:H/A:L",
-          "source": "secure@microsoft.com",
-          "type": "Secondary"
-        },
-        "epss": 0.80765,
-        "epss_percentile": 0.9962,
-        "cisa_kev": {
-          "listed": true,
-          "date_added": "2021-11-03",
-          "due_date": "2021-11-17",
-          "required_action": "Apply updates per vendor instructions.",
-          "known_ransomware_campaign_use": "Known",
-          "notes": "https://nvd.nist.gov/vuln/detail/CVE-2021-26411",
-          "cwes": [
-            "CWE-416"
-          ]
-        },
-        "exploitation_status": {
-          "status": "known_exploited",
-          "source": "cisa_kev",
-          "ssvc": {
-            "exploitation": "active",
-            "automatable": "no",
-            "technical_impact": "partial",
-            "timestamp": "2026-08-12T03:55:30.330990Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2021-03-11T16:15:13.863",
-        "updated_time": "2026-10-01T21:17:16.540",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-26411",
-        "source_type": [
-          "nvd",
-          "cisa_kev",
-          "first_epss"
-        ],
-        "cwes": [
-          "CWE-416"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2021-26411",
-          "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2021-26411"
-        }
-      }
-    },
-    {
-      "cve": "CVE-2021-22175",
-      "events": [],
-      "risk": {
-        "score": 100,
-        "priority": "P1",
-        "reasons": [
-          {
-            "code": "CISA_KEV",
-            "points": 45
-          },
-          {
-            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
-            "points": 25
-          },
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "EPSS_VERY_HIGH",
-            "points": 20
-          },
-          {
-            "code": "EPSS_TOP_5_PERCENT",
-            "points": 5
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2021-22175",
-        "vendor": "GitLab",
-        "product": "GitLab",
-        "title": "GitLab Server-Side Request Forgery (SSRF) Vulnerability",
-        "description": "GitLab contains a server-side request forgery (SSRF) vulnerability when requests to the internal network for webhooks are enabled.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.8,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "nvd@nist.gov",
-          "type": "Primary"
-        },
-        "epss": 0.53372,
-        "epss_percentile": 0.98959,
-        "cisa_kev": {
-          "listed": true,
-          "date_added": "2026-02-18",
-          "due_date": "2026-03-11",
-          "required_action": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
-          "known_ransomware_campaign_use": "Unknown",
-          "notes": "https://gitlab.com/gitlab-org/cves/-/blob/master/2021/CVE-2021-22175.json ; https://nvd.nist.gov/vuln/detail/CVE-2021-22175",
-          "cwes": [
-            "CWE-918"
-          ]
-        },
-        "exploitation_status": {
-          "status": "known_exploited",
-          "source": "cisa_kev",
-          "ssvc": {
-            "exploitation": "active",
-            "automatable": "no",
-            "technical_impact": "total",
-            "timestamp": "2026-02-19T04:55:37.706988Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2021-06-11T16:15:09.023",
-        "updated_time": "2026-10-01T19:17:14.190",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-22175",
-        "source_type": [
-          "nvd",
-          "cisa_kev",
-          "first_epss"
-        ],
-        "cwes": [
-          "CWE-918"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2021-22175",
-          "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2021-22175"
-        }
-      }
-    },
-    {
-      "cve": "CVE-2021-22054",
-      "events": [],
-      "risk": {
-        "score": 100,
-        "priority": "P1",
-        "reasons": [
-          {
-            "code": "CISA_KEV",
-            "points": 45
-          },
-          {
-            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
-            "points": 25
-          },
-          {
-            "code": "CVSS_HIGH",
-            "points": 12
-          },
-          {
-            "code": "EPSS_VERY_HIGH",
-            "points": 20
-          },
-          {
-            "code": "EPSS_TOP_5_PERCENT",
-            "points": 5
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2021-22054",
-        "vendor": "Omnissa",
-        "product": "Workspace One UEM",
-        "title": "Omnissa Workspace ONE Server-Side Request Forgery",
-        "description": "Omnissa Workspace One UEM formerly known as VMware Workspace One UEM contains a server-side request forgery (SSRF) vulnerability that could allow a malicious actor with network access to UEM to send their requests without authentication and to gain access to sensitive information.",
-        "cvss": {
-          "version": "3.1",
-          "score": 7.5,
-          "severity": "HIGH",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-          "source": "nvd@nist.gov",
-          "type": "Primary"
-        },
-        "epss": 0.99677,
-        "epss_percentile": 0.9995,
-        "cisa_kev": {
-          "listed": true,
-          "date_added": "2026-03-09",
-          "due_date": "2026-03-23",
-          "required_action": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
-          "known_ransomware_campaign_use": "Unknown",
-          "notes": "https://web.archive.org/web/20211222154335/https://www.vmware.com/security/advisories/VMSA-2021-0029.html ; https://nvd.nist.gov/vuln/detail/CVE-2021-22054",
-          "cwes": [
-            "CWE-918"
-          ]
-        },
-        "exploitation_status": {
-          "status": "known_exploited",
-          "source": "cisa_kev",
-          "ssvc": {
-            "exploitation": "active",
-            "automatable": "yes",
-            "technical_impact": "total",
-            "timestamp": "2026-03-11T03:55:28.560483Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2021-12-17T17:15:12.590",
-        "updated_time": "2026-10-01T19:17:13.960",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-22054",
-        "source_type": [
-          "nvd",
-          "cisa_kev",
-          "first_epss"
-        ],
-        "cwes": [
-          "CWE-918"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2021-22054",
-          "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2021-22054"
-        }
-      }
-    },
-    {
-      "cve": "CVE-2021-21975",
-      "events": [],
-      "risk": {
-        "score": 100,
-        "priority": "P1",
-        "reasons": [
-          {
-            "code": "CISA_KEV",
-            "points": 45
-          },
-          {
-            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
-            "points": 25
-          },
-          {
-            "code": "KNOWN_RANSOMWARE_USE",
-            "points": 20
-          },
-          {
-            "code": "CVSS_HIGH",
-            "points": 12
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2021-21975",
-        "vendor": "VMware",
-        "product": "vRealize Operations Manager API",
-        "title": "VMware Server Side Request Forgery in vRealize Operations Manager API",
-        "description": "Server Side Request Forgery (SSRF) in vRealize Operations Manager API prior to 8.4 may allow a malicious actor with network access to the vRealize Operations Manager API to perform a SSRF attack to steal administrative credentials.",
-        "cvss": {
-          "version": "3.1",
-          "score": 7.5,
-          "severity": "HIGH",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-          "source": "nvd@nist.gov",
-          "type": "Primary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": true,
-          "date_added": "2022-01-18",
-          "due_date": "2022-02-01",
-          "required_action": "Apply updates per vendor instructions.",
-          "known_ransomware_campaign_use": "Known",
-          "notes": "https://nvd.nist.gov/vuln/detail/CVE-2021-21975",
-          "cwes": [
-            "CWE-918"
-          ]
-        },
-        "exploitation_status": {
-          "status": "known_exploited",
-          "source": "cisa_kev",
-          "ssvc": {
-            "exploitation": "active",
-            "automatable": "yes",
-            "technical_impact": "total",
-            "timestamp": "2026-08-12T03:55:26.929010Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2021-03-31T18:15:14.597",
-        "updated_time": "2026-10-02T14:54:50.597",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-21975",
-        "source_type": [
-          "nvd",
-          "cisa_kev"
-        ],
-        "cwes": [
-          "CWE-918"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2021-21975",
-          "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2021-20023",
-      "events": [],
-      "risk": {
-        "score": 100,
-        "priority": "P1",
-        "reasons": [
-          {
-            "code": "CISA_KEV",
-            "points": 45
-          },
-          {
-            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
-            "points": 25
-          },
-          {
-            "code": "KNOWN_RANSOMWARE_USE",
-            "points": 20
-          },
-          {
-            "code": "CVSS_MEDIUM",
-            "points": 4
-          },
-          {
-            "code": "EPSS_VERY_HIGH",
-            "points": 20
-          },
-          {
-            "code": "EPSS_TOP_5_PERCENT",
-            "points": 5
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2021-20023",
-        "vendor": "SonicWall",
-        "product": "SonicWall Email Security",
-        "title": "SonicWall Email Security Path Traversal Vulnerability",
-        "description": "SonicWall Email Security contains a path traversal vulnerability that allows a post-authenticated attacker to read files on the remote host. This vulnerability has known usage in a SonicWall Email Security exploit chain along with CVE-2021-20021 and CVE-2021-20022 to achieve privilege escalation.",
-        "cvss": {
-          "version": "3.1",
-          "score": 4.9,
-          "severity": "MEDIUM",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N",
-          "source": "nvd@nist.gov",
-          "type": "Primary"
-        },
-        "epss": 0.51407,
-        "epss_percentile": 0.98912,
-        "cisa_kev": {
-          "listed": true,
-          "date_added": "2021-11-03",
-          "due_date": "2021-11-17",
-          "required_action": "Apply updates per vendor instructions.",
-          "known_ransomware_campaign_use": "Known",
-          "notes": "https://nvd.nist.gov/vuln/detail/CVE-2021-20023",
-          "cwes": [
-            "CWE-22"
-          ]
-        },
-        "exploitation_status": {
-          "status": "known_exploited",
-          "source": "cisa_kev",
-          "ssvc": {
-            "exploitation": "active",
-            "automatable": "yes",
-            "technical_impact": "total",
-            "timestamp": "2026-08-12T03:55:24.717669Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2021-04-20T12:15:12.587",
-        "updated_time": "2026-10-01T21:17:16.097",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-20023",
-        "source_type": [
-          "nvd",
-          "cisa_kev",
-          "first_epss"
-        ],
-        "cwes": [
-          "CWE-22"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2021-20023",
-          "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2021-20023"
-        }
-      }
-    },
-    {
-      "cve": "CVE-2021-20022",
-      "events": [],
-      "risk": {
-        "score": 100,
-        "priority": "P1",
-        "reasons": [
-          {
-            "code": "CISA_KEV",
-            "points": 45
-          },
-          {
-            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
-            "points": 25
-          },
-          {
-            "code": "KNOWN_RANSOMWARE_USE",
-            "points": 20
           },
           {
             "code": "CVSS_HIGH",
@@ -2326,112 +2201,29 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2021-20022",
-        "vendor": "SonicWall",
-        "product": "SonicWall Email Security",
-        "title": "SonicWall Email Security Unrestricted Upload of File Vulnerability",
-        "description": "SonicWall Email Security contains an unrestricted upload of file with dangerous type vulnerability that allows a post-authenticated attacker to upload a file to the remote host. This vulnerability has known usage in a SonicWall Email Security exploit chain along with CVE-2021-20021 and CVE-2021-20023 to achieve privilege escalation.",
+        "cve": "CVE-2026-42018",
+        "vendor": "JFrog",
+        "product": "Artifactory",
+        "title": "JFrog Artifactory Improper Authentication Vulnerability",
+        "description": "JFrog Artifactory contains an improper authentication vulnerability that could return an internal anonymous-user token to an unauthenticated caller when anonymous access is disabled, potentially exposing sensitive resources.",
         "cvss": {
           "version": "3.1",
-          "score": 7.2,
+          "score": 7.5,
           "severity": "HIGH",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
-          "source": "nvd@nist.gov",
-          "type": "Primary"
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "source": "reefs@jfrog.com",
+          "type": "Secondary"
         },
-        "epss": 0.16509,
-        "epss_percentile": 0.9691,
+        "epss": 0.09805,
+        "epss_percentile": 0.95416,
         "cisa_kev": {
           "listed": true,
-          "date_added": "2021-11-03",
-          "due_date": "2021-11-17",
-          "required_action": "Apply updates per vendor instructions.",
-          "known_ransomware_campaign_use": "Known",
-          "notes": "https://nvd.nist.gov/vuln/detail/CVE-2021-20022",
+          "date_added": "2026-09-11",
+          "due_date": "2026-09-25",
+          "required_action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+          "known_ransomware_campaign_use": "Unknown",
+          "notes": "https://docs.jfrog.com/releases/docs/jfrog-security-advisories ; https://docs.jfrog.com/releases/docs/artifactory-self-managed-releases ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https://nvd.nist.gov/vuln/detail/CVE-2026-42018",
           "cwes": [
-            "CWE-434"
-          ]
-        },
-        "exploitation_status": {
-          "status": "known_exploited",
-          "source": "cisa_kev",
-          "ssvc": {
-            "exploitation": "active",
-            "automatable": "yes",
-            "technical_impact": "total",
-            "timestamp": "2026-08-12T03:55:23.619977Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2021-04-09T18:15:13.460",
-        "updated_time": "2026-10-01T21:17:15.817",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-20022",
-        "source_type": [
-          "nvd",
-          "cisa_kev",
-          "first_epss"
-        ],
-        "cwes": [
-          "CWE-434"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2021-20022",
-          "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2021-20022"
-        }
-      }
-    },
-    {
-      "cve": "CVE-2020-12812",
-      "events": [],
-      "risk": {
-        "score": 100,
-        "priority": "P1",
-        "reasons": [
-          {
-            "code": "CISA_KEV",
-            "points": 45
-          },
-          {
-            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
-            "points": 25
-          },
-          {
-            "code": "KNOWN_RANSOMWARE_USE",
-            "points": 20
-          },
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2020-12812",
-        "vendor": "Fortinet",
-        "product": "FortiOS",
-        "title": "Fortinet FortiOS SSL VPN Improper Authentication Vulnerability",
-        "description": "Fortinet FortiOS SSL VPN contains an improper authentication vulnerability that may allow a user to login successfully without being prompted for the second factor of authentication (FortiToken) if they change the case in their username.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.8,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "nvd@nist.gov",
-          "type": "Primary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": true,
-          "date_added": "2021-11-03",
-          "due_date": "2022-05-03",
-          "required_action": "Apply updates per vendor instructions.",
-          "known_ransomware_campaign_use": "Known",
-          "notes": "https://nvd.nist.gov/vuln/detail/CVE-2020-12812",
-          "cwes": [
-            "CWE-178",
             "CWE-287"
           ]
         },
@@ -2442,116 +2234,26 @@
             "exploitation": "active",
             "automatable": "yes",
             "technical_impact": "partial",
-            "timestamp": "2026-08-12T03:55:19.062068Z",
+            "timestamp": "2026-10-01T18:06:12.895893Z",
             "role": "CISA Coordinator",
             "version": "2.0.3"
           }
         },
-        "published_time": "2020-07-24T23:15:12.003",
-        "updated_time": "2026-10-02T14:54:53.040",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2020-12812",
-        "source_type": [
-          "nvd",
-          "cisa_kev"
-        ],
-        "cwes": [
-          "CWE-178",
-          "CWE-287"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2020-12812",
-          "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2020-0796",
-      "events": [],
-      "risk": {
-        "score": 100,
-        "priority": "P1",
-        "reasons": [
-          {
-            "code": "CISA_KEV",
-            "points": 45
-          },
-          {
-            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
-            "points": 25
-          },
-          {
-            "code": "KNOWN_RANSOMWARE_USE",
-            "points": 20
-          },
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "EPSS_VERY_HIGH",
-            "points": 20
-          },
-          {
-            "code": "EPSS_TOP_5_PERCENT",
-            "points": 5
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2020-0796",
-        "vendor": "Microsoft",
-        "product": "SMBv3",
-        "title": "Microsoft SMBv3 Remote Code Execution Vulnerability",
-        "description": "A remote code execution vulnerability exists in the way that the Microsoft Server Message Block 3.1.1 (SMBv3) protocol handles certain requests. An attacker who successfully exploited the vulnerability could gain the ability to execute code on the target server or client.",
-        "cvss": {
-          "version": "3.1",
-          "score": 10.0,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
-          "source": "nvd@nist.gov",
-          "type": "Primary"
-        },
-        "epss": 0.9981,
-        "epss_percentile": 0.99958,
-        "cisa_kev": {
-          "listed": true,
-          "date_added": "2022-02-10",
-          "due_date": "2022-08-10",
-          "required_action": "Apply updates per vendor instructions.",
-          "known_ransomware_campaign_use": "Known",
-          "notes": "https://nvd.nist.gov/vuln/detail/CVE-2020-0796",
-          "cwes": [
-            "CWE-119"
-          ]
-        },
-        "exploitation_status": {
-          "status": "known_exploited",
-          "source": "cisa_kev",
-          "ssvc": {
-            "exploitation": "active",
-            "automatable": "yes",
-            "technical_impact": "total",
-            "timestamp": "2026-08-12T03:55:42.606576Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2020-03-12T16:15:15.627",
-        "updated_time": "2026-10-01T20:17:17.727",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2020-0796",
+        "published_time": "2026-08-12T18:17:29.473",
+        "updated_time": "2026-10-01T19:17:20.413",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42018",
         "source_type": [
           "nvd",
           "cisa_kev",
           "first_epss"
         ],
         "cwes": [
-          "CWE-119"
+          "CWE-287"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2020-0796",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-42018",
           "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2020-0796"
+          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-42018"
         }
       }
     }
