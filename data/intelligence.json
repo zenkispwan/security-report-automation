@@ -1,26 +1,26 @@
 {
   "schema_version": "2.1-intelligence",
   "risk_version": "1.1",
-  "generated_at": "2026-10-07T06:42:35.310142+00:00",
+  "generated_at": "2026-10-08T06:51:07.715417+00:00",
   "selection": {
     "max_items": 30,
-    "candidate_count": 161,
+    "candidate_count": 147,
     "selected_count": 30
   },
   "summary": {
     "p1": 0,
     "p2": 0,
-    "p3": 3,
+    "p3": 4,
     "with_delta": 30
   },
   "items": [
     {
-      "cve": "CVE-2026-82531",
+      "cve": "CVE-2026-62252",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-06T13:16:50.180"
+          "to": "2026-10-07T17:16:56.467"
         }
       ],
       "risk": {
@@ -42,17 +42,91 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-82531",
-        "vendor": "smarty-php",
-        "product": "smarty",
+        "cve": "CVE-2026-62252",
+        "vendor": "sipcapture",
+        "product": "homer",
         "title": null,
-        "description": "Smarty before 4.5.8 and 5.x before 5.8.5 contains a code injection vulnerability where the top-level nocache_hash is never restored during extends:/multi-component template inheritance, leaving it null. Attackers can supply assigned data containing a forged SmartyNocache marker that is copied verbatim into the regenerated PHP cache file, executing arbitrary PHP on include for remote code execution.",
+        "description": "Homer is open source telecom observability software. Prior to version 11.0.283, on every fresh Homer deployment using internal authentication, the bootstrap process automatically creates an `admin` account with the password `sipcapture` (stored as a legacy SHA-256 hex hash). There is no first-login forced-change mechanism. Any attacker who reaches the login endpoint immediately gains full administrative access. Version 11.0.283 patches the issue.",
         "cvss": {
-          "version": "4.0",
-          "score": 9.2,
+          "version": "3.1",
+          "score": 9.8,
           "severity": "CRITICAL",
-          "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-          "source": "disclosure@vulncheck.com",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "source": "security-advisories@github.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "poc",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "poc",
+            "automatable": "yes",
+            "technical_impact": "total",
+            "timestamp": "2026-10-07T17:43:45.414692Z",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-10-07T17:16:56.467",
+        "updated_time": "2026-10-07T18:17:21.033",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-62252",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-798"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-62252",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-62176",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-07T17:16:56.007"
+        }
+      ],
+      "risk": {
+        "score": 38,
+        "priority": "P3",
+        "reasons": [
+          {
+            "code": "POC_AVAILABLE",
+            "points": 10
+          },
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-62176",
+        "vendor": "MervinPraison",
+        "product": "PraisonAI",
+        "title": null,
+        "description": "PraisonAI is a multi-agent teams system. Prior to version 4.6.78, the `deploy/api.py` module generates Python server code by directly interpolating the `agents_file` parameter into an f-string that is then written to a file and executed via `subprocess.Popen()`. An attacker who controls the `agents_file` value (via CLI argument, configuration, or upstream API) can inject arbitrary Python code. Version 4.6.78 patches the issue.",
+        "cvss": {
+          "version": "3.1",
+          "score": 9.1,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+          "source": "security-advisories@github.com",
           "type": "Secondary"
         },
         "epss": null,
@@ -67,14 +141,14 @@
             "exploitation": "poc",
             "automatable": "no",
             "technical_impact": "total",
-            "timestamp": "2026-10-06T12:44:36.819504Z",
+            "timestamp": "2026-10-07T16:57:09.228475Z",
             "role": "CISA Coordinator",
             "version": "2.0.3"
           }
         },
-        "published_time": "2026-10-06T13:16:50.180",
-        "updated_time": "2026-10-06T16:00:36.547",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82531",
+        "published_time": "2026-10-07T17:16:56.007",
+        "updated_time": "2026-10-07T17:16:56.153",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-62176",
         "source_type": [
           "nvd"
         ],
@@ -82,19 +156,19 @@
           "CWE-94"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-82531",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-62176",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-106037",
+      "cve": "CVE-2026-107204",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-06T14:17:42.257"
+          "to": "2026-10-07T16:17:45.113"
         }
       ],
       "risk": {
@@ -116,11 +190,11 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-106037",
-        "vendor": "kvcache-ai",
-        "product": "Mooncake",
+        "cve": "CVE-2026-107204",
+        "vendor": "LMCache",
+        "product": "LMCache",
         "title": null,
-        "description": "Mooncake through 0.3.13.post1 contains a missing authentication vulnerability in the Store REST service, which binds to 0.0.0.0 without authentication on any route. Unauthenticated attackers can call routes such as /api/get, /api/put, /api/remove_all and /api/mount to read cached KV data with user prompts, inject or delete objects, and mount attacker-described segments.",
+        "description": "LMCache through 0.5.5 contains an unauthenticated remote code execution vulnerability that allows remote attackers to execute Python code by posting scripts to the /run_script endpoint. Attackers can recover real builtins through the injected FastAPI app object, bypassing the guarded __import__, to import os and run operating system commands as the LMCache process.",
         "cvss": {
           "version": "4.0",
           "score": 9.3,
@@ -141,14 +215,14 @@
             "exploitation": "poc",
             "automatable": "yes",
             "technical_impact": "total",
-            "timestamp": "2026-10-06T16:10:34.488738Z",
+            "timestamp": "2026-10-07T17:08:57.542279Z",
             "role": "CISA Coordinator",
             "version": "2.0.3"
           }
         },
-        "published_time": "2026-10-06T14:17:42.257",
-        "updated_time": "2026-10-06T17:17:23.840",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-106037",
+        "published_time": "2026-10-07T16:17:45.113",
+        "updated_time": "2026-10-07T17:16:53.657",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107204",
         "source_type": [
           "nvd"
         ],
@@ -156,19 +230,19 @@
           "CWE-306"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-106037",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-107204",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-105793",
+      "cve": "CVE-2025-70518",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-06T15:17:16.123"
+          "to": "2026-10-07T15:16:53.183"
         }
       ],
       "risk": {
@@ -190,90 +264,16 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-105793",
-        "vendor": "microsoft",
-        "product": "UFO",
-        "title": null,
-        "description": "Microsoft UFO is an open-source framework for intelligent automation across devices and platforms. Prior to 3.0.9, the press_key tool in ufo/client/mcp/http_servers/mobile_mcp_server.py accepts a free-form key_code parameter and passes it to `adb shell input keyevent`. The adb client joins the arguments into a remote command string that the Android shell reparses, allowing an authenticated Mobile MCP caller to execute additional commands as the Android shell user on an authorized connected device. Exploitation requires a valid UFO_MCP_API_KEY, adb on the host, and a reachable authorized device, and it does not establish host operating-system execution, Android root execution, or access beyond the Android shell-user privileges. This issue is fixed in version 3.0.9.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.1,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:H/A:L",
-          "source": "security-advisories@github.com",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "poc",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "poc",
-            "automatable": "no",
-            "technical_impact": "partial",
-            "timestamp": "2026-10-06T14:55:04.730539Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2026-10-06T15:17:16.123",
-        "updated_time": "2026-10-06T16:17:05.703",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105793",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [
-          "CWE-78"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105793",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-95140",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-06T17:17:28.087"
-        }
-      ],
-      "risk": {
-        "score": 30,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "POC_AVAILABLE",
-            "points": 10
-          },
-          {
-            "code": "CVSS_HIGH",
-            "points": 12
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-95140",
+        "cve": "CVE-2025-70518",
         "vendor": null,
         "product": null,
         "title": null,
-        "description": "kkFileView v5.0.0 through v5.0.2 contains a directory traversal vulnerability in FileController.java. The fileUpload, createFolder and existsFile endpoints accept a \"path\" parameter that is concatenated into the upload base path without validation, allowing unauthenticated attackers to create arbitrary directories and write arbitrary files outside the intended fileDir root via a crafted multipart request",
+        "description": "The management portal's diagnostic ping tool of Fanvil x7a firmware version 2.6.0.1182 does not handle user supplied input securely. The lack of secure user input handling allows any unauthenticated attacker to inject commands and run code in the underlying Android operating system.",
         "cvss": {
           "version": "3.1",
-          "score": 7.5,
-          "severity": "HIGH",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+          "score": 10.0,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
           "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
           "type": "Secondary"
         },
@@ -288,35 +288,35 @@
           "ssvc": {
             "exploitation": "poc",
             "automatable": "yes",
-            "technical_impact": "partial",
-            "timestamp": "2026-10-06T19:41:15.293766Z",
+            "technical_impact": "total",
+            "timestamp": "2026-10-07T16:03:21.429996Z",
             "role": "CISA Coordinator",
             "version": "2.0.3"
           }
         },
-        "published_time": "2026-10-06T17:17:28.087",
-        "updated_time": "2026-10-06T20:17:35.070",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95140",
+        "published_time": "2026-10-07T15:16:53.183",
+        "updated_time": "2026-10-07T17:16:44.960",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-70518",
         "source_type": [
           "nvd"
         ],
         "cwes": [
-          "CWE-22"
+          "CWE-77"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-95140",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2025-70518",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-95105",
+      "cve": "CVE-2026-46434",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-06T09:17:57.200"
+          "to": "2026-10-07T14:17:10.277"
         }
       ],
       "risk": {
@@ -338,91 +338,16 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-95105",
-        "vendor": "danielberkompas",
-        "product": "cloak",
+        "cve": "CVE-2026-46434",
+        "vendor": "wger-project",
+        "product": "wger",
         "title": null,
-        "description": "Reliance on Obfuscation or Encryption of Security-Relevant Inputs without Integrity Checking vulnerability in danielberkompas cloak allows an attacker with write access to stored ciphertext to make it decrypt to a chosen value via bit flipping.\n\nCloak.Ciphers.AES.CTR encrypts with AES-256 in CTR mode and stores the key tag, the IV and the ciphertext with no MAC. decrypt/2 checks only the key tag and the minimum length before it returns the plaintext, and Cloak.Ciphers.Deprecated.AES.CTR decrypts the legacy format the same way. CTR is a stream cipher, so a value XORed into the stored ciphertext is XORed into the plaintext at the same offset. An attacker who can write to the encrypted store (for example through SQL injection or a compromised replica) and who knows or can guess a stored plaintext can replace it with any value of the same length. The application receives that value with no error.\n\nThis issue affects cloak: from 0.1.0-pre onward.",
+        "description": "wger is a free, open-source workout and fitness manager. Prior to version 2.6, a user with only the `gym_trainer` permission can deactivate any account in the same gym, including `gym_manager` and `general_gym_manager` accounts. The `UserDeactivateView` grants access to anyone holding any one of `gym.manage_gym`, `gym.manage_gyms`, or `gym.gym_trainer` (OR logic via `WgerMultiplePermissionRequiredMixin`), and performs no privilege-hierarchy check to prevent a lower-privileged role from disabling a higher-privileged one. Version 2.6 fixes the issue.",
         "cvss": {
-          "version": "4.0",
-          "score": 8.2,
+          "version": "3.1",
+          "score": 7.1,
           "severity": "HIGH",
-          "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-          "source": "6b3ad84c-e1a6-4bf7-a703-f496b71e49db",
-          "type": "Secondary"
-        },
-        "epss": 0.00115,
-        "epss_percentile": 0.01413,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "poc",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "poc",
-            "automatable": "no",
-            "technical_impact": "partial",
-            "timestamp": "2026-10-06T11:37:58.212117Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2026-10-06T09:17:57.200",
-        "updated_time": "2026-10-06T15:03:59.427",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95105",
-        "source_type": [
-          "nvd",
-          "first_epss"
-        ],
-        "cwes": [
-          "CWE-649"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-95105",
-          "cisa_kev": null,
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-95105"
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-106439",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-06T19:18:12.720"
-        }
-      ],
-      "risk": {
-        "score": 30,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "POC_AVAILABLE",
-            "points": 10
-          },
-          {
-            "code": "CVSS_HIGH",
-            "points": 12
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-106439",
-        "vendor": "hydra-ecosystem",
-        "product": "hydra",
-        "title": null,
-        "description": "Hydra is a framework for elegantly configuring complex applications. From 1.3.4 until 1.3.7 and 1.4.0.dev10, Hydra stores legacy instantiate target blocklists and related execution-policy collections in mutable module-level state. An attacker who controls multiple sibling target entries can resolve hydra._internal.target_policy.UNCONTROLLED_EXECUTION_TARGETS.discard through instantiate(), remove a denied target, and then invoke that target because sibling nodes are processed in insertion order against the same modified policy. The mutation persists in process-global state and can enable code execution with the application's privileges, while a narrow execution whitelist supplied by trusted Python code is not bypassed by the reported direct mutation path. This issue is fixed in versions 1.3.7 and 1.4.0.dev10.",
-        "cvss": {
-          "version": "4.0",
-          "score": 8.5,
-          "severity": "HIGH",
-          "vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:N",
           "source": "security-advisories@github.com",
           "type": "Secondary"
         },
@@ -437,36 +362,35 @@
           "ssvc": {
             "exploitation": "poc",
             "automatable": "no",
-            "technical_impact": "total",
-            "timestamp": "2026-10-06T19:48:26.207340Z",
+            "technical_impact": "partial",
+            "timestamp": "2026-10-07T14:35:19.227767Z",
             "role": "CISA Coordinator",
             "version": "2.0.3"
           }
         },
-        "published_time": "2026-10-06T19:18:12.720",
-        "updated_time": "2026-10-06T20:17:25.917",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-106439",
+        "published_time": "2026-10-07T14:17:10.277",
+        "updated_time": "2026-10-07T15:17:20.877",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46434",
         "source_type": [
           "nvd"
         ],
         "cwes": [
-          "CWE-470",
-          "CWE-693"
+          "CWE-269"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-106439",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-46434",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-106117",
+      "cve": "CVE-2026-43976",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-06T18:16:53.550"
+          "to": "2026-10-07T14:17:09.887"
         }
       ],
       "risk": {
@@ -488,11 +412,159 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-106117",
-        "vendor": "SixLabors",
-        "product": "ImageSharp",
+        "cve": "CVE-2026-43976",
+        "vendor": "wger-project",
+        "product": "wger",
         "title": null,
-        "description": "ImageSharp is a 2D graphics library. From 3.0.0 until 4.1.1, decoding a strip TIFF using CCITT Group 3 or Modified Huffman compression can pass attacker-expanded runs to BitWriterUtils.WriteBits without first checking the current row width. T4TiffCompression.WritePixelRun can accumulate oversized makeup-code runs, and ModifiedHuffmanTiffCompression.Decompress validates the width only after writing. The unchecked writes can overflow the strip buffer, corrupt heap memory, and terminate the process. This strip-path vulnerability is distinct from the tiled decompressor-width mismatch. This issue is fixed in version 4.1.1.",
+        "description": "wger is a free, open-source workout and fitness manager. Prior to version 2.6, five gym management views in wger apply a flawed gym-scope guard (`gym_a != gym_b`) that silently passes when both operands are `None`. A trainer with `gym.gym_trainer` and `gym.add_adminusernote` permissions and no gym assignment (`gym=None`) can read private admin notes, uploaded documents, gym contracts, user configuration, and user permission data for **any other unaffiliated user** on the instance. The subsequent querysets filter only on the attacker-supplied `member_id` with no secondary gym-scoped validation, so all records are disclosed. Version 2.6 fixes the issue.",
+        "cvss": {
+          "version": "3.1",
+          "score": 7.1,
+          "severity": "HIGH",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N",
+          "source": "security-advisories@github.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "poc",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "poc",
+            "automatable": "no",
+            "technical_impact": "partial",
+            "timestamp": "2026-10-07T17:22:26.839960Z",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-10-07T14:17:09.887",
+        "updated_time": "2026-10-07T18:17:20.770",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43976",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-863"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-43976",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-107270",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-07T16:17:46.490"
+        }
+      ],
+      "risk": {
+        "score": 30,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "POC_AVAILABLE",
+            "points": 10
+          },
+          {
+            "code": "CVSS_HIGH",
+            "points": 12
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-107270",
+        "vendor": "gophish",
+        "product": "gophish",
+        "title": null,
+        "description": "Gophish through 0.12.1 contains an insecure direct object reference vulnerability that allows authenticated users to take over other users' groups, templates, landing pages and sending profiles. Attackers can supply another user's sequential id in POST requests to /api/groups/, /api/templates/, /api/pages/ or /api/smtp/ to overwrite and reassign objects, locking out owners and exposing victims' recipient lists.",
+        "cvss": {
+          "version": "4.0",
+          "score": 7.1,
+          "severity": "HIGH",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "poc",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "poc",
+            "automatable": "no",
+            "technical_impact": "partial",
+            "timestamp": "2026-10-07T16:58:46.373114Z",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-10-07T16:17:46.490",
+        "updated_time": "2026-10-07T17:16:54.063",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107270",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-639"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-107270",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-107214",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-07T18:17:19.040"
+        }
+      ],
+      "risk": {
+        "score": 30,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "POC_AVAILABLE",
+            "points": 10
+          },
+          {
+            "code": "CVSS_HIGH",
+            "points": 12
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-107214",
+        "vendor": "qax-os",
+        "product": "excelize",
+        "title": null,
+        "description": "Excelize is a Go language library for reading and writing Microsoft Excel spreadsheets. From 2.3.1 to 2.11.0, the decryption dispatch performs insufficient structural and parameter validation before standard and agile decryptors slice, index, allocate, and divide using attacker-controlled values. Decrypt passes attacker-controlled EncryptionInfo and EncryptedPackage data into standardDecrypt or agileDecrypt before validating the structures used by those routines. When a malformed OLE compound file with a version-valid EncryptionInfo stream is opened or passed to Decrypt, nine malformed-input classes reach unrecovered Go runtime panics instead of the documented error path, allowing an attacker to terminate the calling process. No fixed version is available as of this review.",
         "cvss": {
           "version": "3.1",
           "score": 7.5,
@@ -513,34 +585,34 @@
             "exploitation": "poc",
             "automatable": "yes",
             "technical_impact": "partial",
-            "timestamp": "2026-10-06T18:19:48.989417Z",
+            "timestamp": "2026-10-07T19:45:56.602078Z",
             "role": "CISA Coordinator",
             "version": "2.0.3"
           }
         },
-        "published_time": "2026-10-06T18:16:53.550",
-        "updated_time": "2026-10-06T20:03:40.690",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-106117",
+        "published_time": "2026-10-07T18:17:19.040",
+        "updated_time": "2026-10-07T20:17:11.320",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107214",
         "source_type": [
           "nvd"
         ],
         "cwes": [
-          "CWE-787"
+          "CWE-248"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-106117",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-107214",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-106106",
+      "cve": "CVE-2026-107212",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-06T18:16:52.030"
+          "to": "2026-10-07T18:17:18.670"
         }
       ],
       "risk": {
@@ -562,17 +634,91 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-106106",
-        "vendor": "quasarframework",
-        "product": "quasar",
+        "cve": "CVE-2026-107212",
+        "vendor": "qax-os",
+        "product": "excelize",
         "title": null,
-        "description": "Quasar Framework is a framework for building high-performance Vue.js user interfaces. Prior to @quasar/render-ssr-error 2.2.4 and @quasar/app-vite 3.3.0, renderSSRError() in utils/render-ssr-error/src/index.js used diagnostic data from utils/render-ssr-error/src/env.js to serialize process.env, request headers, and cookies into the HTTP page returned by serve.devError(), while the development server listened on all interfaces by default. Any network-adjacent client that reaches an SSR or SSG render failure through this development-only error path can obtain shell environment secrets. The renderer escaped only one exact lowercase script closing-tag spelling, so case variants and valid closing-tag delimiter variants in reflected diagnostic data could terminate the script element and inject markup; executing the injected code in a developer browser additionally requires the payload to accompany that developer's request. This issue is fixed in @quasar/render-ssr-error 2.2.4 and @quasar/app-vite 3.3.0.",
+        "description": "Excelize is a Go language library for reading and writing Microsoft Excel spreadsheets. From 2.1.0 to 2.11.0, Rows.Columns accepts a look-ahead row number above TotalRows without applying the limit enforced by Rows.Next. File.GetRows relies on Rows.Next and Rows.Columns, but Rows.Columns consumes the row r attribute without the limit check in Rows.Next. When a crafted worksheet places an oversized row number after an ordinary valid row and the application calls GetRows or iterates Rows, the iterator advances through every missing row number instead of rejecting the workbook, allowing an attacker to consume a CPU core for an attacker-controlled duration. No fixed version is available as of this review.",
+        "cvss": {
+          "version": "3.1",
+          "score": 7.5,
+          "severity": "HIGH",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "source": "security-advisories@github.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "poc",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "poc",
+            "automatable": "yes",
+            "technical_impact": "partial",
+            "timestamp": "2026-10-07T17:56:16.346533Z",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-10-07T18:17:18.670",
+        "updated_time": "2026-10-07T18:17:18.670",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107212",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-770"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-107212",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-107206",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-07T16:17:45.447"
+        }
+      ],
+      "risk": {
+        "score": 30,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "POC_AVAILABLE",
+            "points": 10
+          },
+          {
+            "code": "CVSS_HIGH",
+            "points": 12
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-107206",
+        "vendor": "LMCache",
+        "product": "LMCache",
+        "title": null,
+        "description": "LMCache through 0.5.5 contains a missing authentication vulnerability in the multiprocess mode HTTP server that allows remote unauthenticated attackers to access management endpoints listening on all interfaces by default. Attackers can read environment credentials via GET /env and configuration via GET /config, clear caches, delete cache objects, and modify tenant quotas to evict other tenants' cached data.",
         "cvss": {
           "version": "4.0",
-          "score": 7.1,
+          "score": 8.8,
           "severity": "HIGH",
-          "vector": "CVSS:4.0/AV:A/AC:H/AT:P/PR:N/UI:P/VC:H/VI:L/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-          "source": "security-advisories@github.com",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
           "type": "Secondary"
         },
         "epss": null,
@@ -585,37 +731,36 @@
           "source": "nvd_ssvc",
           "ssvc": {
             "exploitation": "poc",
-            "automatable": "no",
+            "automatable": "yes",
             "technical_impact": "partial",
-            "timestamp": "2026-10-06T18:22:31.217011Z",
+            "timestamp": "2026-10-07T16:12:27.403304Z",
             "role": "CISA Coordinator",
             "version": "2.0.3"
           }
         },
-        "published_time": "2026-10-06T18:16:52.030",
-        "updated_time": "2026-10-06T20:03:40.690",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-106106",
+        "published_time": "2026-10-07T16:17:45.447",
+        "updated_time": "2026-10-07T17:16:53.927",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107206",
         "source_type": [
           "nvd"
         ],
         "cwes": [
-          "CWE-497",
-          "CWE-79"
+          "CWE-306"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-106106",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-107206",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-105798",
+      "cve": "CVE-2026-107181",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-06T15:17:16.880"
+          "to": "2026-10-07T14:17:08.807"
         }
       ],
       "risk": {
@@ -637,245 +782,21 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-105798",
-        "vendor": "microsoft",
-        "product": "simplechat",
+        "cve": "CVE-2026-107181",
+        "vendor": "Telegram",
+        "product": "Telegram Desktop",
         "title": null,
-        "description": "SimpleChat is a secure AI conversation application with personal and group workspaces for document-grounded interactions. Prior to 0.261.029, POST /api/group_documents/upload stores an attacker-controlled group document filename that group_workspaces.html later interpolates into inline Share event handlers. The escapeGroupHtml function leaves apostrophes unchanged, while escapeHtml produces an HTML entity that the browser decodes before JavaScript evaluation, so either path permits the filename to terminate the handler string. An authenticated group Owner, Admin, or DocumentManager can persist script that executes in the SimpleChat origin when another group member clicks Share, allowing access to victim-visible data and actions with the victim session. This issue is fixed in version 0.261.029.",
-        "cvss": {
-          "version": "3.1",
-          "score": 8.7,
-          "severity": "HIGH",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:N",
-          "source": "security-advisories@github.com",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "poc",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "poc",
-            "automatable": "no",
-            "technical_impact": "total",
-            "timestamp": "2026-10-06T14:44:18.403661Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2026-10-06T15:17:16.880",
-        "updated_time": "2026-10-06T15:25:00.650",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105798",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [
-          "CWE-79"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105798",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-105797",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-06T15:17:16.733"
-        }
-      ],
-      "risk": {
-        "score": 30,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "POC_AVAILABLE",
-            "points": 10
-          },
-          {
-            "code": "CVSS_HIGH",
-            "points": 12
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-105797",
-        "vendor": "microsoft",
-        "product": "simplechat",
-        "title": null,
-        "description": "SimpleChat is a secure AI conversation application with personal and group workspaces for document-grounded interactions. In versions 0.261.003 and 0.261.027, an authorization ordering flaw in POST /api/user/plugins allows an authenticated low-privileged user to omit the top-level MCP type so that _reject_non_admin_mcp_stdio skips inspection before the type is restored from metadata. The stored personal action can then reach McpPluginFactory.create_connector, and MCPStdioPlugin.connect starts the attacker-selected operating-system process under the application service identity when the action tool is invoked. Exploitation requires personal plugins to be enabled and governance to permit MCP actions, and it can expose or modify secrets and data available to the service or disrupt the service. This issue is fixed in version 0.261.031.",
-        "cvss": {
-          "version": "3.1",
-          "score": 8.8,
-          "severity": "HIGH",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-          "source": "security-advisories@github.com",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "poc",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "poc",
-            "automatable": "no",
-            "technical_impact": "total",
-            "timestamp": "2026-10-06T17:36:18.199579Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2026-10-06T15:17:16.733",
-        "updated_time": "2026-10-06T18:16:47.320",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105797",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [
-          "CWE-78",
-          "CWE-863"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105797",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-105788",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-06T14:17:40.077"
-        }
-      ],
-      "risk": {
-        "score": 30,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "POC_AVAILABLE",
-            "points": 10
-          },
-          {
-            "code": "CVSS_HIGH",
-            "points": 12
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-105788",
-        "vendor": "microsoft",
-        "product": "UFO",
-        "title": null,
-        "description": "Microsoft UFO is an open-source framework for intelligent automation across devices and platforms. Prior to 3.0.10, the type_text and launch_app tools in ufo/client/mcp/http_servers/mobile_mcp_server.py pass the authenticated caller-controlled text and package_name parameters into adb shell command argument positions without comprehensive validation. The adb client joins those arguments into a remote command string that the Android shell reparses, allowing shell metacharacters to execute additional commands on an authorized connected device as the Android shell user. Exploitation requires a valid Mobile MCP API key and a reachable device authorized for ADB, and it does not establish host operating-system execution, Android root execution, or access beyond the Android shell-user privileges. This issue is fixed in version 3.0.10.",
-        "cvss": {
-          "version": "3.1",
-          "score": 8.8,
-          "severity": "HIGH",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-          "source": "security-advisories@github.com",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "poc",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "poc",
-            "automatable": "no",
-            "technical_impact": "total",
-            "timestamp": "2026-10-06T15:05:06.562657Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2026-10-06T14:17:40.077",
-        "updated_time": "2026-10-06T16:17:05.597",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105788",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [
-          "CWE-78",
-          "CWE-88"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105788",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-105778",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-06T07:16:56.547"
-        }
-      ],
-      "risk": {
-        "score": 30,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "POC_AVAILABLE",
-            "points": 10
-          },
-          {
-            "code": "CVSS_HIGH",
-            "points": 12
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-105778",
-        "vendor": "Tenda",
-        "product": "AC5",
-        "title": null,
-        "description": "A vulnerability has been found in Tenda AC5 02.03.01.111_multi. Affected by this issue is some unknown functionality of the file /goform/setWifi of the component Wifi Handler. Such manipulation of the argument wifiPwd leads to stack-based buffer overflow. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used.",
+        "description": "Telegram Desktop before 7.2.9 contains an IPC record-separator injection vulnerability in Core::Sandbox that allows remote attackers to inject OPEN: records via crafted tg:// links containing unescaped semicolons. Attackers can reach the interpret: scheme handler to upload local files, including tdata session keys, to an attacker channel, enabling account takeover.",
         "cvss": {
           "version": "4.0",
           "score": 8.6,
           "severity": "HIGH",
-          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-          "source": "cna@vuldb.com",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
           "type": "Secondary"
         },
-        "epss": 0.00476,
-        "epss_percentile": 0.39058,
+        "epss": null,
+        "epss_percentile": null,
         "cisa_kev": {
           "listed": false
         },
@@ -886,36 +807,182 @@
             "exploitation": "poc",
             "automatable": "no",
             "technical_impact": "total",
-            "timestamp": "2026-10-06T17:07:05.050647Z",
+            "timestamp": "2026-10-07T16:06:20.922429Z",
             "role": "CISA Coordinator",
             "version": "2.0.3"
           }
         },
-        "published_time": "2026-10-06T07:16:56.547",
-        "updated_time": "2026-10-06T18:16:46.563",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105778",
+        "published_time": "2026-10-07T14:17:08.807",
+        "updated_time": "2026-10-07T17:16:53.520",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107181",
         "source_type": [
-          "nvd",
-          "first_epss"
+          "nvd"
         ],
         "cwes": [
-          "CWE-119",
-          "CWE-121"
+          "CWE-143"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105778",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-107181",
           "cisa_kev": null,
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-105778"
+          "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-94293",
+      "cve": "CVE-2026-107177",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-06T07:17:00.193"
+          "to": "2026-10-07T13:17:20.827"
+        }
+      ],
+      "risk": {
+        "score": 30,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "POC_AVAILABLE",
+            "points": 10
+          },
+          {
+            "code": "CVSS_HIGH",
+            "points": 12
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-107177",
+        "vendor": "ExpressGateway",
+        "product": "express-gateway",
+        "title": null,
+        "description": "Express Gateway through 1.16.11 contains a hardcoded cryptographic key vulnerability that allows attackers with datastore access to decrypt stored OAuth 2.0 token secrets via the default crypto.cipherKey 'sensitiveKey'. Attackers who can read Redis can decrypt tokenEncrypted values and combine them with stored token IDs to obtain valid bearer tokens for any user.",
+        "cvss": {
+          "version": "4.0",
+          "score": 7.4,
+          "severity": "HIGH",
+          "vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:H/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "poc",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "poc",
+            "automatable": "no",
+            "technical_impact": "total",
+            "timestamp": "2026-10-07T17:27:31.854378Z",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-10-07T13:17:20.827",
+        "updated_time": "2026-10-07T18:17:18.150",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107177",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-1394"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-107177",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-106058",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-07T12:17:08.920"
+        }
+      ],
+      "risk": {
+        "score": 30,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "POC_AVAILABLE",
+            "points": 10
+          },
+          {
+            "code": "CVSS_HIGH",
+            "points": 12
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-106058",
+        "vendor": "gitahead",
+        "product": "gitahead",
+        "title": null,
+        "description": "GitAhead through 2.7.1 contains an OS command injection vulnerability in src/git/Filter.cpp that allows malicious repositories to execute commands by substituting crafted filenames into clean/smudge filter commands. Attackers can ship files named with $(command) selected via .gitattributes so checkout or staging runs the command through bash -c as the victim.",
+        "cvss": {
+          "version": "4.0",
+          "score": 7.7,
+          "severity": "HIGH",
+          "vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "poc",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "poc",
+            "automatable": "no",
+            "technical_impact": "total",
+            "timestamp": "2026-10-07T20:55:31.538442Z",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-10-07T12:17:08.920",
+        "updated_time": "2026-10-07T21:17:12.053",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-106058",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-78"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-106058",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-97720",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-07T09:17:06.333"
         }
       ],
       "risk": {
@@ -933,21 +1000,21 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-94293",
-        "vendor": "Murrelektronik",
-        "product": "Software AAS Edge Client all versions",
+        "cve": "CVE-2026-97720",
+        "vendor": "Apache Software Foundation",
+        "product": "Apache Impala",
         "title": null,
-        "description": "An unauthenticated remote attacker can modify Asset Administration Shell submodel data via PATCH requests and can read all data exposed by the GET endpoints.",
+        "description": "Incorrect implementation of JWT/OAuth authentication in Impala executors in Apache Impala versions up to and including 4.5.2 which allows attacked to access resources served by the executor's webserver when that webserver is configured to accept JWT/OAuth tokens.  Bearer token (JWT) signatures are not validated resulting in the webserver accepting any valid JWT.\nUsers are recommended to either disable JWT/OAuth auth for Impala executors or upgrade to version 4.5.3, which fixes this issue.",
         "cvss": {
-          "version": "4.0",
-          "score": 9.3,
+          "version": "3.1",
+          "score": 9.1,
           "severity": "CRITICAL",
-          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-          "source": "info@cert.vde.com",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+          "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
           "type": "Secondary"
         },
-        "epss": 0.00349,
-        "epss_percentile": 0.2635,
+        "epss": 0.00196,
+        "epss_percentile": 0.08526,
         "cisa_kev": {
           "listed": false
         },
@@ -958,35 +1025,35 @@
             "exploitation": "none",
             "automatable": "yes",
             "technical_impact": "total",
-            "timestamp": "2026-10-06T17:20:08.746845Z",
+            "timestamp": "2026-10-07T18:47:54.279849Z",
             "role": "CISA Coordinator",
             "version": "2.0.3"
           }
         },
-        "published_time": "2026-10-06T07:17:00.193",
-        "updated_time": "2026-10-06T18:16:58.550",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94293",
+        "published_time": "2026-10-07T09:17:06.333",
+        "updated_time": "2026-10-07T19:17:45.470",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97720",
         "source_type": [
           "nvd",
           "first_epss"
         ],
         "cwes": [
-          "CWE-306"
+          "CWE-303"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-94293",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-97720",
           "cisa_kev": null,
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-94293"
+          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-97720"
         }
       }
     },
     {
-      "cve": "CVE-2026-93674",
+      "cve": "CVE-2026-96408",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-07T01:16:35.187"
+          "to": "2026-10-07T11:17:20.620"
         }
       ],
       "risk": {
@@ -1004,17 +1071,367 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-93674",
-        "vendor": "IBM",
-        "product": "Langflow OSS",
+        "cve": "CVE-2026-96408",
+        "vendor": "Six Apart Ltd.",
+        "product": "Movable Type Cloud Edition",
         "title": null,
-        "description": "IBM Langflow OSS 1.0.0 through 1.12.2 could allow a remote attacker to execute arbitrary code due to improper neutralization of special elements used in an OS command.",
+        "description": "A code injection vulnerability exists in the upgrade script of Movable Type, which may allow an unauthenticated attacker to execute an arbitrary Perl script or an SQL query on the affected product.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "vultures@jpcert.or.jp",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "none",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "none",
+            "automatable": "yes",
+            "technical_impact": "total",
+            "timestamp": "2026-10-07T17:46:25.099398Z",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-10-07T11:17:20.620",
+        "updated_time": "2026-10-07T18:17:32.210",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96408",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-94"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-96408",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-95606",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-07T17:17:04.213"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-95606",
+        "vendor": "Liquid Web / StellarWP",
+        "product": "The Events Calendar",
+        "title": null,
+        "description": "Deserialization of Untrusted Data vulnerability in Liquid Web / StellarWP The Events Calendar allows Object Injection.\n\nThis issue affects The Events Calendar: from n/a through 6.17.4.",
         "cvss": {
           "version": "3.1",
           "score": 9.8,
           "severity": "CRITICAL",
           "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "psirt@us.ibm.com",
+          "source": "audit@patchstack.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "none",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "none",
+            "automatable": "yes",
+            "technical_impact": "total",
+            "timestamp": "2026-10-07T17:49:44.608617Z",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-10-07T17:17:04.213",
+        "updated_time": "2026-10-07T18:17:31.910",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95606",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-502"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-95606",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-95605",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-07T17:17:04.063"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-95605",
+        "vendor": "Passionate Programmer Peter",
+        "product": "WP Data Access",
+        "title": null,
+        "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Passionate Programmer Peter WP Data Access allows Blind SQL Injection.\n\nThis issue affects WP Data Access: from n/a through 5.5.82.",
+        "cvss": {
+          "version": "3.1",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:L",
+          "source": "audit@patchstack.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "none",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "none",
+            "automatable": "yes",
+            "technical_impact": "partial",
+            "timestamp": "2026-10-07T18:02:40.345076Z",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-10-07T17:17:04.063",
+        "updated_time": "2026-10-07T19:17:45.353",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95605",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-89"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-95605",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-92414",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-07T16:19:12.900"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-92414",
+        "vendor": "Apache Software Foundation",
+        "product": "Apache Jackrabbit",
+        "title": null,
+        "description": ": Session Fixation / Session Reuse across Users vulnerability in Apache Jackrabbit.\n\n\n\nJackrabbit WebDAV server attaches a cached authenticated session on any Lock-Token/TransactionId/SubscriptionId/If-header field token match with\n\nno credential check.\n\n\n\nThis issue affects Apache Jackrabbit: from 2.23.0 through 2.23.5, from 2.22.0 through 2.22.4, from 2.20.0 through 2.20.17.\n\n\n\n\n\n\n\n\n\n\n\n\nUsers are recommended to upgrade to versions 2.23.6, 2.22.5, or 2.20.18 which fix the issue.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "security@apache.org",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "none",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "none",
+            "automatable": "yes",
+            "technical_impact": "total",
+            "timestamp": "2026-10-07T20:29:09.750450Z",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-10-07T16:19:12.900",
+        "updated_time": "2026-10-07T21:17:21.360",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92414",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-384"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-92414",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-76501",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-07T17:17:02.113"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-76501",
+        "vendor": "Cisco",
+        "product": "Cisco NX-OS Software",
+        "title": null,
+        "description": "A vulnerability in the Segment Routing over IPv6 (SRv6) Operation, Administration, and Maintenance (OAM) feature of Cisco NX-OS Software, known as NGOAM, could allow an unauthenticated, remote attacker to execute arbitrary code with root privileges or cause a denial of service (DoS) on an affected device.\r\n\r\nThis vulnerability is due to improper input validation of IP traffic when the NGOAM and SRv6 features are enabled. An attacker could exploit this vulnerability by sending crafted packets to an IP interface on an affected device. A successful exploit could allow the attacker to execute arbitrary code with root privileges and could cause process crashes resulting in a reload and DoS condition.",
+        "cvss": {
+          "version": "3.1",
+          "score": 9.8,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "source": "psirt@cisco.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "none",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "none",
+            "automatable": "yes",
+            "technical_impact": "total",
+            "timestamp": "2026-10-07T00:00:00+00:00",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-10-07T17:17:02.113",
+        "updated_time": "2026-10-08T04:17:35.760",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76501",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-121"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-76501",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-76500",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-07T17:17:01.963"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-76500",
+        "vendor": "Cisco",
+        "product": "Cisco Application Policy Infrastructure Controller (APIC)",
+        "title": null,
+        "description": "As part of Cisco's ongoing commitment to proactive security and product quality, the Cisco Application Policy Infrastructure Controller (APIC) engineering team has conducted a comprehensive internal security review. This review resulted in software hardening releases that address multiple internally discovered vulnerabilities. &nbsp;\r\n\r\nThe vulnerabilities tracked by CVE-2026-76500 are related to issues with improper control of a resource through its lifetime that are grouped under the Common Weakness Enumeration (CWE) Pillar CWE-664.",
+        "cvss": {
+          "version": "3.1",
+          "score": 9.8,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "source": "psirt@cisco.com",
           "type": "Primary"
         },
         "epss": null,
@@ -1027,29 +1444,29 @@
           "source": null,
           "ssvc": null
         },
-        "published_time": "2026-10-07T01:16:35.187",
-        "updated_time": "2026-10-07T01:16:35.187",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93674",
+        "published_time": "2026-10-07T17:17:01.963",
+        "updated_time": "2026-10-07T17:17:01.963",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76500",
         "source_type": [
           "nvd"
         ],
         "cwes": [
-          "CWE-94"
+          "CWE-664"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-93674",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-76500",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-91140",
+      "cve": "CVE-2026-76499",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-06T14:17:48.407"
+          "to": "2026-10-07T17:17:01.820"
         }
       ],
       "risk": {
@@ -1067,533 +1484,17 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-91140",
-        "vendor": "Progress Software",
-        "product": "Autonomous REST Connector GenAI Agents",
+        "cve": "CVE-2026-76499",
+        "vendor": "Cisco",
+        "product": "Cisco Application Policy Infrastructure Controller (APIC)",
         "title": null,
-        "description": "An OS command injection vulnerability in the shell-based temporary-file cleanup instructions in Progress Software Autonomous REST Connector GenAI Agents ARCGenAI-Generator version 2.0 allows an attacker who supplies a crafted Swagger/OpenAPI document to execute arbitrary commands on a developer's machine when a user invokes the generator.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.6,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
-          "source": "security@progress.com",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "none",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "none",
-            "automatable": "no",
-            "technical_impact": "total",
-            "timestamp": "2026-10-06T00:00:00+00:00",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2026-10-06T14:17:48.407",
-        "updated_time": "2026-10-07T04:18:10.610",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91140",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [
-          "CWE-78"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-91140",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-86360",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-06T19:18:16.430"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-86360",
-        "vendor": "Dell",
-        "product": "System Update",
-        "title": null,
-        "description": "Dell System Update, versions prior to 2.3.0.0, contains an Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability. An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to Filesystem access for attacker. This vulnerability is considered critical because it can be leveraged by an unauthenticated attacker to execute arbitrary code with root privileges. Successful exploitation may allow complete compromise of the vulnerable application and underlying operating system. Dell recommends customers upgrade at the earliest opportunity.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.6,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
-          "source": "security_alert@emc.com",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "none",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "none",
-            "automatable": "no",
-            "technical_impact": "total",
-            "timestamp": "2026-10-06T19:46:46.247708Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2026-10-06T19:18:16.430",
-        "updated_time": "2026-10-06T20:17:34.090",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86360",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [
-          "CWE-22"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-86360",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-85153",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-06T08:16:37.227"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-85153",
-        "vendor": "Schmooze",
-        "product": "Schmooze dating mobile Application",
-        "title": null,
-        "description": "This vulnerability exists in the Schmooze app due to the use of hardcoded credentials and cryptographic keys in the client application. An unauthenticated remote attacker could exploit this vulnerability by decompiling the distributed application package and extracting the embedded credentials and cryptographic keys.\n\n\nSuccessful exploitation of this vulnerability could allow the attacker to gain unauthorized access to backend and cloud resources and forge client requests on the targeted system.",
-        "cvss": {
-          "version": "4.0",
-          "score": 9.3,
-          "severity": "CRITICAL",
-          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-          "source": "vdisclose@cert-in.org.in",
-          "type": "Secondary"
-        },
-        "epss": 0.00371,
-        "epss_percentile": 0.28878,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "none",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "none",
-            "automatable": "yes",
-            "technical_impact": "partial",
-            "timestamp": "2026-10-06T11:46:54.410367Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2026-10-06T08:16:37.227",
-        "updated_time": "2026-10-06T15:03:59.427",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85153",
-        "source_type": [
-          "nvd",
-          "first_epss"
-        ],
-        "cwes": [
-          "CWE-321"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-85153",
-          "cisa_kev": null,
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-85153"
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-79805",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-06T20:17:32.013"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-79805",
-        "vendor": "Hewlett Packard Enterprise (HPE)",
-        "product": "ClearPass Policy Manager (CPPM)",
-        "title": null,
-        "description": "An authenticated path traversal vulnerability exists in ClearPass Policy Manager. Successful exploitation could allow an attacker to read and modify certain files on the underlying operating system.",
+        "description": "As part of Cisco's ongoing commitment to proactive security and product quality, the Cisco Application Policy Infrastructure Controller (APIC) engineering team has conducted a comprehensive internal security review. This review resulted in software hardening releases that address multiple internally discovered vulnerabilities.\r\n\r\nThe vulnerabilities tracked by CVE-2026-76499 are related to improper neutralization issues that are grouped under the Common Weakness Enumeration (CWE) Pillar CWE-707.\r\n&nbsp;",
         "cvss": {
           "version": "3.1",
           "score": 9.8,
           "severity": "CRITICAL",
           "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "security-alert@hpe.com",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-10-06T20:17:32.013",
-        "updated_time": "2026-10-06T20:17:32.013",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79805",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-79805",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-79801",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-06T20:17:31.667"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-79801",
-        "vendor": "Hewlett Packard Enterprise (HPE)",
-        "product": "ClearPass Policy Manager (CPPM)",
-        "title": null,
-        "description": "A missing integrity verification vulnerability in the client agent software of HPE Networking ClearPass Policy Manager could allow an unauthenticated remote attacker to introduce untrusted code. Successful exploitation could allow an attacker to execute arbitrary code on the affected client system.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.8,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "security-alert@hpe.com",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-10-06T20:17:31.667",
-        "updated_time": "2026-10-06T20:17:31.667",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79801",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-79801",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-79798",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-06T20:17:31.310"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-79798",
-        "vendor": "Hewlett Packard Enterprise (HPE)",
-        "product": "ClearPass Policy Manager (CPPM)",
-        "title": null,
-        "description": "SQL injection vulnerabilities in the web-based management interface of ClearPass Policy Manager could allow a low-privileged authenticated remote attacker to conduct SQL injection attacks against the ClearPass Policy Manager instance. Successful exploitation could allow an attacker to run arbitrary database commands.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.9,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-          "source": "security-alert@hpe.com",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-10-06T20:17:31.310",
-        "updated_time": "2026-10-06T20:17:31.310",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79798",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-79798",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-79796",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-06T20:17:31.083"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-79796",
-        "vendor": "Hewlett Packard Enterprise (HPE)",
-        "product": "ClearPass Policy Manager (CPPM)",
-        "title": null,
-        "description": "Vulnerabilities have been identified in the affected interface of ClearPass Policy Manager that could potentially allow an unauthenticated remote attacker to circumvent existing authentication controls. Successful exploitation could allow an attacker to gain unauthorized access to the affected system.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.8,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "security-alert@hpe.com",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-10-06T20:17:31.083",
-        "updated_time": "2026-10-06T20:17:31.083",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79796",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-79796",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-79794",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-06T20:17:30.967"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-79794",
-        "vendor": "Hewlett Packard Enterprise (HPE)",
-        "product": "ClearPass Policy Manager (CPPM)",
-        "title": null,
-        "description": "A SQL injection vulnerability in the web-based management interface of ClearPass Policy Manager could allow an authenticated remote attacker to conduct SQL injection attacks against the ClearPass Policy Manager instance. Successful exploitation could allow an attacker to run arbitrary database commands.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.1,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
-          "source": "security-alert@hpe.com",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-10-06T20:17:30.967",
-        "updated_time": "2026-10-06T20:17:30.967",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79794",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-79794",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-77178",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-06T14:17:46.250"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-77178",
-        "vendor": null,
-        "product": null,
-        "title": null,
-        "description": "Oracle VM VirtualBox before 7.2.8 allows guest OS users to cause an out-of-bounds write in the host OS in pcnetReceiveNoSync in DevPCNet.cpp in the PCNet (Am79C970A) network device model.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.1,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
-          "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+          "source": "psirt@cisco.com",
           "type": "Secondary"
         },
         "epss": null,
@@ -1608,34 +1509,34 @@
             "exploitation": "none",
             "automatable": "yes",
             "technical_impact": "total",
-            "timestamp": "2026-10-06T17:32:27.645112Z",
+            "timestamp": "2026-10-07T17:47:36.467311Z",
             "role": "CISA Coordinator",
             "version": "2.0.3"
           }
         },
-        "published_time": "2026-10-06T14:17:46.250",
-        "updated_time": "2026-10-06T18:16:55.970",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77178",
+        "published_time": "2026-10-07T17:17:01.820",
+        "updated_time": "2026-10-07T18:17:30.330",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76499",
         "source_type": [
           "nvd"
         ],
         "cwes": [
-          "CWE-787"
+          "CWE-707"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-77178",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-76499",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-76754",
+      "cve": "CVE-2026-76498",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-06T20:17:30.853"
+          "to": "2026-10-07T17:17:01.670"
         }
       ],
       "risk": {
@@ -1653,17 +1554,17 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-76754",
-        "vendor": "Hewlett Packard Enterprise (HPE)",
-        "product": "ClearPass Policy Manager (CPPM)",
+        "cve": "CVE-2026-76498",
+        "vendor": "Cisco",
+        "product": "Cisco Application Policy Infrastructure Controller (APIC)",
         "title": null,
-        "description": "A vulnerability in an affected interface of ClearPass Policy Manager could allow an unauthenticated remote attacker to conduct SQL injection attacks against the ClearPass Policy Manager instance. Successful exploitation could allow an attacker to run arbitrary database commands.",
+        "description": "As part of Cisco's ongoing commitment to proactive security and product quality, the Cisco Application Policy Infrastructure Controller (APIC) engineering team has conducted a comprehensive internal security review. This review resulted in software hardening releases that address multiple internally discovered vulnerabilities.\r\n\r\nThe vulnerabilities tracked by CVE-2026-76498 are related to improper access control issues that are grouped under the Common Weakness Enumeration (CWE) Pillar CWE-284.",
         "cvss": {
           "version": "3.1",
           "score": 9.8,
           "severity": "CRITICAL",
           "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "security-alert@hpe.com",
+          "source": "psirt@cisco.com",
           "type": "Secondary"
         },
         "epss": null,
@@ -1672,31 +1573,40 @@
           "listed": false
         },
         "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
+          "status": "none",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "none",
+            "automatable": "yes",
+            "technical_impact": "total",
+            "timestamp": "2026-10-07T18:03:47.917127Z",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
         },
-        "published_time": "2026-10-06T20:17:30.853",
-        "updated_time": "2026-10-06T20:17:30.853",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76754",
+        "published_time": "2026-10-07T17:17:01.670",
+        "updated_time": "2026-10-07T19:17:41.153",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76498",
         "source_type": [
           "nvd"
         ],
-        "cwes": [],
+        "cwes": [
+          "CWE-284"
+        ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-76754",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-76498",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-76753",
+      "cve": "CVE-2026-76486",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-06T20:17:30.740"
+          "to": "2026-10-07T17:17:01.350"
         }
       ],
       "risk": {
@@ -1714,17 +1624,17 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-76753",
-        "vendor": "Hewlett Packard Enterprise (HPE)",
-        "product": "ClearPass Policy Manager (CPPM)",
+        "cve": "CVE-2026-76486",
+        "vendor": "Cisco",
+        "product": "Cisco NX-OS Software",
         "title": null,
-        "description": "A format string vulnerability in an affected service interface of HPE Networking ClearPass Policy Manager could allow an unauthenticated remote attacker to corrupt process memory. Successful exploitation could allow an attacker to execute arbitrary code.",
+        "description": "A vulnerability in the VXLAN Operation, Administration, and Maintenance (OAM) feature of Cisco NX-OS Software, known as NGOAM, could allow an unauthenticated, remote attacker to execute arbitrary code with root privileges or cause a Denial-of-Service (DoS) on an affected device.\r\n\r\nThis vulnerability is due to improper input validation of IP traffic when the NGOAM feature is enabled. An attacker could exploit this vulnerability by sending crafted packets to an IP interface on an affected device. A successful exploit could allow the attacker to execute arbitrary code with root privileges and could cause process crashes resulting in a reload and DoS condition.",
         "cvss": {
           "version": "3.1",
           "score": 9.8,
           "severity": "CRITICAL",
           "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "security-alert@hpe.com",
+          "source": "psirt@cisco.com",
           "type": "Secondary"
         },
         "epss": null,
@@ -1733,31 +1643,40 @@
           "listed": false
         },
         "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
+          "status": "none",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "none",
+            "automatable": "yes",
+            "technical_impact": "total",
+            "timestamp": "2026-10-07T00:00:00+00:00",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
         },
-        "published_time": "2026-10-06T20:17:30.740",
-        "updated_time": "2026-10-06T20:17:30.740",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76753",
+        "published_time": "2026-10-07T17:17:01.350",
+        "updated_time": "2026-10-08T04:17:35.460",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76486",
         "source_type": [
           "nvd"
         ],
-        "cwes": [],
+        "cwes": [
+          "CWE-121"
+        ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-76753",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-76486",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-76752",
+      "cve": "CVE-2026-76485",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-06T20:17:30.623"
+          "to": "2026-10-07T17:17:01.183"
         }
       ],
       "risk": {
@@ -1775,17 +1694,17 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-76752",
-        "vendor": "Hewlett Packard Enterprise (HPE)",
-        "product": "ClearPass Policy Manager (CPPM)",
+        "cve": "CVE-2026-76485",
+        "vendor": "Cisco",
+        "product": "Cisco NX-OS Software",
         "title": null,
-        "description": "Authentication bypass vulnerabilities exist in the web-based management and API interfaces of HPE Networking ClearPass Policy Manager. Successful exploitation could allow an unauthenticated remote attacker to circumvent existing authentication controls and gain administrative access to the affected system.",
+        "description": "A vulnerability in the VXLAN Operation, Administration, and Maintenance (OAM) feature of Cisco NX-OS Software, known as NGOAM, could allow an unauthenticated, remote attacker to execute arbitrary code with root privileges or cause a Denial-of-Service (DoS) on an affected device.\r\n\r\nThis vulnerability is due to improper input validation of IP traffic when the NGOAM feature is enabled. An attacker could exploit this vulnerability by sending crafted packets to an IP interface on an affected device. A successful exploit could allow the attacker to execute arbitrary code with root privileges and could cause process crashes resulting in a reload and DoS condition.",
         "cvss": {
           "version": "3.1",
           "score": 9.8,
           "severity": "CRITICAL",
           "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "security-alert@hpe.com",
+          "source": "psirt@cisco.com",
           "type": "Secondary"
         },
         "epss": null,
@@ -1794,31 +1713,40 @@
           "listed": false
         },
         "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
+          "status": "none",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "none",
+            "automatable": "yes",
+            "technical_impact": "total",
+            "timestamp": "2026-10-07T00:00:00+00:00",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
         },
-        "published_time": "2026-10-06T20:17:30.623",
-        "updated_time": "2026-10-06T20:17:30.623",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76752",
+        "published_time": "2026-10-07T17:17:01.183",
+        "updated_time": "2026-10-08T04:17:35.310",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76485",
         "source_type": [
           "nvd"
         ],
-        "cwes": [],
+        "cwes": [
+          "CWE-121"
+        ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-76752",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-76485",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-76751",
+      "cve": "CVE-2026-76483",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-06T20:17:30.513"
+          "to": "2026-10-07T17:17:00.910"
         }
       ],
       "risk": {
@@ -1836,139 +1764,17 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-76751",
-        "vendor": "Hewlett Packard Enterprise (HPE)",
-        "product": "ClearPass Policy Manager (CPPM)",
+        "cve": "CVE-2026-76483",
+        "vendor": "Cisco",
+        "product": "Cisco License On-Prem",
         "title": null,
-        "description": "A missing integrity verification vulnerability exists in the OnGuard agent of ClearPass Policy Manager. Successful exploitation could allow an unauthenticated, remote attacker to execute arbitrary code on the affected endpoint with the elevated privileges of the agent.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.8,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "security-alert@hpe.com",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-10-06T20:17:30.513",
-        "updated_time": "2026-10-06T20:17:30.513",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76751",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-76751",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-76750",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-06T20:17:30.397"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-76750",
-        "vendor": "Hewlett Packard Enterprise (HPE)",
-        "product": "ClearPass Policy Manager (CPPM)",
-        "title": null,
-        "description": "Deserialization of untrusted data vulnerabilities exist in the web interface of HPE Networking ClearPass Policy Manager. Successful exploitation could allow an unauthenticated remote attacker to execute arbitrary code on the affected system.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.8,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "security-alert@hpe.com",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-10-06T20:17:30.397",
-        "updated_time": "2026-10-06T20:17:30.397",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76750",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-76750",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-76747",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-06T20:17:30.067"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-76747",
-        "vendor": "Hewlett Packard Enterprise (HPE)",
-        "product": "AOS-Switch (AOS-S)",
-        "title": null,
-        "description": "Buffer overflow vulnerabilities exist in the affected interface of AOS-S. Successful exploitation could allow an unauthenticated remote attacker to expose sensitive memory contents and cause a denial of service on the device.",
+        "description": "As part of Cisco's ongoing commitment to proactive security and product quality, the engineering team for Cisco License On-Prem, formerly Cisco Smart Software Manager On-Prem (SSM On-Prem), has conducted a comprehensive internal security review. This review resulted in software hardening releases that address multiple internally discovered vulnerabilities. &nbsp;\r\n\r\nThe vulnerabilities tracked by CVE-2026-76483 are related to issues with insufficiently protected credentials that are grouped under the Common Weakness Enumeration (CWE) Pillar CWE-522.",
         "cvss": {
           "version": "3.1",
           "score": 9.1,
           "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
-          "source": "security-alert@hpe.com",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+          "source": "psirt@cisco.com",
           "type": "Secondary"
         },
         "epss": null,
@@ -1977,31 +1783,40 @@
           "listed": false
         },
         "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
+          "status": "none",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "none",
+            "automatable": "yes",
+            "technical_impact": "total",
+            "timestamp": "2026-10-07T00:00:00+00:00",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
         },
-        "published_time": "2026-10-06T20:17:30.067",
-        "updated_time": "2026-10-06T20:17:30.067",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76747",
+        "published_time": "2026-10-07T17:17:00.910",
+        "updated_time": "2026-10-08T04:17:35.010",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76483",
         "source_type": [
           "nvd"
         ],
-        "cwes": [],
+        "cwes": [
+          "CWE-522"
+        ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-76747",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-76483",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-76746",
+      "cve": "CVE-2026-76482",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-06T20:17:29.957"
+          "to": "2026-10-07T17:17:00.773"
         }
       ],
       "risk": {
@@ -2019,17 +1834,17 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-76746",
-        "vendor": "Hewlett Packard Enterprise (HPE)",
-        "product": "AOS-Switch (AOS-S)",
+        "cve": "CVE-2026-76482",
+        "vendor": "Cisco",
+        "product": "Cisco License On-Prem",
         "title": null,
-        "description": "An unauthenticated buffer overflow vulnerability exists in AOS-S. Successful exploitation could allow an unauthenticated adjacent attacker to expose sensitive memory contents and cause a denial of service on the affected device.",
+        "description": "As part of Cisco's ongoing commitment to proactive security and product quality, the engineering team for Cisco License On-Prem, formerly Cisco Smart Software Manager On-Prem (SSM On-Prem), has conducted a comprehensive internal security review. This review resulted in software hardening releases that address multiple internally discovered vulnerabilities.\r\n\r\nThe vulnerabilities tracked by CVE-2026-76482 are related to issues with improper input verification that are grouped under the Common Weakness Enumeration (CWE) Pillar CWE-347.",
         "cvss": {
           "version": "3.1",
-          "score": 9.3,
+          "score": 10.0,
           "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:H",
-          "source": "security-alert@hpe.com",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+          "source": "psirt@cisco.com",
           "type": "Secondary"
         },
         "epss": null,
@@ -2038,19 +1853,308 @@
           "listed": false
         },
         "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
+          "status": "none",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "none",
+            "automatable": "yes",
+            "technical_impact": "total",
+            "timestamp": "2026-10-07T00:00:00+00:00",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
         },
-        "published_time": "2026-10-06T20:17:29.957",
-        "updated_time": "2026-10-06T20:17:29.957",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76746",
+        "published_time": "2026-10-07T17:17:00.773",
+        "updated_time": "2026-10-08T04:17:34.870",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76482",
         "source_type": [
           "nvd"
         ],
-        "cwes": [],
+        "cwes": [
+          "CWE-347"
+        ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-76746",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-76482",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-76480",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-07T17:17:00.620"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-76480",
+        "vendor": "Cisco",
+        "product": "Cisco License On-Prem",
+        "title": null,
+        "description": "As part of Cisco's ongoing commitment to proactive security and product quality, the engineering team for Cisco License On-Prem, formerly Cisco Smart Software Manager On-Prem (SSM On-Prem), has conducted a comprehensive internal security review. This review resulted in software hardening releases that address multiple internally discovered vulnerabilities.\r\n\r\nThe vulnerabilities tracked by CVE-2026-76480 are related to issues with improper authentication that are grouped under the Common Weakness Enumeration (CWE) Pillar CWE-306.",
+        "cvss": {
+          "version": "3.1",
+          "score": 9.8,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "source": "psirt@cisco.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "none",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "none",
+            "automatable": "yes",
+            "technical_impact": "total",
+            "timestamp": "2026-10-07T00:00:00+00:00",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-10-07T17:17:00.620",
+        "updated_time": "2026-10-08T04:17:34.733",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76480",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-306"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-76480",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-76471",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-07T17:17:00.230"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-76471",
+        "vendor": "Cisco",
+        "product": "Cisco NX-OS Software",
+        "title": null,
+        "description": "A vulnerability in the NX-API feature of Cisco NX-OS Software could allow an unauthenticated, remote attacker to execute arbitrary code with root privileges or cause a denial of service (DoS) condition on an affected device.&nbsp;\r\n\r\nThe vulnerability is due to insufficient input validation of data that is sent to the NX-API. An attacker could exploit this vulnerability by sending a crafted HTTP request to the NX-API of an affected device. A successful exploit could allow the attacker to execute arbitrary code with root privileges and could cause process crashes, which could result in a reload of the device and a DoS condition.",
+        "cvss": {
+          "version": "3.1",
+          "score": 9.8,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "source": "psirt@cisco.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "none",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "none",
+            "automatable": "yes",
+            "technical_impact": "total",
+            "timestamp": "2026-10-07T00:00:00+00:00",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-10-07T17:17:00.230",
+        "updated_time": "2026-10-08T04:17:34.533",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76471",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-122"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-76471",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-76465",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-07T17:16:59.350"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-76465",
+        "vendor": "Cisco",
+        "product": "Cisco NX-OS Software",
+        "title": null,
+        "description": "A vulnerability in the MPLS Operation, Administration, and Maintenance (OAM) feature of Cisco NX-OS Software for Cisco Nexus 3000 Series Switches and Cisco Nexus 9000 Series Switches could allow an unauthenticated, remote attacker to execute arbitrary code with&nbsp;root privileges or cause a denial of service (DoS) condition on an affected device.\r\n\r\nThis vulnerability is due to improper validation when an affected device is processing an MPLS echo-request packet. An attacker could exploit this vulnerability by sending a crafted MPLS echo-request to an IP address on an affected device. A successful exploit could allow the attacker to execute arbitrary code with&nbsp;root privileges and could cause process crashes, which could result in a device reload and a DoS condition.",
+        "cvss": {
+          "version": "3.1",
+          "score": 9.8,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "source": "psirt@cisco.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "none",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "none",
+            "automatable": "yes",
+            "technical_impact": "total",
+            "timestamp": "2026-10-07T00:00:00+00:00",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-10-07T17:16:59.350",
+        "updated_time": "2026-10-08T04:17:34.377",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76465",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-590"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-76465",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-76464",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-07T17:16:59.053"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-76464",
+        "vendor": "Cisco",
+        "product": "Cisco Campus Gateway Software",
+        "title": null,
+        "description": "As part of Cisco's ongoing commitment to proactive security and product quality, the Cisco networking engineering team has conducted a comprehensive internal security review. This review resulted in a software hardening release that addresses multiple internally discovered vulnerabilities.\r\n\r\nThe vulnerabilities tracked by this CVE-2026-76464 are related to buffer management issues that are grouped under the Common Weakness Enumeration (CWE) CWE-119.",
+        "cvss": {
+          "version": "3.1",
+          "score": 9.6,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+          "source": "psirt@cisco.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "none",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "none",
+            "automatable": "no",
+            "technical_impact": "total",
+            "timestamp": "2026-10-07T18:01:54.754606Z",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-10-07T17:16:59.053",
+        "updated_time": "2026-10-07T19:17:40.650",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76464",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-119"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-76464",
           "cisa_kev": null,
           "epss": null
         }
