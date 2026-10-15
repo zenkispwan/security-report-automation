@@ -1,11 +1,11 @@
 {
   "schema_version": "1.1-security-events",
-  "generated_at": "2026-10-14T05:43:49.242817+00:00",
+  "generated_at": "2026-10-15T05:38:45.741922+00:00",
   "selection": {
     "window_days": 7,
     "max_items": 20,
     "rule": "Homepage events come from current RSS/advisory sources. CVEs are shown only when the source article/advisory mentions them.",
-    "tracked_cve_count": 188
+    "tracked_cve_count": 135
   },
   "sources": [
     {
@@ -31,14 +31,121 @@
   ],
   "summary": {
     "fetched_entries": 65,
-    "included_items": 17,
-    "linked_cve_items": 14,
-    "matched_intelligence_items": 6,
+    "included_items": 20,
+    "linked_cve_items": 17,
+    "matched_intelligence_items": 3,
     "successful_sources": 4,
     "source_errors": [],
     "preserved_translations": 5
   },
   "items": [
+    {
+      "id": "616ea1fba64001b4",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-14T12:00:00+00:00",
+      "title": "CISA Adds Four Known Exploited Vulnerabilities to Catalog",
+      "summary": "CISA has added four new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-0322 Palo Alto Networks PAN-OS Code Injection Vulnerability CVE-2026-76519 Cisco Secure Email Gateway Relative Path Traversal Vulnerability CVE-2026-105133 Ahsay AhsayCBS Improper Authentication Vulnerability CV...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/10/14/cisa-adds-four-known-exploited-vulnerabilities-catalog",
+      "related_cves": [
+        "CVE-2026-0322",
+        "CVE-2026-105133",
+        "CVE-2026-105134",
+        "CVE-2026-76519"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-0322",
+        "CVE-2026-105133",
+        "CVE-2026-105134",
+        "CVE-2026-76519"
+      ],
+      "score": 121,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "10dada637c3ef801",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-14T22:56:47+00:00",
+      "title": "Palo Alto Networks warns of PAN-OS RCE flaw exploited in attacks",
+      "summary": "Palo Alto Networks has released security updates for a high-severity PAN-OS RCE zero-day, tracked as CVE-2026-0322, that has been exploited in attacks targeting firewalls. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/palo-alto-networks-warns-of-pan-os-rce-flaw-exploited-in-attacks/",
+      "related_cves": [
+        "CVE-2026-0322"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-0322"
+      ],
+      "score": 112,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "9960150300a621c5",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-14T17:29:14+00:00",
+      "title": "Cisco patches new Secure Email Gateway zero-day exploited in attacks",
+      "summary": "Cisco has patched another actively exploited zero-day flaw in its Secure Email Gateway (SEG) that lets remote unauthenticated attackers execute commands with root privileges. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/cisco-patches-actively-exploited-secure-email-gateway-zero-day/",
+      "related_cves": [
+        "CVE-2024-20401",
+        "CVE-2025-20393",
+        "CVE-2026-76461",
+        "CVE-2026-76519"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-76519"
+      ],
+      "score": 111,
+      "cve_evidence": "source_article"
+    },
+    {
+      "id": "e05ffdb17dfb1573",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-14T12:58:07+00:00",
+      "title": "CISA warns admins to immediately fix Ivanti flaw exploited as zero-day",
+      "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) urged security teams to immediately patch an Ivanti Connect Secure (ICS) flaw exploited in zero-day attacks since at least October 1st. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/cisa-warns-admins-to-immediately-fix-ivanti-flaw-exploited-as-zero-day/",
+      "related_cves": [
+        "CVE-2023-46805",
+        "CVE-2024-21887",
+        "CVE-2024-21893",
+        "CVE-2025-0282",
+        "CVE-2025-22457",
+        "CVE-2026-104935"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 106,
+      "cve_evidence": "source_article"
+    },
+    {
+      "id": "36dc6aa9b1fcad0a",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-14T07:16:12+00:00",
+      "title": "Microsoft Patches Record 1,413 Vulnerabilities, Including Exploited Windows Zero-Day",
+      "summary": "The most important is CVE-2026-96951, a security feature bypass flaw in Windows that has been exploited in the wild. The post Microsoft Patches Record 1,413 Vulnerabilities, Including Exploited Windows Zero-Day appeared first on SecurityWeek .",
+      "source_name": "SecurityWeek",
+      "source_type": "security_media",
+      "source_url": "https://www.securityweek.com/microsoft-patches-record-1413-vulnerabilities-including-exploited-windows-zero-day/",
+      "related_cves": [
+        "CVE-2026-108398",
+        "CVE-2026-92707",
+        "CVE-2026-96951"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 106,
+      "cve_evidence": "source_title_or_summary"
+    },
     {
       "id": "6d5f004d3883642d",
       "event_type": "ACTIVE_EXPLOITATION",
@@ -503,77 +610,8 @@
         "CVE-2026-98383",
         "CVE-2026-98384"
       ],
-      "matched_intelligence_cves": [
-        "CVE-2026-70188",
-        "CVE-2026-88092",
-        "CVE-2026-96252",
-        "CVE-2026-96951"
-      ],
-      "score": 122,
-      "cve_evidence": "source_article"
-    },
-    {
-      "id": "897e03545f1ebc4d",
-      "event_type": "ACTIVE_EXPLOITATION",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-13T12:00:00+00:00",
-      "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
-      "summary": "CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-96951 Microsoft Windows Command Injection Vulnerability CVE-2026-104935 Ivanti Connect Secure Authentication Bypass by Spoofing Vulnerability These types of vulnerabilities are a frequent attack vector for malici...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/10/13/cisa-adds-two-known-exploited-vulnerabilities-catalog",
-      "related_cves": [
-        "CVE-2026-104935",
-        "CVE-2026-96951"
-      ],
-      "matched_intelligence_cves": [
-        "CVE-2026-104935",
-        "CVE-2026-96951"
-      ],
-      "score": 116,
-      "cve_evidence": "source_title_or_summary"
-    },
-    {
-      "id": "a59a9af7ace6e94c",
-      "event_type": "ACTIVE_EXPLOITATION",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-13T18:43:43+00:00",
-      "title": "Ivanti Zero-Day Chain Gave Attackers Root Access to Fully Patched VPN",
-      "summary": "CVE-2026-104935 affects Ivanti Connect Secure and it can be exploited for unauthenticated remote code execution with elevated privileges. The post Ivanti Zero-Day Chain Gave Attackers Root Access to Fully Patched VPN appeared first on SecurityWeek .",
-      "source_name": "SecurityWeek",
-      "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/ivanti-zero-day-chain-gave-attackers-root-access-to-fully-patched-vpn/",
-      "related_cves": [
-        "CVE-2026-104935"
-      ],
-      "matched_intelligence_cves": [
-        "CVE-2026-104935"
-      ],
-      "score": 112,
-      "cve_evidence": "source_title_or_summary"
-    },
-    {
-      "id": "0dfe312cc7dd1fa6",
-      "event_type": "ACTIVE_EXPLOITATION",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-13T15:45:50+00:00",
-      "title": "Ivanti warns of Connect Secure zero-day exploited in attacks",
-      "summary": "Ivanti urged customers on Tuesday to immediately patch an actively exploited zero-day vulnerability in the Ivanti Connect Secure (ICS) remote access gateway. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/ivanti-warns-of-connect-secure-zero-day-exploited-in-attacks/",
-      "related_cves": [
-        "CVE-2023-46805",
-        "CVE-2024-21887",
-        "CVE-2024-21893",
-        "CVE-2025-0282",
-        "CVE-2025-22457",
-        "CVE-2026-104935"
-      ],
-      "matched_intelligence_cves": [
-        "CVE-2026-104935"
-      ],
-      "score": 111,
+      "matched_intelligence_cves": [],
+      "score": 105,
       "cve_evidence": "source_article"
     },
     {
@@ -589,10 +627,26 @@
       "related_cves": [
         "CVE-2026-104935"
       ],
-      "matched_intelligence_cves": [
-        "CVE-2026-104935"
+      "matched_intelligence_cves": [],
+      "score": 104,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "897e03545f1ebc4d",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-13T12:00:00+00:00",
+      "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
+      "summary": "CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-96951 Microsoft Windows Command Injection Vulnerability CVE-2026-104935 Ivanti Connect Secure Authentication Bypass by Spoofing Vulnerability These types of vulnerabilities are a frequent attack vector for malici...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/10/13/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+      "related_cves": [
+        "CVE-2026-104935",
+        "CVE-2026-96951"
       ],
-      "score": 111,
+      "matched_intelligence_cves": [],
+      "score": 104,
       "cve_evidence": "source_title_or_summary"
     },
     {
@@ -616,7 +670,7 @@
         "CVE-2023-22894"
       ],
       "matched_intelligence_cves": [],
-      "score": 101,
+      "score": 100,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "與中國政府相關的網路威脅者結合自動化與人工入侵工具竊取敏感資料",
       "summary_zh": "資安警訊概覽 標題：與中國政府相關的網路威脅者結合自動化與人工入侵工具竊取敏感資料 發布日期：2026 年 10 月 8 日 執行摘要：在 Integrity Technology Group 的協助下，與中國政府相關的網路威脅者正結合自動化掃描工具、大規模殭屍網路以及人工..."
@@ -635,26 +689,7 @@
         "CVE-2026-39919"
       ],
       "matched_intelligence_cves": [],
-      "score": 87,
-      "cve_evidence": "source_title_or_summary"
-    },
-    {
-      "id": "2641e35974698b47",
-      "event_type": "VULNERABILITY_NEWS",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-13T15:20:20+00:00",
-      "title": "Docker Hub flaw let attackers impersonate users, tamper with images",
-      "summary": "Docker has disclosed a critical vulnerability (CVE-2026-105445) in Docker Hub that let attackers access another user's container repositories using a personal access token (PAT). [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/docker-hub-flaw-let-attackers-impersonate-users-tamper-with-images/",
-      "related_cves": [
-        "CVE-2026-105445"
-      ],
-      "matched_intelligence_cves": [
-        "CVE-2026-105445"
-      ],
-      "score": 86,
+      "score": 85,
       "cve_evidence": "source_title_or_summary"
     },
     {
@@ -673,7 +708,7 @@
         "CVE-2026-107607"
       ],
       "matched_intelligence_cves": [],
-      "score": 86,
+      "score": 84,
       "cve_evidence": "source_title_or_summary"
     },
     {
@@ -690,8 +725,28 @@
         "CVE-2026-92817"
       ],
       "matched_intelligence_cves": [],
-      "score": 86,
+      "score": 84,
       "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "20e9f6d65963606d",
+      "event_type": "VULNERABILITY_NEWS",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-14T06:12:10+00:00",
+      "title": "SAP Patches Critical NetWeaver, S/4HANA Vulnerabilities",
+      "summary": "The bugs could allow attackers to invoke internal operations and execute code, completely compromising the system. The post SAP Patches Critical NetWeaver, S/4HANA Vulnerabilities appeared first on SecurityWeek .",
+      "source_name": "SecurityWeek",
+      "source_type": "security_media",
+      "source_url": "https://www.securityweek.com/sap-patches-critical-netweaver-s-4hana-vulnerabilities/",
+      "related_cves": [
+        "CVE-2026-89107",
+        "CVE-2026-89108",
+        "CVE-2026-89110",
+        "CVE-2026-89111"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 81,
+      "cve_evidence": "source_article"
     },
     {
       "id": "4c82948f2fde3b15",
@@ -710,7 +765,7 @@
         "CVE-2026-105275"
       ],
       "matched_intelligence_cves": [],
-      "score": 76,
+      "score": 75,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Satel Netco Design 漏洞",
       "summary_zh": "檢視 CSAF 摘要。成功利用這些漏洞可能允許攻擊者於使用者的瀏覽器中執行任意指令碼、消耗過多系統資源、列舉檔案、建立或修改檔案，並可能執行任意程式碼。以下版本的 Satel Netco Design 受影響：Satel Netco Design CVSS 廠商設備..."
@@ -734,7 +789,7 @@
         "CVE-2026-85479"
       ],
       "matched_intelligence_cves": [],
-      "score": 76,
+      "score": 75,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Grid Protection Alliance openPDC 與 openHistorian 漏洞",
       "summary_zh": "檢視 CSAF 摘要。以下版本的 Grid Protection Alliance openPDC 與 openHistorian 受影響：openPDC <2.9.477, <2.9.482 (CVE-2026-104629, CVE-2026-100730, CVE-2026-105281, CVE-2026-85479, CVE-2026-101022) openPDC (Docker 映像檔) <2.9.477, <2.9.482 (CVE-2026-104629, CVE-2026-100730, CVE-2026-105281, CVE-2026-85479, CVE-2026-101022, CVE-2026-..."
@@ -759,7 +814,7 @@
         "CVE-2026-39460"
       ],
       "matched_intelligence_cves": [],
-      "score": 76,
+      "score": 75,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Red Lion Controls N-Tron 700 系列",
       "summary_zh": "檢視 CSAF 摘要 成功利用這些漏洞可能允許惡意使用者存取裝置並取得管理員權限。此存取權限將允許使用者檢視、編輯和上傳設定檔。此外，惡意使用者還可以透過瀏覽裝置上的特定 URL 來使交換器重新啟動。此動作可以被撰寫成腳本……"
@@ -776,57 +831,53 @@
       "source_url": "https://www.cisa.gov/news-events/news/cisa-fbi-nsa-and-international-partners-warn-china-based-cybersecurity-company-enabling-threat",
       "related_cves": [],
       "matched_intelligence_cves": [],
-      "score": 76,
+      "score": 75,
       "cve_evidence": null,
       "title_zh": "CISA、FBI、NSA 及國際夥伴警告：總部位於中國的網路安全公司正協助威脅者推動針對全球多個關鍵基礎設施領域的攻擊行動",
       "summary_zh": ""
     },
     {
-      "id": "31360dd1cd4ddbaf",
-      "event_type": "DATA_BREACH",
+      "id": "0077d1f981ae153d",
+      "event_type": "SUPPLY_CHAIN",
       "priority": "HIGH",
-      "published_at": "2026-10-13T16:01:00+00:00",
-      "title": "Meta Says Hackers Took Code, Personal Data of 1,500 in GitHub Breach",
-      "summary": "Most of the affected individuals are Meta employees in the United States and they are being offered credit monitoring services. The post Meta Says Hackers Took Code, Personal Data of 1,500 in GitHub Breach appeared first on SecurityWeek .",
-      "source_name": "SecurityWeek",
+      "published_at": "2026-10-14T17:46:50+00:00",
+      "title": "Ledger asks sellers across Asia to halt sales after supply-chain attack",
+      "summary": "Ledger has asked resellers and distributors of its wallets in Indonesia, Singapore, Thailand, the Philippines, Vietnam, Malaysia, and Hong Kong to suspend device sales and remove products from shelves while it investigates device tampering. [...]",
+      "source_name": "BleepingComputer",
       "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/meta-says-hackers-took-code-personal-data-of-1500-in-github-breach/",
+      "source_url": "https://www.bleepingcomputer.com/news/security/ledger-asks-sellers-across-asia-to-halt-sales-after-supply-chain-attack/",
       "related_cves": [],
       "matched_intelligence_cves": [],
-      "score": 96,
+      "score": 102,
       "cve_evidence": null
     },
     {
-      "id": "3b61a6f16cb0f028",
-      "event_type": "VULNERABILITY_NEWS",
+      "id": "1651735e0da58aed",
+      "event_type": "DATA_BREACH",
       "priority": "HIGH",
-      "published_at": "2026-10-13T13:51:02+00:00",
-      "title": "SAP warns of maximum severity OAuth2 SSRF security flaw",
-      "summary": "SAP has addressed 20 security flaws across multiple products in its October 2026 security updates, including a maximum-severity vulnerability in the Cloud SDK for Python. [...]",
+      "published_at": "2026-10-14T14:00:10+00:00",
+      "title": "The Blind Spots of Agentic Pentesting and How to Close Them",
+      "summary": "AI-powered penetration testing can uncover complex attack paths, but safety restrictions and network limitations leave many assets and vulnerabilities untested. Picus Security explains how combining agentic pentesting with exposure validation and breach simulation can help close these gaps. [...]",
       "source_name": "BleepingComputer",
       "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/sap-warns-of-maximum-severity-oauth2-ssrf-security-flaw/",
+      "source_url": "https://www.bleepingcomputer.com/news/security/the-blind-spots-of-agentic-pentesting-and-how-to-close-them/",
       "related_cves": [
-        "CVE-2026-44756",
-        "CVE-2026-58231",
-        "CVE-2026-89108",
-        "CVE-2026-89110",
-        "CVE-2026-89111"
+        "CVE-2026-33032"
       ],
       "matched_intelligence_cves": [],
-      "score": 81,
+      "score": 96,
       "cve_evidence": "source_article"
     },
     {
-      "id": "4aa5a9876a26104d",
+      "id": "d21e2d4e3bc5a0bd",
       "event_type": "THREAT_ACTIVITY",
       "priority": "MEDIUM",
-      "published_at": "2026-10-13T11:13:10+00:00",
-      "title": "XWorm RAT Evolves Into Surveillance Platform",
-      "summary": "Expanded plugin count allows the malware to monitor users’ location, stream live audio, and interact with authenticated browser sessions. The post XWorm RAT Evolves Into Surveillance Platform appeared first on SecurityWeek .",
-      "source_name": "SecurityWeek",
+      "published_at": "2026-10-14T13:12:52+00:00",
+      "title": "Global takedown hits network behind 1 billion phishing messages",
+      "summary": "A massive cybercriminal ecosystem facilitating more than a billion malicious messages targeting over 75,000 organizations across 150 countries has been disrupted by law enforcement agencies and partners worldwide. [...]",
+      "source_name": "BleepingComputer",
       "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/xworm-rat-evolves-into-surveillance-platform/",
+      "source_url": "https://www.bleepingcomputer.com/news/security/global-takedown-hits-network-behind-1-billion-phishing-messages/",
       "related_cves": [],
       "matched_intelligence_cves": [],
       "score": 86,
