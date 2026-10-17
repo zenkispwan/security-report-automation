@@ -1,11 +1,11 @@
 {
   "schema_version": "1.1-security-events",
-  "generated_at": "2026-10-16T05:35:34.826930+00:00",
+  "generated_at": "2026-10-17T05:15:51.154659+00:00",
   "selection": {
     "window_days": 7,
     "max_items": 20,
     "rule": "Homepage events come from current RSS/advisory sources. CVEs are shown only when the source article/advisory mentions them.",
-    "tracked_cve_count": 107
+    "tracked_cve_count": 89
   },
   "sources": [
     {
@@ -32,13 +32,84 @@
   "summary": {
     "fetched_entries": 65,
     "included_items": 20,
-    "linked_cve_items": 17,
-    "matched_intelligence_items": 1,
+    "linked_cve_items": 19,
+    "matched_intelligence_items": 6,
     "successful_sources": 4,
     "source_errors": [],
-    "preserved_translations": 0
+    "preserved_translations": 12
   },
   "items": [
+    {
+      "id": "ae4608a27522a7cf",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-16T12:00:00+00:00",
+      "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
+      "summary": "CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2025-61624 Fortinet Multiple Products Path Traversal Vulnerability CVE-2026-102764 BeyondTrust Remote Support Authentication Bypass by Spoofing Vulnerability These types of vulnerabilities are a frequent attack vector...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/10/16/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+      "related_cves": [
+        "CVE-2025-61624",
+        "CVE-2026-102764"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2025-61624",
+        "CVE-2026-102764"
+      ],
+      "score": 116,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "e2040d1c4be8205a",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-16T10:53:22+00:00",
+      "title": "Chinese APT Exploited BeyondTrust Vulnerability as Zero-Day",
+      "summary": "Armory Castle exploited CVE-2026-102764 for initial access, deployed custom tools, and deleted logs and artifacts. The post Chinese APT Exploited BeyondTrust Vulnerability as Zero-Day appeared first on SecurityWeek .",
+      "source_name": "SecurityWeek",
+      "source_type": "security_media",
+      "source_url": "https://www.securityweek.com/chinese-apt-exploited-beyondtrust-vulnerability-as-zero-day/",
+      "related_cves": [
+        "CVE-2023-46805",
+        "CVE-2023-4966",
+        "CVE-2024-21887",
+        "CVE-2025-0282",
+        "CVE-2026-102764",
+        "CVE-2026-22769"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-102764"
+      ],
+      "score": 111,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "166fdf646185c6ed",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-16T06:18:08+00:00",
+      "title": "BeyondTrust patches zero-day exploited in attacks since August",
+      "summary": "BeyondTrust warned customers on Thursday to patch a critical flaw in its Remote Support (RS) that has been exploited in zero-day attacks since late August. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/beyondtrust-patches-zero-day-exploited-in-attacks-since-august/",
+      "related_cves": [
+        "CVE-2023-46805",
+        "CVE-2023-4966",
+        "CVE-2024-12356",
+        "CVE-2024-12686",
+        "CVE-2024-21887",
+        "CVE-2025-0282",
+        "CVE-2026-102764",
+        "CVE-2026-1731"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-102764"
+      ],
+      "score": 111,
+      "cve_evidence": "source_article"
+    },
     {
       "id": "f0618fbb3f3a2bff",
       "event_type": "ACTIVE_EXPLOITATION",
@@ -52,73 +123,11 @@
       "related_cves": [
         "CVE-2026-21589"
       ],
-      "matched_intelligence_cves": [
-        "CVE-2026-21589"
-      ],
-      "score": 111,
+      "matched_intelligence_cves": [],
+      "score": 104,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 將一項已知被利用漏洞納入目錄",
       "summary_zh": "CISA 根據已被主動利用的證據，在其已知被利用漏洞（KEV）目錄中新增了一項新漏洞。CVE-2026-21589 Atlassian 多款產品外部實體可存取檔案或目錄漏洞。此類漏洞是惡意網路攻擊者常用的攻擊途徑，並構成重大風險..."
-    },
-    {
-      "id": "bc4412ae7c09fb26",
-      "event_type": "ACTIVE_EXPLOITATION",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-15T06:59:54+00:00",
-      "title": "Palo Alto Networks Patches PAN-OS Zero-Day Exploited for Remote Code Execution",
-      "summary": "The company says it’s aware of limited exploitation against customers’ firewalls, and it has made IoCs available. The post Palo Alto Networks Patches PAN-OS Zero-Day Exploited for Remote Code Execution appeared first on SecurityWeek .",
-      "source_name": "SecurityWeek",
-      "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/palo-alto-networks-patches-pan-os-zero-day-exploited-for-remote-code-execution/",
-      "related_cves": [
-        "CVE-2026-0322"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 106,
-      "cve_evidence": "source_article",
-      "title_zh": "Palo Alto Networks 修補用於遠端執行程式碼的 PAN-OS 零日漏洞",
-      "summary_zh": "該公司表示已獲悉針對客戶防火牆的有限利用行為，並已提供侵害威脅指標（IoC）。這篇文章 Palo Alto Networks Patches PAN-OS Zero-Day Exploited for Remote Code Execution 首先發表於 SecurityWeek。"
-    },
-    {
-      "id": "10dada637c3ef801",
-      "event_type": "ACTIVE_EXPLOITATION",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-14T22:56:47+00:00",
-      "title": "Palo Alto Networks warns of PAN-OS RCE flaw exploited in attacks",
-      "summary": "Palo Alto Networks has released security updates for a high-severity PAN-OS RCE zero-day, tracked as CVE-2026-0322, that has been exploited in attacks targeting firewalls. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/palo-alto-networks-warns-of-pan-os-rce-flaw-exploited-in-attacks/",
-      "related_cves": [
-        "CVE-2026-0322"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 105,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Palo Alto Networks 警告 PAN-OS 遠端執行程式碼漏洞已在攻擊中遭到利用",
-      "summary_zh": "Palo Alto Networks 已針對追蹤編號為 CVE-2026-0322 的高風險 PAN-OS 遠端執行程式碼（RCE）零日漏洞發布安全更新，該漏洞已在針對防火牆的攻擊中遭到利用。[...]"
-    },
-    {
-      "id": "9960150300a621c5",
-      "event_type": "ACTIVE_EXPLOITATION",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-14T17:29:14+00:00",
-      "title": "Cisco patches new Secure Email Gateway zero-day exploited in attacks",
-      "summary": "Cisco has patched another actively exploited zero-day flaw in its Secure Email Gateway (SEG) that lets remote unauthenticated attackers execute commands with root privileges. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/cisco-patches-actively-exploited-secure-email-gateway-zero-day/",
-      "related_cves": [
-        "CVE-2024-20401",
-        "CVE-2025-20393",
-        "CVE-2026-76461",
-        "CVE-2026-76519"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 104,
-      "cve_evidence": "source_article",
-      "title_zh": "Cisco 修補在攻擊中遭到利用的新 Secure Email Gateway 零日漏洞",
-      "summary_zh": "Cisco 已修補其 Secure Email Gateway (SEG) 中另一個已被主動利用的零日漏洞，該漏洞允許未經身份驗證的遠端攻擊者以 root 權限執行指令。[...]"
     },
     {
       "id": "616ea1fba64001b4",
@@ -137,7 +146,7 @@
         "CVE-2026-76519"
       ],
       "matched_intelligence_cves": [],
-      "score": 104,
+      "score": 102,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 將四項已知被利用漏洞納入目錄",
       "summary_zh": "CISA 根據已被主動利用的證據，在其已知被利用漏洞（KEV）目錄中新增了四項新漏洞。CVE-2026-0322 Palo Alto Networks PAN-OS 程式碼注入漏洞；CVE-2026-76519 Cisco Secure Email Gateway 相對路徑遍歷漏洞；CVE-2026-105133 Ahsay AhsayCBS 身份驗證不當漏洞；CV..."
@@ -156,7 +165,7 @@
         "CVE-2026-104935"
       ],
       "matched_intelligence_cves": [],
-      "score": 102,
+      "score": 100,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 呼籲修補 Ivanti Connect Secure 中新遭利用的漏洞",
       "summary_zh": "CISA 已獲悉 Ivanti 所披露的新遭利用漏洞（CVE-2026-104935），該漏洞影響 Ivanti Connect Secure 25.1.1.1 及先前版本、25.1.2.2 及先前版本，以及 22.8R2.4 及先前版本。CISA 已注意到網路威脅脅迫者正在利用此零日身份驗證繞過漏洞，該漏洞允許遠端未經身份驗證執行任意程式碼……"
@@ -176,48 +185,29 @@
         "CVE-2026-96951"
       ],
       "matched_intelligence_cves": [],
-      "score": 102,
+      "score": 100,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 將兩項已知的被利用漏洞新增至目錄",
       "summary_zh": "根據主動利用的證據，CISA 已在其「已知被利用漏洞（KEV）目錄」中新增了兩項新漏洞。CVE-2026-96951 Microsoft Windows 命令注入漏洞、CVE-2026-104935 Ivanti Connect Secure 透過欺騙進行身份驗證繞過之漏洞。這些類型的漏洞是惡意攻擊常見的攻擊向量……"
     },
     {
-      "id": "d0b52638beda04f7",
+      "id": "90ef0f2bf47ec9ed",
       "event_type": "THREAT_ACTIVITY",
       "priority": "CRITICAL",
-      "published_at": "2026-10-15T20:25:04+00:00",
-      "title": "Hackers exploit Collabora RCE flaw to backdoor Nextcloud servers",
-      "summary": "Threat actors are exploiting a critical command execution flaw, now tracked as CVE-2026-110447, in the Collabora Online - Built-in CODE Server app (richdocumentscode) for Nextcloud. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/hackers-exploit-collabora-rce-flaw-to-backdoor-nextcloud-servers/",
-      "related_cves": [
-        "CVE-2026-110447"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 87,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "駭客利用 Collabora RCE 漏洞向 Nextcloud 伺服器植入後門",
-      "summary_zh": "威脅脅迫者正在利用 Nextcloud 的 Collabora Online - Built-in CODE Server 應用程式（richdocumentscode）中的重大命令執行漏洞（現追蹤為 CVE-2026-110447）。[...]"
-    },
-    {
-      "id": "86b82961354a0413",
-      "event_type": "THREAT_ACTIVITY",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-15T12:00:00+00:00",
-      "title": "Thermo Fisher Torrent Suite Software",
-      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow an attacker to read arbitrary files on the Torrent Server. The following versions of Thermo Fisher Torrent Suite Software are affected: Torrent Suite Software <=5.18 (CVE-2026-107777) CVSS Vendor Equipment v3 6.5 Thermo Fisher Torrent Suite Software 1 Vulnerability Improper Limita...",
+      "published_at": "2026-10-16T12:00:00+00:00",
+      "title": "CISA Urges Patching Critical Vulnerability in BeyondTrust Remote Support",
+      "summary": "CISA is aware of critical authentication bypass vulnerability CVE-2026-102764 , affecting BeyondTrust Remote Support (formerly Bomgar) versions 26.2.3 and earlier. Patches are available for supported versions (24.3.1 and later); organizations using older versions must upgrade first. Cyber threat actors are actively exploiting the vulnerability to gain ini...",
       "source_name": "CISA Advisories",
       "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-medical-advisories/icsma-26-288-01",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/10/16/cisa-urges-patching-critical-vulnerability-beyondtrust-remote-support",
       "related_cves": [
-        "CVE-2026-107777"
+        "CVE-2026-102764"
       ],
-      "matched_intelligence_cves": [],
-      "score": 86,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Thermo Fisher Torrent Suite 軟體",
-      "summary_zh": "檢視 CSAF 摘要。成功利用此漏洞可能允許攻擊者讀取 Torrent Server 上的任意檔案。以下版本的 Thermo Fisher Torrent Suite 軟體受到影響：Torrent Suite 軟體 <=5.18 (CVE-2026-107777)。CVSS 廠商設備 v3 6.5 Thermo Fisher Torrent Suite 軟體 1 個漏洞 不當限制……"
+      "matched_intelligence_cves": [
+        "CVE-2026-102764"
+      ],
+      "score": 91,
+      "cve_evidence": "source_title_or_summary"
     },
     {
       "id": "ea0e140b6f9eb8ea",
@@ -237,8 +227,10 @@
         "CVE-2026-107621",
         "CVE-2026-97851"
       ],
-      "matched_intelligence_cves": [],
-      "score": 86,
+      "matched_intelligence_cves": [
+        "CVE-2026-105279"
+      ],
+      "score": 89,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "J4Care dcm4che",
       "summary_zh": "檢視 CSAF 摘要。成功利用這些漏洞可能允許攻擊者刪除儲存的醫療影像、洩露患者資訊、注入偽造的研究、重新分配患者記錄、覆寫檔案，並導致拒絕服務狀態。以下版本的 J4Care dcm4che 受到影響：dcm4chee-arc-light 5.35.1 (CVE-2026-97851..."
@@ -258,11 +250,68 @@
         "CVE-2026-107617",
         "CVE-2026-97858"
       ],
-      "matched_intelligence_cves": [],
-      "score": 86,
+      "matched_intelligence_cves": [
+        "CVE-2026-107617"
+      ],
+      "score": 89,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Guangzhou Juan IoT Technology EseeCloud 漏洞",
       "summary_zh": "查看 CSAF 摘要。成功利用這些漏洞可能允許攻擊者控制受影響的 IP 攝影機。受影響的 Guangzhou Juan IoT Technology EseeCloud 版本如下：EseeCloud App <=4.9.6 (CVE-2026-107617, CVE-2026-97858, CVE-2026-105664)、EseeCloud Firmware <=4.9.86.0 (CVE-2026-107617, CVE-2026-97858, CVE-202..."
+    },
+    {
+      "id": "eef67d66b352919d",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-16T20:00:59+00:00",
+      "title": "Critical BlockStrap flaw lets hackers run code on Magento servers",
+      "summary": "Researchers warn that hackers could soon exploit a maximum-severity vulnerability (CVE-2026-103849) affecting Magento and Adobe Commerce, potentially allowing them to execute arbitrary PHP code on store servers. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/critical-blockstrap-flaw-lets-hackers-run-code-on-magento-servers/",
+      "related_cves": [
+        "CVE-2026-103849"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 87,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "d0b52638beda04f7",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-15T20:25:04+00:00",
+      "title": "Hackers exploit Collabora RCE flaw to backdoor Nextcloud servers",
+      "summary": "Threat actors are exploiting a critical command execution flaw, now tracked as CVE-2026-110447, in the Collabora Online - Built-in CODE Server app (richdocumentscode) for Nextcloud. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/hackers-exploit-collabora-rce-flaw-to-backdoor-nextcloud-servers/",
+      "related_cves": [
+        "CVE-2026-110447"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 85,
+      "cve_evidence": "source_title_or_summary",
+      "title_zh": "駭客利用 Collabora RCE 漏洞向 Nextcloud 伺服器植入後門",
+      "summary_zh": "威脅脅迫者正在利用 Nextcloud 的 Collabora Online - Built-in CODE Server 應用程式（richdocumentscode）中的重大命令執行漏洞（現追蹤為 CVE-2026-110447）。[...]"
+    },
+    {
+      "id": "86b82961354a0413",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-15T12:00:00+00:00",
+      "title": "Thermo Fisher Torrent Suite Software",
+      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow an attacker to read arbitrary files on the Torrent Server. The following versions of Thermo Fisher Torrent Suite Software are affected: Torrent Suite Software <=5.18 (CVE-2026-107777) CVSS Vendor Equipment v3 6.5 Thermo Fisher Torrent Suite Software 1 Vulnerability Improper Limita...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-medical-advisories/icsma-26-288-01",
+      "related_cves": [
+        "CVE-2026-107777"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 84,
+      "cve_evidence": "source_title_or_summary",
+      "title_zh": "Thermo Fisher Torrent Suite 軟體",
+      "summary_zh": "檢視 CSAF 摘要。成功利用此漏洞可能允許攻擊者讀取 Torrent Server 上的任意檔案。以下版本的 Thermo Fisher Torrent Suite 軟體受到影響：Torrent Suite 軟體 <=5.18 (CVE-2026-107777)。CVSS 廠商設備 v3 6.5 Thermo Fisher Torrent Suite 軟體 1 個漏洞 不當限制……"
     },
     {
       "id": "307fc48bec6b0bf9",
@@ -284,10 +333,29 @@
         "CVE-2026-107362"
       ],
       "matched_intelligence_cves": [],
-      "score": 86,
+      "score": 84,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA Malcolm 漏洞",
       "summary_zh": "查看 CSAF 摘要。受影響的 CISA Malcolm 版本如下：Malcolm <=v26.07.1 (CVE-2026-107336, CVE-2026-107361, CVE-2026-107337, CVE-2026-107335, CVE-2026-107334)、Malcolm <=v26.08.0 (CVE-2026-107333, CVE-2026-107362)。CVSS 廠商設備 v3 8.1 CISA Malcolm 包含 6 個漏洞：透過欺騙繞過身分驗證、授權不當、伺服器端..."
+    },
+    {
+      "id": "e13b543b7337a877",
+      "event_type": "VULNERABILITY_NEWS",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-16T09:54:34+00:00",
+      "title": "F5, Juniper Networks Patch Critical Vulnerabilities",
+      "summary": "Successful exploitation of some of these issues could lead to remote code execution and full device takeover. The post F5, Juniper Networks Patch Critical Vulnerabilities appeared first on SecurityWeek .",
+      "source_name": "SecurityWeek",
+      "source_type": "security_media",
+      "source_url": "https://www.securityweek.com/f5-juniper-networks-patch-critical-vulnerabilities/",
+      "related_cves": [
+        "CVE-2026-15176",
+        "CVE-2026-93479",
+        "CVE-2026-97205"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 81,
+      "cve_evidence": "source_article"
     },
     {
       "id": "9a5d4539ca389a36",
@@ -303,7 +371,7 @@
         "CVE-2026-92817"
       ],
       "matched_intelligence_cves": [],
-      "score": 82,
+      "score": 80,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Inductive Automation Ignition 軟體漏洞",
       "summary_zh": "查看 CSAF 摘要。成功利用此漏洞可允許經身分驗證的低權限使用者將其權限提升至更高層級。受影響的 Inductive Automation Ignition 軟體版本如下：Ignition >=8.1.0|<=8.1.54 (CVE-2026-92817)、Ignition >=8.3.0|<=8.3.8 (CVE-2026-92817)。CVSS 廠商設備 v3 8.8 Inductiv..."
@@ -324,7 +392,7 @@
         "CVE-2026-107607"
       ],
       "matched_intelligence_cves": [],
-      "score": 82,
+      "score": 80,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Swann Communications SWIFI-SE2KIC 漏洞",
       "summary_zh": "查看 CSAF 摘要。成功利用這些漏洞可能允許攻擊者在未未經身分驗證的情況下檢視影像資訊。受影響的 Swann Communications SWIFI-SE2KIC 版本如下：SWIFI-SE2KIC 韌體 <=2.0.22 (CVE-2026-107605, CVE-2026-107606, CVE-2026-107607)。CVSS 廠商設備 v3 6.2 Swann Communications SWIFI-SE2..."
@@ -348,119 +416,42 @@
         "CVE-2026-63252"
       ],
       "matched_intelligence_cves": [],
-      "score": 81,
+      "score": 79,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Eclipse Foundation Eclipse Milo 漏洞",
       "summary_zh": "查看 CSAF 摘要。成功利用這些漏洞可能允許攻擊者刪除受保護的資料、復原使用者憑證並冒充合法使用者，或者導致伺服器停止回應所有用戶端。受影響的 Eclipse Foundation Eclipse Milo 版本如下：Eclipse Milo >=0.6.0|<=1.1.4 (CVE-2026-63252, CVE-2026..."
     },
     {
-      "id": "0077d1f981ae153d",
-      "event_type": "SUPPLY_CHAIN",
-      "priority": "HIGH",
-      "published_at": "2026-10-14T17:46:50+00:00",
-      "title": "Ledger asks sellers across Asia to halt sales after supply-chain attack",
-      "summary": "Ledger has asked resellers and distributors of its wallets in Indonesia, Singapore, Thailand, the Philippines, Vietnam, Malaysia, and Hong Kong to suspend device sales and remove products from shelves while it investigates device tampering. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/ledger-asks-sellers-across-asia-to-halt-sales-after-supply-chain-attack/",
-      "related_cves": [],
-      "matched_intelligence_cves": [],
-      "score": 100,
-      "cve_evidence": null,
-      "title_zh": "Ledger 在供應鏈攻擊後要求亞洲多國銷售商暫停銷售",
-      "summary_zh": "Ledger 已要求印尼、新加坡、泰國、菲律賓、越南、馬來西亞和香港的錢包零售商與分銷商，在調查裝置遭竄改期間暫停販售裝置並將產品下架。[...]"
-    },
-    {
-      "id": "642e21ce6c89b65e",
+      "id": "27c670c5958b65f1",
       "event_type": "DATA_BREACH",
       "priority": "HIGH",
-      "published_at": "2026-10-15T09:55:19+00:00",
-      "title": "CenterPoint Energy Data Breach Impacts 1 Million Texans",
-      "summary": "Personal information such as names, addresses, Social Security numbers, and driver’s license numbers was compromised. The post CenterPoint Energy Data Breach Impacts 1 Million Texans appeared first on SecurityWeek .",
-      "source_name": "SecurityWeek",
+      "published_at": "2026-10-16T12:01:29+00:00",
+      "title": "Burger King Japan data breach exposes 11 million customer records",
+      "summary": "Burger King Japan, the Japanese subsidiary of global fast-food giant Burger King, disclosed a major data breach after attackers accessed a server containing 11.18 million customer records. [...]",
+      "source_name": "BleepingComputer",
       "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/centerpoint-energy-data-breach-impacts-1-million-texans/",
+      "source_url": "https://www.bleepingcomputer.com/news/security/burger-king-japan-data-breach-exposes-11-million-customer-records/",
       "related_cves": [],
       "matched_intelligence_cves": [],
       "score": 96,
-      "cve_evidence": null,
-      "title_zh": "CenterPoint Energy 資料外洩事件波及 100 萬名德州居民",
-      "summary_zh": "姓名、地址、社會安全號碼和駕駛執照號碼等個人資訊已遭外洩。CenterPoint Energy 資料外洩事件波及 100 萬名德州居民的文章首次出現在 SecurityWeek 上。"
+      "cve_evidence": null
     },
     {
-      "id": "cfef32934ffbcfe5",
-      "event_type": "DATA_BREACH",
-      "priority": "HIGH",
-      "published_at": "2026-10-15T08:06:47+00:00",
-      "title": "UK Legal Aid Agency: Hackers stole records dating back to 1978",
-      "summary": "The Legal Aid Agency (LAA), an executive agency of the UK's Ministry of Justice that manages the country's Public Defender Service, says attackers who breached its IT systems in April 2025 stole records dating back to 1978. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/uk-legal-aid-agency-hackers-stole-records-dating-back-to-1978/",
-      "related_cves": [],
-      "matched_intelligence_cves": [],
-      "score": 96,
-      "cve_evidence": null,
-      "title_zh": "英國法律援助局：駭客竊取可追溯至 1978 年的記錄",
-      "summary_zh": "英國司法部旗下負責管理該國公設辯護人服務（Public Defender Service）的執行機構「法律援助局」（LAA）表示，於 2025 年 4 月入侵其 IT 系統的攻擊者竊取了可追溯至 1978 年的記錄。[...]"
-    },
-    {
-      "id": "1651735e0da58aed",
-      "event_type": "DATA_BREACH",
-      "priority": "HIGH",
-      "published_at": "2026-10-14T14:00:10+00:00",
-      "title": "The Blind Spots of Agentic Pentesting and How to Close Them",
-      "summary": "AI-powered penetration testing can uncover complex attack paths, but safety restrictions and network limitations leave many assets and vulnerabilities untested. Picus Security explains how combining agentic pentesting with exposure validation and breach simulation can help close these gaps. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/the-blind-spots-of-agentic-pentesting-and-how-to-close-them/",
-      "related_cves": [
-        "CVE-2026-33032"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 94,
-      "cve_evidence": "source_article",
-      "title_zh": "代理型滲透測試的盲點及其彌補方法",
-      "summary_zh": "人工智慧驅動的滲透測試可以揭露複雜的攻擊路徑，但安全限制和網路限制使許多資產和漏洞未經測試。Picus Security 解釋了如何結合代理型滲透測試（agentic pentesting）、暴露驗證與入侵模擬來協助填補這些漏洞。[...]"
-    },
-    {
-      "id": "c52508bc08a7b305",
-      "event_type": "VULNERABILITY_NEWS",
-      "priority": "HIGH",
-      "published_at": "2026-10-15T06:34:15+00:00",
-      "title": "Cisco Warns of Exploited Secure Email Gateway Vulnerability",
-      "summary": "Unauthenticated, remote attackers could write arbitrary files to the operating system and execute commands with root privileges. The post Cisco Warns of Exploited Secure Email Gateway Vulnerability appeared first on SecurityWeek .",
+      "id": "5464399489453ea5",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "MEDIUM",
+      "published_at": "2026-10-16T14:09:51+00:00",
+      "title": "In Other News: ICS-Sniper Attack, Hacking XWorm Malware Operators, $250k Chrome Exploit",
+      "summary": "Noteworthy stories that might have slipped under the radar: BofA adds 1,000 patching contractors, KGB RAT pairs data theft with jump scares, and Langflow flaw under attack. The post In Other News: ICS-Sniper Attack, Hacking XWorm Malware Operators, $250k Chrome Exploit appeared first on SecurityWeek .",
       "source_name": "SecurityWeek",
       "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/cisco-warns-of-exploited-secure-email-gateway-vulnerability/",
+      "source_url": "https://www.securityweek.com/in-other-news-ics-sniper-attack-hacking-xworm-malware-operators-250k-chrome-exploit/",
       "related_cves": [
-        "CVE-2026-76440",
-        "CVE-2026-76461",
-        "CVE-2026-76519"
+        "CVE-2026-105740"
       ],
       "matched_intelligence_cves": [],
-      "score": 81,
-      "cve_evidence": "source_article",
-      "title_zh": "Cisco 警告 Secure Email Gateway 漏洞已遭利用",
-      "summary_zh": "未經身份驗證的遠端攻擊者可以在作業系統中寫入任意檔案，並以 root 權限執行命令。Cisco 警告 Secure Email Gateway 漏洞已遭利用的文章首次出現在 SecurityWeek 上。"
+      "score": 86,
+      "cve_evidence": "source_article"
     }
-  ],
-  "translation": {
-    "language": "zh-Hant-TW",
-    "status": "translated",
-    "provider": "gemini",
-    "model": "gemini-3.6-flash",
-    "models_used": [
-      "gemini-3.6-flash"
-    ],
-    "translated_items": 20,
-    "cached_items": 0,
-    "pending_items": 0,
-    "total_items": 20,
-    "attempted_items": 20,
-    "batch_size": 5,
-    "rejected_item_ids": [],
-    "fallback_reason": null,
-    "batch_fallback_reasons": []
-  }
+  ]
 }
