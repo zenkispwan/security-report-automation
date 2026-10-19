@@ -1,30 +1,99 @@
 {
   "schema_version": "2.1-delta",
-  "generated_at": "2026-10-18T05:16:38.217828+00:00",
+  "generated_at": "2026-10-19T05:30:26.270237+00:00",
   "baseline": {
     "type": "state",
-    "generated_at": "2026-10-17T05:12:16.673028+00:00",
+    "generated_at": "2026-10-18T05:16:38.217828+00:00",
     "available": true
   },
   "summary": {
-    "current_snapshot_count": 10641,
-    "tracked_previous_count": 1000,
-    "epss_monitored_count": 644,
-    "meaningful_change_count": 1,
-    "included_count": 1,
+    "current_snapshot_count": 8553,
+    "tracked_previous_count": 981,
+    "epss_monitored_count": 841,
+    "meaningful_change_count": 10,
+    "included_count": 10,
     "truncated": false,
     "events": {
-      "NEW_CVE": 1
+      "EXPLOITATION_CHANGED": 1,
+      "NEW_CVE": 9
     }
   },
   "items": [
     {
-      "cve": "CVE-2026-111911",
+      "cve": "CVE-2026-14765",
+      "events": [
+        {
+          "type": "EXPLOITATION_CHANGED",
+          "from": "poc",
+          "to": "none",
+          "escalated": false
+        }
+      ],
+      "risk": {
+        "score": 12,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_HIGH",
+            "points": 12
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-14765",
+        "vendor": "Epic Games",
+        "product": "Unreal Engine",
+        "title": null,
+        "description": "Epic Games Unreal Engine versions up to and including 5.8.0 ship with an insecure default configuration for the LaunchURL Blueprint node (UKismetSystemLibrary::LaunchURL). The URL scheme filter (FURLRequestFilter) is empty by default, which permits all URL schemes. On Windows, this results in a call to ShellExecuteW() with the open verb, so a supplied file:/// URI causes the referenced file to be executed. Any Unreal Engine game that loads user-generated content containing Blueprints is vulnerable to command execution via a malicious local file or a remote file on a WebDAV share. This is an instance of CWE-1188 (Initialization of a Resource with an Insecure Default).",
+        "cvss": {
+          "version": "3.1",
+          "score": 7.7,
+          "severity": "HIGH",
+          "vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
+          "source": "cve@takeonme.org",
+          "type": "Secondary"
+        },
+        "epss": 0.00387,
+        "epss_percentile": 0.31179,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "none",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "none",
+            "automatable": "no",
+            "technical_impact": "total",
+            "timestamp": "2026-10-18T13:29:54.607074Z",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-10-14T03:17:21.927",
+        "updated_time": "2026-10-18T14:16:54.843",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14765",
+        "source_type": [
+          "nvd",
+          "first_epss"
+        ],
+        "cwes": [
+          "CWE-1188"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-14765",
+          "cisa_kev": null,
+          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-14765"
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-112005",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-17T19:16:33.500"
+          "to": "2026-10-18T12:17:12.790"
         }
       ],
       "risk": {
@@ -42,11 +111,74 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-111911",
-        "vendor": "thorsten",
-        "product": "phpMyFAQ",
+        "cve": "CVE-2026-112005",
+        "vendor": "clidey",
+        "product": "whodb",
         "title": null,
-        "description": "phpMyFAQ 4.0.0 before 4.1.9 contains an authentication bypass vulnerability where WebAuthn registration endpoints attach credentials to any account without authentication or challenge validation. Attackers can stage a victim username, submit a forged fmt=none attestation to register a passkey, then log in bypassing passwords and TOTP for account takeover.",
+        "description": "WhoDB 0.104.0 before 0.135.0 contains a path traversal vulnerability that allows remote attackers to read and write arbitrary host files by running DuckDB filesystem functions through the query editor. Attackers can log in to a DuckDB file without credentials and use read_text, read_blob, COPY ... TO or ATTACH to steal session.key and stored database credentials or overwrite files.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.2,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-10-18T12:17:12.790",
+        "updated_time": "2026-10-18T12:17:12.790",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112005",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-22"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-112005",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-111998",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-18T12:17:11.730"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-111998",
+        "vendor": "vanus-labs",
+        "product": "vanus",
+        "title": null,
+        "description": "Vanus 0.8.0 through 0.9.0 contains a default credentials vulnerability that allows unauthenticated remote attackers to gain cluster-admin access by using the hardcoded admin token. Attackers can send the fixed Bearer token to the gateway gRPC proxy port to manage namespaces, eventbuses, users, tokens, and role bindings, and read or publish events.",
         "cvss": {
           "version": "4.0",
           "score": 9.3,
@@ -65,17 +197,474 @@
           "source": null,
           "ssvc": null
         },
-        "published_time": "2026-10-17T19:16:33.500",
-        "updated_time": "2026-10-17T19:16:33.633",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111911",
+        "published_time": "2026-10-18T12:17:11.730",
+        "updated_time": "2026-10-18T12:17:11.730",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111998",
         "source_type": [
           "nvd"
         ],
         "cwes": [
-          "CWE-287"
+          "CWE-1392"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-111911",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-111998",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-110886",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-18T11:16:37.450"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-110886",
+        "vendor": "QuantumCloud",
+        "product": "Conversational Forms for ChatBot",
+        "title": null,
+        "description": "Deserialization of Untrusted Data vulnerability in QuantumCloud Conversational Forms for ChatBot conversational-forms allows Object Injection.This issue affects Conversational Forms for ChatBot: from n/a through 1.5.1.",
+        "cvss": {
+          "version": "3.1",
+          "score": 9.8,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "source": "audit@patchstack.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-10-18T11:16:37.450",
+        "updated_time": "2026-10-18T11:16:37.450",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110886",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-502"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-110886",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-110372",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-18T11:16:36.580"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-110372",
+        "vendor": "Brainstorm Force",
+        "product": "OttoKit",
+        "title": null,
+        "description": "Incorrect Privilege Assignment vulnerability in Brainstorm Force OttoKit suretriggers allows Privilege Escalation.This issue affects OttoKit: from n/a through 1.1.40.",
+        "cvss": {
+          "version": "3.1",
+          "score": 9.8,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "source": "audit@patchstack.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-10-18T11:16:36.580",
+        "updated_time": "2026-10-18T11:16:36.580",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110372",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-266"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-110372",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-109894",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-18T11:16:36.190"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-109894",
+        "vendor": "Arraytics",
+        "product": "Booktics",
+        "title": null,
+        "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Arraytics Booktics booktics allows SQL Injection.This issue affects Booktics: from n/a through 1.0.29.",
+        "cvss": {
+          "version": "3.1",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:L",
+          "source": "audit@patchstack.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-10-18T11:16:36.190",
+        "updated_time": "2026-10-18T11:16:36.190",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109894",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-89"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-109894",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-108983",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-19T02:17:05.853"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-108983",
+        "vendor": "GeoVision Inc.",
+        "product": "GV-ASManager",
+        "title": null,
+        "description": "A vulnerability is in Web Server default connection ports under the process name GeoWebServer.exe .",
+        "cvss": {
+          "version": "3.1",
+          "score": 9.8,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "source": "0df08a0e-a200-4957-9bb0-084f562506f9",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-10-19T02:17:05.853",
+        "updated_time": "2026-10-19T02:17:05.853",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108983",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-78"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-108983",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-103091",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-19T03:16:58.377"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-103091",
+        "vendor": "Google",
+        "product": "SAM",
+        "title": null,
+        "description": "Missing Authorization (CWE-862) and Initialization of a Resource with an Insecure Default (CWE-1188) in the MCP proxy (HandleStreamPassThrough in mcp_service.go) and OIDC registration flow (GET /info and POST /register in internal/controlplane/server.go) in Google OSS Agent Mesh (SAM) versions 0.1.0-alpha.1 through 0.1.0-alpha.8 allow a remote attacker to self-enroll into the mesh and invoke arbitrary tools across all connected MCP backend nodes. Because GET /info publicly discloses OIDC configuration, POST /register auto-enrolls any valid OIDC token holder without claim filtering or ban checks, and the default policy binds sam:system:authenticated to wildcard services and targets, an attacker can obtain a mesh credential with full read, write, and execution access on backend services. Users should upgrade to version 0.1.0-alpha.9 or later, which enforces a fail-closed default policy, explicit policy-binding requirements on enrollment, and ban checks.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "cve-coordination@google.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-10-19T03:16:58.377",
+        "updated_time": "2026-10-19T03:16:58.377",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103091",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-1188",
+          "CWE-200",
+          "CWE-306",
+          "CWE-862",
+          "CWE-863"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-103091",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-102503",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-19T03:16:58.193"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-102503",
+        "vendor": "Google",
+        "product": "SAM",
+        "title": null,
+        "description": "Missing Authentication for Critical Function (CWE-306) and Missing Authorization (CWE-862) in the /libp2p-http ingress server (StartIngressServer in cmd/sam-node/node.go) in Google OSS Agent Mesh (SAM) versions 0.1.0-alpha.1 through 0.1.0-alpha.2 allow an unauthenticated remote libp2p peer to bypass Biscuit capability policy enforcement and invoke arbitrary registered backend services (including command/stdio-backed MCP servers, A2A, and inference endpoints). While the MCP protocol stream handler enforces WithBiscuitAuth and Authorize checks, the parallel /libp2p-http ingress routes requests directly to backend service handlers without verifying a Biscuit token or mesh enrollment. Users should upgrade to version 0.1.0-alpha.3 or later.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "cve-coordination@google.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-10-19T03:16:58.193",
+        "updated_time": "2026-10-19T03:16:58.193",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102503",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-306",
+          "CWE-862"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-102503",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-112009",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-10-18T12:17:13.383"
+        }
+      ],
+      "risk": {
+        "score": 22,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "POC_AVAILABLE",
+            "points": 10
+          },
+          {
+            "code": "CVSS_MEDIUM",
+            "points": 4
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-112009",
+        "vendor": "icculus",
+        "product": "smpeg",
+        "title": null,
+        "description": "smpeg through 2.0.0 contains a heap out-of-bounds read vulnerability in MPEGsystem::FillBuffer() that allows attackers to read past the 16384-byte buffer by supplying a crafted system header stream table. Attackers can provide an MPEG file whose stream table bytes all set the high bit, which crashes applications opening it through SMPEG_new, SMPEG_new_rwops, or SMPEG_new_data.",
+        "cvss": {
+          "version": "4.0",
+          "score": 6.8,
+          "severity": "MEDIUM",
+          "vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "poc",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "poc",
+            "automatable": "no",
+            "technical_impact": "partial",
+            "timestamp": "2026-10-18T12:17:03.445754Z",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-10-18T12:17:13.383",
+        "updated_time": "2026-10-18T13:16:36.110",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112009",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-125"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-112009",
           "cisa_kev": null,
           "epss": null
         }
