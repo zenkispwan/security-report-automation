@@ -1,11 +1,11 @@
 {
   "schema_version": "1.1-security-events",
-  "generated_at": "2026-10-20T05:39:20.287454+00:00",
+  "generated_at": "2026-10-24T05:16:01.155194+00:00",
   "selection": {
     "window_days": 7,
     "max_items": 20,
     "rule": "Homepage events come from current RSS/advisory sources. CVEs are shown only when the source article/advisory mentions them.",
-    "tracked_cve_count": 88
+    "tracked_cve_count": 200
   },
   "sources": [
     {
@@ -33,434 +33,417 @@
     "fetched_entries": 65,
     "included_items": 20,
     "linked_cve_items": 17,
-    "matched_intelligence_items": 0,
+    "matched_intelligence_items": 7,
     "successful_sources": 4,
     "source_errors": [],
-    "preserved_translations": 15
+    "preserved_translations": 0
   },
   "items": [
     {
-      "id": "ae4608a27522a7cf",
+      "id": "70ce3aa7f5fd7971",
+      "event_type": "RANSOMWARE",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-23T14:23:37+00:00",
+      "title": "In Other News: Tor Exit Relays Hijacked, Banks Spot Rogue AI Agents, Self-Rebuilding macOS Ransomware",
+      "summary": "Noteworthy stories that might have slipped under the radar: Russia’s APT28 hit NATO defense firms, PingCAP source code stolen, ShinyHunters negotiator probe. The post In Other News: Tor Exit Relays Hijacked, Banks Spot Rogue AI Agents, Self-Rebuilding macOS Ransomware appeared first on SecurityWeek .",
+      "source_name": "SecurityWeek",
+      "source_type": "security_media",
+      "source_url": "https://www.securityweek.com/in-other-news-tor-exit-relays-hijacked-banks-spot-rogue-ai-agents-self-rebuilding-macos-ransomware/",
+      "related_cves": [],
+      "matched_intelligence_cves": [],
+      "score": 111,
+      "cve_evidence": null
+    },
+    {
+      "id": "ce87e3f627c6f42f",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "published_at": "2026-10-16T12:00:00+00:00",
-      "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
-      "summary": "CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2025-61624 Fortinet Multiple Products Path Traversal Vulnerability CVE-2026-102764 BeyondTrust Remote Support Authentication Bypass by Spoofing Vulnerability These types of vulnerabilities are a frequent attack vector...",
+      "published_at": "2026-10-23T12:00:00+00:00",
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-110447 Collabora Online – Built-in CODE Server OS Command Injection Vulnerability This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal enterpr...",
       "source_name": "CISA Advisories",
       "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/10/16/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/10/23/cisa-adds-one-known-exploited-vulnerability-catalog-0",
       "related_cves": [
-        "CVE-2025-61624",
-        "CVE-2026-102764"
+        "CVE-2026-110447"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-110447"
+      ],
+      "score": 111,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "87bf34b6e070a947",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-23T12:00:00+00:00",
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-114625 Arista VeloCloud Orchestrator SQL Injection Vulnerability This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal enterprise. Binding Oper...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/10/23/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "related_cves": [
+        "CVE-2026-114625"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-114625"
+      ],
+      "score": 111,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "5912abcc55abe8dc",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-23T09:58:34+00:00",
+      "title": "Attackers Exploit Third Arista VCO Zero-Day in Four Months",
+      "summary": "The critical-severity SQL injection flaw allows attackers to access privileged internal functionality and gain operator privileges. The post Attackers Exploit Third Arista VCO Zero-Day in Four Months appeared first on SecurityWeek .",
+      "source_name": "SecurityWeek",
+      "source_type": "security_media",
+      "source_url": "https://www.securityweek.com/attackers-exploit-third-velocloud-orchestrator-zero-day-in-four-months/",
+      "related_cves": [
+        "CVE-2026-114625",
+        "CVE-2026-16812",
+        "CVE-2026-93952"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-114625"
+      ],
+      "score": 111,
+      "cve_evidence": "source_article"
+    },
+    {
+      "id": "1ed4b6e940bacb9a",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-22T17:18:22+00:00",
+      "title": "Arista patches new VeloCloud Orchestrator zero-day exploited in attacks",
+      "summary": "Arista Networks released security updates to patch an actively exploited zero-day vulnerability affecting VeloCloud Orchestrator (VCO) On-Prem deployments. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/arista-patches-new-velocloud-orchestrator-zero-day-exploited-in-attacks/",
+      "related_cves": [
+        "CVE-2026-114625",
+        "CVE-2026-16812",
+        "CVE-2026-7473",
+        "CVE-2026-93952"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-114625"
+      ],
+      "score": 110,
+      "cve_evidence": "source_article"
+    },
+    {
+      "id": "7e756198cefb40cc",
+      "event_type": "RANSOMWARE",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-21T12:00:00+00:00",
+      "title": "CISA, FBI and Partners Warn Organizations of SafePay Ransomware Actors Targeting Multiple Critical Infrastructure Sectors",
+      "summary": null,
+      "source_name": "CISA News",
+      "source_type": "official_news",
+      "source_url": "https://www.cisa.gov/news-events/news/cisa-fbi-and-partners-warn-organizations-safepay-ransomware-actors-targeting-multiple-critical",
+      "related_cves": [],
+      "matched_intelligence_cves": [],
+      "score": 107,
+      "cve_evidence": null
+    },
+    {
+      "id": "552cbee8ac3d9b61",
+      "event_type": "RANSOMWARE",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-20T12:00:00+00:00",
+      "title": "#StopRansomware: SafePay Ransomware",
+      "summary": "Advisory at a Glance Title #StopRansomware: SafePay Ransomware Original Publication October 20, 2026 Executive Summary This advisory details recent activity by the SafePay ransomware group. SafePay actors have been highly active since August 2024, targeting businesses and critical infrastructure across North America, South America, Europe, and Australia....",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-293a",
+      "related_cves": [
+        "CVE-2020-3259",
+        "CVE-2023-20269",
+        "CVE-2023-27532",
+        "CVE-2024-40711",
+        "CVE-2024-40766"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 105,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "29dd574c6050a162",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-22T12:00:00+00:00",
+      "title": "Siemens Software Center",
+      "summary": "View CSAF Summary The affected application loads dynamic-link libraries (DLLs) from an uncontrolled search path. This could allow an authenticated local attacker to place a specially crafted DLL in a directory that the application searches, leading to arbitrary code execution with the privileges of the affected application. Siemens has released a new vers...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-295-03",
+      "related_cves": [
+        "CVE-2026-110936"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 104,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "a4ea87f3b4cf50ba",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-20T12:00:00+00:00",
+      "title": "CISA Adds Six Known Exploited Vulnerabilities to Catalog",
+      "summary": "CISA has added six new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-96652 Plex Media Server Server-Side Request Forgery (SSRF) Vulnerability CVE-2026-96654 Plex Media Server Improper Neutralization of Encoded URI Schemes in a Web Page Vulnerability CVE-2026-96655 Plex Media Serve...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/10/20/cisa-adds-six-known-exploited-vulnerabilities-catalog",
+      "related_cves": [
+        "CVE-2026-106931",
+        "CVE-2026-110936",
+        "CVE-2026-96652",
+        "CVE-2026-96654",
+        "CVE-2026-96655",
+        "CVE-2026-96656"
       ],
       "matched_intelligence_cves": [],
       "score": 100,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "CISA 將兩項已知被利用的漏洞加入目錄",
-      "summary_zh": "CISA 根據已被活躍利用的證據，將兩項新漏洞加入其「已知被利用漏洞」（KEV）目錄中。這些漏洞包括 CVE-2025-61624 Fortinet 多款產品路徑遍歷漏洞，以及 CVE-2026-102764 BeyondTrust Remote Support 欺騙驗證旁路漏洞。此類漏洞是常見的攻擊途徑……"
+      "cve_evidence": "source_title_or_summary"
     },
     {
-      "id": "f0618fbb3f3a2bff",
-      "event_type": "ACTIVE_EXPLOITATION",
+      "id": "0202aafb6242b802",
+      "event_type": "THREAT_ACTIVITY",
       "priority": "CRITICAL",
-      "published_at": "2026-10-15T12:00:00+00:00",
-      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
-      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-21589 Atlassian Multiple Products Files or Directories Accessible to External Parties Vulnerability This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to t...",
+      "published_at": "2026-10-22T12:00:00+00:00",
+      "title": "Kiloview E3 NDI Encoder",
+      "summary": "View CSAF Summary Successful exploitation of this these vulnerabilities could allow an attacker to fully compromise the device. The following versions of Kiloview E3 NDI Encoder are affected: E3 Firmware <1.30 (CVE-2026-109122, CVE-2026-111100, CVE-2026-96616, CVE-2026-105265, CVE-2026-110491, CVE-2026-107861, CVE-2026-110243, CVE-2026-92450, CVE-2026-110...",
       "source_name": "CISA Advisories",
       "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/10/15/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-295-01",
       "related_cves": [
-        "CVE-2026-21589"
+        "CVE-2026-105265",
+        "CVE-2026-107861",
+        "CVE-2026-109122",
+        "CVE-2026-110243",
+        "CVE-2026-110491",
+        "CVE-2026-110825",
+        "CVE-2026-111100",
+        "CVE-2026-92450",
+        "CVE-2026-96616"
       ],
-      "matched_intelligence_cves": [],
-      "score": 98,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "CISA 將一項已知被利用漏洞納入目錄",
-      "summary_zh": "CISA 根據已被主動利用的證據，在其已知被利用漏洞（KEV）目錄中新增了一項新漏洞。CVE-2026-21589 Atlassian 多款產品外部實體可存取檔案或目錄漏洞。此類漏洞是惡意網路攻擊者常用的攻擊途徑，並構成重大風險..."
+      "matched_intelligence_cves": [
+        "CVE-2026-107861",
+        "CVE-2026-109122",
+        "CVE-2026-110243"
+      ],
+      "score": 99,
+      "cve_evidence": "source_title_or_summary"
     },
     {
-      "id": "616ea1fba64001b4",
-      "event_type": "ACTIVE_EXPLOITATION",
+      "id": "c0863d2cd64d70e9",
+      "event_type": "THREAT_ACTIVITY",
       "priority": "CRITICAL",
-      "published_at": "2026-10-14T12:00:00+00:00",
-      "title": "CISA Adds Four Known Exploited Vulnerabilities to Catalog",
-      "summary": "CISA has added four new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-0322 Palo Alto Networks PAN-OS Code Injection Vulnerability CVE-2026-76519 Cisco Secure Email Gateway Relative Path Traversal Vulnerability CVE-2026-105133 Ahsay AhsayCBS Improper Authentication Vulnerability CV...",
+      "published_at": "2026-10-22T12:00:00+00:00",
+      "title": "InterSystems Corporation InterSystems IRIS for Health",
+      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow an attacker to view transmitted data and use that data to log into the device. The following versions of InterSystems Corporation InterSystems IRIS for Health are affected: InterSystems IRIS for Health 2026.2.0.221, 2026.1.0.235, 2025.3.0.226 (CVE-2026-111594, CVE-2026-111594, CVE...",
       "source_name": "CISA Advisories",
       "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/10/14/cisa-adds-four-known-exploited-vulnerabilities-catalog",
+      "source_url": "https://www.cisa.gov/news-events/ics-medical-advisories/icsma-26-295-01",
       "related_cves": [
-        "CVE-2026-0322",
-        "CVE-2026-105133",
-        "CVE-2026-105134",
-        "CVE-2026-76519"
+        "CVE-2026-111594"
       ],
-      "matched_intelligence_cves": [],
-      "score": 96,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "CISA 將四項已知被利用漏洞納入目錄",
-      "summary_zh": "CISA 根據已被主動利用的證據，在其已知被利用漏洞（KEV）目錄中新增了四項新漏洞。CVE-2026-0322 Palo Alto Networks PAN-OS 程式碼注入漏洞；CVE-2026-76519 Cisco Secure Email Gateway 相對路徑遍歷漏洞；CVE-2026-105133 Ahsay AhsayCBS 身份驗證不當漏洞；CV..."
+      "matched_intelligence_cves": [
+        "CVE-2026-111594"
+      ],
+      "score": 89,
+      "cve_evidence": "source_title_or_summary"
     },
     {
-      "id": "0b5b8a5c7759b503",
-      "event_type": "ACTIVE_EXPLOITATION",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-13T12:00:00+00:00",
-      "title": "CISA Urges Patching Newly Exploited Vulnerability in Ivanti Connect Secure",
-      "summary": "CISA is aware of Ivanti’s disclosure of a newly exploited vulnerability, CVE-2026-104935 , affecting Ivanti Connect Secure versions 25.1.1.1 and prior, 25.1.2.2 and prior, and 22.8R2.4 and prior. CISA is aware of cyber threat actors exploiting this zero-day authentication bypass vulnerability, which allows remote, unauthenticated execution of arbitrary co...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/10/13/cisa-urges-patching-newly-exploited-vulnerability-ivanti-connect-secure",
-      "related_cves": [
-        "CVE-2026-104935"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 95,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "CISA 呼籲修補 Ivanti Connect Secure 中新遭利用的漏洞",
-      "summary_zh": "CISA 已獲悉 Ivanti 所披露的新遭利用漏洞（CVE-2026-104935），該漏洞影響 Ivanti Connect Secure 25.1.1.1 及先前版本、25.1.2.2 及先前版本，以及 22.8R2.4 及先前版本。CISA 已注意到網路威脅脅迫者正在利用此零日身份驗證繞過漏洞，該漏洞允許遠端未經身份驗證執行任意程式碼……"
-    },
-    {
-      "id": "897e03545f1ebc4d",
-      "event_type": "ACTIVE_EXPLOITATION",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-13T12:00:00+00:00",
-      "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
-      "summary": "CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-96951 Microsoft Windows Command Injection Vulnerability CVE-2026-104935 Ivanti Connect Secure Authentication Bypass by Spoofing Vulnerability These types of vulnerabilities are a frequent attack vector for malici...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/10/13/cisa-adds-two-known-exploited-vulnerabilities-catalog",
-      "related_cves": [
-        "CVE-2026-104935",
-        "CVE-2026-96951"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 95,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "CISA 將兩項已知的被利用漏洞新增至目錄",
-      "summary_zh": "根據主動利用的證據，CISA 已在其「已知被利用漏洞（KEV）目錄」中新增了兩項新漏洞。CVE-2026-96951 Microsoft Windows 命令注入漏洞、CVE-2026-104935 Ivanti Connect Secure 透過欺騙進行身份驗證繞過之漏洞。這些類型的漏洞是惡意攻擊常見的攻擊向量……"
-    },
-    {
-      "id": "f6f5c9b3e6e369d5",
+      "id": "f778ef1a30ddc938",
       "event_type": "VULNERABILITY_NEWS",
       "priority": "CRITICAL",
-      "published_at": "2026-10-19T15:47:50+00:00",
-      "title": "Drupal Warns of Fast Exploitation Risk for Critical Core RCE Flaw",
-      "summary": "Critical flaws impact the Entity List and Field UI modules, and exploit paths exist with contributed modules. The post Drupal Warns of Fast Exploitation Risk for Critical Core RCE Flaw appeared first on SecurityWeek .",
+      "published_at": "2026-10-21T12:00:00+00:00",
+      "title": "Critical Vulnerabilities in PHP Require Immediate Patching",
+      "summary": "Update October 23, 2026 : CISA has updated this Alert to: (1) provide a SIGMA detection rule to help identify potentially suspicious activity; (2) incorporate partner resources; and (3) reinforce existing mitigation guidance. Purpose CISA strongly urges organizations to immediately patch the recently disclosed critical vulnerabilities in PHP, CVE-2026-109...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/10/21/critical-vulnerabilities-php-require-immediate-patching",
+      "related_cves": [
+        "CVE-2026-109618",
+        "CVE-2026-109619"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-109618",
+        "CVE-2026-109619"
+      ],
+      "score": 87,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "32ea969a27fc0c32",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-22T14:02:12+00:00",
+      "title": "Machine speed attacks require machine speed detection and response",
+      "summary": "Attackers can steal credentials and begin exfiltrating data within minutes, often before security teams can respond. Exaforce examines real-world attacks involving stolen GitHub tokens, malicious AI installers, and MFA phishing, explaining why faster detection and automated containment are critical. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/machine-speed-attacks-require-machine-speed-detection-and-response/",
+      "related_cves": [],
+      "matched_intelligence_cves": [],
+      "score": 84,
+      "cve_evidence": null
+    },
+    {
+      "id": "87fa2cd295e99fe6",
+      "event_type": "VULNERABILITY_NEWS",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-23T07:54:47+00:00",
+      "title": "Atlassian Patches 75 Flaws in Data Center and Server Products",
+      "summary": "Atlassian’s October bulletin lists 176 vulnerability entries, including 14 critical-severity issues, all in third-party components. The post Atlassian Patches 75 Flaws in Data Center and Server Products appeared first on SecurityWeek .",
       "source_name": "SecurityWeek",
       "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/drupal-warns-of-fast-exploitation-risk-for-critical-core-rce-flaw/",
+      "source_url": "https://www.securityweek.com/atlassian-patches-75-third-party-flaws-in-data-center-and-server-products/",
       "related_cves": [
-        "CVE-2026-108097",
-        "CVE-2026-108099",
-        "CVE-2026-108514",
-        "CVE-2026-108515"
+        "CVE-2026-21589",
+        "CVE-2026-58062",
+        "CVE-2026-65182",
+        "CVE-2026-65637",
+        "CVE-2026-65905",
+        "CVE-2026-68525",
+        "CVE-2026-75595",
+        "CVE-2026-77185"
       ],
       "matched_intelligence_cves": [],
       "score": 81,
-      "cve_evidence": "source_article",
-      "title_zh": "Drupal 警告核心重大 RCE 漏洞面臨快速利用風險",
-      "summary_zh": "重大漏洞影響了 Entity List 和 Field UI 模組，且第三方社群模組（contributed modules）中存在利用路徑。Drupal 警告核心重大 RCE 漏洞面臨快速利用風險的文章首次出現在 SecurityWeek。"
+      "cve_evidence": "source_article"
     },
     {
-      "id": "6300767178137d15",
-      "event_type": "VULNERABILITY_NEWS",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-19T13:49:24+00:00",
-      "title": "F5 releases out-of-band patches for critical NGINX vulnerabilities",
-      "summary": "F5 has released out-of-band security patches to address multiple NGINX web server flaws, including three critical-severity vulnerabilities that can let attackers execute code on vulnerable systems. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/f5-releases-out-of-band-patches-for-critical-nginx-vulnerabilities/",
-      "related_cves": [
-        "CVE-2026-15176",
-        "CVE-2026-93479",
-        "CVE-2026-97205"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 81,
-      "cve_evidence": "source_article",
-      "title_zh": "F5 為 NGINX 重大漏洞發布帶外修補程式",
-      "summary_zh": "F5 已發布帶外（out-of-band）安全修補程式，以修復多個 NGINX 網頁伺服器漏洞，其中包括三個嚴重程度為重大的漏洞，可能允許攻擊者在受影響的系統上執行程式碼。[...]"
-    },
-    {
-      "id": "eef67d66b352919d",
+      "id": "1af654b0c99fb535",
       "event_type": "THREAT_ACTIVITY",
       "priority": "CRITICAL",
-      "published_at": "2026-10-16T20:00:59+00:00",
-      "title": "Critical BlockStrap flaw lets hackers run code on Magento servers",
-      "summary": "Researchers warn that hackers could soon exploit a maximum-severity vulnerability (CVE-2026-103849) affecting Magento and Adobe Commerce, potentially allowing them to execute arbitrary PHP code on store servers. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/critical-blockstrap-flaw-lets-hackers-run-code-on-magento-servers/",
-      "related_cves": [
-        "CVE-2026-103849"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 81,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "BlockStrap 嚴重漏洞允許駭客在 Magento 伺服器上執行程式碼",
-      "summary_zh": "研究人員警告，駭客可能很快就會利用影響 Magento 和 Adobe Commerce 的最高嚴重程度漏洞（CVE-2026-103849），潛在允許他們在商店伺服器上執行任意 PHP 程式碼。[...]"
-    },
-    {
-      "id": "90ef0f2bf47ec9ed",
-      "event_type": "THREAT_ACTIVITY",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-16T12:00:00+00:00",
-      "title": "CISA Urges Patching Critical Vulnerability in BeyondTrust Remote Support",
-      "summary": "CISA is aware of critical authentication bypass vulnerability CVE-2026-102764 , affecting BeyondTrust Remote Support (formerly Bomgar) versions 26.2.3 and earlier. Patches are available for supported versions (24.3.1 and later); organizations using older versions must upgrade first. Cyber threat actors are actively exploiting the vulnerability to gain ini...",
+      "published_at": "2026-10-20T12:00:00+00:00",
+      "title": "HMS Networks PEAK-System PCAN Windows drivers",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could crash the Windows kernel. The following versions of HMS Networks PEAK-System PCAN Windows drivers are affected: PEAK-System Device Driver Setup <=5.1.2.1151 (CVE-2026-109576, CVE-2026-101103, CVE-2026-94188, CVE-2026-103672, CVE-2026-110322, CVE-2026-105960) PCAN Windows CAN device d...",
       "source_name": "CISA Advisories",
       "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/10/16/cisa-urges-patching-critical-vulnerability-beyondtrust-remote-support",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-293-01",
       "related_cves": [
-        "CVE-2026-102764"
+        "CVE-2026-101103",
+        "CVE-2026-103672",
+        "CVE-2026-105960",
+        "CVE-2026-109576",
+        "CVE-2026-110322",
+        "CVE-2026-94188"
       ],
       "matched_intelligence_cves": [],
       "score": 80,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "CISA 呼籲修補 BeyondTrust Remote Support 的嚴重漏洞",
-      "summary_zh": "CISA 已獲悉影響 BeyondTrust Remote Support（前身為 Bomgar）26.2.3 及更早版本的嚴重身份驗證旁路漏洞 CVE-2026-102764。受支援的版本（24.3.1 及更高版本）已有修補程式可用；使用較舊版本的組織必須先進行升級。網路威脅入侵者正在活躍利用該漏洞以取得初始存取權限……"
+      "cve_evidence": "source_title_or_summary"
     },
     {
-      "id": "86b82961354a0413",
+      "id": "42e627a08717a3a1",
       "event_type": "THREAT_ACTIVITY",
       "priority": "CRITICAL",
-      "published_at": "2026-10-15T12:00:00+00:00",
-      "title": "Thermo Fisher Torrent Suite Software",
-      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow an attacker to read arbitrary files on the Torrent Server. The following versions of Thermo Fisher Torrent Suite Software are affected: Torrent Suite Software <=5.18 (CVE-2026-107777) CVSS Vendor Equipment v3 6.5 Thermo Fisher Torrent Suite Software 1 Vulnerability Improper Limita...",
+      "published_at": "2026-10-20T12:00:00+00:00",
+      "title": "Moxa AIG-302 ThingsPro Edge",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to obtain and disclose sensitive information. The following versions of Moxa AIG-302 ThingsPro Edge are affected: Moxa AIG-302 ThingsPro Edge firmware <=1.4.0 (CVE-2026-109812, CVE-2026-109813) CVSS Vendor Equipment v3 8.1 Moxa Moxa AIG-302 ThingsPro Edge firmware 2...",
       "source_name": "CISA Advisories",
       "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-medical-advisories/icsma-26-288-01",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-293-03",
       "related_cves": [
-        "CVE-2026-107777"
+        "CVE-2026-109812",
+        "CVE-2026-109813"
       ],
       "matched_intelligence_cves": [],
-      "score": 78,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Thermo Fisher Torrent Suite 軟體",
-      "summary_zh": "檢視 CSAF 摘要。成功利用此漏洞可能允許攻擊者讀取 Torrent Server 上的任意檔案。以下版本的 Thermo Fisher Torrent Suite 軟體受到影響：Torrent Suite 軟體 <=5.18 (CVE-2026-107777)。CVSS 廠商設備 v3 6.5 Thermo Fisher Torrent Suite 軟體 1 個漏洞 不當限制……"
+      "score": 80,
+      "cve_evidence": "source_title_or_summary"
     },
     {
-      "id": "ea0e140b6f9eb8ea",
-      "event_type": "THREAT_ACTIVITY",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-15T12:00:00+00:00",
-      "title": "J4Care dcm4che",
-      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to delete stored medical images, disclose patient information, inject forged studies, reassign patient records, overwrite files, and cause a denial-of-service condition. The following versions of J4Care dcm4che are affected: dcm4chee-arc-light 5.35.1 (CVE-2026-97851...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-medical-advisories/icsma-26-288-02",
-      "related_cves": [
-        "CVE-2026-101021",
-        "CVE-2026-105273",
-        "CVE-2026-105279",
-        "CVE-2026-105667",
-        "CVE-2026-107621",
-        "CVE-2026-97851"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 78,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "J4Care dcm4che",
-      "summary_zh": "檢視 CSAF 摘要。成功利用這些漏洞可能允許攻擊者刪除儲存的醫療影像、洩露患者資訊、注入偽造的研究、重新分配患者記錄、覆寫檔案，並導致拒絕服務狀態。以下版本的 J4Care dcm4che 受到影響：dcm4chee-arc-light 5.35.1 (CVE-2026-97851..."
-    },
-    {
-      "id": "769eb8106e41d884",
-      "event_type": "THREAT_ACTIVITY",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-15T12:00:00+00:00",
-      "title": "Guangzhou Juan IoT Technology EseeCloud",
-      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to gain control over affected IP cameras. The following versions of Guangzhou Juan IoT Technology EseeCloud are affected: EseeCloud App <=4.9.6 (CVE-2026-107617, CVE-2026-97858, CVE-2026-105664) EseeCloud Firmware <=4.9.86.0 (CVE-2026-107617, CVE-2026-97858, CVE-202...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-288-02",
-      "related_cves": [
-        "CVE-2026-105664",
-        "CVE-2026-107617",
-        "CVE-2026-97858"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 78,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Guangzhou Juan IoT Technology EseeCloud 漏洞",
-      "summary_zh": "查看 CSAF 摘要。成功利用這些漏洞可能允許攻擊者控制受影響的 IP 攝影機。受影響的 Guangzhou Juan IoT Technology EseeCloud 版本如下：EseeCloud App <=4.9.6 (CVE-2026-107617, CVE-2026-97858, CVE-2026-105664)、EseeCloud Firmware <=4.9.86.0 (CVE-2026-107617, CVE-2026-97858, CVE-202..."
-    },
-    {
-      "id": "307fc48bec6b0bf9",
-      "event_type": "THREAT_ACTIVITY",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-15T12:00:00+00:00",
-      "title": "CISA Malcolm",
-      "summary": "View CSAF Summary The following versions of CISA Malcolm are affected: Malcolm <=v26.07.1 (CVE-2026-107336, CVE-2026-107361, CVE-2026-107337, CVE-2026-107335, CVE-2026-107334) Malcolm <=v26.08.0 (CVE-2026-107333, CVE-2026-107362) CVSS Vendor Equipment v3 8.1 CISA Malcolm 6 Vulnerabilities Authentication Bypass by Spoofing, Incorrect Authorization, Server-...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-280-01",
-      "related_cves": [
-        "CVE-2026-107333",
-        "CVE-2026-107334",
-        "CVE-2026-107335",
-        "CVE-2026-107336",
-        "CVE-2026-107337",
-        "CVE-2026-107361",
-        "CVE-2026-107362"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 78,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "CISA Malcolm 漏洞",
-      "summary_zh": "查看 CSAF 摘要。受影響的 CISA Malcolm 版本如下：Malcolm <=v26.07.1 (CVE-2026-107336, CVE-2026-107361, CVE-2026-107337, CVE-2026-107335, CVE-2026-107334)、Malcolm <=v26.08.0 (CVE-2026-107333, CVE-2026-107362)。CVSS 廠商設備 v3 8.1 CISA Malcolm 包含 6 個漏洞：透過欺騙繞過身分驗證、授權不當、伺服器端..."
-    },
-    {
-      "id": "978985bee2a5f3ab",
+      "id": "082a52fbefa3810b",
       "event_type": "VULNERABILITY_NEWS",
       "priority": "CRITICAL",
-      "published_at": "2026-10-17T14:32:48+00:00",
-      "title": "Drupal patches critical RCE flaws, warns exploits may emerge soon",
-      "summary": "Drupal has patched two critical vulnerabilities that could allow attackers to execute code remotely on websites running any supported version of the content management system. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/drupal-patches-critical-rce-flaws-warns-exploits-may-emerge-soon/",
-      "related_cves": [
-        "CVE-2026-108097",
-        "CVE-2026-108099"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 77,
-      "cve_evidence": "source_article",
-      "title_zh": "Drupal 修補嚴重 RCE 漏洞，警告近期可能出現漏洞利用",
-      "summary_zh": "Drupal 已修補兩個嚴重漏洞，這些漏洞可能允許攻擊者在執行任何受支援版本之內容管理系統的網站上遠端執行程式碼。[...]"
-    },
-    {
-      "id": "9a5d4539ca389a36",
-      "event_type": "THREAT_ACTIVITY",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-13T12:00:00+00:00",
-      "title": "Inductive Automation Ignition Software",
-      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow an authenticated low-level user to escalate their privileges to a higher level. The following versions of Inductive Automation Ignition Software are affected: Ignition >=8.1.0|<=8.1.54 (CVE-2026-92817) Ignition >=8.3.0|<=8.3.8 (CVE-2026-92817) CVSS Vendor Equipment v3 8.8 Inductiv...",
+      "published_at": "2026-10-22T12:00:00+00:00",
+      "title": "Siemens SIMATIC S7 Webserver API",
+      "summary": "View CSAF Summary .NET Client Library for SIMATIC S7 Webserver API contains multiple vulnerabilities that could allow an attacker to obtain sensitive information or write arbitrary files outside the intended download directory. Siemens has released a new version for .NET Client Library for SIMATIC S7 Webserver API and recommends to update to the latest ve...",
       "source_name": "CISA Advisories",
       "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-286-01",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-295-10",
       "related_cves": [
-        "CVE-2026-92817"
+        "CVE-2026-85114",
+        "CVE-2026-85115"
       ],
       "matched_intelligence_cves": [],
-      "score": 75,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Inductive Automation Ignition 軟體漏洞",
-      "summary_zh": "查看 CSAF 摘要。成功利用此漏洞可允許經身分驗證的低權限使用者將其權限提升至更高層級。受影響的 Inductive Automation Ignition 軟體版本如下：Ignition >=8.1.0|<=8.1.54 (CVE-2026-92817)、Ignition >=8.3.0|<=8.3.8 (CVE-2026-92817)。CVSS 廠商設備 v3 8.8 Inductiv..."
+      "score": 79,
+      "cve_evidence": "source_title_or_summary"
     },
     {
-      "id": "0d3be6b6fae4f063",
-      "event_type": "THREAT_ACTIVITY",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-13T12:00:00+00:00",
-      "title": "Swann Communications SWIFI-SE2KIC",
-      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to view video information without authentication. The following versions of Swann Communications SWIFI-SE2KIC are affected: SWIFI-SE2KIC firmware <=2.0.22 (CVE-2026-107605, CVE-2026-107606, CVE-2026-107607) CVSS Vendor Equipment v3 6.2 Swann Communications SWIFI-SE2...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-286-02",
-      "related_cves": [
-        "CVE-2026-107605",
-        "CVE-2026-107606",
-        "CVE-2026-107607"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 75,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Swann Communications SWIFI-SE2KIC 漏洞",
-      "summary_zh": "查看 CSAF 摘要。成功利用這些漏洞可能允許攻擊者在未未經身分驗證的情況下檢視影像資訊。受影響的 Swann Communications SWIFI-SE2KIC 版本如下：SWIFI-SE2KIC 韌體 <=2.0.22 (CVE-2026-107605, CVE-2026-107606, CVE-2026-107607)。CVSS 廠商設備 v3 6.2 Swann Communications SWIFI-SE2..."
-    },
-    {
-      "id": "fbd4f0423b7b4a6a",
+      "id": "815e8de26f228740",
       "event_type": "VULNERABILITY_NEWS",
       "priority": "CRITICAL",
-      "published_at": "2026-10-15T12:00:00+00:00",
-      "title": "Eclipse Foundation Eclipse Milo",
-      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to delete protected data, recover user credentials and impersonate legitimate users, or cause the server to stop responding to all clients. The following versions of Eclipse Foundation Eclipse Milo are affected: Eclipse Milo >=0.6.0|<=1.1.4 (CVE-2026-63252, CVE-2026...",
+      "published_at": "2026-10-22T12:00:00+00:00",
+      "title": "Siemens APOGEE, TALON and Desigo PXC/PXM Products",
+      "summary": "View CSAF Summary The products listed below contain multiple vulnerabilities that could allow an attacker to cause a denial of service and potentially impact the availability of the affected device. Siemens has released new versions for several affected products and recommends to update to the latest versions. Siemens recommends specific mitigations for p...",
       "source_name": "CISA Advisories",
       "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-288-01",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-295-08",
       "related_cves": [
-        "CVE-2026-58080",
-        "CVE-2026-60007",
-        "CVE-2026-61387",
-        "CVE-2026-62927",
-        "CVE-2026-63248",
-        "CVE-2026-63252"
+        "CVE-2026-102073",
+        "CVE-2026-102074",
+        "CVE-2026-102075",
+        "CVE-2026-102076",
+        "CVE-2026-89208"
       ],
       "matched_intelligence_cves": [],
-      "score": 73,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Eclipse Foundation Eclipse Milo 漏洞",
-      "summary_zh": "查看 CSAF 摘要。成功利用這些漏洞可能允許攻擊者刪除受保護的資料、復原使用者憑證並冒充合法使用者，或者導致伺服器停止回應所有用戶端。受影響的 Eclipse Foundation Eclipse Milo 版本如下：Eclipse Milo >=0.6.0|<=1.1.4 (CVE-2026-63252, CVE-2026..."
+      "score": 79,
+      "cve_evidence": "source_title_or_summary"
     },
     {
-      "id": "b027e601f57288d7",
-      "event_type": "SUPPLY_CHAIN",
-      "priority": "HIGH",
-      "published_at": "2026-10-19T21:24:51+00:00",
-      "title": "WordPress SEO plugin Rank Math compromised to backdoor websites",
-      "summary": "Some downloads of the Rank Math PRO WordPress plugin from the vendor's official website carried malware that planted hidden backdoors in a supply-chain attack last week. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/wordpress-seo-plugin-rank-math-compromised-to-backdoor-websites/",
-      "related_cves": [],
+      "id": "c93040c85b3a8065",
+      "event_type": "VULNERABILITY_NEWS",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-22T12:00:00+00:00",
+      "title": "Siemens RUGGEDCOM CROSSBOW",
+      "summary": "View CSAF Summary RUGGEDCOM CROSSBOW contains multiple vulnerabilities that could allow an attacker to execute arbitrary SQL commands on the underlying database, retrieve sensitive administrative credentials, escalate privileges, and perform unauthorized operations such as modifying system configurations or causing a denial of service. Siemens has release...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-295-12",
+      "related_cves": [
+        "CVE-2026-89196",
+        "CVE-2026-89197",
+        "CVE-2026-89198",
+        "CVE-2026-89199",
+        "CVE-2026-89200",
+        "CVE-2026-89201",
+        "CVE-2026-89202",
+        "CVE-2026-89203",
+        "CVE-2026-89204",
+        "CVE-2026-89205",
+        "CVE-2026-89206"
+      ],
       "matched_intelligence_cves": [],
-      "score": 102,
-      "cve_evidence": null,
-      "title_zh": "WordPress SEO 外掛 Rank Math 遭入侵以植入後門網站",
-      "summary_zh": "上週在一場供應鏈攻擊中，從廠商官方網站下載的部分 Rank Math PRO WordPress 外掛軟體帶有惡意軟體，會植入隱藏的後門。[...]"
+      "score": 79,
+      "cve_evidence": "source_title_or_summary"
     },
     {
-      "id": "4a3ed0d57d911821",
-      "event_type": "SUPPLY_CHAIN",
-      "priority": "HIGH",
-      "published_at": "2026-10-19T15:20:53+00:00",
-      "title": "Rank Math PRO WordPress Plugin Compromised in Supply Chain Attack",
-      "summary": "Hackers injected malware into Rank Math PRO version 3.0.123 packages distributed between October 15 and October 16. The post Rank Math PRO WordPress Plugin Compromised in Supply Chain Attack appeared first on SecurityWeek .",
-      "source_name": "SecurityWeek",
-      "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/rank-math-pro-wordpress-plugin-compromised-in-supply-chain-attack/",
-      "related_cves": [],
+      "id": "284eb83ac7e25543",
+      "event_type": "VULNERABILITY_NEWS",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-22T12:00:00+00:00",
+      "title": "Siemens RUGGEDCOM APE1808 Devices",
+      "summary": "View CSAF Summary Nozomi Networks has published information on vulnerabilities in Nozomi Guardian/CMC. This advisory lists the related Siemens Industrial products affected by these vulnerabilities. Siemens recommends to contact customer support to receive patch and update information. The following versions of Siemens RUGGEDCOM APE1808 Devices are affecte...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-295-18",
+      "related_cves": [
+        "CVE-2026-33387",
+        "CVE-2026-33388",
+        "CVE-2026-33389",
+        "CVE-2026-33391",
+        "CVE-2026-33920"
+      ],
       "matched_intelligence_cves": [],
-      "score": 101,
-      "cve_evidence": null,
-      "title_zh": "Rank Math PRO WordPress 外掛於供應鏈攻擊中遭入侵",
-      "summary_zh": "黑客在 10 月 15 日至 10 月 16 日期間分發的 Rank Math PRO 3.0.123 版本套件中注入了惡意軟體。Rank Math PRO WordPress 外掛於供應鏈攻擊中遭入侵的文章首次出現在 SecurityWeek。"
-    },
-    {
-      "id": "d1504eca70b2d127",
-      "event_type": "DATA_BREACH",
-      "priority": "HIGH",
-      "published_at": "2026-10-19T21:49:48+00:00",
-      "title": "Nikkei discloses third data breach in a month, 1.8M records exposed",
-      "summary": "Nikkei Inc. disclosed a new data breach, the third in about a month, that exposed 1.83 million personal information records. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/nikkei-discloses-third-data-breach-in-a-month-18m-records-exposed/",
-      "related_cves": [],
-      "matched_intelligence_cves": [],
-      "score": 97,
-      "cve_evidence": null,
-      "title_zh": "日經公開一個月內第三起資料外洩事件，180 萬筆記錄遭曝光",
-      "summary_zh": "日本經濟新聞（Nikkei Inc.）公開了一起新的資料外洩事件，這是一內月發生的第三起，共曝光了 183 萬筆個人資訊記錄。[...]"
+      "score": 79,
+      "cve_evidence": "source_title_or_summary"
     }
-  ],
-  "translation": {
-    "language": "zh-Hant-TW",
-    "status": "translated",
-    "provider": "gemini",
-    "model": "gemini-3.6-flash",
-    "models_used": [
-      "gemini-3.6-flash"
-    ],
-    "translated_items": 20,
-    "cached_items": 15,
-    "pending_items": 0,
-    "total_items": 20,
-    "attempted_items": 5,
-    "batch_size": 5,
-    "rejected_item_ids": [],
-    "fallback_reason": null,
-    "batch_fallback_reasons": []
-  }
+  ]
 }
