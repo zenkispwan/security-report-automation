@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0-daily-security-brief",
-  "generated_at": "2026-10-25T05:35:20.394094+00:00",
+  "generated_at": "2026-10-26T05:41:37.369297+00:00",
   "timezone": "Asia/Taipei",
   "purpose": "Single deterministic input model for the daily security event brief, website, Markdown report, and future email delivery.",
   "summary": {
@@ -14,24 +14,24 @@
     "threat_activity_events": 5,
     "linked_cve_count": 67,
     "translated_event_count": 20,
-    "daily_change_count": 12,
-    "new_cve_count": 12,
+    "daily_change_count": 8,
+    "new_cve_count": 2,
     "new_kev_count": 0,
-    "epss_increase_count": 0,
+    "epss_increase_count": 6,
     "exploitation_change_count": 0,
     "ransomware_use_change_count": 0,
-    "new_critical_cve_count": 12,
-    "p1_cve_count": 18,
+    "new_critical_cve_count": 2,
+    "p1_cve_count": 28,
     "p2_cve_count": 0,
     "p3_cve_count": 0,
-    "watch_cve_count": 12
+    "watch_cve_count": 2
   },
   "headline_events": [
     {
       "id": "70ce3aa7f5fd7971",
       "event_type": "RANSOMWARE",
       "priority": "CRITICAL",
-      "score": 109,
+      "score": 107,
       "published_at": "2026-10-23T14:23:37+00:00",
       "title": "In Other News: Tor Exit Relays Hijacked, Banks Spot Rogue AI Agents, Self-Rebuilding macOS Ransomware",
       "title_zh": "其他新聞：Tor 出口中繼站遭劫持、銀行發現惡意 AI 代理、具備自我重建能力的 macOS 勒索軟體",
@@ -47,7 +47,7 @@
       "id": "7e756198cefb40cc",
       "event_type": "RANSOMWARE",
       "priority": "CRITICAL",
-      "score": 105,
+      "score": 103,
       "published_at": "2026-10-21T12:00:00+00:00",
       "title": "CISA, FBI and Partners Warn Organizations of SafePay Ransomware Actors Targeting Multiple Critical Infrastructure Sectors",
       "title_zh": "CISA、FBI 及其合作夥伴警告各機構注意針對多個關鍵基礎設施領域的 SafePay 勒索軟體威脅者",
@@ -63,7 +63,7 @@
       "id": "ce87e3f627c6f42f",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "score": 104,
+      "score": 102,
       "published_at": "2026-10-23T12:00:00+00:00",
       "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
       "title_zh": "CISA 將一項已遭利用的已知漏洞納入目錄",
@@ -81,7 +81,7 @@
       "id": "87bf34b6e070a947",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "score": 104,
+      "score": 102,
       "published_at": "2026-10-23T12:00:00+00:00",
       "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
       "title_zh": "CISA 將一項已遭利用的已知漏洞納入目錄",
@@ -99,7 +99,7 @@
       "id": "5912abcc55abe8dc",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "score": 104,
+      "score": 102,
       "published_at": "2026-10-23T09:58:34+00:00",
       "title": "Attackers Exploit Third Arista VCO Zero-Day in Four Months",
       "title_zh": "攻擊者在四個月內利用了第三個 Arista VCO 零日漏洞",
@@ -119,7 +119,7 @@
       "id": "552cbee8ac3d9b61",
       "event_type": "RANSOMWARE",
       "priority": "CRITICAL",
-      "score": 103,
+      "score": 101,
       "published_at": "2026-10-20T12:00:00+00:00",
       "title": "#StopRansomware: SafePay Ransomware",
       "title_zh": "#StopRansomware：SafePay 勒索軟體",
@@ -140,46 +140,79 @@
   ],
   "daily_changes": [
     {
-      "cve": "CVE-2026-94075",
+      "cve": "CVE-2026-9082",
       "events": [
         {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-24T08:16:52.790"
+          "type": "EPSS_INCREASED",
+          "from": 0.15701,
+          "to": 0.89381,
+          "delta": 0.7368
         }
       ],
       "risk": {
-        "score": 28,
-        "priority": "WATCH",
+        "score": 100,
+        "priority": "P1",
         "reasons": [
+          {
+            "code": "CISA_KEV",
+            "points": 45
+          },
+          {
+            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
+            "points": 25
+          },
           {
             "code": "CVSS_CRITICAL",
             "points": 20
           },
           {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
+            "code": "EPSS_VERY_HIGH",
+            "points": 20
+          },
+          {
+            "code": "EPSS_TOP_5_PERCENT",
+            "points": 5
+          },
+          {
+            "code": "DELTA_EPSS_JUMP",
+            "points": 15
           }
         ]
       },
       "facts": {
-        "cve": "CVE-2026-94075",
-        "vendor": "Tribulant Software",
-        "product": "Newsletters",
-        "title": null,
+        "cve": "CVE-2026-9082",
+        "vendor": "Drupal",
+        "product": "Core",
+        "title": "Drupal Core SQL Injection Vulnerability",
         "title_zh": null,
-        "description": "Deserialization of Untrusted Data vulnerability in Tribulant Software Newsletters newsletters-lite allows Object Injection.This issue affects Newsletters: from n/a through 4.18.1.",
+        "description": "Drupal Core contains a SQL injection vulnerability that could allow for privilege escalation and remote code execution via specially crafted requests sent with the database abstraction API.",
         "description_zh": null,
-        "priority": "WATCH",
-        "risk_score": 28,
+        "priority": "P1",
+        "risk_score": 100,
         "risk_reasons": [
+          {
+            "code": "CISA_KEV",
+            "points": 45
+          },
+          {
+            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
+            "points": 25
+          },
           {
             "code": "CVSS_CRITICAL",
             "points": 20
           },
           {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
+            "code": "EPSS_VERY_HIGH",
+            "points": 20
+          },
+          {
+            "code": "EPSS_TOP_5_PERCENT",
+            "points": 5
+          },
+          {
+            "code": "DELTA_EPSS_JUMP",
+            "points": 15
           }
         ],
         "cvss": {
@@ -187,47 +220,676 @@
           "score": 9.8,
           "severity": "CRITICAL",
           "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "audit@patchstack.com",
+          "source": "mlhess@drupal.org",
           "type": "Secondary"
         },
-        "epss": 0.00564,
-        "epss_percentile": 0.46162,
+        "epss": 0.89381,
+        "epss_percentile": 0.99782,
         "cisa_kev": {
-          "listed": false
+          "listed": true,
+          "date_added": "2026-05-22",
+          "due_date": "2026-05-27",
+          "required_action": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+          "known_ransomware_campaign_use": "Unknown",
+          "notes": "https://www.drupal.org/sa-core-2026-004 ; https://nvd.nist.gov/vuln/detail/CVE-2026-9082",
+          "cwes": [
+            "CWE-89"
+          ]
         },
         "exploitation_status": {
-          "status": "none",
-          "source": "nvd_ssvc",
+          "status": "known_exploited",
+          "source": "cisa_kev",
           "ssvc": {
-            "exploitation": "none",
+            "exploitation": "active",
             "automatable": "yes",
             "technical_impact": "total",
-            "timestamp": "2026-10-24T14:41:30.497145Z",
+            "timestamp": "2026-05-23T03:55:40.059743Z",
             "role": "CISA Coordinator",
             "version": "2.0.3"
           }
         },
-        "published_time": "2026-10-24T08:16:52.790",
-        "updated_time": "2026-10-24T15:17:35.387",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94075",
+        "published_time": "2026-05-20T20:16:41.230",
+        "updated_time": "2026-10-07T19:17:45.637",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9082",
         "source_type": [
           "nvd",
+          "cisa_kev",
           "first_epss"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-94075",
-          "cisa_kev": null,
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-94075"
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-9082",
+          "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-9082"
         }
       }
     },
     {
-      "cve": "CVE-2026-116014",
+      "cve": "CVE-2026-88779",
+      "events": [
+        {
+          "type": "EPSS_INCREASED",
+          "from": 0.00592,
+          "to": 0.11388,
+          "delta": 0.10796
+        }
+      ],
+      "risk": {
+        "score": 100,
+        "priority": "P1",
+        "reasons": [
+          {
+            "code": "CISA_KEV",
+            "points": 45
+          },
+          {
+            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
+            "points": 25
+          },
+          {
+            "code": "CVSS_HIGH",
+            "points": 12
+          },
+          {
+            "code": "EPSS_ELEVATED",
+            "points": 8
+          },
+          {
+            "code": "EPSS_TOP_5_PERCENT",
+            "points": 5
+          },
+          {
+            "code": "DELTA_EPSS_JUMP",
+            "points": 15
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-88779",
+        "vendor": "Citrix",
+        "product": "NetScaler",
+        "title": "Citrix NetScaler Improper Restriction of Operations within the Bounds of a Memory Buffer Vulnerability",
+        "title_zh": null,
+        "description": "Citrix NetScaler ADC (formerly Citrix ADC) and Citrix NetScaler Gateway (formerly Citrix Gateway) contain an improper restriction of operations within the bounds of a memory buffer vulnerability that could allow for a denial of service.",
+        "description_zh": null,
+        "priority": "P1",
+        "risk_score": 100,
+        "risk_reasons": [
+          {
+            "code": "CISA_KEV",
+            "points": 45
+          },
+          {
+            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
+            "points": 25
+          },
+          {
+            "code": "CVSS_HIGH",
+            "points": 12
+          },
+          {
+            "code": "EPSS_ELEVATED",
+            "points": 8
+          },
+          {
+            "code": "EPSS_TOP_5_PERCENT",
+            "points": 5
+          },
+          {
+            "code": "DELTA_EPSS_JUMP",
+            "points": 15
+          }
+        ],
+        "cvss": {
+          "version": "4.0",
+          "score": 8.7,
+          "severity": "HIGH",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "50a63c94-1ea7-4568-8c11-eb79e7c5a2b5",
+          "type": "Secondary"
+        },
+        "epss": 0.11388,
+        "epss_percentile": 0.95963,
+        "cisa_kev": {
+          "listed": true,
+          "date_added": "2026-10-04",
+          "due_date": "2026-10-07",
+          "required_action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+          "known_ransomware_campaign_use": "Unknown",
+          "notes": "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697174 ; https://community.citrix.com/techzone-blogs/110_security-updates/understanding-and-addressing-cve-2026-88779-in-citrix-netscaler-adc-and-citrix-netscaler-gateway/ ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https://nvd.nist.gov/vuln/detail/CVE-2026-88779",
+          "cwes": [
+            "CWE-119"
+          ]
+        },
+        "exploitation_status": {
+          "status": "known_exploited",
+          "source": "cisa_kev",
+          "ssvc": {
+            "exploitation": "active",
+            "automatable": "yes",
+            "technical_impact": "partial",
+            "timestamp": "2026-10-04T00:00:00+00:00",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-10-04T04:16:43.680",
+        "updated_time": "2026-10-05T13:35:24.663",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88779",
+        "source_type": [
+          "nvd",
+          "cisa_kev",
+          "first_epss"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-88779",
+          "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-88779"
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-88772",
+      "events": [
+        {
+          "type": "EPSS_INCREASED",
+          "from": 0.05305,
+          "to": 0.78162,
+          "delta": 0.72857
+        }
+      ],
+      "risk": {
+        "score": 100,
+        "priority": "P1",
+        "reasons": [
+          {
+            "code": "CISA_KEV",
+            "points": 45
+          },
+          {
+            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
+            "points": 25
+          },
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "EPSS_VERY_HIGH",
+            "points": 20
+          },
+          {
+            "code": "EPSS_TOP_5_PERCENT",
+            "points": 5
+          },
+          {
+            "code": "DELTA_EPSS_JUMP",
+            "points": 15
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-88772",
+        "vendor": "Citrix",
+        "product": "NetScaler",
+        "title": "Citrix NetScaler Improper Restriction of Operations within the Bounds of a Memory Buffer Vulnerability",
+        "title_zh": null,
+        "description": "Citrix NetScaler ADC and NetScaler Gateway contain an improper restriction of operations within the bounds of a memory buffer vulnerability that could allow for remote code execution or denial of service",
+        "description_zh": null,
+        "priority": "P1",
+        "risk_score": 100,
+        "risk_reasons": [
+          {
+            "code": "CISA_KEV",
+            "points": 45
+          },
+          {
+            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
+            "points": 25
+          },
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "EPSS_VERY_HIGH",
+            "points": 20
+          },
+          {
+            "code": "EPSS_TOP_5_PERCENT",
+            "points": 5
+          },
+          {
+            "code": "DELTA_EPSS_JUMP",
+            "points": 15
+          }
+        ],
+        "cvss": {
+          "version": "4.0",
+          "score": 9.5,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "50a63c94-1ea7-4568-8c11-eb79e7c5a2b5",
+          "type": "Secondary"
+        },
+        "epss": 0.78162,
+        "epss_percentile": 0.99574,
+        "cisa_kev": {
+          "listed": true,
+          "date_added": "2026-09-27",
+          "due_date": "2026-09-30",
+          "required_action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+          "known_ransomware_campaign_use": "Unknown",
+          "notes": "Running the provided IOCs in the NetScaler console may help identify indicators of exploitation. Customers must conduct forensic triage as directed by BOD 26‑04 and follow Citrix’s published guidance for mitigations. For more information, please see: https://community.citrix.com/techzone-blogs/110_security-updates/netscaler-adc-and-netscaler-gateway-security-bulletin-for-cve-2026-88771-through-cve-2026-88778 ; https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697096 ; https://support.citrix.com/external/article/CTX694799/steps-to-take-if-netscaler-adc-is-suspec.html ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https://nvd.nist.gov/vuln/detail/CVE-2026-88772",
+          "cwes": [
+            "CWE-119"
+          ]
+        },
+        "exploitation_status": {
+          "status": "known_exploited",
+          "source": "cisa_kev",
+          "ssvc": {
+            "exploitation": "active",
+            "automatable": "no",
+            "technical_impact": "total",
+            "timestamp": "2026-09-27T00:00:00+00:00",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-09-27T17:16:56.390",
+        "updated_time": "2026-09-28T12:26:47.670",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88772",
+        "source_type": [
+          "nvd",
+          "cisa_kev",
+          "first_epss"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-88772",
+          "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-88772"
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-88771",
+      "events": [
+        {
+          "type": "EPSS_INCREASED",
+          "from": 0.05108,
+          "to": 0.8216,
+          "delta": 0.77052
+        }
+      ],
+      "risk": {
+        "score": 100,
+        "priority": "P1",
+        "reasons": [
+          {
+            "code": "CISA_KEV",
+            "points": 45
+          },
+          {
+            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
+            "points": 25
+          },
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "EPSS_VERY_HIGH",
+            "points": 20
+          },
+          {
+            "code": "EPSS_TOP_5_PERCENT",
+            "points": 5
+          },
+          {
+            "code": "DELTA_EPSS_JUMP",
+            "points": 15
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-88771",
+        "vendor": "Citrix",
+        "product": "NetScaler",
+        "title": "Citrix NetScaler Improper Input Validation Vulnerability",
+        "title_zh": null,
+        "description": "Citrix NetScaler ADC and NetScaler Gateway contain an improper input validation vulnerability that could allow an unauthenticated attacker to execute arbitrary commands.",
+        "description_zh": null,
+        "priority": "P1",
+        "risk_score": 100,
+        "risk_reasons": [
+          {
+            "code": "CISA_KEV",
+            "points": 45
+          },
+          {
+            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
+            "points": 25
+          },
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "EPSS_VERY_HIGH",
+            "points": 20
+          },
+          {
+            "code": "EPSS_TOP_5_PERCENT",
+            "points": 5
+          },
+          {
+            "code": "DELTA_EPSS_JUMP",
+            "points": 15
+          }
+        ],
+        "cvss": {
+          "version": "4.0",
+          "score": 9.5,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "50a63c94-1ea7-4568-8c11-eb79e7c5a2b5",
+          "type": "Secondary"
+        },
+        "epss": 0.8216,
+        "epss_percentile": 0.99652,
+        "cisa_kev": {
+          "listed": true,
+          "date_added": "2026-09-27",
+          "due_date": "2026-09-30",
+          "required_action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+          "known_ransomware_campaign_use": "Unknown",
+          "notes": "Running the provided IOCs in the NetScaler console may help identify indicators of exploitation. Customers must conduct forensic triage as directed by BOD 26‑04 and follow Citrix’s published guidance for mitigations. For more information, please see: https://community.citrix.com/techzone-blogs/110_security-updates/netscaler-adc-and-netscaler-gateway-security-bulletin-for-cve-2026-88771-through-cve-2026-88778 ; https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697096 ; https://support.citrix.com/external/article/CTX694799/steps-to-take-if-netscaler-adc-is-suspec.html ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https://nvd.nist.gov/vuln/detail/CVE-2026-88772",
+          "cwes": [
+            "CWE-119"
+          ]
+        },
+        "exploitation_status": {
+          "status": "known_exploited",
+          "source": "cisa_kev",
+          "ssvc": {
+            "exploitation": "active",
+            "automatable": "yes",
+            "technical_impact": "total",
+            "timestamp": "2026-09-27T00:00:00+00:00",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-09-27T17:16:56.260",
+        "updated_time": "2026-09-29T04:18:01.603",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88771",
+        "source_type": [
+          "nvd",
+          "cisa_kev",
+          "first_epss"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-88771",
+          "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-88771"
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-21589",
+      "events": [
+        {
+          "type": "EPSS_INCREASED",
+          "from": 0.12711,
+          "to": 0.99477,
+          "delta": 0.86766
+        }
+      ],
+      "risk": {
+        "score": 100,
+        "priority": "P1",
+        "reasons": [
+          {
+            "code": "CISA_KEV",
+            "points": 45
+          },
+          {
+            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
+            "points": 25
+          },
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "EPSS_VERY_HIGH",
+            "points": 20
+          },
+          {
+            "code": "EPSS_TOP_5_PERCENT",
+            "points": 5
+          },
+          {
+            "code": "DELTA_EPSS_JUMP",
+            "points": 15
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-21589",
+        "vendor": "Atlassian",
+        "product": "Multiple Products",
+        "title": "Atlassian Multiple Products Files or Directories Accessible to External Parties Vulnerability",
+        "title_zh": "Atlassian 多款產品外部實體存取檔案或目錄漏洞",
+        "description": "Multiple Atlassian products (Bitbucket Data Center ,Confluence Data Center, Jira Service Management Data Center, Jira Software Data Center, Bamboo Data Center, Crowd Data Center, Crucible and Fisheye) contain a files or directories accessible to external parties vulnerability which could allow an unauthenticated attacker to access specific files within the web application root directory in affected versions.",
+        "description_zh": "多款 Atlassian 產品（Bitbucket Data Center、Confluence Data Center、Jira Service Management Data Center、Jira Software Data Center、Bamboo Data Center、Crowd Data Center、Crucible 和 Fisheye）受影響版本中存在外部實體存取檔案或目錄之漏洞，可能允許未經身份驗證的攻擊者存取 Web 應用程式根目錄內的特定檔案。",
+        "priority": "P1",
+        "risk_score": 100,
+        "risk_reasons": [
+          {
+            "code": "CISA_KEV",
+            "points": 45
+          },
+          {
+            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
+            "points": 25
+          },
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "EPSS_VERY_HIGH",
+            "points": 20
+          },
+          {
+            "code": "EPSS_TOP_5_PERCENT",
+            "points": 5
+          },
+          {
+            "code": "DELTA_EPSS_JUMP",
+            "points": 15
+          }
+        ],
+        "cvss": {
+          "version": "4.0",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "security@atlassian.com",
+          "type": "Secondary"
+        },
+        "epss": 0.99477,
+        "epss_percentile": 0.99943,
+        "cisa_kev": {
+          "listed": true,
+          "date_added": "2026-10-15",
+          "due_date": "2026-10-18",
+          "required_action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+          "known_ransomware_campaign_use": "Unknown",
+          "notes": "https://confluence.atlassian.com/security/cve-2026-21589-arbitrary-file-access-vulnerability-impacts-multiple-products-1870495748.html?ref=labs.watchtowr.com ; ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https://nvd.nist.gov/vuln/detail/CVE-2026-21589",
+          "cwes": [
+            "CWE-552"
+          ]
+        },
+        "exploitation_status": {
+          "status": "known_exploited",
+          "source": "cisa_kev",
+          "ssvc": {
+            "exploitation": "active",
+            "automatable": "no",
+            "technical_impact": "total",
+            "timestamp": "2026-10-15T00:00:00+00:00",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-10-05T22:16:58.423",
+        "updated_time": "2026-10-19T20:31:57.050",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-21589",
+        "source_type": [
+          "nvd",
+          "cisa_kev",
+          "first_epss"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-21589",
+          "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-105133",
+      "events": [
+        {
+          "type": "EPSS_INCREASED",
+          "from": 0.05794,
+          "to": 0.79236,
+          "delta": 0.73442
+        }
+      ],
+      "risk": {
+        "score": 100,
+        "priority": "P1",
+        "reasons": [
+          {
+            "code": "CISA_KEV",
+            "points": 45
+          },
+          {
+            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
+            "points": 25
+          },
+          {
+            "code": "CVSS_MEDIUM",
+            "points": 4
+          },
+          {
+            "code": "EPSS_VERY_HIGH",
+            "points": 20
+          },
+          {
+            "code": "EPSS_TOP_5_PERCENT",
+            "points": 5
+          },
+          {
+            "code": "DELTA_EPSS_JUMP",
+            "points": 15
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-105133",
+        "vendor": "Ahsay",
+        "product": "AhsayCBS",
+        "title": "Ahsay AhsayCBS Improper Authentication Vulnerability",
+        "title_zh": null,
+        "description": "Ahsay AhsayCBS contains an improper authentication vulnerability that could allow a remote attacker to bypass authentication via manipulation of the random parameter in the API component’s checkSysPwd function. This vulnerability can be chained with CVE-2026-105134.",
+        "description_zh": null,
+        "priority": "P1",
+        "risk_score": 100,
+        "risk_reasons": [
+          {
+            "code": "CISA_KEV",
+            "points": 45
+          },
+          {
+            "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
+            "points": 25
+          },
+          {
+            "code": "CVSS_MEDIUM",
+            "points": 4
+          },
+          {
+            "code": "EPSS_VERY_HIGH",
+            "points": 20
+          },
+          {
+            "code": "EPSS_TOP_5_PERCENT",
+            "points": 5
+          },
+          {
+            "code": "DELTA_EPSS_JUMP",
+            "points": 15
+          }
+        ],
+        "cvss": {
+          "version": "4.0",
+          "score": 5.5,
+          "severity": "MEDIUM",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "cna@vuldb.com",
+          "type": "Secondary"
+        },
+        "epss": 0.79236,
+        "epss_percentile": 0.99595,
+        "cisa_kev": {
+          "listed": true,
+          "date_added": "2026-10-14",
+          "due_date": "2026-10-17",
+          "required_action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+          "known_ransomware_campaign_use": "Unknown",
+          "notes": "https://www.ahsay.com/en/company/announcements/patch-cve-105133-105134-update ; ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https://nvd.nist.gov/vuln/detail/CVE-2026-105133",
+          "cwes": [
+            "CWE-287"
+          ]
+        },
+        "exploitation_status": {
+          "status": "known_exploited",
+          "source": "cisa_kev",
+          "ssvc": {
+            "exploitation": "active",
+            "automatable": "yes",
+            "technical_impact": "partial",
+            "timestamp": "2026-10-14T00:00:00+00:00",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
+        },
+        "published_time": "2026-10-04T07:16:33.087",
+        "updated_time": "2026-10-15T13:47:06.283",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105133",
+        "source_type": [
+          "nvd",
+          "cisa_kev",
+          "first_epss"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105133",
+          "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-105133"
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-116199",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-24T12:16:57.607"
+          "to": "2026-10-25T14:17:00.593"
         }
       ],
       "risk": {
@@ -245,12 +907,12 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-116014",
-        "vendor": "open62541",
-        "product": "open62541",
+        "cve": "CVE-2026-116199",
+        "vendor": "grokability",
+        "product": "snipe-it",
         "title": null,
         "title_zh": null,
-        "description": "open62541 1.5.0 before 1.5.7 contains an integer overflow in UA_DataType_fromStructureDescription() that wraps the 16-bit memSize field for large custom structure definitions. A malicious OPC UA server can supply DataType definitions via UA_Client_getRemoteDataTypes(), causing decodeBinaryStructure() to overflow the heap, crashing clients or enabling code execution.",
+        "description": "Snipe-IT before 8.6.3 contains an authentication bypass in GoogleAuthController::handleGoogleCallback, which logs in the user whose username matches the Google account email without enforcing the activated flag. Deactivated users with email-shaped usernames and still-live Google identities can sign in via Google SSO and regain sessions at their original permission level, including admin.",
         "description_zh": null,
         "priority": "WATCH",
         "risk_score": 28,
@@ -282,26 +944,26 @@
           "source": null,
           "ssvc": null
         },
-        "published_time": "2026-10-24T12:16:57.607",
-        "updated_time": "2026-10-24T12:16:57.607",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116014",
+        "published_time": "2026-10-25T14:17:00.593",
+        "updated_time": "2026-10-25T14:17:00.593",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116199",
         "source_type": [
           "nvd"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-116014",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-116199",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-115995",
+      "cve": "CVE-2026-116163",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-24T23:16:58.323"
+          "to": "2026-10-25T14:16:55.110"
         }
       ],
       "risk": {
@@ -319,12 +981,12 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-115995",
-        "vendor": "Unitree Robotics",
-        "product": "Unitree Go2",
+        "cve": "CVE-2026-116163",
+        "vendor": "parse-community",
+        "product": "parse-server",
         "title": null,
         "title_zh": null,
-        "description": "A security vulnerability has been detected in Unitree Robotics Unitree Go2 up to 1.1.11.4. The impacted element is the function set_volume of the file gpt_thread.py of the component chat_go. Such manipulation of the argument Value leads to os command injection. The attack can be launched remotely. Upgrading to version 1.1.11.5 is sufficient to resolve this issue. You should upgrade the affected component. The vendor confirmed early: \"Submission 990502 corresponds to our internal ticket #474 (Go2 chat_go set_volume OS command injection, CWE-78).\"",
+        "description": "Parse Server before 8.6.102 and 9.0.0 before 9.10.5-alpha.2 contains an authentication bypass because the validateSetUp, validateLogin, and validateUpdate methods of custom adapters subclassing AuthAdapter are never called, and an inherited default that accepts any authData is used instead. Attackers can supply arbitrary authData to sign up, link identities, log in as existing users, or skip custom additional authentication factors.",
         "description_zh": null,
         "priority": "WATCH",
         "risk_score": 28,
@@ -340,381 +1002,10 @@
         ],
         "cvss": {
           "version": "4.0",
-          "score": 9.4,
-          "severity": "CRITICAL",
-          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-          "source": "cna@vuldb.com",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-10-24T23:16:58.323",
-        "updated_time": "2026-10-24T23:16:58.323",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115995",
-        "source_type": [
-          "nvd"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-115995",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-115933",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-24T15:17:33.957"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-115933",
-        "vendor": "GitroomHQ",
-        "product": "postiz-app",
-        "title": null,
-        "title_zh": null,
-        "description": "Postiz signs its session, invitation and password reset tokens with one shared secret and without any marker of what a token is for. A route that refreshes the credentials of a browser-extension channel signed data taken from the request itself and stored the result where the requesting user can read it back. A user could therefore obtain a validly signed token containing any claims they choose, which the application accepts as a session, as an organization invitation with a chosen role, as a password reset or as an enterprise provisioning token.\n\nA second, narrower route that creates team invitations signs extra fields from the request body in the same way.",
-        "description_zh": null,
-        "priority": "WATCH",
-        "risk_score": 28,
-        "risk_reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ],
-        "cvss": {
-          "version": "3.1",
-          "score": 9.9,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-          "source": "4cdc9741-f887-419a-a2fd-acbbd2729276",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-10-24T15:17:33.957",
-        "updated_time": "2026-10-24T15:17:33.957",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115933",
-        "source_type": [
-          "nvd"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-115933",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-115932",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-24T13:16:37.217"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-115932",
-        "vendor": "GitroomHQ",
-        "product": "postiz-app",
-        "title": null,
-        "title_zh": null,
-        "description": "When a post is published, Postiz treats a media path that is not a web address as a file on the server's disk, but it does not check that the file lies inside the upload directory. A registered user can store a crafted media path with a post, get it past the checks that normally restrict it, and have the publishing worker read an arbitrary file and send it as an attachment to a Discord server the user controls.\n\nThe same unconfined reads can be reached through two further routes. One tells the caller whether a file exists and can exhaust the backend's memory, the other delivers the file the same way as the main route. Self-registration is open by default, so the attacker needs no existing account.",
-        "description_zh": null,
-        "priority": "WATCH",
-        "risk_score": 28,
-        "risk_reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ],
-        "cvss": {
-          "version": "3.1",
-          "score": 9.6,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
-          "source": "4cdc9741-f887-419a-a2fd-acbbd2729276",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-10-24T13:16:37.217",
-        "updated_time": "2026-10-24T13:16:37.217",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115932",
-        "source_type": [
-          "nvd"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-115932",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-115806",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-24T05:17:04.900"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-115806",
-        "vendor": "codexonics",
-        "product": "Prime Mover – Backup and Migration",
-        "title": null,
-        "title_zh": null,
-        "description": "The Prime Mover – Backup and Migration plugin for WordPress is vulnerable to PHP Object Injection in all versions up to, and including, 2.2.1 via deserialization of untrusted input in the migration search-and-replace routine (recursiveUnserializeReplace()). An unauthenticated attacker can store a crafted, base64-encoded serialized object in wp_comments.comment_content through the standard comment-submission endpoint (wp-comments-post.php). When an administrator subsequently performs a routine Prime Mover export or restore, the plugin base64-decodes that stored value and passes it to unserialize() with no allowed_classes restriction. A Property-Oriented Programming (POP) chain is present in the plugin's own bundled Freemius library (FS_Clone_Manager::__set → FS_Option_Manager::set_option → store() → update_option()), so no additional plugin or theme is required — the plugin ships the gadget itself.",
-        "description_zh": null,
-        "priority": "WATCH",
-        "risk_score": 28,
-        "risk_reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ],
-        "cvss": {
-          "version": "3.1",
-          "score": 9.8,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "security@wordfence.com",
-          "type": "Primary"
-        },
-        "epss": 0.00819,
-        "epss_percentile": 0.56855,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-10-24T05:17:04.900",
-        "updated_time": "2026-10-24T05:17:04.900",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115806",
-        "source_type": [
-          "nvd",
-          "first_epss"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-115806",
-          "cisa_kev": null,
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-115806"
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-115557",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-24T15:17:33.600"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-115557",
-        "vendor": "Python Software Foundation",
-        "product": "CPython",
-        "title": null,
-        "title_zh": null,
-        "description": "Python has added a denylist for known compromised certificates to the \"ssl\" module to ensure user safety even without certificate revocation configured. Known compromised certificates will automatically be rejected regardless of the SSLContext policy configuration.",
-        "description_zh": null,
-        "priority": "WATCH",
-        "risk_score": 28,
-        "risk_reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ],
-        "cvss": {
-          "version": "4.0",
-          "score": 9.4,
-          "severity": "CRITICAL",
-          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-          "source": "cna@python.org",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-10-24T15:17:33.600",
-        "updated_time": "2026-10-25T01:16:49.377",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115557",
-        "source_type": [
-          "nvd"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-115557",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-114820",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-24T19:17:04.413"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-114820",
-        "vendor": "Oracle Corporation",
-        "product": "Oracle Java SE",
-        "title": null,
-        "title_zh": null,
-        "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: JSSE).  Supported versions that are affected are Oracle Java SE: 8u511-b32, 8u511-perf-b32, 11.0.33.0.2, 17.0.21.0.2, 21.0.13.0.2, 25.0.5.0.2, 27.0.1.0.2; Oracle GraalVM for JDK: 17.0.21.0.2 and  21.0.13.0.2; Oracle GraalVM Enterprise Edition: 21.3.20.0.2. Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data as well as  unauthorized access to critical data or complete access to all Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data. Note: This vulnerability can be exploited by using APIs in the specified Component, e.g., through a web service which supplies data to the APIs. This vulnerability also applies to Java deployments, typically in clients running sandboxed Java Web Start applications or sandboxed Java applets, that load and run untrusted code (e.g., code that comes from the internet) and rely on the Java sandbox for security. CVSS 3.1 Base Score 9.1 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).",
-        "description_zh": null,
-        "priority": "WATCH",
-        "risk_score": 28,
-        "risk_reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ],
-        "cvss": {
-          "version": "3.1",
           "score": 9.1,
           "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-          "source": "secalert_us@oracle.com",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
           "type": "Secondary"
         },
         "epss": null,
@@ -723,196 +1014,185 @@
           "listed": false
         },
         "exploitation_status": {
-          "status": "none",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "none",
-            "automatable": "yes",
-            "technical_impact": "total",
-            "timestamp": "2026-10-24T00:00:00+00:00",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
         },
-        "published_time": "2026-10-24T19:17:04.413",
-        "updated_time": "2026-10-25T04:17:07.843",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114820",
+        "published_time": "2026-10-25T14:16:55.110",
+        "updated_time": "2026-10-25T14:16:55.110",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116163",
         "source_type": [
           "nvd"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-114820",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-116163",
           "cisa_kev": null,
           "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-114196",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-24T08:16:51.963"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-114196",
-        "vendor": "paytiumsupport",
-        "product": "Paytium",
-        "title": null,
-        "title_zh": null,
-        "description": "Deserialization of Untrusted Data vulnerability in paytiumsupport Paytium paytium allows Object Injection.This issue affects Paytium: from n/a through 5.0.5.",
-        "description_zh": null,
-        "priority": "WATCH",
-        "risk_score": 28,
-        "risk_reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ],
-        "cvss": {
-          "version": "3.1",
-          "score": 9.8,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "audit@patchstack.com",
-          "type": "Secondary"
-        },
-        "epss": 0.00564,
-        "epss_percentile": 0.46167,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "none",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "none",
-            "automatable": "yes",
-            "technical_impact": "total",
-            "timestamp": "2026-10-24T14:41:04.924441Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2026-10-24T08:16:51.963",
-        "updated_time": "2026-10-24T15:17:25.897",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114196",
-        "source_type": [
-          "nvd",
-          "first_epss"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-114196",
-          "cisa_kev": null,
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-114196"
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-112866",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-24T08:16:51.303"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-112866",
-        "vendor": "WPFactory",
-        "product": "Product Filter by WBW",
-        "title": null,
-        "title_zh": null,
-        "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in WPFactory Product Filter by WBW woo-product-filter allows Blind SQL Injection.This issue affects Product Filter by WBW: from n/a through 3.4.6.",
-        "description_zh": null,
-        "priority": "WATCH",
-        "risk_score": 28,
-        "risk_reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ],
-        "cvss": {
-          "version": "3.1",
-          "score": 9.3,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:L",
-          "source": "audit@patchstack.com",
-          "type": "Secondary"
-        },
-        "epss": 0.004,
-        "epss_percentile": 0.33157,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "none",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "none",
-            "automatable": "yes",
-            "technical_impact": "partial",
-            "timestamp": "2026-10-24T14:41:21.723387Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2026-10-24T08:16:51.303",
-        "updated_time": "2026-10-24T15:17:11.433",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112866",
-        "source_type": [
-          "nvd",
-          "first_epss"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-112866",
-          "cisa_kev": null,
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-112866"
         }
       }
     }
   ],
   "priority_cves": [
+    {
+      "cve": "CVE-2025-53690",
+      "vendor": "Sitecore",
+      "product": "Multiple Products",
+      "title": "Sitecore Multiple Products Deserialization of Untrusted Data Vulnerability",
+      "title_zh": null,
+      "description": "Sitecore Experience Manager (XM), Experience Platform (XP), Experience Commerce (XC), and Managed Cloud contain a deserialization of untrusted data vulnerability involving the use of default machine keys. This flaw allows attackers to exploit exposed ASP.NET machine keys to achieve remote code execution. ",
+      "description_zh": null,
+      "priority": "P1",
+      "risk_score": 100,
+      "risk_reasons": [
+        {
+          "code": "CISA_KEV",
+          "points": 45
+        },
+        {
+          "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
+          "points": 25
+        },
+        {
+          "code": "CVSS_CRITICAL",
+          "points": 20
+        },
+        {
+          "code": "EPSS_VERY_HIGH",
+          "points": 20
+        },
+        {
+          "code": "EPSS_TOP_5_PERCENT",
+          "points": 5
+        }
+      ],
+      "cvss": {
+        "version": "3.1",
+        "score": 9.0,
+        "severity": "CRITICAL",
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+        "source": "9947ef80-c5d5-474a-bbab-97341a59000e",
+        "type": "Secondary"
+      },
+      "epss": 0.60601,
+      "epss_percentile": 0.99139,
+      "cisa_kev": {
+        "listed": true,
+        "date_added": "2025-09-04",
+        "due_date": "2025-09-25",
+        "required_action": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "known_ransomware_campaign_use": "Unknown",
+        "notes": "https://support.sitecore.com/kb?id=kb_article_view&sysparm_article=KB1003865 ; https://nvd.nist.gov/vuln/detail/CVE-2025-53690",
+        "cwes": [
+          "CWE-502"
+        ]
+      },
+      "exploitation_status": {
+        "status": "known_exploited",
+        "source": "cisa_kev",
+        "ssvc": {
+          "exploitation": "active",
+          "automatable": "no",
+          "technical_impact": "total",
+          "timestamp": "2025-09-05T03:55:32.553435Z",
+          "role": "CISA Coordinator",
+          "version": "2.0.3"
+        }
+      },
+      "published_time": "2025-09-03T20:15:33.473",
+      "updated_time": "2026-10-18T21:10:00.120",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-53690",
+      "source_type": [
+        "nvd",
+        "cisa_kev",
+        "first_epss"
+      ],
+      "provenance": {
+        "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2025-53690",
+        "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+        "epss": "https://api.first.org/data/v1/epss?cve=CVE-2025-53690"
+      }
+    },
+    {
+      "cve": "CVE-2025-55182",
+      "vendor": "Meta",
+      "product": "React Server Components",
+      "title": "Meta React Server Components Remote Code Execution Vulnerability",
+      "title_zh": null,
+      "description": "Meta React Server Components contains a remote code execution vulnerability that could allow unauthenticated remote code execution by exploiting a flaw in how React decodes payloads sent to React Server Function endpoints. Please note CVE-2025-66478 has been rejected, but it is associated with CVE-2025- 55182.",
+      "description_zh": null,
+      "priority": "P1",
+      "risk_score": 100,
+      "risk_reasons": [
+        {
+          "code": "CISA_KEV",
+          "points": 45
+        },
+        {
+          "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
+          "points": 25
+        },
+        {
+          "code": "KNOWN_RANSOMWARE_USE",
+          "points": 20
+        },
+        {
+          "code": "CVSS_CRITICAL",
+          "points": 20
+        },
+        {
+          "code": "EPSS_VERY_HIGH",
+          "points": 20
+        },
+        {
+          "code": "EPSS_TOP_5_PERCENT",
+          "points": 5
+        }
+      ],
+      "cvss": {
+        "version": "3.1",
+        "score": 10.0,
+        "severity": "CRITICAL",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+        "source": "cve-assign@fb.com",
+        "type": "Secondary"
+      },
+      "epss": 0.99802,
+      "epss_percentile": 0.99957,
+      "cisa_kev": {
+        "listed": true,
+        "date_added": "2025-12-05",
+        "due_date": "2025-12-12",
+        "required_action": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "known_ransomware_campaign_use": "Known",
+        "notes": "Check for signs of potential compromise on all internet accessible REACT instances after applying mitigations. For more information, please see: https://react.dev/blog/2025/12/03/critical-security-vulnerability-in-react-server-components ; https://github.com/vercel-labs/fix-react2shell-next?tab=readme-ov-file ; https://nvd.nist.gov/vuln/detail/CVE-2025-55182",
+        "cwes": []
+      },
+      "exploitation_status": {
+        "status": "known_exploited",
+        "source": "cisa_kev",
+        "ssvc": {
+          "exploitation": "active",
+          "automatable": "yes",
+          "technical_impact": "total",
+          "timestamp": "2026-08-04T03:56:02.696515Z",
+          "role": "CISA Coordinator",
+          "version": "2.0.3"
+        }
+      },
+      "published_time": "2025-12-03T16:15:56.463",
+      "updated_time": "2026-10-18T17:10:00.110",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-55182",
+      "source_type": [
+        "nvd",
+        "cisa_kev",
+        "first_epss"
+      ],
+      "provenance": {
+        "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2025-55182",
+        "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+        "epss": "https://api.first.org/data/v1/epss?cve=CVE-2025-55182"
+      }
+    },
     {
       "cve": "CVE-2025-60710",
       "vendor": "Microsoft",
@@ -950,7 +1230,7 @@
         "type": "Secondary"
       },
       "epss": 0.04614,
-      "epss_percentile": 0.91663,
+      "epss_percentile": 0.9162,
       "cisa_kev": {
         "listed": true,
         "date_added": "2026-04-13",
@@ -1029,7 +1309,7 @@
         "type": "Secondary"
       },
       "epss": 0.62459,
-      "epss_percentile": 0.9919,
+      "epss_percentile": 0.9918,
       "cisa_kev": {
         "listed": true,
         "date_added": "2026-08-17",
@@ -1108,8 +1388,8 @@
         "source": "psirt@fortinet.com",
         "type": "Secondary"
       },
-      "epss": 0.91965,
-      "epss_percentile": 0.99822,
+      "epss": 0.91078,
+      "epss_percentile": 0.99806,
       "cisa_kev": {
         "listed": true,
         "date_added": "2025-11-14",
@@ -1188,7 +1468,7 @@
         "type": "Primary"
       },
       "epss": 0.98994,
-      "epss_percentile": 0.99931,
+      "epss_percentile": 0.99929,
       "cisa_kev": {
         "listed": true,
         "date_added": "2026-03-11",
@@ -1267,7 +1547,7 @@
         "type": "Secondary"
       },
       "epss": 0.37731,
-      "epss_percentile": 0.98544,
+      "epss_percentile": 0.98532,
       "cisa_kev": {
         "listed": true,
         "date_added": "2025-09-03",
@@ -1303,6 +1583,89 @@
         "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2025-9377",
         "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
         "epss": "https://api.first.org/data/v1/epss?cve=CVE-2025-9377"
+      }
+    },
+    {
+      "cve": "CVE-2026-105133",
+      "vendor": "Ahsay",
+      "product": "AhsayCBS",
+      "title": "Ahsay AhsayCBS Improper Authentication Vulnerability",
+      "title_zh": null,
+      "description": "Ahsay AhsayCBS contains an improper authentication vulnerability that could allow a remote attacker to bypass authentication via manipulation of the random parameter in the API component’s checkSysPwd function. This vulnerability can be chained with CVE-2026-105134.",
+      "description_zh": null,
+      "priority": "P1",
+      "risk_score": 100,
+      "risk_reasons": [
+        {
+          "code": "CISA_KEV",
+          "points": 45
+        },
+        {
+          "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
+          "points": 25
+        },
+        {
+          "code": "CVSS_MEDIUM",
+          "points": 4
+        },
+        {
+          "code": "EPSS_VERY_HIGH",
+          "points": 20
+        },
+        {
+          "code": "EPSS_TOP_5_PERCENT",
+          "points": 5
+        },
+        {
+          "code": "DELTA_EPSS_JUMP",
+          "points": 15
+        }
+      ],
+      "cvss": {
+        "version": "4.0",
+        "score": 5.5,
+        "severity": "MEDIUM",
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+        "source": "cna@vuldb.com",
+        "type": "Secondary"
+      },
+      "epss": 0.79236,
+      "epss_percentile": 0.99595,
+      "cisa_kev": {
+        "listed": true,
+        "date_added": "2026-10-14",
+        "due_date": "2026-10-17",
+        "required_action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+        "known_ransomware_campaign_use": "Unknown",
+        "notes": "https://www.ahsay.com/en/company/announcements/patch-cve-105133-105134-update ; ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https://nvd.nist.gov/vuln/detail/CVE-2026-105133",
+        "cwes": [
+          "CWE-287"
+        ]
+      },
+      "exploitation_status": {
+        "status": "known_exploited",
+        "source": "cisa_kev",
+        "ssvc": {
+          "exploitation": "active",
+          "automatable": "yes",
+          "technical_impact": "partial",
+          "timestamp": "2026-10-14T00:00:00+00:00",
+          "role": "CISA Coordinator",
+          "version": "2.0.3"
+        }
+      },
+      "published_time": "2026-10-04T07:16:33.087",
+      "updated_time": "2026-10-15T13:47:06.283",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105133",
+      "source_type": [
+        "nvd",
+        "cisa_kev",
+        "first_epss"
+      ],
+      "provenance": {
+        "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-105133",
+        "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+        "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-105133"
       }
     },
     {
@@ -1346,7 +1709,7 @@
         "type": "Secondary"
       },
       "epss": 0.06795,
-      "epss_percentile": 0.93996,
+      "epss_percentile": 0.93953,
       "cisa_kev": {
         "listed": true,
         "date_added": "2026-07-14",
@@ -1429,7 +1792,7 @@
         "type": "Secondary"
       },
       "epss": 0.11791,
-      "epss_percentile": 0.96086,
+      "epss_percentile": 0.9605,
       "cisa_kev": {
         "listed": true,
         "date_added": "2026-07-14",
@@ -1466,247 +1829,6 @@
         "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
         "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-15410"
       }
-    },
-    {
-      "cve": "CVE-2026-16232",
-      "vendor": "Check Point",
-      "product": "SmartConsole",
-      "title": "Check Point SmartConsole Improper Authentication Vulnerability",
-      "title_zh": null,
-      "description": "Check Point SmartConsole contains an improper authentication vulnerability which could allow an unauthenticated remote attacker to obtain an application login token and use it to authenticate with full administrative privileges.",
-      "description_zh": null,
-      "priority": "P1",
-      "risk_score": 100,
-      "risk_reasons": [
-        {
-          "code": "CISA_KEV",
-          "points": 45
-        },
-        {
-          "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
-          "points": 25
-        },
-        {
-          "code": "CVSS_CRITICAL",
-          "points": 20
-        },
-        {
-          "code": "EPSS_VERY_HIGH",
-          "points": 20
-        },
-        {
-          "code": "EPSS_TOP_5_PERCENT",
-          "points": 5
-        }
-      ],
-      "cvss": {
-        "version": "4.0",
-        "score": 9.3,
-        "severity": "CRITICAL",
-        "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-        "source": "cve@checkpoint.com",
-        "type": "Secondary"
-      },
-      "epss": 0.77972,
-      "epss_percentile": 0.99576,
-      "cisa_kev": {
-        "listed": true,
-        "date_added": "2026-07-22",
-        "due_date": "2026-07-25",
-        "required_action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
-        "known_ransomware_campaign_use": "Unknown",
-        "notes": "https://support.checkpoint.com/results/sk/sk185169/ ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https://nvd.nist.gov/vuln/detail/CVE-2026-16232",
-        "cwes": [
-          "CWE-287"
-        ]
-      },
-      "exploitation_status": {
-        "status": "known_exploited",
-        "source": "cisa_kev",
-        "ssvc": {
-          "exploitation": "active",
-          "automatable": "yes",
-          "technical_impact": "total",
-          "timestamp": "2026-07-23T03:55:51.690584Z",
-          "role": "CISA Coordinator",
-          "version": "2.0.3"
-        }
-      },
-      "published_time": "2026-07-22T14:17:15.513",
-      "updated_time": "2026-10-24T13:10:00.147",
-      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16232",
-      "source_type": [
-        "nvd",
-        "cisa_kev",
-        "first_epss"
-      ],
-      "provenance": {
-        "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-16232",
-        "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-        "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-16232"
-      }
-    },
-    {
-      "cve": "CVE-2026-20230",
-      "vendor": "Cisco",
-      "product": "Unified Communications Manager",
-      "title": "Cisco Unified Communications Manager Server-Side Request Forgery (SSRF) Vulnerability",
-      "title_zh": null,
-      "description": "Cisco Unified Communications Manager (Unified CM) and Cisco Unified Communications Manager Session Management Edition (Unified CM SME) contain a server-side request forgery (SSRF) Vulnerability that could allow an unauthenticated, remote attacker to write files to the underlying operating system that could be used later to elevate to root.",
-      "description_zh": null,
-      "priority": "P1",
-      "risk_score": 100,
-      "risk_reasons": [
-        {
-          "code": "CISA_KEV",
-          "points": 45
-        },
-        {
-          "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
-          "points": 25
-        },
-        {
-          "code": "CVSS_HIGH",
-          "points": 12
-        },
-        {
-          "code": "EPSS_VERY_HIGH",
-          "points": 20
-        },
-        {
-          "code": "EPSS_TOP_5_PERCENT",
-          "points": 5
-        }
-      ],
-      "cvss": {
-        "version": "3.1",
-        "score": 8.6,
-        "severity": "HIGH",
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:N",
-        "source": "psirt@cisco.com",
-        "type": "Secondary"
-      },
-      "epss": 0.882,
-      "epss_percentile": 0.99771,
-      "cisa_kev": {
-        "listed": true,
-        "date_added": "2026-06-25",
-        "due_date": "2026-06-28",
-        "required_action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
-        "known_ransomware_campaign_use": "Unknown",
-        "notes": "https://www.cisco.com/c/en/us/support/docs/csa/cisco-sa-cucm-ssrf-cXPnHcW.html ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https://nvd.nist.gov/vuln/detail/CVE-2026-20230",
-        "cwes": [
-          "CWE-918"
-        ]
-      },
-      "exploitation_status": {
-        "status": "known_exploited",
-        "source": "cisa_kev",
-        "ssvc": {
-          "exploitation": "active",
-          "automatable": "no",
-          "technical_impact": "total",
-          "timestamp": "2026-06-26T03:55:20.543122Z",
-          "role": "CISA Coordinator",
-          "version": "2.0.3"
-        }
-      },
-      "published_time": "2026-06-03T18:16:20.160",
-      "updated_time": "2026-10-07T19:17:37.003",
-      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-20230",
-      "source_type": [
-        "nvd",
-        "cisa_kev",
-        "first_epss"
-      ],
-      "provenance": {
-        "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-20230",
-        "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-        "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-20230"
-      }
-    },
-    {
-      "cve": "CVE-2026-20316",
-      "vendor": "Cisco",
-      "product": "Secure Firewall Management Center (FMC)",
-      "title": "Cisco Secure Firewall Management Center Use of Hard-coded Password Vulnerability",
-      "title_zh": null,
-      "description": "Cisco Secure Firewall Management Center (FMC) formerly known as Firepower Management Center contains a use of hard-coded password vulnerability that could allow an unauthenticated, remote attacker to log in to an affected device using a low-privileged account to access sensitive data within the impacted systems.",
-      "description_zh": null,
-      "priority": "P1",
-      "risk_score": 100,
-      "risk_reasons": [
-        {
-          "code": "CISA_KEV",
-          "points": 45
-        },
-        {
-          "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
-          "points": 25
-        },
-        {
-          "code": "KNOWN_RANSOMWARE_USE",
-          "points": 20
-        },
-        {
-          "code": "CVSS_MEDIUM",
-          "points": 4
-        },
-        {
-          "code": "EPSS_HIGH",
-          "points": 14
-        },
-        {
-          "code": "EPSS_TOP_5_PERCENT",
-          "points": 5
-        }
-      ],
-      "cvss": {
-        "version": "3.1",
-        "score": 5.3,
-        "severity": "MEDIUM",
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
-        "source": "psirt@cisco.com",
-        "type": "Secondary"
-      },
-      "epss": 0.35096,
-      "epss_percentile": 0.98442,
-      "cisa_kev": {
-        "listed": true,
-        "date_added": "2026-07-29",
-        "due_date": "2026-08-01",
-        "required_action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
-        "known_ransomware_campaign_use": "Known",
-        "notes": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-fmc-static-cred-BET3Cjh ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https://nvd.nist.gov/vuln/detail/CVE-2026-20316",
-        "cwes": [
-          "CWE-259"
-        ]
-      },
-      "exploitation_status": {
-        "status": "known_exploited",
-        "source": "cisa_kev",
-        "ssvc": {
-          "exploitation": "active",
-          "automatable": "yes",
-          "technical_impact": "partial",
-          "timestamp": "2026-07-29T00:00:00+00:00",
-          "role": "CISA Coordinator",
-          "version": "2.0.3"
-        }
-      },
-      "published_time": "2026-07-29T17:16:51.840",
-      "updated_time": "2026-10-24T13:10:00.147",
-      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-20316",
-      "source_type": [
-        "nvd",
-        "cisa_kev",
-        "first_epss"
-      ],
-      "provenance": {
-        "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-20316",
-        "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-        "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-20316"
-      }
     }
   ],
   "source_health": {
@@ -1738,15 +1860,13 @@
       "language": "zh-Hant-TW",
       "status": "translated",
       "provider": "gemini",
-      "model": "gemini-3.6-flash",
-      "models_used": [
-        "gemini-3.6-flash"
-      ],
+      "model": null,
+      "models_used": [],
       "translated_items": 20,
-      "cached_items": 15,
+      "cached_items": 20,
       "pending_items": 0,
       "total_items": 20,
-      "attempted_items": 5,
+      "attempted_items": 0,
       "batch_size": 5,
       "rejected_item_ids": [],
       "fallback_reason": null,
@@ -1754,13 +1874,11 @@
     },
     "cve_translation": {
       "provider": "gemini",
-      "model": "gemini-3.6-flash",
-      "models_used": [
-        "gemini-3.6-flash"
-      ],
-      "cached_items": 0,
-      "attempted_items": 1,
-      "newly_translated_items": 1,
+      "model": null,
+      "models_used": [],
+      "cached_items": 1,
+      "attempted_items": 0,
+      "newly_translated_items": 0,
       "translated_items": 1,
       "pending_items": 0,
       "batch_size": 5,
@@ -1782,23 +1900,23 @@
   "inputs": {
     "events": {
       "path": "data/events.json",
-      "sha256": "e89cc3d71ac9c7c85e35d6147a011d5c6ceb693d921c12a31fe56e47cb87297a",
-      "generated_at": "2026-10-25T05:34:31.564692+00:00"
+      "sha256": "eb26d79403a1ddfca7e1b679b7f25587a5aa4b0602ffa6ef3651bf3a72660728",
+      "generated_at": "2026-10-26T05:41:37.195146+00:00"
     },
     "intelligence": {
       "path": "data/intelligence.json",
-      "sha256": "c18703ac9a432e4b8bbacddc8644ae473c99c4e3ff302f0c0ee111a759590189",
-      "generated_at": "2026-10-25T05:31:38.364189+00:00"
+      "sha256": "7ca71dd45049748cef5e1a1d127d8238fb738642c3b0a68b543990b3e0040127",
+      "generated_at": "2026-10-26T05:37:14.235919+00:00"
     },
     "delta": {
       "path": "data/delta.json",
-      "sha256": "4151c0ad2e4d2bd92c2be68d8e4a9c4a0a6f9b57922bcde72d0c3fa05ba6b8c5",
-      "generated_at": "2026-10-25T05:31:38.364189+00:00"
+      "sha256": "4326e08774295e61f9a85a907dfb06f3b48e2782dae40b84a2f4d3b646f2d0be",
+      "generated_at": "2026-10-26T05:37:14.235919+00:00"
     },
     "cve_zh": {
       "path": "data/cve_enrichment_zh.json",
-      "sha256": "dc10376025205b0282de5451e14a8b9c7003bef5f38db4aee39d4ebd1c209b36",
-      "generated_at": "2026-10-25T05:35:10.634530+00:00"
+      "sha256": "8223cdce4657dd78f4a7f88717a476c79928b222d797839e0b5107f366d8116b",
+      "generated_at": "2026-10-26T05:41:37.271015+00:00"
     }
   }
 }
