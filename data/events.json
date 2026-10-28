@@ -1,11 +1,11 @@
 {
   "schema_version": "1.1-security-events",
-  "generated_at": "2026-10-27T05:53:58.852487+00:00",
+  "generated_at": "2026-10-28T06:34:39.737704+00:00",
   "selection": {
     "window_days": 7,
     "max_items": 20,
     "rule": "Homepage events come from current RSS/advisory sources. CVEs are shown only when the source article/advisory mentions them.",
-    "tracked_cve_count": 34
+    "tracked_cve_count": 61
   },
   "sources": [
     {
@@ -32,36 +32,138 @@
   "summary": {
     "fetched_entries": 65,
     "included_items": 20,
-    "linked_cve_items": 19,
-    "matched_intelligence_items": 3,
+    "linked_cve_items": 17,
+    "matched_intelligence_items": 2,
     "successful_sources": 4,
     "source_errors": [],
-    "preserved_translations": 15
+    "preserved_translations": 11
   },
   "items": [
     {
-      "id": "7c54e769948b6fc7",
+      "id": "f7763a757c0c37e7",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "published_at": "2026-10-26T09:19:57+00:00",
-      "title": "PHP2Shell security flaws now sucessfully exploited in the wild",
-      "summary": "Two critical RCE vulnerabilities (CVE-2026-109618 and CVE-2026-109619), collectively tracked as PHP2Shell, have been successfully exploited in the wild. [...]",
+      "published_at": "2026-10-27T12:00:00+00:00",
+      "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
+      "summary": "CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-48356 Adobe Commerce and Magento Unrestricted Upload of File with Dangerous Type Vulnerability CVE-2026-111497 Google Brotli Unchecked Return Value Vulnerability These types of vulnerabilities are a frequent atta...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/10/27/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+      "related_cves": [
+        "CVE-2026-111497",
+        "CVE-2026-48356"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-111497",
+        "CVE-2026-48356"
+      ],
+      "score": 116,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "ebe6130a3b49d0f8",
+      "event_type": "RANSOMWARE",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-27T23:35:51+00:00",
+      "title": "Japan's GMO urges customers to shut down PCs amid ransomware threat",
+      "summary": "The GMO Group has urged customers to disconnect their systems from the internet and shut down computers after a threat actor who breached the company's Onamae Desktop Cloud threatened to launch a ransomware attack today. [...]",
       "source_name": "BleepingComputer",
       "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/php2shell-security-flaws-now-sucessfully-exploited-in-the-wild/",
+      "source_url": "https://www.bleepingcomputer.com/news/security/japans-gmo-urges-customers-to-shut-down-pcs-amid-ransomware-threat/",
+      "related_cves": [],
+      "matched_intelligence_cves": [],
+      "score": 112,
+      "cve_evidence": null
+    },
+    {
+      "id": "7858f058b71eba12",
+      "event_type": "RANSOMWARE",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-27T22:07:34+00:00",
+      "title": "UNM Health ransomware attack disrupts patient care, surgeries",
+      "summary": "The University of New Mexico Health Sciences Center disclosed a cyberattack that caused system outages and disrupted patient care and academic activities. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/unm-health-ransomware-attack-disrupts-patient-care-surgeries/",
+      "related_cves": [],
+      "matched_intelligence_cves": [],
+      "score": 112,
+      "cve_evidence": null
+    },
+    {
+      "id": "799d8e6e8cdc9dbf",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-27T11:49:57+00:00",
+      "title": "iOS, macOS 27.2 Patch 286 Bugs; Fix for Exploited Flaw Backported to iOS 18",
+      "summary": "Apple patched 286 vulnerabilities in iOS and macOS 27.2 and brought the fix for an exploited CoreGraphics zero-day to older iPhones. The post iOS, macOS 27.2 Patch 286 Bugs; Fix for Exploited Flaw Backported to iOS 18 appeared first on SecurityWeek .",
+      "source_name": "SecurityWeek",
+      "source_type": "security_media",
+      "source_url": "https://www.securityweek.com/ios-macos-27-2-patch-286-bugs-fix-for-exploited-flaw-backported-to-ios-18/",
+      "related_cves": [
+        "CVE-2026-86950"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 106,
+      "cve_evidence": "source_article"
+    },
+    {
+      "id": "a40721cff07a0d8d",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-27T10:36:12+00:00",
+      "title": "Apple backports CoreGraphics zero-day patches to older iPhones",
+      "summary": "​Apple has backported security patches released last month to older iPhones and iPads, addressing a zero-day bug exploited in \"extremely sophisticated\" targeted attacks on iOS devices. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/apple/apple-backports-coregraphics-zero-day-patches-to-older-iphones/",
+      "related_cves": [
+        "CVE-2025-20701",
+        "CVE-2026-20700",
+        "CVE-2026-86950"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 106,
+      "cve_evidence": "source_article"
+    },
+    {
+      "id": "f1be3aca2b936249",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-27T10:02:24+00:00",
+      "title": "This is Fine: What NetScaler Zero-Days Tell Us About the New Normal",
+      "summary": "Keep your patch management pipelines primed in case another round of Citrix NetScaler patches get released soon. The post This is Fine: What NetScaler Zero-Days Tell Us About the New Normal appeared first on SecurityWeek .",
+      "source_name": "SecurityWeek",
+      "source_type": "security_media",
+      "source_url": "https://www.securityweek.com/this-is-fine-what-netscaler-zero-days-tell-us-about-the-new-normal/",
+      "related_cves": [
+        "CVE-2026-88771",
+        "CVE-2026-88778",
+        "CVE-2026-88779",
+        "CVE-2026-88787"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 106,
+      "cve_evidence": "source_article"
+    },
+    {
+      "id": "c79b9055e5fe5a0b",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-27T08:20:54+00:00",
+      "title": "CISA confirms PHP2Shell vulnerabilities now exploited in attacks",
+      "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has added the PHP2Shell vulnerabilities to its catalog of actively exploited security flaws and ordered federal agencies to patch their systems by Thursday. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/cisa-confirms-php2shell-vulnerabilities-now-exploited-in-attacks/",
       "related_cves": [
         "CVE-2026-109618",
         "CVE-2026-109619",
         "CVE-2026-115560"
       ],
-      "matched_intelligence_cves": [
-        "CVE-2026-109618",
-        "CVE-2026-109619"
-      ],
-      "score": 116,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "PHP2Shell 安全漏洞現已在野外被成功利用",
-      "summary_zh": "兩個被統稱為 PHP2Shell 的嚴重遠端程式碼執行（RCE）漏洞（CVE-2026-109618 與 CVE-2026-109619），現已在野外被成功利用。[...]"
+      "matched_intelligence_cves": [],
+      "score": 106,
+      "cve_evidence": "source_article"
     },
     {
       "id": "7e756198cefb40cc",
@@ -75,7 +177,7 @@
       "source_url": "https://www.cisa.gov/news-events/news/cisa-fbi-and-partners-warn-organizations-safepay-ransomware-actors-targeting-multiple-critical",
       "related_cves": [],
       "matched_intelligence_cves": [],
-      "score": 101,
+      "score": 100,
       "cve_evidence": null,
       "title_zh": "CISA、FBI 及其合作夥伴警告各機構注意針對多個關鍵基礎設施領域的 SafePay 勒索軟體威脅者",
       "summary_zh": ""
@@ -94,7 +196,7 @@
         "CVE-2026-110447"
       ],
       "matched_intelligence_cves": [],
-      "score": 100,
+      "score": 98,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 將一項已遭利用的已知漏洞納入目錄",
       "summary_zh": "CISA 根據主動利用的證據，在其已遭利用的已知漏洞（KEV）目錄中新增了一項新漏洞。CVE-2026-110447 Collabora Online – 內建 CODE 伺服器作業系統命令注入漏洞。此類漏洞是惡意網路威脅者常用的攻擊管道，對聯邦企業構成重大風險..."
@@ -113,33 +215,10 @@
         "CVE-2026-114625"
       ],
       "matched_intelligence_cves": [],
-      "score": 100,
+      "score": 98,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 將一項已遭利用的已知漏洞納入目錄",
       "summary_zh": "CISA 根據主動利用的證據，在其已遭利用的已知漏洞（KEV）目錄中新增了一項新漏洞。CVE-2026-114625 Arista VeloCloud Orchestrator SQL 注入漏洞。此類漏洞是惡意網路威脅者常用的攻擊管道，對聯邦企業構成重大風險。綁定指令..."
-    },
-    {
-      "id": "552cbee8ac3d9b61",
-      "event_type": "RANSOMWARE",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-20T12:00:00+00:00",
-      "title": "#StopRansomware: SafePay Ransomware",
-      "summary": "Advisory at a Glance Title #StopRansomware: SafePay Ransomware Original Publication October 20, 2026 Executive Summary This advisory details recent activity by the SafePay ransomware group. SafePay actors have been highly active since August 2024, targeting businesses and critical infrastructure across North America, South America, Europe, and Australia....",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-293a",
-      "related_cves": [
-        "CVE-2020-3259",
-        "CVE-2023-20269",
-        "CVE-2023-27532",
-        "CVE-2024-40711",
-        "CVE-2024-40766"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 100,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "#StopRansomware：SafePay 勒索軟體",
-      "summary_zh": "警訊速覽標題 #StopRansomware: SafePay Ransomware，原始發布日期 2026 年 10 月 20 日。重點摘要：本警訊詳細說明了 SafePay 勒索軟體群組最近的活動。SafePay 威脅者自 2024 年 8 月以來非常活躍，目標針對北美洲、南美洲、歐洲與澳洲的企業及關鍵基礎設施……"
     },
     {
       "id": "29dd574c6050a162",
@@ -155,10 +234,32 @@
         "CVE-2026-110936"
       ],
       "matched_intelligence_cves": [],
-      "score": 98,
+      "score": 96,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Siemens Software Center",
       "summary_zh": "檢視 CSAF 摘要。受影響的應用程式會從不受控制的搜尋路徑載入動態連結庫（DLL）。這可能允許經身份驗證的本機攻擊者將特製的 DLL 放置在應用程式搜尋的目錄中，從而以受影響應用程式的權限執行任意程式碼。Siemens 已發布新版本……"
+    },
+    {
+      "id": "b933b8867a0cffd5",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-27T12:00:00+00:00",
+      "title": "EPICS Base",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to cause a denial-of-service condition, corrupt memory, disclose sensitive information, or potentially execute arbitrary code. The following versions of EPICS Base are affected: EPICS Base release <=7.0.10 (CVE-2026-114595, CVE-2026-114596, CVE-2026-114597, CVE-2026...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-300-01",
+      "related_cves": [
+        "CVE-2026-114595",
+        "CVE-2026-114596",
+        "CVE-2026-114597",
+        "CVE-2026-114598"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-114595"
+      ],
+      "score": 91,
+      "cve_evidence": "source_title_or_summary"
     },
     {
       "id": "f6b4dc44bc2f931c",
@@ -174,99 +275,31 @@
         "CVE-2026-109618",
         "CVE-2026-109619"
       ],
-      "matched_intelligence_cves": [
-        "CVE-2026-109618",
-        "CVE-2026-109619"
-      ],
-      "score": 96,
+      "matched_intelligence_cves": [],
+      "score": 84,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 將兩個已知被利用的漏洞納入目錄",
       "summary_zh": "CISA 已將兩個新漏洞新增至其已知被利用漏洞（KEV）目錄中，並更新了《PHP 警報：PHP 中的嚴重漏洞需要立即修補》：CVE-2026-109618 – PHP 記憶體損壞漏洞、CVE-2026-109619 – PHP 過期內部請求狀態漏洞。這些類型的漏洞是常見的攻擊途徑..."
     },
     {
-      "id": "a4ea87f3b4cf50ba",
-      "event_type": "ACTIVE_EXPLOITATION",
+      "id": "c67cf62fcc6ed47b",
+      "event_type": "VULNERABILITY_NEWS",
       "priority": "CRITICAL",
-      "published_at": "2026-10-20T12:00:00+00:00",
-      "title": "CISA Adds Six Known Exploited Vulnerabilities to Catalog",
-      "summary": "CISA has added six new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-96652 Plex Media Server Server-Side Request Forgery (SSRF) Vulnerability CVE-2026-96654 Plex Media Server Improper Neutralization of Encoded URI Schemes in a Web Page Vulnerability CVE-2026-96655 Plex Media Serve...",
+      "published_at": "2026-10-27T12:00:00+00:00",
+      "title": "Mitsubishi Electric GENESIS, GENESIS64, ICONICS Suite, Hyper Historian, AnalytiX, MobileHMI, IoTWorX, MC Works64, GENESIS32 and BizViz",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to execute arbitrary code (CVE-2023-4863), bypass authentication (CVE-2026-16436 and CVE-2026-16437), or perform arbitrary operations (CVE-2026-16438), resulting in information disclosure, tampering with, destruction, or deletion of information, and a denial-of-serv...",
       "source_name": "CISA Advisories",
       "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/10/20/cisa-adds-six-known-exploited-vulnerabilities-catalog",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-300-02",
       "related_cves": [
-        "CVE-2026-106931",
-        "CVE-2026-110936",
-        "CVE-2026-96652",
-        "CVE-2026-96654",
-        "CVE-2026-96655",
-        "CVE-2026-96656"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 95,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "CISA 在目錄中新增六個已知已被利用的漏洞",
-      "summary_zh": "CISA 根據已遭積極利用的證據，在其已知已被利用漏洞（KEV）目錄中新增了六個新漏洞。CVE-2026-96652 Plex Media Server 伺服器端請求偽造（SSRF）漏洞；CVE-2026-96654 Plex Media Server 網頁中編碼 URI 方案不當中和漏洞；CVE-2026-96655 Plex Media Serve……"
-    },
-    {
-      "id": "f5846d497bb2f7fc",
-      "event_type": "VULNERABILITY_NEWS",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-26T16:27:57+00:00",
-      "title": "Critical 'HTTP2Shell' Brotli vulnerability triggers emergency patches",
-      "summary": "A critical flaw dubbed 'HTTP2Shell' in Brotli, the C decoder library built into Node.js, could allow attackers to corrupt memory and access sensitive data. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/critical-http2shell-brotli-vulnerability-triggers-emergency-patches/",
-      "related_cves": [
-        "CVE-2026-111497"
+        "CVE-2023-4863",
+        "CVE-2026-16436",
+        "CVE-2026-16437",
+        "CVE-2026-16438"
       ],
       "matched_intelligence_cves": [],
       "score": 81,
-      "cve_evidence": "source_article",
-      "title_zh": "嚴重的「HTTP2Shell」Brotli 漏洞引發緊急修補",
-      "summary_zh": "內建於 Node.js 中的 C 語言解碼器函式庫 Brotli 存在一個名為「HTTP2Shell」的嚴重漏洞，可能允許攻擊者損壞記憶體並存取敏感資料。[...]"
-    },
-    {
-      "id": "5d414f2c6746c7ce",
-      "event_type": "VULNERABILITY_NEWS",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-26T15:38:24+00:00",
-      "title": "Microsoft releases emergency .NET patches for critical Brotli flaw",
-      "summary": "Microsoft released emergency .NET security updates to patch a critical vulnerability known as Broccoli2Shell, also tracked as Node2Shell and HTTP2Shell. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-releases-emergency-net-patches-for-critical-brotli-flaw/",
-      "related_cves": [
-        "CVE-2026-111497"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 81,
-      "cve_evidence": "source_article",
-      "title_zh": "微軟針對嚴重的 Brotli 漏洞發布緊急 .NET 修補程式",
-      "summary_zh": "微軟發布了緊急 .NET 安全性更新，以修補名為 Broccoli2Shell 的嚴重漏洞，該漏洞也被追蹤為 Node2Shell 和 HTTP2Shell。[...]"
-    },
-    {
-      "id": "f778ef1a30ddc938",
-      "event_type": "VULNERABILITY_NEWS",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-21T12:00:00+00:00",
-      "title": "Critical Vulnerabilities in PHP Require Immediate Patching",
-      "summary": "Update October 26, 2026: CISA has updated this Alert to reflect the addition of CVE-2026-109618 and CVE-2026-109619 to its Known Exploited Vulnerabilities (KEV) Catalog on Oct. 26, 2026. Update October 23, 2026 : CISA has updated this Alert to: (1) provide a SIGMA detection rule to help identify potentially suspicious activity; (2) incorporate partner res...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/10/21/critical-vulnerabilities-php-require-immediate-patching",
-      "related_cves": [
-        "CVE-2026-109618",
-        "CVE-2026-109619"
-      ],
-      "matched_intelligence_cves": [
-        "CVE-2026-109618",
-        "CVE-2026-109619"
-      ],
-      "score": 81,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "PHP 中的嚴重漏洞需要立即修補",
-      "summary_zh": "2026 年 10 月 26 日更新：CISA 已更新此警報，以反映在 2026 年 10 月 26 日將 CVE-2026-109618 與 CVE-2026-109619 新增至其已知被利用漏洞（KEV）目錄中。2026 年 10 月 23 日更新：CISA 已更新此警報，以：（1）提供 SIGMA 偵測規則以協助識別潛在的可疑活動；（2）納入合作夥伴資源..."
+      "cve_evidence": "source_title_or_summary"
     },
     {
       "id": "c0863d2cd64d70e9",
@@ -282,7 +315,7 @@
         "CVE-2026-111594"
       ],
       "matched_intelligence_cves": [],
-      "score": 78,
+      "score": 76,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "InterSystems Corporation InterSystems IRIS for Health 漏洞",
       "summary_zh": "檢視 CSAF 摘要。成功利用此漏洞可能允許攻擊者檢視傳輸的資料，並使用該資料登入裝置。受影響的 InterSystems Corporation InterSystems IRIS for Health 版本包括：InterSystems IRIS for Health 2026.2.0.221、2026.1.0.235、2025.3.0.226 (CVE-2026-111594, CVE-2026-111594, CVE..."
@@ -309,54 +342,10 @@
         "CVE-2026-96616"
       ],
       "matched_intelligence_cves": [],
-      "score": 78,
+      "score": 76,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Kiloview E3 NDI 編碼器",
       "summary_zh": "檢視 CSAF 摘要。成功利用這些漏洞可能允許攻擊者完全控制該設備。以下版本的 Kiloview E3 NDI 編碼器受到影響：E3 韌體 <1.30（CVE-2026-109122、CVE-2026-111100、CVE-2026-96616、CVE-2026-105265、CVE-2026-110491、CVE-2026-107861、CVE-2026-110243、CVE-2026-92450、CVE-2026-110……）"
-    },
-    {
-      "id": "42e627a08717a3a1",
-      "event_type": "THREAT_ACTIVITY",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-20T12:00:00+00:00",
-      "title": "Moxa AIG-302 ThingsPro Edge",
-      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to obtain and disclose sensitive information. The following versions of Moxa AIG-302 ThingsPro Edge are affected: Moxa AIG-302 ThingsPro Edge firmware <=1.4.0 (CVE-2026-109812, CVE-2026-109813) CVSS Vendor Equipment v3 8.1 Moxa Moxa AIG-302 ThingsPro Edge firmware 2...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-293-03",
-      "related_cves": [
-        "CVE-2026-109812",
-        "CVE-2026-109813"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 75,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Moxa AIG-302 ThingsPro Edge",
-      "summary_zh": "檢視 CSAF 摘要。成功利用這些漏洞可能會允許攻擊者取得並洩漏敏感資訊。以下版本的 Moxa AIG-302 ThingsPro Edge 受影響：Moxa AIG-302 ThingsPro Edge 韌體 <=1.4.0 (CVE-2026-109812, CVE-2026-109813) CVSS 廠商設備 v3 8.1 Moxa Moxa AIG-302 ThingsPro Edge 韌體 2..."
-    },
-    {
-      "id": "1af654b0c99fb535",
-      "event_type": "THREAT_ACTIVITY",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-20T12:00:00+00:00",
-      "title": "HMS Networks PEAK-System PCAN Windows drivers",
-      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could crash the Windows kernel. The following versions of HMS Networks PEAK-System PCAN Windows drivers are affected: PEAK-System Device Driver Setup <=5.1.2.1151 (CVE-2026-109576, CVE-2026-101103, CVE-2026-94188, CVE-2026-103672, CVE-2026-110322, CVE-2026-105960) PCAN Windows CAN device d...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-293-01",
-      "related_cves": [
-        "CVE-2026-101103",
-        "CVE-2026-103672",
-        "CVE-2026-105960",
-        "CVE-2026-109576",
-        "CVE-2026-110322",
-        "CVE-2026-94188"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 75,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "HMS Networks PEAK-System PCAN Windows 驅動程式漏洞",
-      "summary_zh": "檢視 CSAF 摘要。成功利用這些漏洞可能會導致 Windows 核心崩潰。受影響的 HMS Networks PEAK-System PCAN Windows 驅動程式版本包括：PEAK-System Device Driver Setup <=5.1.2.1151 (CVE-2026-109576, CVE-2026-101103, CVE-2026-94188, CVE-2026-103672, CVE-2026-110322, CVE-2026-105960) PCAN Windows CAN device d..."
     },
     {
       "id": "082a52fbefa3810b",
@@ -373,7 +362,7 @@
         "CVE-2026-85115"
       ],
       "matched_intelligence_cves": [],
-      "score": 73,
+      "score": 71,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Siemens SIMATIC S7 Webserver API",
       "summary_zh": "檢視 CSAF 摘要。適用於 SIMATIC S7 Webserver API 的 .NET 用戶端程式庫包含多個漏洞，可能允許攻擊者取得敏感資訊，或在預期下載目錄之外寫入任意檔案。Siemens 已發布適用於 SIMATIC S7 Webserver API 的 .NET 用戶端程式庫新版本，並建議更新至最新版本..."
@@ -396,7 +385,7 @@
         "CVE-2026-89208"
       ],
       "matched_intelligence_cves": [],
-      "score": 73,
+      "score": 71,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Siemens APOGEE、TALON 及 Desigo PXC/PXM 產品",
       "summary_zh": "檢視 CSAF 摘要。下方列出的產品包含多個漏洞，可能允許攻擊者導致阻斷服務，並可能影響受影響裝置的可利用性（可用性）。Siemens 已為數個受影響產品發布新版本，並建議更新至最新版本。Siemens 針對特定產品提出了具體的緩解措施..."
@@ -425,7 +414,7 @@
         "CVE-2026-89206"
       ],
       "matched_intelligence_cves": [],
-      "score": 73,
+      "score": 71,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Siemens RUGGEDCOM CROSSBOW",
       "summary_zh": "檢視 CSAF 摘要。RUGGEDCOM CROSSBOW 包含多個漏洞，可能允許攻擊者在底層資料庫上執行任意 SQL 指令、存取敏感的管理憑證、提升權限，並執行未經授權的操作，例如修改系統設定或導致阻斷服務。Siemens 已發布..."
@@ -448,48 +437,10 @@
         "CVE-2026-33920"
       ],
       "matched_intelligence_cves": [],
-      "score": 73,
+      "score": 71,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Siemens RUGGEDCOM APE1808 裝置",
       "summary_zh": "檢視 CSAF 摘要。Nozomi Networks 已公開關於 Nozomi Guardian/CMC 漏洞的資訊。本諮詢列出了受這些漏洞影響的相關 Siemens 工業產品。Siemens 建議聯繫客戶支援以取得修補程式和更新資訊。以下版本的 Siemens RUGGEDCOM APE1808 裝置受影響..."
-    },
-    {
-      "id": "e80b70f1619682f2",
-      "event_type": "VULNERABILITY_NEWS",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-22T12:00:00+00:00",
-      "title": "Siemens Industrial Edge App Publisher",
-      "summary": "View CSAF Summary The Industrial Edge App Publisher contains a vulnerability chain involving improper certificate validation and the rendering of unescaped data from backend responses. These issues can be combined to allow an attacker on the network to impersonate the management server and execute arbitrary code (RCE) on the local machine through Node.js...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-295-02",
-      "related_cves": [
-        "CVE-2026-78556",
-        "CVE-2026-78557"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 73,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Siemens Industrial Edge App Publisher 漏洞",
-      "summary_zh": "檢視 CSAF 摘要。Industrial Edge App Publisher 包含一個漏洞鏈，涉及不當的憑證驗證以及渲染來自後端回應未經轉義的資料。結合這些問題可允許網路上的攻擊者冒充管理伺服器，並透過 Node.js 在本機機器上執行任意程式碼 (RCE)..."
     }
-  ],
-  "translation": {
-    "language": "zh-Hant-TW",
-    "status": "translated",
-    "provider": "gemini",
-    "model": "gemini-3.6-flash",
-    "models_used": [
-      "gemini-3.6-flash"
-    ],
-    "translated_items": 20,
-    "cached_items": 15,
-    "pending_items": 0,
-    "total_items": 20,
-    "attempted_items": 5,
-    "batch_size": 5,
-    "rejected_item_ids": [],
-    "fallback_reason": null,
-    "batch_fallback_reasons": []
-  }
+  ]
 }
