@@ -1,13 +1,25 @@
 {
   "schema_version": "1.1-cve-zh-enrichment",
-  "generated_at": "2026-10-28T06:35:46.403064+00:00",
+  "generated_at": "2026-10-29T06:43:19.154552+00:00",
   "language": "zh-Hant-TW",
   "selection": {
     "rule": "Translate only CVEs referenced by current security events and present in intelligence.json; reuse translations only when source title/description fingerprints are unchanged.",
-    "linked_cve_count": 56,
-    "matched_intelligence_cves": 2
+    "linked_cve_count": 53,
+    "matched_intelligence_cves": 4
   },
   "items": [
+    {
+      "cve": "CVE-2026-46300",
+      "title_zh": "Linux Kernel 變數未初始化漏洞",
+      "description_zh": "Linux Kernel 存在變數未初始化的漏洞，可能會因為在套接字緩衝區（socket buffer）合併期間未保留共享區段標記，導致 ESP 輸入處理在原位解密共享區段，進而造成由頁面快取（page-cache）支援的資料遭到未預期的修改。此漏洞可與 CVE-2026-109618 及 CVE-2026-109619 串聯利用，以植入 PHP webshell 並以 root 權限執行命令。",
+      "source_fingerprint": "b8b294ac09050c9cec60a79abd05f924bb486a2d368a3409defb70def4103e58"
+    },
+    {
+      "cve": "CVE-2026-41709",
+      "title_zh": "Broadcom VMWare ESX 日誌記錄不足漏洞",
+      "description_zh": "Broadcom VMWare ESX 存在日誌記錄不足的漏洞，擁有管理員權限的惡意行為者可利用此漏洞執行特定操作且不留下日誌記錄。",
+      "source_fingerprint": "55eda6bdaa2612d23d85f0501f61a11f54026372647ed59deb759613ef7e6eaa"
+    },
     {
       "cve": "CVE-2026-48356",
       "title_zh": "Adobe Commerce 與 Magento 危險類型檔案無限制上傳漏洞",
@@ -27,10 +39,10 @@
     "models_used": [
       "gemini-3.6-flash"
     ],
-    "cached_items": 0,
+    "cached_items": 2,
     "attempted_items": 2,
     "newly_translated_items": 2,
-    "translated_items": 2,
+    "translated_items": 4,
     "pending_items": 0,
     "batch_size": 5,
     "rejected_cves": [],
