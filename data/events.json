@@ -1,11 +1,11 @@
 {
   "schema_version": "1.1-security-events",
-  "generated_at": "2026-10-28T06:35:43.162325+00:00",
+  "generated_at": "2026-10-29T06:41:43.888331+00:00",
   "selection": {
     "window_days": 7,
     "max_items": 20,
     "rule": "Homepage events come from current RSS/advisory sources. CVEs are shown only when the source article/advisory mentions them.",
-    "tracked_cve_count": 61
+    "tracked_cve_count": 34
   },
   "sources": [
     {
@@ -32,13 +32,34 @@
   "summary": {
     "fetched_entries": 65,
     "included_items": 20,
-    "linked_cve_items": 17,
-    "matched_intelligence_items": 2,
+    "linked_cve_items": 15,
+    "matched_intelligence_items": 3,
     "successful_sources": 4,
     "source_errors": [],
-    "preserved_translations": 11
+    "preserved_translations": 12
   },
   "items": [
+    {
+      "id": "22d2ccd53543886c",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-28T12:00:00+00:00",
+      "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
+      "summary": "CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-41709 Broadcom VMWare ESX Insufficient Logging Vulnerability CVE-2026-46300 Linux Kernel Missing Initialization of a Variable Vulnerability These types of vulnerabilities are a frequent attack vector for maliciou...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/10/28/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+      "related_cves": [
+        "CVE-2026-41709",
+        "CVE-2026-46300"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-41709",
+        "CVE-2026-46300"
+      ],
+      "score": 116,
+      "cve_evidence": "source_title_or_summary"
+    },
     {
       "id": "f7763a757c0c37e7",
       "event_type": "ACTIVE_EXPLOITATION",
@@ -57,10 +78,40 @@
         "CVE-2026-111497",
         "CVE-2026-48356"
       ],
-      "score": 116,
+      "score": 114,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 將兩項已知被利用的漏洞納入目錄",
       "summary_zh": "CISA 根據已遭積極利用的證據，在其已知被利用漏洞（KEV）目錄中新增了兩項新漏洞。CVE-2026-48356 Adobe Commerce 與 Magento 未限制上傳危險類型檔案漏洞，CVE-2026-111497 Google Brotli 未檢查回傳值漏洞。這些漏洞類型是常見的攻擊..."
+    },
+    {
+      "id": "6609bbf49cdff375",
+      "event_type": "RANSOMWARE",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-28T15:05:06+00:00",
+      "title": "Ukrainian Hive and Nefilim Ransomware Affiliate Gets 70 Months in US Prison",
+      "summary": "Artem Stryzhak was sentenced to 70 months in prison after pleading guilty to using Nefilim ransomware in attacks. The post Ukrainian Hive and Nefilim Ransomware Affiliate Gets 70 Months in US Prison appeared first on SecurityWeek .",
+      "source_name": "SecurityWeek",
+      "source_type": "security_media",
+      "source_url": "https://www.securityweek.com/ukrainian-hive-and-nefilim-ransomware-affiliate-gets-70-months-in-us-prison/",
+      "related_cves": [],
+      "matched_intelligence_cves": [],
+      "score": 111,
+      "cve_evidence": null
+    },
+    {
+      "id": "62af280b86d2c33a",
+      "event_type": "RANSOMWARE",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-28T09:43:15+00:00",
+      "title": "Nefilim and Hive ransomware affiliate gets 70 months in prison",
+      "summary": "A Ukrainian national was sentenced to 70 months in prison for his role in ransomware attacks targeting hospitals, government entities, and high-revenue businesses worldwide between 2018 and 2021. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/nefilim-and-hive-ransomware-affiliate-gets-70-months-in-prison/",
+      "related_cves": [],
+      "matched_intelligence_cves": [],
+      "score": 111,
+      "cve_evidence": null
     },
     {
       "id": "ebe6130a3b49d0f8",
@@ -74,7 +125,7 @@
       "source_url": "https://www.bleepingcomputer.com/news/security/japans-gmo-urges-customers-to-shut-down-pcs-amid-ransomware-threat/",
       "related_cves": [],
       "matched_intelligence_cves": [],
-      "score": 112,
+      "score": 110,
       "cve_evidence": null,
       "title_zh": "面對勒索軟體威脅，日本 GMO 呼籲客戶關閉電腦",
       "summary_zh": "在入侵 GMO 集團 Onamae Desktop Cloud 的威脅威脅者揚言將於今天發動勒索軟體攻擊後，GMO 集團已呼籲客戶將系統與網際網路斷開連結並關閉電腦。[...]"
@@ -91,110 +142,46 @@
       "source_url": "https://www.bleepingcomputer.com/news/security/unm-health-ransomware-attack-disrupts-patient-care-surgeries/",
       "related_cves": [],
       "matched_intelligence_cves": [],
-      "score": 112,
+      "score": 110,
       "cve_evidence": null,
       "title_zh": "UNM Health 遭勒索軟體攻擊，中斷照護服務與手術",
       "summary_zh": "新墨西哥大學健康科學中心（University of New Mexico Health Sciences Center）披露了一起網路攻擊，該攻擊導致系統中斷，並干擾了患者照護服務與學術活動。[...]"
     },
     {
-      "id": "799d8e6e8cdc9dbf",
+      "id": "0b33a76a486a83fb",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "published_at": "2026-10-27T11:49:57+00:00",
-      "title": "iOS, macOS 27.2 Patch 286 Bugs; Fix for Exploited Flaw Backported to iOS 18",
-      "summary": "Apple patched 286 vulnerabilities in iOS and macOS 27.2 and brought the fix for an exploited CoreGraphics zero-day to older iPhones. The post iOS, macOS 27.2 Patch 286 Bugs; Fix for Exploited Flaw Backported to iOS 18 appeared first on SecurityWeek .",
-      "source_name": "SecurityWeek",
-      "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/ios-macos-27-2-patch-286-bugs-fix-for-exploited-flaw-backported-to-ios-18/",
-      "related_cves": [
-        "CVE-2026-86950"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 106,
-      "cve_evidence": "source_article",
-      "title_zh": "iOS 與 macOS 27.2 修補 286 個錯誤；已被利用漏洞修補程式向下移植至 iOS 18",
-      "summary_zh": "Apple 修補了 iOS 與 macOS 27.2 中的 286 個漏洞，並將已遭利用的 CoreGraphics 零日漏洞修補程式移植至較舊款的 iPhone。此文章《iOS, macOS 27.2 Patch 286 Bugs; Fix for Exploited Flaw Backported to iOS 18》首次發表於 SecurityWeek。"
-    },
-    {
-      "id": "a40721cff07a0d8d",
-      "event_type": "ACTIVE_EXPLOITATION",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-27T10:36:12+00:00",
-      "title": "Apple backports CoreGraphics zero-day patches to older iPhones",
-      "summary": "​Apple has backported security patches released last month to older iPhones and iPads, addressing a zero-day bug exploited in \"extremely sophisticated\" targeted attacks on iOS devices. [...]",
+      "published_at": "2026-10-28T16:00:00+00:00",
+      "title": "Volt Typhoon hides zero-day attacks using 'Silent Train' framework",
+      "summary": "Chinese state-sponsored hacking group Volt Typhoon has been using a framework that relies on rotating chains of connected devices compromised on demand, including for zero-day attacks targeting high-value systems. [...]",
       "source_name": "BleepingComputer",
       "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/apple/apple-backports-coregraphics-zero-day-patches-to-older-iphones/",
+      "source_url": "https://www.bleepingcomputer.com/news/security/volt-typhoon-hides-zero-day-attacks-using-silent-train-framework/",
       "related_cves": [
-        "CVE-2025-20701",
-        "CVE-2026-20700",
-        "CVE-2026-86950"
+        "CVE-2024-39717",
+        "CVE-2025-8875",
+        "CVE-2025-8876",
+        "CVE-2026-16812",
+        "CVE-2026-20127"
       ],
       "matched_intelligence_cves": [],
       "score": 106,
-      "cve_evidence": "source_article",
-      "title_zh": "Apple 將 CoreGraphics 零日漏洞修補程式向下移植至較舊款 iPhone",
-      "summary_zh": "Apple 已將上個月發布的安全修補程式向下移植至較舊款的 iPhone 與 iPad，以解決在針對 iOS 裝置的「極度複雜」定向攻擊中被利用的零日漏洞。[...]"
+      "cve_evidence": "source_article"
     },
     {
-      "id": "f1be3aca2b936249",
-      "event_type": "ACTIVE_EXPLOITATION",
+      "id": "d79cee61ecb2f639",
+      "event_type": "DATA_BREACH",
       "priority": "CRITICAL",
-      "published_at": "2026-10-27T10:02:24+00:00",
-      "title": "This is Fine: What NetScaler Zero-Days Tell Us About the New Normal",
-      "summary": "Keep your patch management pipelines primed in case another round of Citrix NetScaler patches get released soon. The post This is Fine: What NetScaler Zero-Days Tell Us About the New Normal appeared first on SecurityWeek .",
-      "source_name": "SecurityWeek",
-      "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/this-is-fine-what-netscaler-zero-days-tell-us-about-the-new-normal/",
-      "related_cves": [
-        "CVE-2026-88771",
-        "CVE-2026-88778",
-        "CVE-2026-88779",
-        "CVE-2026-88787"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 106,
-      "cve_evidence": "source_article",
-      "title_zh": "沒事一切正常：NetScaler 零日漏洞告訴我們關於新常態的訊息",
-      "summary_zh": "請保持修補程式管理管道準備就緒，以防近期又發布另一批 Citrix NetScaler 修補程式。這篇文章《沒事一切正常：NetScaler 零日漏洞告訴我們關於新常態的訊息》首先出現在 SecurityWeek。"
-    },
-    {
-      "id": "c79b9055e5fe5a0b",
-      "event_type": "ACTIVE_EXPLOITATION",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-27T08:20:54+00:00",
-      "title": "CISA confirms PHP2Shell vulnerabilities now exploited in attacks",
-      "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has added the PHP2Shell vulnerabilities to its catalog of actively exploited security flaws and ordered federal agencies to patch their systems by Thursday. [...]",
+      "published_at": "2026-10-28T13:50:59+00:00",
+      "title": "Even after PHP2Shell, blast radius matters more than a CVSS score",
+      "summary": "PHP2Shell shows how quickly attackers can exploit critical vulnerabilities, often before organizations have time to patch. Token Security explains why limiting the access of service accounts, API keys, and AI agents is just as important as fixing vulnerabilities to reduce the damage from a breach. [...]",
       "source_name": "BleepingComputer",
       "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/cisa-confirms-php2shell-vulnerabilities-now-exploited-in-attacks/",
-      "related_cves": [
-        "CVE-2026-109618",
-        "CVE-2026-109619",
-        "CVE-2026-115560"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 106,
-      "cve_evidence": "source_article",
-      "title_zh": "CISA 確認 PHP2Shell 漏洞現已被用於攻擊中",
-      "summary_zh": "美國網路安全暨基礎設施安全局 (CISA) 已將 PHP2Shell 漏洞新增至其已遭積極利用的安全漏洞目錄中，並要求聯邦機構在星期四前修補其系統。[...]"
-    },
-    {
-      "id": "7e756198cefb40cc",
-      "event_type": "RANSOMWARE",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-21T12:00:00+00:00",
-      "title": "CISA, FBI and Partners Warn Organizations of SafePay Ransomware Actors Targeting Multiple Critical Infrastructure Sectors",
-      "summary": null,
-      "source_name": "CISA News",
-      "source_type": "official_news",
-      "source_url": "https://www.cisa.gov/news-events/news/cisa-fbi-and-partners-warn-organizations-safepay-ransomware-actors-targeting-multiple-critical",
+      "source_url": "https://www.bleepingcomputer.com/news/security/even-after-php2shell-blast-radius-matters-more-than-a-cvss-score/",
       "related_cves": [],
       "matched_intelligence_cves": [],
-      "score": 100,
-      "cve_evidence": null,
-      "title_zh": "CISA、FBI 及其合作夥伴警告各機構注意針對多個關鍵基礎設施領域的 SafePay 勒索軟體威脅者",
-      "summary_zh": ""
+      "score": 96,
+      "cve_evidence": null
     },
     {
       "id": "ce87e3f627c6f42f",
@@ -210,7 +197,7 @@
         "CVE-2026-110447"
       ],
       "matched_intelligence_cves": [],
-      "score": 98,
+      "score": 96,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 將一項已遭利用的已知漏洞納入目錄",
       "summary_zh": "CISA 根據主動利用的證據，在其已遭利用的已知漏洞（KEV）目錄中新增了一項新漏洞。CVE-2026-110447 Collabora Online – 內建 CODE 伺服器作業系統命令注入漏洞。此類漏洞是惡意網路威脅者常用的攻擊管道，對聯邦企業構成重大風險..."
@@ -229,7 +216,7 @@
         "CVE-2026-114625"
       ],
       "matched_intelligence_cves": [],
-      "score": 98,
+      "score": 96,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 將一項已遭利用的已知漏洞納入目錄",
       "summary_zh": "CISA 根據主動利用的證據，在其已遭利用的已知漏洞（KEV）目錄中新增了一項新漏洞。CVE-2026-114625 Arista VeloCloud Orchestrator SQL 注入漏洞。此類漏洞是惡意網路威脅者常用的攻擊管道，對聯邦企業構成重大風險。綁定指令..."
@@ -248,10 +235,48 @@
         "CVE-2026-110936"
       ],
       "matched_intelligence_cves": [],
-      "score": 96,
+      "score": 95,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Siemens Software Center",
       "summary_zh": "檢視 CSAF 摘要。受影響的應用程式會從不受控制的搜尋路徑載入動態連結庫（DLL）。這可能允許經身份驗證的本機攻擊者將特製的 DLL 放置在應用程式搜尋的目錄中，從而以受影響應用程式的權限執行任意程式碼。Siemens 已發布新版本……"
+    },
+    {
+      "id": "dfcccddd5281b01b",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-28T10:46:23+00:00",
+      "title": "CISA warns of hackers now exploiting critical Node2Shell flaw",
+      "summary": "On Tuesday, the US Cybersecurity and Infrastructure Security Agency (CISA) confirmed that hackers have begun exploiting a critical Brotli vulnerability known as Node2Shell, Broccoli2Shell, and HTTP2Shell. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-hackers-now-exploiting-critical-node2shell-flaw/",
+      "related_cves": [
+        "CVE-2026-111497"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-111497"
+      ],
+      "score": 91,
+      "cve_evidence": "source_article"
+    },
+    {
+      "id": "cc84d8476e5ff18d",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-28T12:19:57+00:00",
+      "title": "Hackers now scanning systems for recently-patched Oracle flaw",
+      "summary": "Attackers have begun probing the Internet for systems unpatched against a recently disclosed critical Oracle E-Business Suite (EBS) vulnerability. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/hackers-now-scanning-systems-for-recently-patched-oracle-flaw/",
+      "related_cves": [
+        "CVE-2025-61882",
+        "CVE-2026-101767",
+        "CVE-2026-35273"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 86,
+      "cve_evidence": "source_article"
     },
     {
       "id": "b933b8867a0cffd5",
@@ -269,10 +294,8 @@
         "CVE-2026-114597",
         "CVE-2026-114598"
       ],
-      "matched_intelligence_cves": [
-        "CVE-2026-114595"
-      ],
-      "score": 91,
+      "matched_intelligence_cves": [],
+      "score": 84,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "EPICS Base",
       "summary_zh": "檢視 CSAF 摘要。成功利用這些漏洞可能允許攻擊者造成拒絕服務狀況、損毀記憶體、揭露敏感資訊，或可能執行任意程式碼。以下版本的 EPICS Base 受影響：EPICS Base 版本 <=7.0.10 (CVE-2026-114595, CVE-2026-114596, CVE-2026-114597, CVE-2026..."
@@ -292,10 +315,42 @@
         "CVE-2026-109619"
       ],
       "matched_intelligence_cves": [],
-      "score": 84,
+      "score": 82,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 將兩個已知被利用的漏洞納入目錄",
       "summary_zh": "CISA 已將兩個新漏洞新增至其已知被利用漏洞（KEV）目錄中，並更新了《PHP 警報：PHP 中的嚴重漏洞需要立即修補》：CVE-2026-109618 – PHP 記憶體損壞漏洞、CVE-2026-109619 – PHP 過期內部請求狀態漏洞。這些類型的漏洞是常見的攻擊途徑..."
+    },
+    {
+      "id": "f2c961bbdd371d7e",
+      "event_type": "VULNERABILITY_NEWS",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-28T14:00:00+00:00",
+      "title": "InfraTrust report warns of exploited flaws in critical network infrastructure",
+      "summary": "Attackers are actively exploiting vulnerabilities across critical network infrastructure, and PHP flaws known as \"PHP2Shell\" put the web management interfaces of firewalls, VPNs, application delivery controllers, and other appliances at risk. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/infratrust-report-warns-of-exploited-flaws-in-critical-network-infrastructure/",
+      "related_cves": [
+        "CVE-2026-0322",
+        "CVE-2026-104286",
+        "CVE-2026-104935",
+        "CVE-2026-109618",
+        "CVE-2026-109619",
+        "CVE-2026-114625",
+        "CVE-2026-20079",
+        "CVE-2026-31431",
+        "CVE-2026-76504",
+        "CVE-2026-76519",
+        "CVE-2026-88771",
+        "CVE-2026-88772",
+        "CVE-2026-88779",
+        "CVE-2026-93616",
+        "CVE-2026-93952",
+        "CVE-2026-94127"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 81,
+      "cve_evidence": "source_article"
     },
     {
       "id": "c67cf62fcc6ed47b",
@@ -314,7 +369,7 @@
         "CVE-2026-16438"
       ],
       "matched_intelligence_cves": [],
-      "score": 81,
+      "score": 79,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Mitsubishi Electric GENESIS、GENESIS64、ICONICS Suite、Hyper Historian、AnalytiX、MobileHMI、IoTWorX、MC Works64、GENESIS32 及 BizViz",
       "summary_zh": "檢視 CSAF 摘要。成功利用這些漏洞可能允許攻擊者執行任意程式碼 (CVE-2023-4863)、繞過身分驗證 (CVE-2026-16436 和 CVE-2026-16437)，或執行任意操作 (CVE-2026-16438)，從而導致資訊洩漏、篡改、破壞或刪除資訊，以及拒絕服務..."
@@ -333,7 +388,7 @@
         "CVE-2026-111594"
       ],
       "matched_intelligence_cves": [],
-      "score": 76,
+      "score": 75,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "InterSystems Corporation InterSystems IRIS for Health 漏洞",
       "summary_zh": "檢視 CSAF 摘要。成功利用此漏洞可能允許攻擊者檢視傳輸的資料，並使用該資料登入裝置。受影響的 InterSystems Corporation InterSystems IRIS for Health 版本包括：InterSystems IRIS for Health 2026.2.0.221、2026.1.0.235、2025.3.0.226 (CVE-2026-111594, CVE-2026-111594, CVE..."
@@ -360,82 +415,10 @@
         "CVE-2026-96616"
       ],
       "matched_intelligence_cves": [],
-      "score": 76,
+      "score": 75,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Kiloview E3 NDI 編碼器",
       "summary_zh": "檢視 CSAF 摘要。成功利用這些漏洞可能允許攻擊者完全控制該設備。以下版本的 Kiloview E3 NDI 編碼器受到影響：E3 韌體 <1.30（CVE-2026-109122、CVE-2026-111100、CVE-2026-96616、CVE-2026-105265、CVE-2026-110491、CVE-2026-107861、CVE-2026-110243、CVE-2026-92450、CVE-2026-110……）"
-    },
-    {
-      "id": "082a52fbefa3810b",
-      "event_type": "VULNERABILITY_NEWS",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-22T12:00:00+00:00",
-      "title": "Siemens SIMATIC S7 Webserver API",
-      "summary": "View CSAF Summary .NET Client Library for SIMATIC S7 Webserver API contains multiple vulnerabilities that could allow an attacker to obtain sensitive information or write arbitrary files outside the intended download directory. Siemens has released a new version for .NET Client Library for SIMATIC S7 Webserver API and recommends to update to the latest ve...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-295-10",
-      "related_cves": [
-        "CVE-2026-85114",
-        "CVE-2026-85115"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 71,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Siemens SIMATIC S7 Webserver API",
-      "summary_zh": "檢視 CSAF 摘要。適用於 SIMATIC S7 Webserver API 的 .NET 用戶端程式庫包含多個漏洞，可能允許攻擊者取得敏感資訊，或在預期下載目錄之外寫入任意檔案。Siemens 已發布適用於 SIMATIC S7 Webserver API 的 .NET 用戶端程式庫新版本，並建議更新至最新版本..."
-    },
-    {
-      "id": "815e8de26f228740",
-      "event_type": "VULNERABILITY_NEWS",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-22T12:00:00+00:00",
-      "title": "Siemens APOGEE, TALON and Desigo PXC/PXM Products",
-      "summary": "View CSAF Summary The products listed below contain multiple vulnerabilities that could allow an attacker to cause a denial of service and potentially impact the availability of the affected device. Siemens has released new versions for several affected products and recommends to update to the latest versions. Siemens recommends specific mitigations for p...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-295-08",
-      "related_cves": [
-        "CVE-2026-102073",
-        "CVE-2026-102074",
-        "CVE-2026-102075",
-        "CVE-2026-102076",
-        "CVE-2026-89208"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 71,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Siemens APOGEE、TALON 及 Desigo PXC/PXM 產品",
-      "summary_zh": "檢視 CSAF 摘要。下方列出的產品包含多個漏洞，可能允許攻擊者導致阻斷服務，並可能影響受影響裝置的可利用性（可用性）。Siemens 已為數個受影響產品發布新版本，並建議更新至最新版本。Siemens 針對特定產品提出了具體的緩解措施..."
-    },
-    {
-      "id": "c93040c85b3a8065",
-      "event_type": "VULNERABILITY_NEWS",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-22T12:00:00+00:00",
-      "title": "Siemens RUGGEDCOM CROSSBOW",
-      "summary": "View CSAF Summary RUGGEDCOM CROSSBOW contains multiple vulnerabilities that could allow an attacker to execute arbitrary SQL commands on the underlying database, retrieve sensitive administrative credentials, escalate privileges, and perform unauthorized operations such as modifying system configurations or causing a denial of service. Siemens has release...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-295-12",
-      "related_cves": [
-        "CVE-2026-89196",
-        "CVE-2026-89197",
-        "CVE-2026-89198",
-        "CVE-2026-89199",
-        "CVE-2026-89200",
-        "CVE-2026-89201",
-        "CVE-2026-89202",
-        "CVE-2026-89203",
-        "CVE-2026-89204",
-        "CVE-2026-89205",
-        "CVE-2026-89206"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 71,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Siemens RUGGEDCOM CROSSBOW",
-      "summary_zh": "檢視 CSAF 摘要。RUGGEDCOM CROSSBOW 包含多個漏洞，可能允許攻擊者在底層資料庫上執行任意 SQL 指令、存取敏感的管理憑證、提升權限，並執行未經授權的操作，例如修改系統設定或導致阻斷服務。Siemens 已發布..."
     },
     {
       "id": "284eb83ac7e25543",
@@ -455,28 +438,10 @@
         "CVE-2026-33920"
       ],
       "matched_intelligence_cves": [],
-      "score": 71,
+      "score": 70,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "Siemens RUGGEDCOM APE1808 裝置",
       "summary_zh": "檢視 CSAF 摘要。Nozomi Networks 已公開關於 Nozomi Guardian/CMC 漏洞的資訊。本諮詢列出了受這些漏洞影響的相關 Siemens 工業產品。Siemens 建議聯繫客戶支援以取得修補程式和更新資訊。以下版本的 Siemens RUGGEDCOM APE1808 裝置受影響..."
     }
-  ],
-  "translation": {
-    "language": "zh-Hant-TW",
-    "status": "translated",
-    "provider": "gemini",
-    "model": "gemini-3.6-flash",
-    "models_used": [
-      "gemini-3.6-flash"
-    ],
-    "translated_items": 20,
-    "cached_items": 11,
-    "pending_items": 0,
-    "total_items": 20,
-    "attempted_items": 9,
-    "batch_size": 5,
-    "rejected_item_ids": [],
-    "fallback_reason": null,
-    "batch_fallback_reasons": []
-  }
+  ]
 }
