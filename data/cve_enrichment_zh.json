@@ -1,36 +1,24 @@
 {
   "schema_version": "1.1-cve-zh-enrichment",
-  "generated_at": "2026-10-29T06:43:19.154552+00:00",
+  "generated_at": "2026-10-30T06:43:23.347118+00:00",
   "language": "zh-Hant-TW",
   "selection": {
     "rule": "Translate only CVEs referenced by current security events and present in intelligence.json; reuse translations only when source title/description fingerprints are unchanged.",
-    "linked_cve_count": 53,
-    "matched_intelligence_cves": 4
+    "linked_cve_count": 30,
+    "matched_intelligence_cves": 2
   },
   "items": [
     {
-      "cve": "CVE-2026-46300",
-      "title_zh": "Linux Kernel 變數未初始化漏洞",
-      "description_zh": "Linux Kernel 存在變數未初始化的漏洞，可能會因為在套接字緩衝區（socket buffer）合併期間未保留共享區段標記，導致 ESP 輸入處理在原位解密共享區段，進而造成由頁面快取（page-cache）支援的資料遭到未預期的修改。此漏洞可與 CVE-2026-109618 及 CVE-2026-109619 串聯利用，以植入 PHP webshell 並以 root 權限執行命令。",
-      "source_fingerprint": "b8b294ac09050c9cec60a79abd05f924bb486a2d368a3409defb70def4103e58"
+      "cve": "CVE-2026-97229",
+      "title_zh": "GitLab 社群版與企業版整數溢位或迴繞漏洞",
+      "description_zh": "GitLab 社群版與企業版存在整數溢位或迴繞漏洞。由於正則表達式驗證不足，未經身份驗證的使用者可透過在 CI/CD 設定中使用特製的正則表達式，在 GitLab 伺服器上執行任意程式碼。",
+      "source_fingerprint": "2ee37d4078a839883c994414f27dde58d597c5dbf6148ece69aad060a1d983fc"
     },
     {
-      "cve": "CVE-2026-41709",
-      "title_zh": "Broadcom VMWare ESX 日誌記錄不足漏洞",
-      "description_zh": "Broadcom VMWare ESX 存在日誌記錄不足的漏洞，擁有管理員權限的惡意行為者可利用此漏洞執行特定操作且不留下日誌記錄。",
-      "source_fingerprint": "55eda6bdaa2612d23d85f0501f61a11f54026372647ed59deb759613ef7e6eaa"
-    },
-    {
-      "cve": "CVE-2026-48356",
-      "title_zh": "Adobe Commerce 與 Magento 危險類型檔案無限制上傳漏洞",
-      "description_zh": "Adobe Commerce 與 Magento 存在危險類型檔案無限制上傳漏洞，可能導致在目前使用者的權限下執行任意程式碼，並可能取得更高的存取權限，或是掌控受害者的帳號或會話（session）。",
-      "source_fingerprint": "8645e5d4a33dfbbe81cdc505962a16c9502b9b2725d9520591149c3a48948679"
-    },
-    {
-      "cve": "CVE-2026-111497",
-      "title_zh": "Google Brotli 未檢查傳回值漏洞",
-      "description_zh": "Google Brotli 存在未檢查傳回值漏洞，允許遠端未經身份驗證的攻擊者利用精心設計的 Brotli 壓縮串流，損毀相鄰的解碼器狀態記憶體、洩漏敏感記憶體內容、造成阻斷服務，或是潛在執行任意程式碼。",
-      "source_fingerprint": "a8c9f4c8335979f307865ad0ba7ac97cab5f7e9088c46feb500c6310c6bfba3c"
+      "cve": "CVE-2026-76418",
+      "title_zh": "Cisco Secure Firewall ASA 軟體與 Cisco Secure FTD 軟體未檢查傳回值導致空指標解除參照漏洞",
+      "description_zh": "Cisco Secure Firewall ASA 軟體與 Cisco Secure FTD 軟體存在未檢查傳回值導致空指標解除參照（NULL Pointer Dereference）的漏洞，未經身份驗證的遠端攻擊者可利用此漏洞導致裝置意外重新載入，從而造成拒絕服務（DoS）情況。",
+      "source_fingerprint": "566e5bf050fd2a437620ebd83245debf82b551b26ea7e33006e82f15d95629f0"
     }
   ],
   "translation": {
@@ -39,10 +27,10 @@
     "models_used": [
       "gemini-3.6-flash"
     ],
-    "cached_items": 2,
+    "cached_items": 0,
     "attempted_items": 2,
     "newly_translated_items": 2,
-    "translated_items": 4,
+    "translated_items": 2,
     "pending_items": 0,
     "batch_size": 5,
     "rejected_cves": [],
