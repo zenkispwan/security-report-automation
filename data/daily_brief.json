@@ -1,37 +1,37 @@
 {
   "schema_version": "1.0-daily-security-brief",
-  "generated_at": "2026-11-01T07:02:46.949367+00:00",
+  "generated_at": "2026-11-02T07:00:45.176030+00:00",
   "timezone": "Asia/Taipei",
   "purpose": "Single deterministic input model for the daily security event brief, website, Markdown report, and future email delivery.",
   "summary": {
     "event_count": 20,
-    "critical_events": 16,
-    "high_events": 4,
+    "critical_events": 17,
+    "high_events": 3,
     "active_exploitation_events": 7,
     "ransomware_events": 1,
     "supply_chain_events": 1,
-    "data_breach_events": 3,
-    "threat_activity_events": 2,
-    "linked_cve_count": 34,
+    "data_breach_events": 2,
+    "threat_activity_events": 3,
+    "linked_cve_count": 33,
     "translated_event_count": 20,
-    "daily_change_count": 13,
-    "new_cve_count": 13,
+    "daily_change_count": 14,
+    "new_cve_count": 14,
     "new_kev_count": 0,
     "epss_increase_count": 0,
     "exploitation_change_count": 0,
     "ransomware_use_change_count": 0,
-    "new_critical_cve_count": 13,
-    "p1_cve_count": 17,
+    "new_critical_cve_count": 14,
+    "p1_cve_count": 16,
     "p2_cve_count": 0,
     "p3_cve_count": 0,
-    "watch_cve_count": 13
+    "watch_cve_count": 14
   },
   "headline_events": [
     {
       "id": "d0ef8c7b35d833f1",
       "event_type": "RANSOMWARE",
       "priority": "CRITICAL",
-      "score": 109,
+      "score": 107,
       "published_at": "2026-10-30T13:36:12+00:00",
       "title": "Bulletproof Host Virtualine Loses Its Domain to FBI Seizure",
       "title_zh": "防彈主機服務商 Virtualine 網域遭 FBI 扣押",
@@ -47,7 +47,7 @@
       "id": "651570ec01bc8df7",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "score": 109,
+      "score": 107,
       "published_at": "2026-10-30T13:00:32+00:00",
       "title": "CISA says max severity GitLab flaw now exploited in the wild",
       "title_zh": "CISA 表示最高嚴重性 GitLab 漏洞現已被野外利用",
@@ -72,7 +72,7 @@
       "id": "647aee262a362841",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "score": 109,
+      "score": 107,
       "published_at": "2026-10-30T11:07:11+00:00",
       "title": "Drupal Commerce Core Vulnerability Exploited Against Online Stores",
       "title_zh": "Drupal Commerce Core 漏洞遭利用攻擊線上商店",
@@ -95,7 +95,7 @@
       "id": "072fcb7482ba39ff",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "score": 109,
+      "score": 107,
       "published_at": "2026-10-30T10:16:07+00:00",
       "title": "Drupal warns of critical Commerce Core flaw exploited in attacks",
       "title_zh": "Drupal 警告在攻擊中被利用的嚴重 Commerce Core 漏洞",
@@ -118,7 +118,7 @@
       "id": "e24342c52a0b2ee1",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "score": 107,
+      "score": 105,
       "published_at": "2026-10-29T12:00:00+00:00",
       "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
       "title_zh": "CISA 將兩宗已知被利用漏洞納入目錄",
@@ -139,7 +139,7 @@
       "id": "f635e51b46992649",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "score": 104,
+      "score": 102,
       "published_at": "2026-10-30T12:00:00+00:00",
       "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
       "title_zh": "CISA 新增兩個已知被利用漏洞至目錄",
@@ -157,12 +157,12 @@
   ],
   "daily_changes": [
     {
-      "cve": "CVE-2026-89270",
+      "cve": "CVE-2026-62048",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-31T07:16:37.707"
+          "to": "2026-11-01T16:18:15.170"
         }
       ],
       "risk": {
@@ -180,12 +180,12 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-89270",
-        "vendor": "popupbuilder",
-        "product": "Popup Builder – Create highly converting, mobile friendly marketing popups.",
+        "cve": "CVE-2026-62048",
+        "vendor": "Liquid Web / StellarWP",
+        "product": "BookIt",
         "title": null,
         "title_zh": null,
-        "description": "The Popup Builder – Create highly converting, mobile friendly marketing popups. plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 4.4.5 This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthenticated attackers to trash all published popups on the site with a single unauthenticated GET request. The attack is amplified by a second flaw in SGPopup::find(), which returns false for every normally published popup when the sg_popup_preview_id parameter is present, causing the trash branch to fire against every popup on the site simultaneously.",
+        "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Liquid Web / StellarWP BookIt bookit allows SQL Injection.This issue affects BookIt: from n/a through 2.6.0.6.",
         "description_zh": null,
         "priority": "WATCH",
         "risk_score": 28,
@@ -201,84 +201,10 @@
         ],
         "cvss": {
           "version": "3.1",
-          "score": 9.1,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
-          "source": "security@wordfence.com",
-          "type": "Primary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-10-31T07:16:37.707",
-        "updated_time": "2026-10-31T07:16:37.707",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89270",
-        "source_type": [
-          "nvd"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-89270",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-120209",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-31T18:17:09.263"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-120209",
-        "vendor": "anji-plus",
-        "product": "AJ-Report",
-        "title": null,
-        "title_zh": null,
-        "description": "AJ-Report through 1.7.1 signs share tokens with a hard-coded JWT secret, allowing attackers to forge valid Share-Tokens offline. Attackers can mint a token with reportCode 'dataSet' to access the testTransform endpoint, which passes scripts to GroovyClassLoader for unauthenticated remote code execution.",
-        "description_zh": null,
-        "priority": "WATCH",
-        "risk_score": 28,
-        "risk_reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ],
-        "cvss": {
-          "version": "4.0",
           "score": 9.3,
           "severity": "CRITICAL",
-          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-          "source": "disclosure@vulncheck.com",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:L",
+          "source": "audit@patchstack.com",
           "type": "Secondary"
         },
         "epss": null,
@@ -287,30 +213,37 @@
           "listed": false
         },
         "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
+          "status": "none",
+          "source": "nvd_ssvc",
+          "ssvc": {
+            "exploitation": "none",
+            "automatable": "yes",
+            "technical_impact": "partial",
+            "timestamp": "2026-11-01T17:22:12.995899Z",
+            "role": "CISA Coordinator",
+            "version": "2.0.3"
+          }
         },
-        "published_time": "2026-10-31T18:17:09.263",
-        "updated_time": "2026-10-31T18:17:09.263",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120209",
+        "published_time": "2026-11-01T16:18:15.170",
+        "updated_time": "2026-11-01T18:18:11.907",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-62048",
         "source_type": [
           "nvd"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-120209",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-62048",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-120201",
+      "cve": "CVE-2026-120345",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-31T18:17:07.890"
+          "to": "2026-11-02T06:17:43.410"
         }
       ],
       "risk": {
@@ -328,86 +261,12 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-120201",
-        "vendor": "dromara",
-        "product": "Jpom",
-        "title": null,
-        "title_zh": null,
-        "description": "Jpom 2.10.0 through 2.11.12 contains an authentication bypass vulnerability that allows unauthenticated attackers to gain super-administrator access by injecting query conditions into the JPOM-USER-TOKEN header. Attackers can send a value like 'is not null', which Hutool's Condition parser treats as an operator, then execute commands through Jpom's script features.",
-        "description_zh": null,
-        "priority": "WATCH",
-        "risk_score": 28,
-        "risk_reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ],
-        "cvss": {
-          "version": "4.0",
-          "score": 9.3,
-          "severity": "CRITICAL",
-          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-          "source": "disclosure@vulncheck.com",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-10-31T18:17:07.890",
-        "updated_time": "2026-10-31T18:17:08.023",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120201",
-        "source_type": [
-          "nvd"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-120201",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-120198",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-11-01T05:18:57.620"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-120198",
+        "cve": "CVE-2026-120345",
         "vendor": "WAVLINK",
-        "product": "WL-WN530BE1-A",
+        "product": "WN551X3-A",
         "title": null,
         "title_zh": null,
-        "description": "A vulnerability has been found in WAVLINK WL-WN530BE1-A V251117. Affected is the function con_check_read_finish of the file /protocol.csp. Such manipulation of the argument group_name/IP-FROM leads to command injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure.",
+        "description": "A vulnerability was found in WAVLINK WN551X3-A M51X3_V251020-WO-182e965. This impacts the function sub_41a430 of the file /bin/ioos of the component DNS Resolution Handler. Performing a manipulation of the argument data results in os command injection. It is possible to initiate the attack remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure.",
         "description_zh": null,
         "priority": "WATCH",
         "risk_score": 28,
@@ -439,26 +298,26 @@
           "source": null,
           "ssvc": null
         },
-        "published_time": "2026-11-01T05:18:57.620",
-        "updated_time": "2026-11-01T05:18:57.620",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120198",
+        "published_time": "2026-11-02T06:17:43.410",
+        "updated_time": "2026-11-02T06:17:43.410",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120345",
         "source_type": [
           "nvd"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-120198",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-120345",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-120195",
+      "cve": "CVE-2026-120344",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-11-01T04:18:46.687"
+          "to": "2026-11-02T05:18:25.450"
         }
       ],
       "risk": {
@@ -476,12 +335,12 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-120195",
+        "cve": "CVE-2026-120344",
         "vendor": "WAVLINK",
-        "product": "WL-WN579A3-A",
+        "product": "WN551X3-A",
         "title": null,
         "title_zh": null,
-        "description": "A security vulnerability has been detected in WAVLINK WL-WN579A3-A 2026-03-10-94f93d4. The impacted element is the function set_wzdgwMesh of the file /cgi-bin/adm.cgi of the component Initial Setup Wizard. The manipulation of the argument wlan_ssid leads to os command injection. The attack is possible to be carried out remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure.",
+        "description": "A vulnerability has been found in WAVLINK WN551X3-A M51X3_V251020-WO-182e965. This affects the function system of the file /bin/ioos of the component WireGuard CLI Group Handler. Such manipulation of the argument group_name leads to os command injection. The attack may be performed from remote. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure.",
         "description_zh": null,
         "priority": "WATCH",
         "risk_score": 28,
@@ -513,26 +372,26 @@
           "source": null,
           "ssvc": null
         },
-        "published_time": "2026-11-01T04:18:46.687",
-        "updated_time": "2026-11-01T04:18:46.687",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120195",
+        "published_time": "2026-11-02T05:18:25.450",
+        "updated_time": "2026-11-02T05:18:25.450",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120344",
         "source_type": [
           "nvd"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-120195",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-120344",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-120189",
+      "cve": "CVE-2026-120338",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-11-01T01:17:16.877"
+          "to": "2026-11-01T16:18:14.970"
         }
       ],
       "risk": {
@@ -550,12 +409,308 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-120189",
-        "vendor": "D-Link",
-        "product": "DIR-505",
+        "cve": "CVE-2026-120338",
+        "vendor": "PrefectHQ",
+        "product": "prefab-ui",
         "title": null,
         "title_zh": null,
-        "description": "A vulnerability was identified in D-Link DIR-505 1.10B02. Affected is the function save_upload_file/mp_upload_file of the file /usr/bin/tftpd of the component TFTP Upload Filename Handler. The manipulation leads to stack-based buffer overflow. The attack is possible to be carried out remotely. The exploit is publicly available and might be used.",
+        "description": "Prefab UI's Generative UI sandbox runs caller-supplied Python inside Pyodide, Python compiled to WebAssembly, in a Deno subprocess. The feature is documented as isolation for untrusted code, including LLM-written UI. From prefab-ui 0.14.0 through 0.20.2 the launcher starts Deno with unrestricted --allow-read, --allow-write, and --allow-net, and the runner leaves the Deno API on the JavaScript global object. Pyodide's js module proxies that global, so the Python can call Deno.readTextFileSync and Deno.writeTextFileSync. A caller who can supply the code can read and write files as the server OS user, and can persist code execution by writing a .pth file into the server virtualenv's site-packages. The usual remote path is FastMCP's GenerativeUI provider, which registers the MCP tool generate_prefab_ui and forwards that tool's code argument into this sandbox. On a FastMCP server with no authentication configured, any client who can reach the server can call the tool. With authentication, any client allowed to call tools can. Generative UI is opt-in, and the host must have Deno installed. Confirmed on prefab-ui 0.20.2. Fixed in 0.21.0: after the runtime and Prefab sources load, the runner revokes Deno read, write, and network permission before it accepts code, the process is started with --no-prompt so a permission request cannot grant them again, and bootstrap network access is limited to cdn.jsdelivr.net. The fix is commit 030f074 (pull request 538).",
+        "description_zh": null,
+        "priority": "WATCH",
+        "risk_score": 28,
+        "risk_reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ],
+        "cvss": {
+          "version": "3.1",
+          "score": 10.0,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+          "source": "reefs@jfrog.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-11-01T16:18:14.970",
+        "updated_time": "2026-11-01T16:18:14.970",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120338",
+        "source_type": [
+          "nvd"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-120338",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-120308",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-11-01T13:18:01.670"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-120308",
+        "vendor": "beam-cloud",
+        "product": "Beta9 gateway",
+        "title": null,
+        "title_zh": null,
+        "description": "A Beta9 tenant can attach a volume when deploying a function, endpoint, or task queue. The gateway builds the host path by joining the shared volumes root, the workspace name, and the volume identifier from the stub configuration. Nothing checks that the identifier names a volume that workspace owns. Parent-directory segments in the identifier collapse the joined path to the worker's filesystem root, and the worker bind-mounts that path into the sandbox read-write unless the volume was explicitly marked read-only. A tenant with a workspace token can therefore read and write the worker's files, including other tenants' volumes stored on that machine. Confirmed against gateway 0.1.769 and worker 0.1.745. Fixed in gateway 0.1.776 and worker 0.1.756: volume identifiers and mount paths are validated before a mount is built, including for stubs saved before the check existed, and the gateway rejects a volume that does not exist or is not owned by the workspace.",
+        "description_zh": null,
+        "priority": "WATCH",
+        "risk_score": 28,
+        "risk_reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ],
+        "cvss": {
+          "version": "3.1",
+          "score": 9.9,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+          "source": "reefs@jfrog.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-11-01T13:18:01.670",
+        "updated_time": "2026-11-01T13:18:01.670",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120308",
+        "source_type": [
+          "nvd"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-120308",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-120307",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-11-01T13:18:01.497"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-120307",
+        "vendor": "beam-cloud",
+        "product": "Beta9 worker",
+        "title": null,
+        "title_zh": null,
+        "description": "The Beta9 worker serves the sandbox file API from outside the container. getHostPathFromContainerPath turns the tenant's container path into a worker path. If the unresolved path starts with a mount destination, including the default upload mount at /tmp/.beta9, the remainder is joined onto that mount's source with filepath.Join, which cleans parent-directory segments after the prefix check. A long enough run of those segments names any absolute path on the worker. A path that matches no mount is joined onto the container root and opened in the worker's own filesystem, so an absolute symbolic link such as /var/run pointing at /run is followed against the worker root. Upload, download, stat, list, find-in-files, replace-in-files, and delete-file all call this helper. A tenant with a workspace token and one running sandbox can read, write, list, and delete files on the hosting worker as root, including files of other tenants on that machine. A read-only proof downloaded the worker pod's Kubernetes service account token through the file API for a path that did not exist inside the sandbox. In the shipped remote-node manifests that service account is bound to cluster-admin. Fixed in worker 0.1.756: sandbox file operations and workspace sync open paths with os.OpenRoot, so parent-directory and symlink lookups stay inside the container root or the mount source.",
+        "description_zh": null,
+        "priority": "WATCH",
+        "risk_score": 28,
+        "risk_reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ],
+        "cvss": {
+          "version": "3.1",
+          "score": 9.9,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+          "source": "reefs@jfrog.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-11-01T13:18:01.497",
+        "updated_time": "2026-11-01T13:18:01.497",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120307",
+        "source_type": [
+          "nvd"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-120307",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-120306",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-11-01T13:18:01.300"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-120306",
+        "vendor": "beam-cloud",
+        "product": "Beta9 worker",
+        "title": null,
+        "title_zh": null,
+        "description": "Beta9 turns each shell command in a tenant image definition into a Dockerfile RUN line and executes it with Buildah on the build worker. The worker image sets BUILDAH_ISOLATION=chroot, and no buildah invocation passes --isolation, so the step only changes its filesystem root. It keeps the worker pod's PID, network, IPC, and user namespaces, runs as uid 0, and holds CAP_DAC_OVERRIDE. PID 1 in that procfs is the worker entrypoint, so /proc/1/root is the worker container's filesystem and is writable. That filesystem contains the runc, buildah, and runsc binaries the worker uses to start tenant containers, the worker's Kubernetes service account token, and the host directories mounted into the pod. Worker pods are privileged. Clip v2 layered builds are the default, so a tenant with a workspace token reaches this by submitting one image build. The read-only proof confirmed the shared namespaces, CAP_DAC_OVERRIDE, and that the worker's runc binary is visible at /proc/1/root. Fixed in worker 0.1.756: Buildah RUN steps, including the WORKDIR mkdir, use OCI isolation with private PID, IPC, and network namespaces, and tenant ARG values are passed only into the build container.",
+        "description_zh": null,
+        "priority": "WATCH",
+        "risk_score": 28,
+        "risk_reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ],
+        "cvss": {
+          "version": "3.1",
+          "score": 9.9,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+          "source": "reefs@jfrog.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-11-01T13:18:01.300",
+        "updated_time": "2026-11-01T13:18:01.300",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120306",
+        "source_type": [
+          "nvd"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-120306",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-120283",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-11-02T01:17:27.500"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-120283",
+        "vendor": "Linksys",
+        "product": "E8450",
+        "title": null,
+        "title_zh": null,
+        "description": "A vulnerability was identified in Linksys E8450 1.2.00.360516. Affected is the function strcpy of the file /www/cgi-bin/portal.cgi. Such manipulation of the argument hidden_timezone leads to stack-based buffer overflow. The attack can be executed remotely. The vendor was contacted early about this disclosure but did not respond in any way.",
         "description_zh": null,
         "priority": "WATCH",
         "risk_score": 28,
@@ -587,26 +742,26 @@
           "source": null,
           "ssvc": null
         },
-        "published_time": "2026-11-01T01:17:16.877",
-        "updated_time": "2026-11-01T01:17:16.877",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120189",
+        "published_time": "2026-11-02T01:17:27.500",
+        "updated_time": "2026-11-02T01:17:27.500",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120283",
         "source_type": [
           "nvd"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-120189",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-120283",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-119096",
+      "cve": "CVE-2026-120281",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-31T08:16:49.043"
+          "to": "2026-11-02T01:17:27.070"
         }
       ],
       "risk": {
@@ -624,12 +779,12 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-119096",
-        "vendor": "uncannyowl",
-        "product": "Uncanny Toolkit for LearnDash",
+        "cve": "CVE-2026-120281",
+        "vendor": "WAVLINK",
+        "product": "WN536AX6-A",
         "title": null,
         "title_zh": null,
-        "description": "The Uncanny Toolkit for LearnDash plugin for WordPress is vulnerable to Authentication Bypass in versions up to, and including, 3.8.2 via the `email` parameter of the `uo_login_action()` function. This is due to a parser-differential flaw in which the plugin's account-verification gate resolves the submitted `email` value using the raw, unsanitized string passed to `get_user_by()`, while the subsequent `wp_signon()` call relies on WordPress core's internal `sanitize_user()` to strip appended junk characters — causing the gate lookup to fail and be skipped entirely while the real account is still resolved and authenticated. This makes it possible for unauthenticated attackers to log in to unverified or administrator-suspended accounts whose credentials they already possess, obtaining a valid `wordpress_logged_in` session cookie and defeating the plugin's account-approval and account-suspension controls. The nonce required to reach the handler is freely obtainable in the same request from the unauthenticated `ult-refresh-nonce` endpoint, making exploitation trivial for any attacker with network access to the site and knowledge of a target account's credentials.",
+        "description": "A vulnerability was found in WAVLINK WN536AX6-A V260507. This affects the function strcpy of the file /protocol.csp of the component OpenVPN Handler. The manipulation of the argument openvpn_ip results in stack-based buffer overflow. The attack may be launched remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure.",
         "description_zh": null,
         "priority": "WATCH",
         "risk_score": 28,
@@ -644,86 +799,11 @@
           }
         ],
         "cvss": {
-          "version": "3.1",
-          "score": 9.8,
+          "version": "4.0",
+          "score": 9.3,
           "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "security@wordfence.com",
-          "type": "Primary"
-        },
-        "epss": 0.00463,
-        "epss_percentile": 0.40109,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-10-31T08:16:49.043",
-        "updated_time": "2026-10-31T08:16:49.043",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119096",
-        "source_type": [
-          "nvd",
-          "first_epss"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-119096",
-          "cisa_kev": null,
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-119096"
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-118636",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-31T21:16:53.203"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-118636",
-        "vendor": "Apache Software Foundation",
-        "product": "Apache MINA",
-        "title": null,
-        "title_zh": null,
-        "description": "**UNSUPPORTED WHEN ASSIGNED** \n\nJavaNativeMessageDecoder in the MINA 3.0 codec module calls ObjectInputStream.readObject() on frame bytes with no class filter, so an\napplication that puts it in front of an untrusted peer is open to gadget-chain RCE.\n\nAs the 3.0.0 branch is inactive, we do not plan to release a version that fixes this issue. \n\nUsers are recommended to use the latest Apache MINA 2.2.X branch.",
-        "description_zh": null,
-        "priority": "WATCH",
-        "risk_score": 28,
-        "risk_reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ],
-        "cvss": {
-          "version": "3.1",
-          "score": 9.8,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "security@apache.org",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "cna@vuldb.com",
           "type": "Secondary"
         },
         "epss": null,
@@ -736,26 +816,26 @@
           "source": null,
           "ssvc": null
         },
-        "published_time": "2026-10-31T21:16:53.203",
-        "updated_time": "2026-10-31T21:16:53.203",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118636",
+        "published_time": "2026-11-02T01:17:27.070",
+        "updated_time": "2026-11-02T01:17:27.070",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120281",
         "source_type": [
           "nvd"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-118636",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-120281",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-118235",
+      "cve": "CVE-2026-120280",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-10-31T09:16:33.620"
+          "to": "2026-11-02T01:17:26.873"
         }
       ],
       "risk": {
@@ -773,12 +853,12 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-118235",
-        "vendor": "wpazleen",
-        "product": "SimpleForm – Form Maker to Chat Apps with Quiz, Poll and Multi Lead Notifications",
+        "cve": "CVE-2026-120280",
+        "vendor": "WAVLINK",
+        "product": "WN536AX6-A",
         "title": null,
         "title_zh": null,
-        "description": "The SimpleForm – Form Maker to Chat Apps with Quiz, Poll and Multi Lead Notifications plugin for WordPress is vulnerable to Arbitrary File Upload in all versions up to, and including, 3.10.2 via the handle_upload function. This is due to missing server-side file key allowlist and pre-sanitization extension derivation that allows a trailing-dot filename to bypass all extension and MIME validation in handle_upload. This makes it possible for unauthenticated attackers to upload files that may be executable, which makes remote code execution possible. The only access control is a nonce that is printed into every public form's data-nonce attribute, making it trivially obtainable by any unauthenticated visitor on a page embedding the form shortcode.",
+        "description": "A vulnerability has been found in WAVLINK WN536AX6-A V260507. The impacted element is the function wireguard_cli_group handler of the file /protocol.csp of the component WireGuard. The manipulation of the argument group_id/group_name leads to os command injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure.",
         "description_zh": null,
         "priority": "WATCH",
         "risk_score": 28,
@@ -793,15 +873,15 @@
           }
         ],
         "cvss": {
-          "version": "3.1",
-          "score": 9.8,
+          "version": "4.0",
+          "score": 9.3,
           "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "security@wordfence.com",
-          "type": "Primary"
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "cna@vuldb.com",
+          "type": "Secondary"
         },
-        "epss": 0.0074,
-        "epss_percentile": 0.54613,
+        "epss": null,
+        "epss_percentile": null,
         "cisa_kev": {
           "listed": false
         },
@@ -810,92 +890,16 @@
           "source": null,
           "ssvc": null
         },
-        "published_time": "2026-10-31T09:16:33.620",
-        "updated_time": "2026-10-31T09:16:33.620",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118235",
+        "published_time": "2026-11-02T01:17:26.873",
+        "updated_time": "2026-11-02T01:17:26.873",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120280",
         "source_type": [
-          "nvd",
-          "first_epss"
+          "nvd"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-118235",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-120280",
           "cisa_kev": null,
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-118235"
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-116557",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-10-31T07:16:35.857"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-116557",
-        "vendor": "murgroland",
-        "product": "WP Booking System – Booking Calendar",
-        "title": null,
-        "title_zh": null,
-        "description": "The WP Booking System - Booking Calendar plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the wpbs_action_ajax_calendar_remove_note() function in versions up to, and including, 2.1.0.5 This makes it possible for authenticated attackers, with Subscriber-level access and above, to delete arbitrary calendar notes belonging to any calendar.",
-        "description_zh": null,
-        "priority": "WATCH",
-        "risk_score": 28,
-        "risk_reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ],
-        "cvss": {
-          "version": "3.1",
-          "score": 9.1,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
-          "source": "security@wordfence.com",
-          "type": "Primary"
-        },
-        "epss": 0.00348,
-        "epss_percentile": 0.28404,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-10-31T07:16:35.857",
-        "updated_time": "2026-10-31T07:16:35.857",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116557",
-        "source_type": [
-          "nvd",
-          "first_epss"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-116557",
-          "cisa_kev": null,
-          "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-116557"
+          "epss": null
         }
       }
     }
@@ -1095,7 +1099,7 @@
         "type": "Secondary"
       },
       "epss": 0.88512,
-      "epss_percentile": 0.99772,
+      "epss_percentile": 0.99771,
       "cisa_kev": {
         "listed": true,
         "date_added": "2026-07-07",
@@ -1332,7 +1336,7 @@
         "type": "Secondary"
       },
       "epss": 0.14854,
-      "epss_percentile": 0.96695,
+      "epss_percentile": 0.96696,
       "cisa_kev": {
         "listed": true,
         "date_added": "2026-07-10",
@@ -1411,7 +1415,7 @@
         "type": "Secondary"
       },
       "epss": 0.10649,
-      "epss_percentile": 0.95798,
+      "epss_percentile": 0.95799,
       "cisa_kev": {
         "listed": true,
         "date_added": "2026-07-21",
@@ -1533,85 +1537,6 @@
       }
     },
     {
-      "cve": "CVE-2026-64849",
-      "vendor": "MLflow",
-      "product": "MLflow",
-      "title": "MLflow Server-Side Request Forgery Vulnerability",
-      "title_zh": null,
-      "description": "MLflow contains a server-side request forgery vulnerability that can allow attackers to reach internal or cloud metadata services and receive response_status and response_body.",
-      "description_zh": null,
-      "priority": "P1",
-      "risk_score": 100,
-      "risk_reasons": [
-        {
-          "code": "CISA_KEV",
-          "points": 45
-        },
-        {
-          "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
-          "points": 25
-        },
-        {
-          "code": "CVSS_CRITICAL",
-          "points": 20
-        },
-        {
-          "code": "EPSS_ELEVATED",
-          "points": 8
-        },
-        {
-          "code": "EPSS_TOP_5_PERCENT",
-          "points": 5
-        }
-      ],
-      "cvss": {
-        "version": "3.1",
-        "score": 9.3,
-        "severity": "CRITICAL",
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:L/A:N",
-        "source": "security-advisories@github.com",
-        "type": "Secondary"
-      },
-      "epss": 0.10017,
-      "epss_percentile": 0.95614,
-      "cisa_kev": {
-        "listed": true,
-        "date_added": "2026-08-19",
-        "due_date": "2026-09-02",
-        "required_action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
-        "known_ransomware_campaign_use": "Unknown",
-        "notes": "https://github.com/mlflow/mlflow/pull/24258 ; https://github.com/mlflow/mlflow/issues/24179 ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https://nvd.nist.gov/vuln/detail/CVE-2026-64849",
-        "cwes": [
-          "CWE-918"
-        ]
-      },
-      "exploitation_status": {
-        "status": "known_exploited",
-        "source": "cisa_kev",
-        "ssvc": {
-          "exploitation": "active",
-          "automatable": "yes",
-          "technical_impact": "partial",
-          "timestamp": "2026-08-20T03:55:29.820245Z",
-          "role": "CISA Coordinator",
-          "version": "2.0.3"
-        }
-      },
-      "published_time": "2026-08-17T22:17:23.580",
-      "updated_time": "2026-10-26T13:10:00.140",
-      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64849",
-      "source_type": [
-        "nvd",
-        "cisa_kev",
-        "first_epss"
-      ],
-      "provenance": {
-        "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-64849",
-        "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-        "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-64849"
-      }
-    },
-    {
       "cve": "CVE-2026-6973",
       "vendor": "Ivanti",
       "product": "Endpoint Manager Mobile (EPMM)",
@@ -1689,6 +1614,85 @@
         "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
         "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-6973"
       }
+    },
+    {
+      "cve": "CVE-2026-86950",
+      "vendor": "Apple",
+      "product": "Multiple Products",
+      "title": "Apple Multiple Products Out-of-Bounds Write Vulnerability",
+      "title_zh": null,
+      "description": "Apple iOS, macOS, and iPadOS contain an out-of-bounds write vulnerability in CoreGraphics that may lead to arbitrary code execution.",
+      "description_zh": null,
+      "priority": "P1",
+      "risk_score": 100,
+      "risk_reasons": [
+        {
+          "code": "CISA_KEV",
+          "points": 45
+        },
+        {
+          "code": "ACTIVE_OR_KNOWN_EXPLOITATION",
+          "points": 25
+        },
+        {
+          "code": "CVSS_HIGH",
+          "points": 12
+        },
+        {
+          "code": "EPSS_HIGH",
+          "points": 14
+        },
+        {
+          "code": "EPSS_TOP_5_PERCENT",
+          "points": 5
+        }
+      ],
+      "cvss": {
+        "version": "3.1",
+        "score": 8.8,
+        "severity": "HIGH",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+        "type": "Secondary"
+      },
+      "epss": 0.26166,
+      "epss_percentile": 0.97995,
+      "cisa_kev": {
+        "listed": true,
+        "date_added": "2026-09-29",
+        "due_date": "2026-10-13",
+        "required_action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+        "known_ransomware_campaign_use": "Unknown",
+        "notes": "https://support.apple.com/en-us/149226 ; https://support.apple.com/en-us/149228 ; https://support.apple.com/en-us/149229 ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https://nvd.nist.gov/vuln/detail/CVE-2026-86950",
+        "cwes": [
+          "CWE-787"
+        ]
+      },
+      "exploitation_status": {
+        "status": "known_exploited",
+        "source": "cisa_kev",
+        "ssvc": {
+          "exploitation": "active",
+          "automatable": "no",
+          "technical_impact": "total",
+          "timestamp": "2026-09-30T03:55:58.823862Z",
+          "role": "CISA Coordinator",
+          "version": "2.0.3"
+        }
+      },
+      "published_time": "2026-09-28T20:17:11.193",
+      "updated_time": "2026-10-27T12:29:30.297",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86950",
+      "source_type": [
+        "nvd",
+        "cisa_kev",
+        "first_epss"
+      ],
+      "provenance": {
+        "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-86950",
+        "cisa_kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+        "epss": "https://api.first.org/data/v1/epss?cve=CVE-2026-86950"
+      }
     }
   ],
   "source_health": {
@@ -1725,10 +1729,10 @@
         "gemini-3.6-flash"
       ],
       "translated_items": 20,
-      "cached_items": 9,
+      "cached_items": 19,
       "pending_items": 0,
       "total_items": 20,
-      "attempted_items": 11,
+      "attempted_items": 1,
       "batch_size": 5,
       "rejected_item_ids": [],
       "fallback_reason": null,
@@ -1736,13 +1740,11 @@
     },
     "cve_translation": {
       "provider": "gemini",
-      "model": "gemini-3.6-flash",
-      "models_used": [
-        "gemini-3.6-flash"
-      ],
-      "cached_items": 1,
-      "attempted_items": 1,
-      "newly_translated_items": 1,
+      "model": null,
+      "models_used": [],
+      "cached_items": 2,
+      "attempted_items": 0,
+      "newly_translated_items": 0,
       "translated_items": 2,
       "pending_items": 0,
       "batch_size": 5,
@@ -1764,23 +1766,23 @@
   "inputs": {
     "events": {
       "path": "data/events.json",
-      "sha256": "e6e1aa598f37e142e1bbcc711acf22969d658482066c8c875b3676670ddab95c",
-      "generated_at": "2026-11-01T07:02:04.412414+00:00"
+      "sha256": "bc19a03dfa005d883f0093db2921dab0075e05aab0cc4c64ed7cc073bce5edb5",
+      "generated_at": "2026-11-02T07:00:42.937005+00:00"
     },
     "intelligence": {
       "path": "data/intelligence.json",
-      "sha256": "87fbabf692019aa619a92827c836eb38e61015451eca93ff5563bde67aead665",
-      "generated_at": "2026-11-01T07:00:11.176869+00:00"
+      "sha256": "721783c1c6b463977d169fa4b70c0aaf98770806fb7e735219290718316b7f8a",
+      "generated_at": "2026-11-02T06:59:28.559925+00:00"
     },
     "delta": {
       "path": "data/delta.json",
-      "sha256": "8204e84fb0c657c5ae2de498de0a8dcd00e1843b51ced635b091520ad82ca1b7",
-      "generated_at": "2026-11-01T07:00:11.176869+00:00"
+      "sha256": "e5785bc2d605b841bc5df1310313596415617cef9fd10b8f5ba5e0732736f43a",
+      "generated_at": "2026-11-02T06:59:28.559925+00:00"
     },
     "cve_zh": {
       "path": "data/cve_enrichment_zh.json",
-      "sha256": "ac1717629bde9c4b822df2acd0ab0705dc5b40fa63ebc85853d2589378e16caa",
-      "generated_at": "2026-11-01T07:02:06.378172+00:00"
+      "sha256": "814ca8a4448d2981750c73653c4792162aed779459f645e57e3aaebbad7b8b49",
+      "generated_at": "2026-11-02T07:00:42.985135+00:00"
     }
   }
 }

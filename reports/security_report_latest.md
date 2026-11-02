@@ -4,157 +4,168 @@
 
 ## 執行摘要
 
-- Daily Delta：**13** 筆符合目前門檻的重要變化；事件統計：NEW_CVE=13。
-- Intelligence 候選：**30** 筆；P1 **17**、P2 **0**、P3 **0**、WATCH **13**。
-- Baseline：state / generated_at=2026-10-31T06:28:50.900524+00:00 / available=true。
+- Daily Delta：**14** 筆符合目前門檻的重要變化；事件統計：NEW_CVE=14。
+- Intelligence 候選：**30** 筆；P1 **16**、P2 **0**、P3 **0**、WATCH **14**。
+- Baseline：state / generated_at=2026-11-01T07:00:11.176869+00:00 / available=true。
 - 目前排序最前的 P1：CVE-2026-97229、CVE-2026-9586、CVE-2026-9198、CVE-2026-9082、CVE-2026-88772。此排序直接沿用 deterministic risk score，不由本報告重新評分。
 
 ## Daily Delta｜自上一份報告的重要變化
 
-本次共有 **13** 筆 delta item；以下欄位直接取自 `data/delta.json`。
+本次共有 **14** 筆 delta item；以下欄位直接取自 `data/delta.json`。
 
-### 1. CVE-2026-89270｜popupbuilder / Popup Builder – Create highly converting, mobile friendly marketing popups.
-- **Delta event**：NEW_CVE (from=未確認; to=2026-10-31T07:16:37.707)
+### 1. CVE-2026-62048｜Liquid Web / StellarWP / BookIt
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-01T16:18:15.170)
 - **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
-- **CVSS**：v3.1 9.1 (CRITICAL)
+- **CVSS**：v3.1 9.3 (CRITICAL)
 - **EPSS**：未確認
 - **CISA KEV**：listed=false
-- **Exploitation status**：status=unconfirmed / source=未確認
+- **Exploitation status**：status=none / source=nvd_ssvc
 - **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-10-31T07:16:37.707 / 2026-10-31T07:16:37.707
-- **官方描述（原文）**：The Popup Builder – Create highly converting, mobile friendly marketing popups. plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 4.4.5 This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthenticated attackers to trash all published popups on the site with a single unauthenticated GET request. The attack is amplified by a second flaw in SGPopup::find(), which returns false for every normally published popup when the sg_popup_preview_id parameter is present, causing the trash branch to fire against every popup on the site simultaneously.
+- **Published / Updated**：2026-11-01T16:18:15.170 / 2026-11-01T18:18:11.907
+- **官方描述（原文）**：Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Liquid Web / StellarWP BookIt bookit allows SQL Injection.This issue affects BookIt: from n/a through 2.6.0.6.
 
-### 2. CVE-2026-120209｜anji-plus / AJ-Report
-- **Delta event**：NEW_CVE (from=未確認; to=2026-10-31T18:17:09.263)
+### 2. CVE-2026-120345｜WAVLINK / WN551X3-A
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-02T06:17:43.410)
 - **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
 - **CVSS**：v4.0 9.3 (CRITICAL)
 - **EPSS**：未確認
 - **CISA KEV**：listed=false
 - **Exploitation status**：status=unconfirmed / source=未確認
 - **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-10-31T18:17:09.263 / 2026-10-31T18:17:09.263
-- **官方描述（原文）**：AJ-Report through 1.7.1 signs share tokens with a hard-coded JWT secret, allowing attackers to forge valid Share-Tokens offline. Attackers can mint a token with reportCode 'dataSet' to access the testTransform endpoint, which passes scripts to GroovyClassLoader for unauthenticated remote code execution.
+- **Published / Updated**：2026-11-02T06:17:43.410 / 2026-11-02T06:17:43.410
+- **官方描述（原文）**：A vulnerability was found in WAVLINK WN551X3-A M51X3_V251020-WO-182e965. This impacts the function sub_41a430 of the file /bin/ioos of the component DNS Resolution Handler. Performing a manipulation of the argument data results in os command injection. It is possible to initiate the attack remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure.
 
-### 3. CVE-2026-120201｜dromara / Jpom
-- **Delta event**：NEW_CVE (from=未確認; to=2026-10-31T18:17:07.890)
+### 3. CVE-2026-120344｜WAVLINK / WN551X3-A
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-02T05:18:25.450)
 - **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
 - **CVSS**：v4.0 9.3 (CRITICAL)
 - **EPSS**：未確認
 - **CISA KEV**：listed=false
 - **Exploitation status**：status=unconfirmed / source=未確認
 - **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-10-31T18:17:07.890 / 2026-10-31T18:17:08.023
-- **官方描述（原文）**：Jpom 2.10.0 through 2.11.12 contains an authentication bypass vulnerability that allows unauthenticated attackers to gain super-administrator access by injecting query conditions into the JPOM-USER-TOKEN header. Attackers can send a value like 'is not null', which Hutool's Condition parser treats as an operator, then execute commands through Jpom's script features.
+- **Published / Updated**：2026-11-02T05:18:25.450 / 2026-11-02T05:18:25.450
+- **官方描述（原文）**：A vulnerability has been found in WAVLINK WN551X3-A M51X3_V251020-WO-182e965. This affects the function system of the file /bin/ioos of the component WireGuard CLI Group Handler. Such manipulation of the argument group_name leads to os command injection. The attack may be performed from remote. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure.
 
-### 4. CVE-2026-120198｜WAVLINK / WL-WN530BE1-A
-- **Delta event**：NEW_CVE (from=未確認; to=2026-11-01T05:18:57.620)
+### 4. CVE-2026-120338｜PrefectHQ / prefab-ui
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-01T16:18:14.970)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v3.1 10.0 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=unconfirmed / source=未確認
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-01T16:18:14.970 / 2026-11-01T16:18:14.970
+- **官方描述（原文）**：Prefab UI's Generative UI sandbox runs caller-supplied Python inside Pyodide, Python compiled to WebAssembly, in a Deno subprocess. The feature is documented as isolation for untrusted code, including LLM-written UI. From prefab-ui 0.14.0 through 0.20.2 the launcher starts Deno with unrestricted --allow-read, --allow-write, and --allow-net, and the runner leaves the Deno API on the JavaScript global object. Pyodide's js module proxies that global, so the Python can call Deno.readTextFileSync and Deno.writeTextFileSync. A caller who can supply the code can read and write files as the server OS user, and can persist code execution by writing a .pth file into the server virtualenv's site-packages. The usual remote path is FastMCP's GenerativeUI provider, which registers the MCP tool generate_prefab_ui and forwards that tool's code argument into this sandbox. On a FastMCP server with no authentication configured, any client who can reach the server can call the tool. With authentication, any client allowed to call tools can. Generative UI is opt-in, and the host must have Deno installed. Confirmed on prefab-ui 0.20.2. Fixed in 0.21.0: after the runtime and Prefab sources load, the runner revokes Deno read, write, and network permission before it accepts code, the process is started with --no-prompt so a permission request cannot grant them again, and bootstrap network access is limited to cdn.jsdelivr.net. The fix is commit 030f074 (pull request 538).
+
+### 5. CVE-2026-120308｜beam-cloud / Beta9 gateway
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-01T13:18:01.670)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v3.1 9.9 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=unconfirmed / source=未確認
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-01T13:18:01.670 / 2026-11-01T13:18:01.670
+- **官方描述（原文）**：A Beta9 tenant can attach a volume when deploying a function, endpoint, or task queue. The gateway builds the host path by joining the shared volumes root, the workspace name, and the volume identifier from the stub configuration. Nothing checks that the identifier names a volume that workspace owns. Parent-directory segments in the identifier collapse the joined path to the worker's filesystem root, and the worker bind-mounts that path into the sandbox read-write unless the volume was explicitly marked read-only. A tenant with a workspace token can therefore read and write the worker's files, including other tenants' volumes stored on that machine. Confirmed against gateway 0.1.769 and worker 0.1.745. Fixed in gateway 0.1.776 and worker 0.1.756: volume identifiers and mount paths are validated before a mount is built, including for stubs saved before the check existed, and the gateway rejects a volume that does not exist or is not owned by the workspace.
+
+### 6. CVE-2026-120307｜beam-cloud / Beta9 worker
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-01T13:18:01.497)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v3.1 9.9 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=unconfirmed / source=未確認
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-01T13:18:01.497 / 2026-11-01T13:18:01.497
+- **官方描述（原文）**：The Beta9 worker serves the sandbox file API from outside the container. getHostPathFromContainerPath turns the tenant's container path into a worker path. If the unresolved path starts with a mount destination, including the default upload mount at /tmp/.beta9, the remainder is joined onto that mount's source with filepath.Join, which cleans parent-directory segments after the prefix check. A long enough run of those segments names any absolute path on the worker. A path that matches no mount is joined onto the container root and opened in the worker's own filesystem, so an absolute symbolic link such as /var/run pointing at /run is followed against the worker root. Upload, download, stat, list, find-in-files, replace-in-files, and delete-file all call this helper. A tenant with a workspace token and one running sandbox can read, write, list, and delete files on the hosting worker as root, including files of other tenants on that machine. A read-only proof downloaded the worker pod's Kubernetes service account token through the file API for a path that did not exist inside the sandbox. In the shipped remote-node manifests that service account is bound to cluster-admin. Fixed in worker 0.1.756: sandbox file operations and workspace sync open paths with os.OpenRoot, so parent-directory and symlink lookups stay inside the container root or the mount source.
+
+### 7. CVE-2026-120306｜beam-cloud / Beta9 worker
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-01T13:18:01.300)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v3.1 9.9 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=unconfirmed / source=未確認
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-01T13:18:01.300 / 2026-11-01T13:18:01.300
+- **官方描述（原文）**：Beta9 turns each shell command in a tenant image definition into a Dockerfile RUN line and executes it with Buildah on the build worker. The worker image sets BUILDAH_ISOLATION=chroot, and no buildah invocation passes --isolation, so the step only changes its filesystem root. It keeps the worker pod's PID, network, IPC, and user namespaces, runs as uid 0, and holds CAP_DAC_OVERRIDE. PID 1 in that procfs is the worker entrypoint, so /proc/1/root is the worker container's filesystem and is writable. That filesystem contains the runc, buildah, and runsc binaries the worker uses to start tenant containers, the worker's Kubernetes service account token, and the host directories mounted into the pod. Worker pods are privileged. Clip v2 layered builds are the default, so a tenant with a workspace token reaches this by submitting one image build. The read-only proof confirmed the shared namespaces, CAP_DAC_OVERRIDE, and that the worker's runc binary is visible at /proc/1/root. Fixed in worker 0.1.756: Buildah RUN steps, including the WORKDIR mkdir, use OCI isolation with private PID, IPC, and network namespaces, and tenant ARG values are passed only into the build container.
+
+### 8. CVE-2026-120283｜Linksys / E8450
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-02T01:17:27.500)
 - **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
 - **CVSS**：v4.0 9.3 (CRITICAL)
 - **EPSS**：未確認
 - **CISA KEV**：listed=false
 - **Exploitation status**：status=unconfirmed / source=未確認
 - **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-11-01T05:18:57.620 / 2026-11-01T05:18:57.620
-- **官方描述（原文）**：A vulnerability has been found in WAVLINK WL-WN530BE1-A V251117. Affected is the function con_check_read_finish of the file /protocol.csp. Such manipulation of the argument group_name/IP-FROM leads to command injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure.
+- **Published / Updated**：2026-11-02T01:17:27.500 / 2026-11-02T01:17:27.500
+- **官方描述（原文）**：A vulnerability was identified in Linksys E8450 1.2.00.360516. Affected is the function strcpy of the file /www/cgi-bin/portal.cgi. Such manipulation of the argument hidden_timezone leads to stack-based buffer overflow. The attack can be executed remotely. The vendor was contacted early about this disclosure but did not respond in any way.
 
-### 5. CVE-2026-120195｜WAVLINK / WL-WN579A3-A
-- **Delta event**：NEW_CVE (from=未確認; to=2026-11-01T04:18:46.687)
+### 9. CVE-2026-120281｜WAVLINK / WN536AX6-A
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-02T01:17:27.070)
 - **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
 - **CVSS**：v4.0 9.3 (CRITICAL)
 - **EPSS**：未確認
 - **CISA KEV**：listed=false
 - **Exploitation status**：status=unconfirmed / source=未確認
 - **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-11-01T04:18:46.687 / 2026-11-01T04:18:46.687
-- **官方描述（原文）**：A security vulnerability has been detected in WAVLINK WL-WN579A3-A 2026-03-10-94f93d4. The impacted element is the function set_wzdgwMesh of the file /cgi-bin/adm.cgi of the component Initial Setup Wizard. The manipulation of the argument wlan_ssid leads to os command injection. The attack is possible to be carried out remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure.
+- **Published / Updated**：2026-11-02T01:17:27.070 / 2026-11-02T01:17:27.070
+- **官方描述（原文）**：A vulnerability was found in WAVLINK WN536AX6-A V260507. This affects the function strcpy of the file /protocol.csp of the component OpenVPN Handler. The manipulation of the argument openvpn_ip results in stack-based buffer overflow. The attack may be launched remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure.
 
-### 6. CVE-2026-120189｜D-Link / DIR-505
-- **Delta event**：NEW_CVE (from=未確認; to=2026-11-01T01:17:16.877)
+### 10. CVE-2026-120280｜WAVLINK / WN536AX6-A
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-02T01:17:26.873)
 - **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
 - **CVSS**：v4.0 9.3 (CRITICAL)
 - **EPSS**：未確認
 - **CISA KEV**：listed=false
 - **Exploitation status**：status=unconfirmed / source=未確認
 - **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-11-01T01:17:16.877 / 2026-11-01T01:17:16.877
-- **官方描述（原文）**：A vulnerability was identified in D-Link DIR-505 1.10B02. Affected is the function save_upload_file/mp_upload_file of the file /usr/bin/tftpd of the component TFTP Upload Filename Handler. The manipulation leads to stack-based buffer overflow. The attack is possible to be carried out remotely. The exploit is publicly available and might be used.
+- **Published / Updated**：2026-11-02T01:17:26.873 / 2026-11-02T01:17:26.873
+- **官方描述（原文）**：A vulnerability has been found in WAVLINK WN536AX6-A V260507. The impacted element is the function wireguard_cli_group handler of the file /protocol.csp of the component WireGuard. The manipulation of the argument group_id/group_name leads to os command injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure.
 
-### 7. CVE-2026-119096｜uncannyowl / Uncanny Toolkit for LearnDash
-- **Delta event**：NEW_CVE (from=未確認; to=2026-10-31T08:16:49.043)
+### 11. CVE-2026-120279｜WAVLINK / WN536AX6-A
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-02T01:17:26.677)
 - **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
-- **CVSS**：v3.1 9.8 (CRITICAL)
-- **EPSS**：0.00463 / percentile=0.40109
-- **CISA KEV**：listed=false
-- **Exploitation status**：status=unconfirmed / source=未確認
-- **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-10-31T08:16:49.043 / 2026-10-31T08:16:49.043
-- **官方描述（原文）**：The Uncanny Toolkit for LearnDash plugin for WordPress is vulnerable to Authentication Bypass in versions up to, and including, 3.8.2 via the `email` parameter of the `uo_login_action()` function. This is due to a parser-differential flaw in which the plugin's account-verification gate resolves the submitted `email` value using the raw, unsanitized string passed to `get_user_by()`, while the subsequent `wp_signon()` call relies on WordPress core's internal `sanitize_user()` to strip appended junk characters — causing the gate lookup to fail and be skipped entirely while the real account is still resolved and authenticated. This makes it possible for unauthenticated attackers to log in to unverified or administrator-suspended accounts whose credentials they already possess, obtaining a valid `wordpress_logged_in` session cookie and defeating the plugin's account-approval and account-suspension controls. The nonce required to reach the handler is freely obtainable in the same request from the unauthenticated `ult-refresh-nonce` endpoint, making exploitation trivial for any attacker with network access to the site and knowledge of a target account's credentials.
-
-### 8. CVE-2026-118636｜Apache Software Foundation / Apache MINA
-- **Delta event**：NEW_CVE (from=未確認; to=2026-10-31T21:16:53.203)
-- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
-- **CVSS**：v3.1 9.8 (CRITICAL)
+- **CVSS**：v4.0 9.3 (CRITICAL)
 - **EPSS**：未確認
 - **CISA KEV**：listed=false
 - **Exploitation status**：status=unconfirmed / source=未確認
 - **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-10-31T21:16:53.203 / 2026-10-31T21:16:53.203
-- **官方描述（原文）**：**UNSUPPORTED WHEN ASSIGNED** JavaNativeMessageDecoder in the MINA 3.0 codec module calls ObjectInputStream.readObject() on frame bytes with no class filter, so an application that puts it in front of an untrusted peer is open to gadget-chain RCE. As the 3.0.0 branch is inactive, we do not plan to release a version that fixes this issue. Users are recommended to use the latest Apache MINA 2.2.X branch.
+- **Published / Updated**：2026-11-02T01:17:26.677 / 2026-11-02T01:17:26.677
+- **官方描述（原文）**：A flaw has been found in WAVLINK WN536AX6-A V260507. The affected element is an unknown function of the file /protocol.csp of the component openvpn_cli Handler. Executing a manipulation of the argument file_id can lead to os command injection. The attack can be launched remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure.
 
-### 9. CVE-2026-118235｜wpazleen / SimpleForm – Form Maker to Chat Apps with Quiz, Poll and Multi Lead Notifications
-- **Delta event**：NEW_CVE (from=未確認; to=2026-10-31T09:16:33.620)
+### 12. CVE-2026-120277｜WAVLINK / WN536AX6-A
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-02T00:18:10.810)
 - **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
-- **CVSS**：v3.1 9.8 (CRITICAL)
-- **EPSS**：0.0074 / percentile=0.54613
-- **CISA KEV**：listed=false
-- **Exploitation status**：status=unconfirmed / source=未確認
-- **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-10-31T09:16:33.620 / 2026-10-31T09:16:33.620
-- **官方描述（原文）**：The SimpleForm – Form Maker to Chat Apps with Quiz, Poll and Multi Lead Notifications plugin for WordPress is vulnerable to Arbitrary File Upload in all versions up to, and including, 3.10.2 via the handle_upload function. This is due to missing server-side file key allowlist and pre-sanitization extension derivation that allows a trailing-dot filename to bypass all extension and MIME validation in handle_upload. This makes it possible for unauthenticated attackers to upload files that may be executable, which makes remote code execution possible. The only access control is a nonce that is printed into every public form's data-nonce attribute, making it trivially obtainable by any unauthenticated visitor on a page embedding the form shortcode.
-
-### 10. CVE-2026-116557｜murgroland / WP Booking System – Booking Calendar
-- **Delta event**：NEW_CVE (from=未確認; to=2026-10-31T07:16:35.857)
-- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
-- **CVSS**：v3.1 9.1 (CRITICAL)
-- **EPSS**：0.00348 / percentile=0.28404
-- **CISA KEV**：listed=false
-- **Exploitation status**：status=unconfirmed / source=未確認
-- **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-10-31T07:16:35.857 / 2026-10-31T07:16:35.857
-- **官方描述（原文）**：The WP Booking System - Booking Calendar plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the wpbs_action_ajax_calendar_remove_note() function in versions up to, and including, 2.1.0.5 This makes it possible for authenticated attackers, with Subscriber-level access and above, to delete arbitrary calendar notes belonging to any calendar.
-
-### 11. CVE-2026-116512｜wedevs / Project Manager – AI Powered Project Management, Task Management, Kanban Board & Time Tracker
-- **Delta event**：NEW_CVE (from=未確認; to=2026-10-31T08:16:48.603)
-- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
-- **CVSS**：v3.1 9.8 (CRITICAL)
-- **EPSS**：0.00584 / percentile=0.47952
-- **CISA KEV**：listed=false
-- **Exploitation status**：status=unconfirmed / source=未確認
-- **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-10-31T08:16:48.603 / 2026-10-31T08:16:48.603
-- **官方描述（原文）**：The Project Manager – AI Powered Project Management, Task Management, Kanban Board & Time Tracker plugin for WordPress is vulnerable to Remote Code Execution in all versions up to, and including, 4.1.1 via the 'id' parameter parameter. This is due to unsanitized 'id' parameter value concatenated directly into the pipe-delimited validation rule string, which is then split and each token invoked as a dynamic PHP function with no allowlist check. This makes it possible for unauthenticated attackers to execute code on the server. This is exploitable by unauthenticated attackers because WordPress core executes the route argument's validate_callback inside WP_REST_Server::dispatch() before the route's permission_callback is invoked, meaning the Project_Manage_Capability authorization gate is never reached on the vulnerable code path.
-
-### 12. CVE-2026-109220｜addonsorg / PDF Invoice for WooCommerce + Drag and Drop Template Builder
-- **Delta event**：NEW_CVE (from=未確認; to=2026-10-31T07:16:34.367)
-- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
-- **CVSS**：v3.1 9.8 (CRITICAL)
-- **EPSS**：0.0052 / percentile=0.44208
-- **CISA KEV**：listed=false
-- **Exploitation status**：status=unconfirmed / source=未確認
-- **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-10-31T07:16:34.367 / 2026-10-31T07:16:34.367
-- **官方描述（原文）**：The PDF Invoice for WooCommerce + Drag and Drop Template Builder plugin for WordPress is vulnerable to PHP Object Injection in all versions up to, and including, 7.1.1 via the 'customer_note' parameter parameter. This is due to insufficient sanitization of the customer_note checkout field, which is inlined verbatim into invoice HTML, entity-decoded back into a live tag by simplehtmldom, reassembled into raw bytes by mPDF, and passed to unserialize() in _getObjAttr without validation. This makes it possible for unauthenticated attackers to execute code on the server. An unauthenticated attacker can trigger the vulnerable code path on a default install by placing an anonymous WooCommerce checkout via the public Store API (POST /wc/store/v1/checkout) using a Direct Bank Transfer or cheque payment method, which automatically transitions the order to 'on-hold' status and fires the plugin's invoice-generation hook.
-
-### 13. CVE-2026-103882｜acadlix / Acadlix LMS – AI Quiz Maker, Online Exam & Course Plugin for WordPress
-- **Delta event**：NEW_CVE (from=未確認; to=2026-10-31T09:16:32.510)
-- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
-- **CVSS**：v3.1 9.1 (CRITICAL)
+- **CVSS**：v4.0 9.3 (CRITICAL)
 - **EPSS**：未確認
 - **CISA KEV**：listed=false
 - **Exploitation status**：status=unconfirmed / source=未確認
 - **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-10-31T09:16:32.510 / 2026-10-31T09:16:32.510
-- **官方描述（原文）**：The Acadlix LMS – AI Quiz Maker, Online Exam & Course Plugin for WordPress plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the post_delete_assessment_file_by_id function in all versions up to, and including, 1.1.9. This makes it possible for authenticated attackers, with subscriber-level access and above, to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php). The route's permission callback only verifies a generic wp_rest nonce that the plugin itself emits inside the public acadlixOptions JavaScript object on every frontend page, effectively reducing the authentication requirement to unauthenticated.
+- **Published / Updated**：2026-11-02T00:18:10.810 / 2026-11-02T00:18:10.810
+- **官方描述（原文）**：A security vulnerability has been detected in WAVLINK WN536AX6-A V260507_2.0.0. This issue affects the function sub_41a1d8 of the file /bin/ioos of the component WireGuard CLI Group Handler. Such manipulation of the argument group_name leads to os command injection. It is possible to launch the attack remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure.
+
+### 13. CVE-2026-120276｜WAVLINK / WN536AX6-A
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-02T00:18:09.897)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 9.3 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=unconfirmed / source=未確認
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-02T00:18:09.897 / 2026-11-02T00:18:09.897
+- **官方描述（原文）**：A weakness has been identified in WAVLINK WN536AX6-A V260507_2.0.0. This vulnerability affects the function sub_416760 of the file /bin/ioos of the component Web Management Interface. This manipulation of the argument group_name causes os command injection. It is possible to initiate the attack remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure.
+
+### 14. CVE-2025-11969｜WSO2 / WSO2 API Manager
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-02T06:17:42.087)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v3.1 9.4 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=unconfirmed / source=未確認
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-02T06:17:42.087 / 2026-11-02T06:17:42.087
+- **官方描述（原文）**：The System REST APIs do not correctly enforce access control mechanisms, allowing users with lower privilege roles to execute administrative actions that should be restricted. This weakness permits unauthorized operations on the affected product. Successful exploitation could enable a malicious actor to perform unauthorized administrative operations, including executing administrative functions. APIs exposed through the WSO2 API Manager's API Gateway are not affected by this vulnerability.
 
 
 ## P1｜立即優先處理
@@ -165,7 +176,7 @@
 - **Title**：GitLab Community Edition and Enterprise Edition Integer Overflow or Wraparound Vulnerability
 - **Risk**：P1 / score 100；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、CVSS_CRITICAL(+20)、EPSS_HIGH(+14)、EPSS_TOP_5_PERCENT(+5)
 - **CVSS**：v3.1 10.0 (CRITICAL)
-- **EPSS**：0.273 / percentile=0.9806
+- **EPSS**：0.273 / percentile=0.98061
 - **CISA KEV**：listed=true / date_added=2026-10-29 / due_date=2026-11-01
 - **Exploitation status**：status=known_exploited / source=cisa_kev
 - **Known ransomware campaign use**：Unknown
@@ -191,7 +202,7 @@
 - **Title**：IBM Langflow Code Injection Vulnerability
 - **Risk**：P1 / score 100；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、CVSS_CRITICAL(+20)、EPSS_HIGH(+14)、EPSS_TOP_5_PERCENT(+5)
 - **CVSS**：v3.1 9.8 (CRITICAL)
-- **EPSS**：0.28658 / percentile=0.98137
+- **EPSS**：0.28658 / percentile=0.98138
 - **CISA KEV**：listed=true / date_added=2026-08-04 / due_date=2026-08-07
 - **Exploitation status**：status=known_exploited / source=cisa_kev
 - **Known ransomware campaign use**：Unknown
@@ -265,20 +276,7 @@
 - **CISA Required Action（原文）**：Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.
 - **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
 
-### 9. CVE-2026-64849｜MLflow / MLflow
-- **Title**：MLflow Server-Side Request Forgery Vulnerability
-- **Risk**：P1 / score 100；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、CVSS_CRITICAL(+20)、EPSS_ELEVATED(+8)、EPSS_TOP_5_PERCENT(+5)
-- **CVSS**：v3.1 9.3 (CRITICAL)
-- **EPSS**：0.10017 / percentile=0.95614
-- **CISA KEV**：listed=true / date_added=2026-08-19 / due_date=2026-09-02
-- **Exploitation status**：status=known_exploited / source=cisa_kev
-- **Known ransomware campaign use**：Unknown
-- **受影響版本**：未確認（compact intelligence 未提供結構化受影響版本）
-- **官方描述（原文）**：MLflow contains a server-side request forgery vulnerability that can allow attackers to reach internal or cloud metadata services and receive response_status and response_body.
-- **CISA Required Action（原文）**：Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.
-- **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
-
-### 10. CVE-2026-63077｜JetBrains / TeamCity
+### 9. CVE-2026-63077｜JetBrains / TeamCity
 - **Title**：JetBrains TeamCity Deserialization of Untrusted Data Vulnerability
 - **Risk**：P1 / score 100；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、KNOWN_RANSOMWARE_USE(+20)、CVSS_CRITICAL(+20)、EPSS_VERY_HIGH(+20)、EPSS_TOP_5_PERCENT(+5)
 - **CVSS**：v3.1 9.8 (CRITICAL)
@@ -291,16 +289,28 @@
 - **CISA Required Action（原文）**：Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.
 - **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
 
+### 10. CVE-2026-63030｜WordPress / Core
+- **Title**：WordPress Core Interpretation Conflict Vulnerability
+- **Risk**：P1 / score 100；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、CVSS_CRITICAL(+20)、EPSS_ELEVATED(+8)、EPSS_TOP_5_PERCENT(+5)
+- **CVSS**：v3.1 9.8 (CRITICAL)
+- **EPSS**：0.10649 / percentile=0.95799
+- **CISA KEV**：listed=true / date_added=2026-07-21 / due_date=2026-07-24
+- **Exploitation status**：status=known_exploited / source=cisa_kev
+- **Known ransomware campaign use**：Unknown
+- **受影響版本**：未確認（compact intelligence 未提供結構化受影響版本）
+- **官方描述（原文）**：WordPress Core contains an interpretation conflict vulnerability that could allow an attacker to perform SQL Injection and achieve Remote Code Execution. This vulnerability can be chained with CVE-2026-60137.
+- **CISA Required Action（原文）**：Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.
+- **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
+
 
 ### 其他 P1
 
 | CVE | Priority / Score | Vendor / Product | CVSS | EPSS | KEV | Exploitation | Ransomware use |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| CVE-2026-63030 | P1 / 100 | WordPress / Core | v3.1 9.8 (CRITICAL) | 0.10649 / percentile=0.95798 | listed=true / date_added=2026-07-21 / due_date=2026-07-24 | status=known_exploited / source=cisa_kev | Unknown |
-| CVE-2026-56291 | P1 / 100 | Balbooa / Forms | v4.0 10.0 (CRITICAL) | 0.14854 / percentile=0.96695 | listed=true / date_added=2026-07-10 / due_date=2026-07-13 | status=known_exploited / source=cisa_kev | Unknown |
+| CVE-2026-56291 | P1 / 100 | Balbooa / Forms | v4.0 10.0 (CRITICAL) | 0.14854 / percentile=0.96696 | listed=true / date_added=2026-07-10 / due_date=2026-07-13 | status=known_exploited / source=cisa_kev | Unknown |
 | CVE-2026-56290 | P1 / 100 | Joomlack / Page Builder | v4.0 10.0 (CRITICAL) | 0.30866 / percentile=0.98252 | listed=true / date_added=2026-07-07 / due_date=2026-07-10 | status=known_exploited / source=cisa_kev | Unknown |
 | CVE-2026-48939 | P1 / 100 | iCagenda / iCagenda | v4.0 10.0 (CRITICAL) | 0.20069 / percentile=0.97447 | listed=true / date_added=2026-07-10 / due_date=2026-07-13 | status=known_exploited / source=cisa_kev | Unknown |
-| CVE-2026-48908 | P1 / 100 | JoomShaper / SP Page Builder | v4.0 10.0 (CRITICAL) | 0.88512 / percentile=0.99772 | listed=true / date_added=2026-07-07 / due_date=2026-07-10 | status=known_exploited / source=cisa_kev | Unknown |
+| CVE-2026-48908 | P1 / 100 | JoomShaper / SP Page Builder | v4.0 10.0 (CRITICAL) | 0.88512 / percentile=0.99771 | listed=true / date_added=2026-07-07 / due_date=2026-07-10 | status=known_exploited / source=cisa_kev | Unknown |
 | CVE-2026-45321 | P1 / 100 | TanStack / TanStack | v3.1 9.6 (CRITICAL) | 0.03278 / percentile=0.88427 | listed=true / date_added=2026-05-27 / due_date=2026-06-10 | status=known_exploited / source=cisa_kev | Known |
 | CVE-2026-42271 | P1 / 100 | BerriAI / LiteLLM | v4.0 8.7 (HIGH) | 0.91445 / percentile=0.99812 | listed=true / date_added=2026-06-08 / due_date=2026-06-22 | status=known_exploited / source=cisa_kev | Unknown |
 
@@ -312,19 +322,20 @@
 
 | CVE | Priority / Score | Vendor / Product | CVSS | EPSS | KEV | Exploitation | Ransomware use |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| CVE-2026-89270 | WATCH / 28 | popupbuilder / Popup Builder – Create highly converting, mobile friendly marketing popups. | v3.1 9.1 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-120209 | WATCH / 28 | anji-plus / AJ-Report | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-120201 | WATCH / 28 | dromara / Jpom | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-120198 | WATCH / 28 | WAVLINK / WL-WN530BE1-A | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-120195 | WATCH / 28 | WAVLINK / WL-WN579A3-A | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-120189 | WATCH / 28 | D-Link / DIR-505 | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-119096 | WATCH / 28 | uncannyowl / Uncanny Toolkit for LearnDash | v3.1 9.8 (CRITICAL) | 0.00463 / percentile=0.40109 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-118636 | WATCH / 28 | Apache Software Foundation / Apache MINA | v3.1 9.8 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-118235 | WATCH / 28 | wpazleen / SimpleForm – Form Maker to Chat Apps with Quiz, Poll and Multi Lead Notifications | v3.1 9.8 (CRITICAL) | 0.0074 / percentile=0.54613 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-116557 | WATCH / 28 | murgroland / WP Booking System – Booking Calendar | v3.1 9.1 (CRITICAL) | 0.00348 / percentile=0.28404 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-116512 | WATCH / 28 | wedevs / Project Manager – AI Powered Project Management, Task Management, Kanban Board & Time Tracker | v3.1 9.8 (CRITICAL) | 0.00584 / percentile=0.47952 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-109220 | WATCH / 28 | addonsorg / PDF Invoice for WooCommerce + Drag and Drop Template Builder | v3.1 9.8 (CRITICAL) | 0.0052 / percentile=0.44208 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-103882 | WATCH / 28 | acadlix / Acadlix LMS – AI Quiz Maker, Online Exam & Course Plugin for WordPress | v3.1 9.1 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-62048 | WATCH / 28 | Liquid Web / StellarWP / BookIt | v3.1 9.3 (CRITICAL) | 未確認 | listed=false | status=none / source=nvd_ssvc | 未確認 |
+| CVE-2026-120345 | WATCH / 28 | WAVLINK / WN551X3-A | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-120344 | WATCH / 28 | WAVLINK / WN551X3-A | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-120338 | WATCH / 28 | PrefectHQ / prefab-ui | v3.1 10.0 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-120308 | WATCH / 28 | beam-cloud / Beta9 gateway | v3.1 9.9 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-120307 | WATCH / 28 | beam-cloud / Beta9 worker | v3.1 9.9 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-120306 | WATCH / 28 | beam-cloud / Beta9 worker | v3.1 9.9 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-120283 | WATCH / 28 | Linksys / E8450 | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-120281 | WATCH / 28 | WAVLINK / WN536AX6-A | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-120280 | WATCH / 28 | WAVLINK / WN536AX6-A | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-120279 | WATCH / 28 | WAVLINK / WN536AX6-A | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-120277 | WATCH / 28 | WAVLINK / WN536AX6-A | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-120276 | WATCH / 28 | WAVLINK / WN536AX6-A | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2025-11969 | WATCH / 28 | WSO2 / WSO2 API Manager | v3.1 9.4 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
 
 ## 建議行動
 
@@ -346,11 +357,11 @@
 
 ## 資料品質與未確認事項
 
-- Intelligence items：30；缺少 Vendor：0；缺少 Product：0；缺少 Title：13。
-- EPSS 未確認：8；Exploitation status 未確認：13。
+- Intelligence items：30；缺少 Vendor：0；缺少 Product：0；缺少 Title：14。
+- EPSS 未確認：14；Exploitation status 未確認：13。
 - 結構化受影響版本未提供：30。本 renderer **不會**從 description 自行解析或猜測版本。
 - Google Search grounding：本次不可用或已停用，因此沒有 Search query / citation，也不會用模型既有知識補齊 vendor advisory 或攻擊背景。
-- Intelligence generated at：`2026-11-01T07:00:11.176869+00:00`；Delta generated at：`2026-11-01T07:00:11.176869+00:00`。
+- Intelligence generated at：`2026-11-02T06:59:28.559925+00:00`；Delta generated at：`2026-11-02T06:59:28.559925+00:00`。
 
 ---
 
@@ -361,23 +372,23 @@
 - **CVE-2026-9198** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-9198) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-9198) · [Vendor / Advisory (ibm.com)](https://www.ibm.com/support/pages/node/7278927) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
 - **CVE-2026-9082** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-9082) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-9082) · [Vendor / Advisory (drupal.org)](https://www.drupal.org/sa-core-2026-004)
 - **CVE-2026-88772** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-88772) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-88772) · [Vendor / Advisory (community.citrix.com)](https://community.citrix.com/techzone-blogs/110_security-updates/netscaler-adc-and-netscaler-gateway-security-bulletin-for-cve-2026-88771-through-cve-2026-88778) · [Vendor / Advisory (support.citrix.com)](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697096) · [Vendor / Advisory (support.citrix.com)](https://support.citrix.com/external/article/CTX694799/steps-to-take-if-netscaler-adc-is-suspec.html) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
-- **CVE-2026-89270** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-89270)
-- **CVE-2026-120209** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-120209)
-- **CVE-2026-120201** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-120201)
-- **CVE-2026-120198** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-120198)
-- **CVE-2026-120195** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-120195)
-- **CVE-2026-120189** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-120189)
-- **CVE-2026-119096** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-119096) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-119096)
-- **CVE-2026-118636** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-118636)
-- **CVE-2026-118235** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-118235) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-118235)
-- **CVE-2026-116557** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-116557) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-116557)
-- **CVE-2026-116512** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-116512) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-116512)
-- **CVE-2026-109220** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-109220) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-109220)
-- **CVE-2026-103882** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-103882)
+- **CVE-2026-62048** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-62048)
+- **CVE-2026-120345** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-120345)
+- **CVE-2026-120344** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-120344)
+- **CVE-2026-120338** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-120338)
+- **CVE-2026-120308** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-120308)
+- **CVE-2026-120307** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-120307)
+- **CVE-2026-120306** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-120306)
+- **CVE-2026-120283** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-120283)
+- **CVE-2026-120281** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-120281)
+- **CVE-2026-120280** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-120280)
+- **CVE-2026-120279** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-120279)
+- **CVE-2026-120277** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-120277)
+- **CVE-2026-120276** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-120276)
+- **CVE-2025-11969** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2025-11969)
 - **CVE-2026-88771** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-88771) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-88771) · [Vendor / Advisory (community.citrix.com)](https://community.citrix.com/techzone-blogs/110_security-updates/netscaler-adc-and-netscaler-gateway-security-bulletin-for-cve-2026-88771-through-cve-2026-88778) · [Vendor / Advisory (support.citrix.com)](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697096) · [Vendor / Advisory (support.citrix.com)](https://support.citrix.com/external/article/CTX694799/steps-to-take-if-netscaler-adc-is-suspec.html) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk) · [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-88772)
 - **CVE-2026-86950** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-86950) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-86950) · [Vendor / Advisory (support.apple.com)](https://support.apple.com/en-us/149226) · [Vendor / Advisory (support.apple.com)](https://support.apple.com/en-us/149228) · [Vendor / Advisory (support.apple.com)](https://support.apple.com/en-us/149229) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
 - **CVE-2026-6973** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-6973) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-6973) · [Vendor / Advisory (hub.ivanti.com)](https://hub.ivanti.com/s/article/May-2026-Security-Advisory-Ivanti-Endpoint-Manager-Mobile-EPMM-Multiple-CVEs?language=en_US)
-- **CVE-2026-64849** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-64849) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-64849) · [Vendor / Advisory (github.com)](https://github.com/mlflow/mlflow/pull/24258) · [Vendor / Advisory (github.com)](https://github.com/mlflow/mlflow/issues/24179) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
 - **CVE-2026-63077** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-63077) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [Vendor / Advisory (blog.jetbrains.com)](https://blog.jetbrains.com/teamcity/2026/07/cve-2026-63077/) · [Vendor / Advisory (jetbrains.com)](https://www.jetbrains.com/privacy-security/issues-fixed/) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
 - **CVE-2026-63030** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-63030) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-63030) · [Vendor / Advisory (wordpress.org)](https://wordpress.org/news/2026/07/wordpress-7-0-2-release/) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
 - **CVE-2026-56291** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-56291) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-56291) · [Vendor / Advisory (balbooa.com)](https://www.balbooa.com/joomla-forms) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
