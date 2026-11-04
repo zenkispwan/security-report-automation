@@ -1,11 +1,11 @@
 {
   "schema_version": "1.1-security-events",
-  "generated_at": "2026-11-03T07:26:11.189712+00:00",
+  "generated_at": "2026-11-04T07:08:18.122037+00:00",
   "selection": {
     "window_days": 7,
     "max_items": 20,
     "rule": "Homepage events come from current RSS/advisory sources. CVEs are shown only when the source article/advisory mentions them.",
-    "tracked_cve_count": 34
+    "tracked_cve_count": 95
   },
   "sources": [
     {
@@ -32,105 +32,63 @@
   "summary": {
     "fetched_entries": 65,
     "included_items": 20,
-    "linked_cve_items": 13,
-    "matched_intelligence_items": 0,
+    "linked_cve_items": 11,
+    "matched_intelligence_items": 2,
     "successful_sources": 4,
     "source_errors": [],
-    "preserved_translations": 11
+    "preserved_translations": 8
   },
   "items": [
     {
-      "id": "0f81648bf5c6b707",
+      "id": "4fc8c8ddd3ad60a0",
       "event_type": "RANSOMWARE",
       "priority": "CRITICAL",
-      "published_at": "2026-11-02T11:28:42+00:00",
-      "title": "Synology warns of C3RB3R ransomware attacks targeting NAS devices",
-      "summary": "Taiwanese network-attached storage (NAS) appliance maker Synology warned customers to update their devices immediately due to a surge in C3RB3r ransomware attacks. [...]",
+      "published_at": "2026-11-03T14:00:00+00:00",
+      "title": "UK school estate hit by 3AM ransomware in suspected AI-assisted attack",
+      "summary": "A 3AM ransomware affiliate targeted a school estate in the UK and successfully encrypted around 37 of nearly 50 machines reached from an unmanaged host. [...]",
       "source_name": "BleepingComputer",
       "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/synology-warns-customers-of-ongoing-c3rb3r-ransomware-attacks/",
-      "related_cves": [
-        "CVE-2021-22205",
-        "CVE-2021-26084",
-        "CVE-2023-22518",
-        "CVE-2024-10441",
-        "CVE-2024-10445",
-        "CVE-2024-50629"
-      ],
+      "source_url": "https://www.bleepingcomputer.com/news/security/uk-school-estate-hit-by-3am-ransomware-in-suspected-ai-assisted-attack/",
+      "related_cves": [],
       "matched_intelligence_cves": [],
       "score": 111,
-      "cve_evidence": "source_article",
-      "title_zh": "群暉科技發布警告，針對 NAS 裝置的 C3RB3R 勒索軟體攻擊正在增加",
-      "summary_zh": "台灣網路附加儲存（NAS）設備製造商群暉科技（Synology）警告客戶立即更新裝置，原因是 C3RB3r 勒索軟體攻擊大幅激增。[...]"
+      "cve_evidence": null
     },
     {
-      "id": "ce0102be3fc9459f",
+      "id": "53ca9309f14b041c",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "published_at": "2026-11-02T12:47:00+00:00",
-      "title": "Over 1,000 GitLab servers vulnerable to ongoing RCE attacks",
-      "summary": "Over 1,000 Internet-exposed GitLab servers are still unpatched against a maximum-severity flaw actively exploited in remote code execution attacks. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/over-1-000-gitlab-servers-vulnerable-to-code-execution-attacks/",
+      "published_at": "2026-11-03T12:00:00+00:00",
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-119977 WordPress Core Time-of-check Time-of-use (TOCTOU) Race Condition Vulnerability This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal ent...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/11/03/cisa-adds-one-known-exploited-vulnerability-catalog",
       "related_cves": [
-        "CVE-2026-0723",
-        "CVE-2026-110264",
-        "CVE-2026-85706",
-        "CVE-2026-97229"
+        "CVE-2026-119977"
       ],
-      "matched_intelligence_cves": [],
-      "score": 106,
-      "cve_evidence": "source_article",
-      "title_zh": "超過 1,000 台 GitLab 伺服器易受持續進行的 RCE 攻擊影響",
-      "summary_zh": "超過 1,000 台暴露於網際網路的 GitLab 伺服器仍未修補一個最高嚴重性漏洞，該漏洞正被積極利用於遠端程式碼執行攻擊中。[...]"
+      "matched_intelligence_cves": [
+        "CVE-2026-119977"
+      ],
+      "score": 111,
+      "cve_evidence": "source_title_or_summary"
     },
     {
-      "id": "5ff3e4930a9500af",
+      "id": "283335e142ed8b82",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "published_at": "2026-11-02T09:33:26+00:00",
-      "title": "Ivanti patches two more Connect Secure zero-days chained in attacks",
-      "summary": "Ivanti released security updates to patch two more Connect Secure (ICS) remote access gateway flaws that have been chained in zero-day attacks since at least October 1. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/ivanti-patches-two-more-connect-secure-zero-days-chained-in-attacks/",
-      "related_cves": [
-        "CVE-2023-46805",
-        "CVE-2024-21887",
-        "CVE-2024-21893",
-        "CVE-2025-0282",
-        "CVE-2025-22457",
-        "CVE-2026-104935",
-        "CVE-2026-111357",
-        "CVE-2026-118527"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 106,
-      "cve_evidence": "source_article",
-      "title_zh": "Ivanti 修補另外兩個在攻擊中被串聯利用的 Connect Secure 零日漏洞",
-      "summary_zh": "Ivanti 發布了安全性更新，以修補另外兩個 Connect Secure (ICS) 遠端存取閘道器漏洞，這些漏洞至少自 10 月 1 日起就在零日攻擊中被串聯利用。[...]"
-    },
-    {
-      "id": "850d3b52f0b80f1e",
-      "event_type": "ACTIVE_EXPLOITATION",
-      "priority": "CRITICAL",
-      "published_at": "2026-11-02T07:57:49+00:00",
-      "title": "Ivanti Patches Two More Zero-Days Exploited in Connect Secure Attack Chain",
-      "summary": "CISA has added CVE-2026-111357 and CVE-2026-118527 to its KEV catalog after the Ivanti VPN flaws were chained in zero-day attacks. The post Ivanti Patches Two More Zero-Days Exploited in Connect Secure Attack Chain appeared first on SecurityWeek .",
+      "published_at": "2026-11-03T12:10:19+00:00",
+      "title": "Critical Node-RED Flaw Exploited in Attacks",
+      "summary": "Multiple attacks from the same IP address attempted to deploy various payloads, including a Linux bot and webshells. The post Critical Node-RED Flaw Exploited in Attacks appeared first on SecurityWeek .",
       "source_name": "SecurityWeek",
       "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/ivanti-patches-two-more-zero-days-exploited-in-connect-secure-attack-chain/",
+      "source_url": "https://www.securityweek.com/critical-node-red-flaw-exploited-in-attacks/",
       "related_cves": [
-        "CVE-2026-104935",
-        "CVE-2026-111357",
-        "CVE-2026-118527"
+        "CVE-2026-58115"
       ],
       "matched_intelligence_cves": [],
       "score": 106,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Ivanti 修補在 Connect Secure 攻擊鏈中被利用的另外兩個零日漏洞",
-      "summary_zh": "在 Ivanti VPN 漏洞於零日攻擊中被串聯利用後，CISA 已將 CVE-2026-111357 和 CVE-2026-118527 新增至其 KEV 目錄。這篇文章《Ivanti Patches Two More Zero-Days Exploited in Connect Secure Attack Chain》最早發表於 SecurityWeek。"
+      "cve_evidence": "source_article"
     },
     {
       "id": "f635e51b46992649",
@@ -146,8 +104,10 @@
         "CVE-2026-111357",
         "CVE-2026-118527"
       ],
-      "matched_intelligence_cves": [],
-      "score": 100,
+      "matched_intelligence_cves": [
+        "CVE-2026-118527"
+      ],
+      "score": 103,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 新增兩個已知被利用漏洞至目錄",
       "summary_zh": "CISA 根據主動利用的證據，在其已知被利用漏洞（KEV）目錄中新增了兩個新漏洞。CVE-2026-111357 Ivanti Connect Secure 關鍵功能欠缺身分驗證漏洞，以及 CVE-2026-118527 Ivanti Connect Secure 產生可預測數字或識別碼漏洞。這些類型的漏洞..."
@@ -167,7 +127,7 @@
         "CVE-2026-97229"
       ],
       "matched_intelligence_cves": [],
-      "score": 98,
+      "score": 96,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 將兩宗已知被利用漏洞納入目錄",
       "summary_zh": "CISA 根據主動利用的證據，已將兩宗新漏洞新增至其已知被利用漏洞（KEV）目錄中。CVE-2026-97229 GitLab 社群版與企業版整數溢位或迴繞漏洞，以及 CVE-2026-76418 Cisco Secure Firewall ASA 軟體與 Cisco Secure FTD 軟體未檢查傳回值至 NULL 的漏洞..."
@@ -187,89 +147,48 @@
         "CVE-2026-46300"
       ],
       "matched_intelligence_cves": [],
-      "score": 96,
+      "score": 95,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 將兩項已遭利用的漏洞加入目錄",
       "summary_zh": "CISA 根據主動利用的證據，在其已知被利用漏洞（KEV）目錄中新增了兩項新漏洞：CVE-2026-41709 Broadcom VMWare ESX 日誌記錄不足漏洞，以及 CVE-2026-46300 Linux Kernel 變數未初始化漏洞。此類漏洞是惡意攻擊者常用的攻擊途徑..."
     },
     {
-      "id": "f7763a757c0c37e7",
-      "event_type": "ACTIVE_EXPLOITATION",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-27T12:00:00+00:00",
-      "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
-      "summary": "CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-48356 Adobe Commerce and Magento Unrestricted Upload of File with Dangerous Type Vulnerability CVE-2026-111497 Google Brotli Unchecked Return Value Vulnerability These types of vulnerabilities are a frequent atta...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/10/27/cisa-adds-two-known-exploited-vulnerabilities-catalog",
-      "related_cves": [
-        "CVE-2026-111497",
-        "CVE-2026-48356"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 95,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "CISA 將兩項已知被利用的漏洞納入目錄",
-      "summary_zh": "CISA 根據已遭積極利用的證據，在其已知被利用漏洞（KEV）目錄中新增了兩項新漏洞。CVE-2026-48356 Adobe Commerce 與 Magento 未限制上傳危險類型檔案漏洞，CVE-2026-111497 Google Brotli 未檢查回傳值漏洞。這些漏洞類型是常見的攻擊..."
-    },
-    {
-      "id": "d6448e6ee754fd41",
+      "id": "626b3ee2d010a08d",
       "event_type": "THREAT_ACTIVITY",
       "priority": "CRITICAL",
-      "published_at": "2026-11-01T15:11:21+00:00",
-      "title": "Alpine Linux rebuilds GitLab after attempted RCE attack",
-      "summary": "Hackers attempted to exploit a critical GitLab vulnerability in Alpine Linux's development infrastructure on October 20-21, prompting the open-source project to rebuild its GitLab server and reset all passwords over concerns of a possible compromise. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/alpine-linux-rebuilds-gitlab-after-attempted-rce-attack/",
-      "related_cves": [],
-      "matched_intelligence_cves": [],
-      "score": 84,
-      "cve_evidence": null,
-      "title_zh": "Alpine Linux 遭嘗試性 RCE 攻擊後重建 GitLab",
-      "summary_zh": "駭客於 10 月 20 日至 21 日嘗試利用 Alpine Linux 開發基礎設施中的關鍵 GitLab 漏洞，導致該開源專案因擔憂可能遭受入侵，進而重建其 GitLab 伺服器並重置所有密碼。[...]"
-    },
-    {
-      "id": "b933b8867a0cffd5",
-      "event_type": "THREAT_ACTIVITY",
-      "priority": "CRITICAL",
-      "published_at": "2026-10-27T12:00:00+00:00",
-      "title": "EPICS Base",
-      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to cause a denial-of-service condition, corrupt memory, disclose sensitive information, or potentially execute arbitrary code. The following versions of EPICS Base are affected: EPICS Base release <=7.0.10 (CVE-2026-114595, CVE-2026-114596, CVE-2026-114597, CVE-2026...",
+      "published_at": "2026-11-03T12:00:00+00:00",
+      "title": "Subnet Solutions PowerSYSTEM Center",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to execute unauthorized SQL commands and gain access to unauthorized resources. The following versions of Subnet Solutions PowerSYSTEM Center are affected: PowerSYSTEM Center 2020 <=5.29.x (CVE-2026-63017) PowerSYSTEM Center 2024 >=6.0.x|<=6.2.x (CVE-2026-63017, CVE...",
       "source_name": "CISA Advisories",
       "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-300-01",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-307-01",
       "related_cves": [
-        "CVE-2026-114595",
-        "CVE-2026-114596",
-        "CVE-2026-114597",
-        "CVE-2026-114598"
+        "CVE-2026-63017",
+        "CVE-2026-63774"
       ],
       "matched_intelligence_cves": [],
-      "score": 75,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "EPICS Base",
-      "summary_zh": "檢視 CSAF 摘要。成功利用這些漏洞可能允許攻擊者造成拒絕服務狀況、損毀記憶體、揭露敏感資訊，或可能執行任意程式碼。以下版本的 EPICS Base 受影響：EPICS Base 版本 <=7.0.10 (CVE-2026-114595, CVE-2026-114596, CVE-2026-114597, CVE-2026..."
+      "score": 86,
+      "cve_evidence": "source_title_or_summary"
     },
     {
-      "id": "d3ed0a84a8f24477",
+      "id": "7a78f5e71c17f185",
       "event_type": "VULNERABILITY_NEWS",
       "priority": "CRITICAL",
-      "published_at": "2026-10-29T12:00:00+00:00",
-      "title": "Hitachi Energy CoreTec Product",
-      "summary": "View CSAF Summary Hitachi Energy is aware of OS command injection and Dirty Frag vulnerabilities that affect CoreTec product versions listed in this document. Successful exploitation of these vulnerabilities could result in impact on confidentiality, integrity and availability of the product. Please refer to the Recommended Immediate Actions for informati...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-302-03",
+      "published_at": "2026-11-03T15:06:16+00:00",
+      "title": "Barracuda warns of critical flaws allowing root access to devices",
+      "summary": "Cybersecurity company Barracuda Networks warned customers to patch two vulnerabilities that can let attackers run commands with root privileges. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/barracuda-warns-of-critical-flaws-allowing-root-access-to-devices/",
       "related_cves": [
-        "CVE-2026-13162",
-        "CVE-2026-43284"
+        "CVE-2023-2868",
+        "CVE-2023-7102",
+        "CVE-2026-111560",
+        "CVE-2026-116606"
       ],
       "matched_intelligence_cves": [],
-      "score": 73,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "Hitachi Energy CoreTec 產品",
-      "summary_zh": "檢視 CSAF 摘要：Hitachi Energy 已注意到影響本文所述 CoreTec 產品版本的 OS 命令注入與 Dirty Frag 漏洞。成功利用這些漏洞可能會影響產品的機密性、完整性與可用性。有關詳細資訊，請參閱建議的立即採取行動..."
+      "score": 81,
+      "cve_evidence": "source_article"
     },
     {
       "id": "550e95ef6ab5f80b",
@@ -286,7 +205,7 @@
         "CVE-2026-10756"
       ],
       "matched_intelligence_cves": [],
-      "score": 73,
+      "score": 71,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "日立能源 TRO600 系列產品",
       "summary_zh": "檢視 CSAF 摘要 日立能源（Hitachi Energy）已獲悉有多個漏洞影響本文所述的 TRO600 系列產品版本。攻擊者可利用這些漏洞進行遠端程式碼執行（RCE），以進行進一步攻擊與洩漏敏感資訊。請參閱建議的立即行動章節以取得相關資訊..."
@@ -305,49 +224,75 @@
         "CVE-2026-89209"
       ],
       "matched_intelligence_cves": [],
-      "score": 73,
+      "score": 71,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "西門子 Mendix SAML 模組",
       "summary_zh": "檢視 CSAF 摘要 Mendix SAML 模組包含一個身分驗證旁路漏洞，可能允許未經身分驗證的遠端攻擊者透過在 IdP 發起的身分驗證流程中重放有效的 SAML 斷言來取得未授權存取。西門子已針對受影響的產品發布新版本，並建議更新至最新版本。以下..."
     },
     {
-      "id": "c67cf62fcc6ed47b",
+      "id": "d3ed0a84a8f24477",
       "event_type": "VULNERABILITY_NEWS",
       "priority": "CRITICAL",
-      "published_at": "2026-10-27T12:00:00+00:00",
-      "title": "Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions GENESIS, GENESIS64, ICONICS Suite, Hyper Historian, AnalytiX, MobileHMI, IoTWorX, MC Works64, GENESIS32 and BizViz",
-      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to execute arbitrary code (CVE-2023-4863), bypass authentication (CVE-2026-16436 and CVE-2026-16437), or perform arbitrary operations (CVE-2026-16438), resulting in information disclosure, tampering with, destruction, or deletion of information, and a denial-of-serv...",
+      "published_at": "2026-10-29T12:00:00+00:00",
+      "title": "Hitachi Energy CoreTec Product",
+      "summary": "View CSAF Summary Hitachi Energy is aware of OS command injection and Dirty Frag vulnerabilities that affect CoreTec product versions listed in this document. Successful exploitation of these vulnerabilities could result in impact on confidentiality, integrity and availability of the product. Please refer to the Recommended Immediate Actions for informati...",
       "source_name": "CISA Advisories",
       "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-300-02",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-302-03",
       "related_cves": [
-        "CVE-2023-4863",
-        "CVE-2026-16436",
-        "CVE-2026-16437",
-        "CVE-2026-16438"
+        "CVE-2026-13162",
+        "CVE-2026-43284"
       ],
       "matched_intelligence_cves": [],
-      "score": 70,
+      "score": 71,
       "cve_evidence": "source_title_or_summary",
-      "title_zh": "三菱電機與 Mitsubishi Electric Iconics Digital Solutions GENESIS、GENESIS64、ICONICS Suite、Hyper Historian、AnalytiX、MobileHMI、IoTWorX、MC Works64、GENESIS32 及 BizViz",
-      "summary_zh": "檢視 CSAF 摘要 成功利用這些漏洞可能允許攻擊者執行任意程式碼（CVE-2023-4863）、繞過身分驗證（CVE-2026-16436 與 CVE-2026-16437）或執行任意操作（CVE-2026-16438），從而導致資訊洩漏、竄改、破壞或刪除資訊，以及拒絕服務..."
+      "title_zh": "Hitachi Energy CoreTec 產品",
+      "summary_zh": "檢視 CSAF 摘要：Hitachi Energy 已注意到影響本文所述 CoreTec 產品版本的 OS 命令注入與 Dirty Frag 漏洞。成功利用這些漏洞可能會影響產品的機密性、完整性與可用性。有關詳細資訊，請參閱建議的立即採取行動..."
     },
     {
-      "id": "48035fae1822c712",
-      "event_type": "SUPPLY_CHAIN",
+      "id": "cf2ea752df828dba",
+      "event_type": "DATA_BREACH",
       "priority": "HIGH",
-      "published_at": "2026-11-02T11:29:39+00:00",
-      "title": "Malicious Claude Code Extension Served in Cursor Supply Chain Attack",
-      "summary": "The extension performed host reconnaissance and attempted to create a reverse SSH tunnel. The post Malicious Claude Code Extension Served in Cursor Supply Chain Attack appeared first on SecurityWeek .",
-      "source_name": "SecurityWeek",
+      "published_at": "2026-11-03T21:28:44+00:00",
+      "title": "WorkOS says attacker used ARTEX AI to breach internal sales app",
+      "summary": "Developer platform WorkOS suffered a data breach after a threat actor accessed business contact records and summaries of customer communications. [...]",
+      "source_name": "BleepingComputer",
       "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/malicious-claude-code-extension-served-in-cursor-supply-chain-attack/",
+      "source_url": "https://www.bleepingcomputer.com/news/security/workos-says-attacker-used-artex-ai-to-breach-internal-sales-app/",
       "related_cves": [],
       "matched_intelligence_cves": [],
-      "score": 101,
-      "cve_evidence": null,
-      "title_zh": "惡意 Claude Code 擴充功能於 Cursor 供應鏈攻擊中散播",
-      "summary_zh": "該擴充功能執行了主機偵察並企圖建立反向 SSH 隧道。這篇文章《Malicious Claude Code Extension Served in Cursor Supply Chain Attack》最早發表於 SecurityWeek。"
+      "score": 97,
+      "cve_evidence": null
+    },
+    {
+      "id": "f01d9b63500da3f8",
+      "event_type": "DATA_BREACH",
+      "priority": "HIGH",
+      "published_at": "2026-11-03T14:32:38+00:00",
+      "title": "Frontline Education Data Breach Impacts Over 1.3 Million",
+      "summary": "Hackers exploited a flaw in third-party software and stole the personal information of school district staff and students. The post Frontline Education Data Breach Impacts Over 1.3 Million appeared first on SecurityWeek .",
+      "source_name": "SecurityWeek",
+      "source_type": "security_media",
+      "source_url": "https://www.securityweek.com/frontline-education-data-breach-impacts-over-1-3-million/",
+      "related_cves": [],
+      "matched_intelligence_cves": [],
+      "score": 96,
+      "cve_evidence": null
+    },
+    {
+      "id": "790f1db371db373b",
+      "event_type": "DATA_BREACH",
+      "priority": "HIGH",
+      "published_at": "2026-11-03T10:53:25+00:00",
+      "title": "Harvard University data breach exposed info of 851,000 accounts",
+      "summary": "Hackers who breached Harvard University's Alumni Affairs and Development systems in November 2025 stole data linked to more than 850,000 unique email addresses, according to breach notification service Have I Been Pwned. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/harvard-university-data-breach-exposed-info-of-851-000-accounts/",
+      "related_cves": [],
+      "matched_intelligence_cves": [],
+      "score": 96,
+      "cve_evidence": null
     },
     {
       "id": "1a6bbb312ff8ea1c",
@@ -361,7 +306,7 @@
       "source_url": "https://www.bleepingcomputer.com/news/security/your-mobile-carrier-stores-your-call-logs-for-years/",
       "related_cves": [],
       "matched_intelligence_cves": [],
-      "score": 96,
+      "score": 94,
       "cve_evidence": null,
       "title_zh": "您的行動電信業者保存您多年的通話紀錄",
       "summary_zh": "行動電信業者可能會保留多年的通話與簡訊元資料（metadata），若遭遇外洩，將揭露客戶的社交關係、位置和日常作息等敏感細節。Cape 探討了電信數據長期保留的隱私風險，以及其行動服務如何透過自動刪除通話紀錄來降低暴露風險。[...]"
@@ -378,79 +323,72 @@
       "source_url": "https://www.securityweek.com/florida-student-aid-website-hack-puts-data-of-4-9-million-people-at-risk/",
       "related_cves": [],
       "matched_intelligence_cves": [],
-      "score": 96,
+      "score": 94,
       "cve_evidence": null,
       "title_zh": "佛羅里達州學生資助網站遭駭，490 萬人資料面臨風險",
       "summary_zh": "佛羅里達州教育局表示，其財務資助網站遭外洩，社會安全碼（SSN）和其他個人資料可能已暴露。該篇文章《佛羅里達州學生資助網站遭駭，490 萬人資料面臨風險》首次發表於 SecurityWeek。"
     },
     {
-      "id": "f57d673568c8e325",
-      "event_type": "DATA_BREACH",
+      "id": "bcfb2e41fbecf9d2",
+      "event_type": "VULNERABILITY_NEWS",
       "priority": "HIGH",
-      "published_at": "2026-11-02T13:35:21+00:00",
-      "title": "Revolve Data Breach Impacts at Least 200,000 People",
-      "summary": "Hackers accessed its online shopping platform and stole customers’ personal and payment card information. The post Revolve Data Breach Impacts at Least 200,000 People appeared first on SecurityWeek .",
-      "source_name": "SecurityWeek",
-      "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/revolve-data-breach-impacts-at-least-180000-people/",
-      "related_cves": [],
-      "matched_intelligence_cves": [],
-      "score": 96,
-      "cve_evidence": null,
-      "title_zh": "Revolve 資料外洩事件影響至少 20 萬人",
-      "summary_zh": "黑客存取了其線上購物平台，並竊取了客戶的個人及付款卡片資訊。該篇文章《Revolve 資料外洩事件影響至少 20 萬人》首次發表於 SecurityWeek。"
-    },
-    {
-      "id": "3b54dc7270092e85",
-      "event_type": "DATA_BREACH",
-      "priority": "HIGH",
-      "published_at": "2026-11-02T10:27:49+00:00",
-      "title": "Chainalysis Discloses Data Breach Following AI-Driven Cyberattack",
-      "summary": "The attackers used offensive agentic techniques to access the company’s systems and internal tools. The post Chainalysis Discloses Data Breach Following AI-Driven Cyberattack appeared first on SecurityWeek .",
-      "source_name": "SecurityWeek",
-      "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/chainalysis-discloses-data-breach-following-ai-driven-cyberattack/",
-      "related_cves": [],
-      "matched_intelligence_cves": [],
-      "score": 96,
-      "cve_evidence": null,
-      "title_zh": "Chainalysis 在遭 AI 驅動的網路攻擊後披露資料外洩事件",
-      "summary_zh": "攻擊者利用具攻擊性的自主代理（agentic）技術存取該公司的系統和內部工具。該篇文章《Chainalysis 在遭 AI 驅動的網路攻擊後披露資料外洩事件》首次發表於 SecurityWeek。"
-    },
-    {
-      "id": "a4df36c045ad0e87",
-      "event_type": "DATA_BREACH",
-      "priority": "HIGH",
-      "published_at": "2026-10-31T18:01:12+00:00",
-      "title": "Northflank security breach leads to abuse of customers' AI API keys",
-      "summary": "Cloud application hosting platform Northflank is warning customers to rotate all credentials and secrets stored on its platform after a security breach led to unauthorized use of customers' AI API keys. [...]",
+      "published_at": "2026-11-03T18:51:04+00:00",
+      "title": "Google: LLMjacking attacks rack up $1 million in cloud AI charges",
+      "summary": "Large language model hijacking attacks, also known as LLMjacking, are generating large fraudulent cloud charges, with some organizations losing more than $100,000 per day. [...]",
       "source_name": "BleepingComputer",
       "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/northflank-security-breach-leads-to-abuse-of-customers-ai-api-keys/",
+      "source_url": "https://www.bleepingcomputer.com/news/security/google-llmjacking-attacks-rack-up-1-million-in-cloud-ai-charges/",
+      "related_cves": [
+        "CVE-2026-40217"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 81,
+      "cve_evidence": "source_article"
+    },
+    {
+      "id": "e3626c78b944f486",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "MEDIUM",
+      "published_at": "2026-11-03T22:18:50+00:00",
+      "title": "Hackers hijack cPGuard autoupdate to deploy backdoor, steal data",
+      "summary": "Attackers have compromised the update infrastructure for the cPGuard web security suite to distribute a backdoor and a data-stealing script. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/hackers-hijack-cpguard-autoupdate-to-deploy-backdoor-steal-data/",
       "related_cves": [],
       "matched_intelligence_cves": [],
-      "score": 92,
-      "cve_evidence": null,
-      "title_zh": "Northflank 資安侵害事件導致客戶的 AI API 金鑰遭濫用",
-      "summary_zh": "雲端應用程式代管平台 Northflank 在發生資安侵害事件並導致客戶的 AI API 金鑰遭未經授權使用後，正警告客戶輪替儲存於該平台上的所有憑證與金鑰。[...]"
+      "score": 87,
+      "cve_evidence": null
+    },
+    {
+      "id": "1ad3ad4143cb6c94",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "MEDIUM",
+      "published_at": "2026-11-03T20:05:50+00:00",
+      "title": "Binance says fake job interview led to $6.3 billion crypto heist",
+      "summary": "Cryptocurrency exchange Binance says North Korean hackers used a fake job interview to trick an employee into installing malware that ultimately let them compromise the company's wallet infrastructure and steal about $6.34 billion in digital assets. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/binance-says-fake-job-interview-led-to-63-billion-crypto-heist/",
+      "related_cves": [],
+      "matched_intelligence_cves": [],
+      "score": 87,
+      "cve_evidence": null
+    },
+    {
+      "id": "6c6aea21f91dfc2c",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "MEDIUM",
+      "published_at": "2026-11-02T21:40:14+00:00",
+      "title": "Chinese hackers use ARTEX AI in automated attacks against 200 orgs",
+      "summary": "Chinese hackers used ARTEX, an open-source, multi-agent AI penetration-testing framework, in attacks against more than 200 organizations across 14 countries. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/chinese-hackers-use-artex-ai-in-automated-attacks-against-200-orgs/",
+      "related_cves": [],
+      "matched_intelligence_cves": [],
+      "score": 85,
+      "cve_evidence": null
     }
-  ],
-  "translation": {
-    "language": "zh-Hant-TW",
-    "status": "translated",
-    "provider": "gemini",
-    "model": "gemini-3.6-flash",
-    "models_used": [
-      "gemini-3.6-flash"
-    ],
-    "translated_items": 20,
-    "cached_items": 11,
-    "pending_items": 0,
-    "total_items": 20,
-    "attempted_items": 9,
-    "batch_size": 5,
-    "rejected_item_ids": [],
-    "fallback_reason": null,
-    "batch_fallback_reasons": []
-  }
+  ]
 }
