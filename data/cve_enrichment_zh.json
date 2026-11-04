@@ -1,21 +1,36 @@
 {
   "schema_version": "1.1-cve-zh-enrichment",
-  "generated_at": "2026-11-03T07:26:11.264749+00:00",
+  "generated_at": "2026-11-04T07:09:40.850504+00:00",
   "language": "zh-Hant-TW",
   "selection": {
     "rule": "Translate only CVEs referenced by current security events and present in intelligence.json; reuse translations only when source title/description fingerprints are unchanged.",
-    "linked_cve_count": 36,
-    "matched_intelligence_cves": 0
+    "linked_cve_count": 20,
+    "matched_intelligence_cves": 2
   },
-  "items": [],
+  "items": [
+    {
+      "cve": "CVE-2026-119977",
+      "title_zh": "WordPress WordPress Core 檢查時間與使用時間 (TOCTOU) 競態條件漏洞",
+      "description_zh": "WordPress WordPress Core 存在檢查時間與使用時間 (TOCTOU) 競態條件漏洞，可能允許未經身份驗證的攻擊者在升級期間於伺服器上執行程式碼。這是由於在完整套件核心升級過程中使用了可預測且可透過 Web 存取的暫存路徑所致。",
+      "source_fingerprint": "aba5573725441b748dcde6b4eda13205cd4db98441690048ee066574c860ca8b"
+    },
+    {
+      "cve": "CVE-2026-118527",
+      "title_zh": "Ivanti Connect Secure 可預測數字或識別碼產生漏洞",
+      "description_zh": "Ivanti Connect Secure 存在可預測數字或識別碼產生的漏洞，允許遠端已身份驗證的攻擊者將包含攻擊者控制內容的檔案上傳至磁碟上的已知位置。此漏洞可與 CVE-2026-104935 及 CVE-2026-111357 進行組合利用。",
+      "source_fingerprint": "9ff72bd37e2cb6d35a44629d4419886e5f715c765bca177250359cc2a7d249d1"
+    }
+  ],
   "translation": {
-    "provider": null,
-    "model": null,
-    "models_used": [],
+    "provider": "gemini",
+    "model": "gemini-3.6-flash",
+    "models_used": [
+      "gemini-3.6-flash"
+    ],
     "cached_items": 0,
-    "attempted_items": 0,
-    "newly_translated_items": 0,
-    "translated_items": 0,
+    "attempted_items": 2,
+    "newly_translated_items": 2,
+    "translated_items": 2,
     "pending_items": 0,
     "batch_size": 5,
     "rejected_cves": [],
