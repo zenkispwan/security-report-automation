@@ -1,11 +1,11 @@
 {
   "schema_version": "1.1-security-events",
-  "generated_at": "2026-11-05T07:39:47.984359+00:00",
+  "generated_at": "2026-11-06T07:30:55.071736+00:00",
   "selection": {
     "window_days": 7,
     "max_items": 20,
     "rule": "Homepage events come from current RSS/advisory sources. CVEs are shown only when the source article/advisory mentions them.",
-    "tracked_cve_count": 65
+    "tracked_cve_count": 54
   },
   "sources": [
     {
@@ -30,24 +30,33 @@
     }
   ],
   "summary": {
-    "fetched_entries": 25,
-    "included_items": 15,
-    "linked_cve_items": 5,
+    "fetched_entries": 65,
+    "included_items": 18,
+    "linked_cve_items": 9,
     "matched_intelligence_items": 1,
-    "successful_sources": 2,
-    "source_errors": [
-      {
-        "source": "CISA Advisories",
-        "error": "403 Client Error: Forbidden for url: https://www.cisa.gov/cybersecurity-advisories/all.xml"
-      },
-      {
-        "source": "CISA News",
-        "error": "403 Client Error: Forbidden for url: https://www.cisa.gov/news.xml"
-      }
-    ],
-    "preserved_translations": 4
+    "successful_sources": 4,
+    "source_errors": [],
+    "preserved_translations": 5
   },
   "items": [
+    {
+      "id": "96af0215fc96b3b4",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-11-05T10:56:41+00:00",
+      "title": "Zyxel Switch Hacks Blamed on Patched Flaw Actually Exploited a Zero-Day",
+      "summary": "Tracked as CVE-2026-107441, the out-of-bounds write flaw could allow attackers to execute OS commands via crafted HTTP requests. The post Zyxel Switch Hacks Blamed on Patched Flaw Actually Exploited a Zero-Day appeared first on SecurityWeek .",
+      "source_name": "SecurityWeek",
+      "source_type": "security_media",
+      "source_url": "https://www.securityweek.com/zyxel-switch-hacks-blamed-on-patched-flaw-actually-exploited-a-zero-day/",
+      "related_cves": [
+        "CVE-2026-107441",
+        "CVE-2026-7273"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 106,
+      "cve_evidence": "source_title_or_summary"
+    },
     {
       "id": "b8bdafeefd728191",
       "event_type": "ACTIVE_EXPLOITATION",
@@ -63,31 +72,98 @@
         "CVE-2026-7273"
       ],
       "matched_intelligence_cves": [],
-      "score": 107,
+      "score": 105,
       "cve_evidence": "source_article",
       "title_zh": "Zyxel 修復已遭利用入侵近 1,000 台網路交換器的零日漏洞",
       "summary_zh": "Zyxel 已修補其 GS1900 系列網路交換器中的一個零日漏洞，駭客利用該漏洞入侵了全球近 1,000 台設備，並竊取設定檔與憑證。[...]"
     },
     {
-      "id": "c401bb54ceffe967",
+      "id": "c5bfeedc9f881460",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "published_at": "2026-11-04T12:11:05+00:00",
-      "title": "CISA flags WordPress RCE flaw as actively exploited in attacks",
-      "summary": "The US Cybersecurity and Infrastructure Security Agency (CISA) warned federal agencies that attackers have started exploiting a recently patched high-severity WordPress vulnerability in the wild. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/cisa-flags-wordpress-rce-flaw-as-actively-exploited-in-attacks/",
+      "published_at": "2026-11-04T12:00:00+00:00",
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2024-27834 Apple Multiple Products Improper Authentication Vulnerability This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal enterprise. Binding O...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/11/04/cisa-adds-one-known-exploited-vulnerability-catalog",
       "related_cves": [
-        "CVE-2026-119977",
-        "CVE-2026-60137",
-        "CVE-2026-63030"
+        "CVE-2024-27834"
       ],
       "matched_intelligence_cves": [],
-      "score": 106,
-      "cve_evidence": "source_article",
-      "title_zh": "CISA 將 WordPress RCE 漏洞標記為已在攻擊中被積極利用",
-      "summary_zh": "美國網路安全暨基礎設施安全局（CISA）警告聯邦機構，攻擊者已開始在野外利用最近修補的高風險 WordPress 漏洞。[...]"
+      "score": 104,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "53ca9309f14b041c",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-11-03T12:00:00+00:00",
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-119977 WordPress Core Time-of-check Time-of-use (TOCTOU) Race Condition Vulnerability This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal ent...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/11/03/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "related_cves": [
+        "CVE-2026-119977"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 102,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "cddef5bb18e3bcbf",
+      "event_type": "SUPPLY_CHAIN",
+      "priority": "CRITICAL",
+      "published_at": "2026-11-05T12:00:00+00:00",
+      "title": "US Government Partners Urge Hardening Industrial Refrigeration and Cold Chain Monitoring Systems",
+      "summary": "Overview The Cybersecurity and Infrastructure Security Agency (CISA), Federal Bureau of Investigation (FBI), Health and Human Services (HHS), U.S. Department of Agriculture (USDA), and the Department of Transportation (DoT)—hereafter referred to as “the authoring organizations”—are aware of malicious cyber activity targeting industrial refrigeration and c...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/resources-tools/resources/us-government-partners-urge-hardening-industrial-refrigeration-and-cold-chain-monitoring-systems",
+      "related_cves": [],
+      "matched_intelligence_cves": [],
+      "score": 101,
+      "cve_evidence": null
+    },
+    {
+      "id": "f635e51b46992649",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-10-30T12:00:00+00:00",
+      "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
+      "summary": "CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-111357 Ivanti Connect Secure Missing Authentication for Critical Function Vulnerability CVE-2026-118527 Ivanti Connect Secure Generation of Predictable Numbers or Identifiers Vulnerability These types of vulnerab...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/10/30/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+      "related_cves": [
+        "CVE-2026-111357",
+        "CVE-2026-118527"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 95,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "626b3ee2d010a08d",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "CRITICAL",
+      "published_at": "2026-11-03T12:00:00+00:00",
+      "title": "Subnet Solutions PowerSYSTEM Center",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to execute unauthorized SQL commands and gain access to unauthorized resources. The following versions of Subnet Solutions PowerSYSTEM Center are affected: PowerSYSTEM Center 2020 <=5.29.x (CVE-2026-63017) PowerSYSTEM Center 2024 >=6.0.x|<=6.2.x (CVE-2026-63017, CVE...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-307-01",
+      "related_cves": [
+        "CVE-2026-63017",
+        "CVE-2026-63774"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-63017",
+        "CVE-2026-63774"
+      ],
+      "score": 92,
+      "cve_evidence": "source_title_or_summary"
     },
     {
       "id": "94833255da64ec91",
@@ -101,27 +177,25 @@
       "source_url": "https://www.bleepingcomputer.com/news/security/nikke-pc-game-launcher-hacked-to-spread-remote-access-data-stealing-malware/",
       "related_cves": [],
       "matched_intelligence_cves": [],
-      "score": 101,
+      "score": 99,
       "cve_evidence": null,
       "title_zh": "NIKKE PC 版遊戲啟動器遭駭以散播遠端存取與資料竊取惡意軟體",
       "summary_zh": "《勝利女神：妮姬》的開發商已確認，駭客在一場供應鏈攻擊中篡改了該遊戲的 PC 版啟動器腳本，散播能夠竊取憑證和加密貨幣錢包資料的惡意軟體。[...]"
     },
     {
-      "id": "43ae5a82ae14f012",
-      "event_type": "SUPPLY_CHAIN",
+      "id": "83e08e4c6c08d1c0",
+      "event_type": "DATA_BREACH",
       "priority": "HIGH",
-      "published_at": "2026-11-04T10:54:48+00:00",
-      "title": "Malicious cPGuard Updates Served in OpsShield Supply Chain Attack",
-      "summary": "Using compromised credentials, the attackers accessed OpsShield’s update servers and poisoned multiple cPGuard versions. The post Malicious cPGuard Updates Served in OpsShield Supply Chain Attack appeared first on SecurityWeek .",
-      "source_name": "SecurityWeek",
+      "published_at": "2026-11-05T16:12:46+00:00",
+      "title": "DigiCert data breach exposes customer information, identity documents",
+      "summary": "DigiCert warns it suffered a data breach after a server migration mistakenly exposed an internal business system to the internet, allowing unauthorized access to customer information and identity documents. [...]",
+      "source_name": "BleepingComputer",
       "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/malicious-cpguard-updates-served-in-opsshield-supply-chain-attack/",
+      "source_url": "https://www.bleepingcomputer.com/news/security/digicert-data-breach-exposes-customer-information-identity-documents/",
       "related_cves": [],
       "matched_intelligence_cves": [],
-      "score": 101,
-      "cve_evidence": null,
-      "title_zh": "OpsShield 供應鏈攻擊中派發惡意 cPGuard 更新",
-      "summary_zh": "攻擊者利用遭入侵的憑證存取了 OpsShield 的更新伺服器，並投毒了多個 cPGuard 版本。該文章《Malicious cPGuard Updates Served in OpsShield Supply Chain Attack》首次出現在 SecurityWeek。"
+      "score": 96,
+      "cve_evidence": null
     },
     {
       "id": "622646b53531b976",
@@ -135,44 +209,27 @@
       "source_url": "https://www.bleepingcomputer.com/news/security/dreamhost-confirms-data-breach-exposed-ftp-logins-and-webmail-sessions/",
       "related_cves": [],
       "matched_intelligence_cves": [],
-      "score": 96,
+      "score": 94,
       "cve_evidence": null,
       "title_zh": "DreamHost 確認資料外洩事件暴露 FTP 登入資訊與 Webmail 工作階段",
       "summary_zh": "DreamHost 正就一起資料外洩事件發出警告，攻擊者存取其 File Manager 平台長達兩個月，並竊取了客戶的 FTP/SFTP 使用者名稱與密碼。[...]"
     },
     {
-      "id": "345b215bc3cfa439",
-      "event_type": "DATA_BREACH",
+      "id": "0104ffe0a06b05b6",
+      "event_type": "VULNERABILITY_NEWS",
       "priority": "HIGH",
-      "published_at": "2026-11-04T12:43:20+00:00",
-      "title": "AI-Linked Breaches Mount as WorkOS, Northflank, Trigger.dev Disclose Hacks",
-      "summary": "Hackers have been harvesting AI access tokens and have been using AI-assisted offensive tools to automate attacks. The post AI-Linked Breaches Mount as WorkOS, Northflank, Trigger.dev Disclose Hacks appeared first on SecurityWeek .",
-      "source_name": "SecurityWeek",
-      "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/ai-linked-breaches-mount-as-workos-northflank-trigger-dev-disclose-hacks/",
-      "related_cves": [],
-      "matched_intelligence_cves": [],
-      "score": 96,
-      "cve_evidence": null,
-      "title_zh": "與 AI 相關的資料洩漏事件增加：WorkOS、Northflank 與 Trigger.dev 揭露遭駭客入侵",
-      "summary_zh": "駭客一直在收集 AI 存取權杖（tokens），並使用 AI 輔助的攻擊工具來自動化攻擊。這篇「AI-Linked Breaches Mount as WorkOS, Northflank, Trigger.dev Disclose Hacks」文章首先發表於 SecurityWeek。"
-    },
-    {
-      "id": "cf2ea752df828dba",
-      "event_type": "DATA_BREACH",
-      "priority": "HIGH",
-      "published_at": "2026-11-03T21:28:44+00:00",
-      "title": "WorkOS says attacker used ARTEX AI to breach internal sales app",
-      "summary": "Developer platform WorkOS suffered a data breach after a threat actor accessed business contact records and summaries of customer communications. [...]",
+      "published_at": "2026-11-05T17:45:29+00:00",
+      "title": "OpenSSH flaw lets attackers log into password-disabled Linux accounts",
+      "summary": "A newly disclosed OpenSSH vulnerability dubbed \"*sshole\" allows attackers to log in to certain Alpine Linux and other musl-based Linux accounts that are configured to block password authentication, simply by entering an oversized password. [...]",
       "source_name": "BleepingComputer",
       "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/workos-says-attacker-used-artex-ai-to-breach-internal-sales-app/",
-      "related_cves": [],
+      "source_url": "https://www.bleepingcomputer.com/news/security/openssh-flaw-lets-attackers-log-into-password-disabled-linux-accounts/",
+      "related_cves": [
+        "CVE-2016-6210"
+      ],
       "matched_intelligence_cves": [],
-      "score": 95,
-      "cve_evidence": null,
-      "title_zh": "WorkOS 表示攻擊者利用 ARTEX AI 入侵內部銷售應用程式",
-      "summary_zh": "開發者平台 WorkOS 在威脅誘因者存取了商業聯絡記錄和客戶通訊摘要後遭遇資料外洩。[...]"
+      "score": 81,
+      "cve_evidence": "source_article"
     },
     {
       "id": "324db880e2c47ea3",
@@ -189,57 +246,89 @@
         "CVE-2025-41451"
       ],
       "matched_intelligence_cves": [],
-      "score": 81,
+      "score": 79,
       "cve_evidence": "source_article",
       "title_zh": "網路攻擊干擾法國血液儲存冷卻系統",
       "summary_zh": "法國國家血液服務中心已確認，針對一家冷卻設備供應商的網路攻擊提高了其三個設施的溫度和除霜設定，對儲存的血液製品構成威脅。[...]"
     },
     {
-      "id": "bcfb2e41fbecf9d2",
-      "event_type": "VULNERABILITY_NEWS",
-      "priority": "HIGH",
-      "published_at": "2026-11-03T18:51:04+00:00",
-      "title": "Google: LLMjacking attacks rack up $1 million in cloud AI charges",
-      "summary": "Large language model hijacking attacks, also known as LLMjacking, are generating large fraudulent cloud charges, with some organizations losing more than $100,000 per day. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/google-llmjacking-attacks-rack-up-1-million-in-cloud-ai-charges/",
-      "related_cves": [
-        "CVE-2026-40217"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 79,
-      "cve_evidence": "source_article",
-      "title_zh": "Google：LLMjacking 攻擊累積產生高達 100 萬美元的雲端 AI 費用",
-      "summary_zh": "大型語言模型劫持攻擊（又稱 LLMjacking）正在產生巨額的詐欺性雲端費用，部分組織每天損失超過 100,000 美元。[...]"
-    },
-    {
-      "id": "e3fd45fd3e304e2f",
+      "id": "bdfce63afd432194",
       "event_type": "THREAT_ACTIVITY",
       "priority": "MEDIUM",
-      "published_at": "2026-11-04T09:39:54+00:00",
-      "title": "Hackers use n-day exploits in zero-click attacks on iOS, Android devices",
-      "summary": "A large-scale watering hole attack associated with Russian hackers has been targeting iOS and Android users visiting compromised sites or fake ones impersonating legitimate portals. [...]",
+      "published_at": "2026-11-06T00:56:44+00:00",
+      "title": "FBI, CISA warn of cyberattacks targeting refrigeration systems",
+      "summary": "The FBI and CISA warn that hackers are actively targeting industrial refrigeration and cold-chain monitoring systems worldwide, potentially causing food spoilage, equipment damage, and fire hazards. [...]",
       "source_name": "BleepingComputer",
       "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/hackers-use-n-day-exploits-in-zero-click-attacks-on-ios-android-devices/",
+      "source_url": "https://www.bleepingcomputer.com/news/security/fbi-cisa-warn-of-cyberattacks-targeting-refrigeration-systems/",
+      "related_cves": [],
+      "matched_intelligence_cves": [],
+      "score": 87,
+      "cve_evidence": null
+    },
+    {
+      "id": "2ae34dc126e9b640",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "MEDIUM",
+      "published_at": "2026-11-05T21:30:30+00:00",
+      "title": "Fake OpenAI, SpaceX events used to steal Microsoft, Google accounts",
+      "summary": "Hackers are using fake OpenAI, SpaceX, and Anthropic event invitations to lure employees into phishing attacks, using two different phishing-as-a-service platforms to steal Microsoft and Google account credentials and authentication sessions. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/fake-openai-spacex-events-used-to-steal-microsoft-google-accounts/",
+      "related_cves": [],
+      "matched_intelligence_cves": [],
+      "score": 87,
+      "cve_evidence": null
+    },
+    {
+      "id": "56bfa02295d43c2b",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "MEDIUM",
+      "published_at": "2026-11-05T16:24:26+00:00",
+      "title": "Hackers backdoor Linux servers using trojanized CWP web server",
+      "summary": "A new Linux malware called CWPdoor is being distributed through a trojanized version of cwpsrv, the web server behind the Control Web Panel (CWP) management interface. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/hackers-backdoor-linux-servers-using-trojanized-cwp-web-server/",
+      "related_cves": [],
+      "matched_intelligence_cves": [],
+      "score": 86,
+      "cve_evidence": null
+    },
+    {
+      "id": "9d4ea0f6cb7b108c",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "MEDIUM",
+      "published_at": "2026-11-05T13:22:12+00:00",
+      "title": "Bank Phishing Sites Show Fake ‘Suspended’ Pages to Evade Takedowns",
+      "summary": "More than 200 sites were seen serving phishing content to first-time visitors but not to those who revisit. The post Bank Phishing Sites Show Fake ‘Suspended’ Pages to Evade Takedowns appeared first on SecurityWeek .",
+      "source_name": "SecurityWeek",
+      "source_type": "security_media",
+      "source_url": "https://www.securityweek.com/bank-phishing-sites-show-fake-suspended-pages-to-evade-takedowns/",
+      "related_cves": [],
+      "matched_intelligence_cves": [],
+      "score": 86,
+      "cve_evidence": null
+    },
+    {
+      "id": "44bf9ca7bef218d4",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "MEDIUM",
+      "published_at": "2026-11-05T10:37:13+00:00",
+      "title": "Russia-Linked Hackers Hit iOS, Android Devices With Exploit Chains via Watering Holes",
+      "summary": "The large-scale watering hole campaign has been targeting entities in the US and Europe, mainly in Ukraine. The post Russia-Linked Hackers Hit iOS, Android Devices With Exploit Chains via Watering Holes appeared first on SecurityWeek .",
+      "source_name": "SecurityWeek",
+      "source_type": "security_media",
+      "source_url": "https://www.securityweek.com/russia-linked-hackers-hit-ios-android-devices-with-exploit-chains-via-watering-holes/",
       "related_cves": [
         "CVE-2024-27834",
-        "CVE-2025-14174",
         "CVE-2025-27038",
-        "CVE-2025-43510",
-        "CVE-2025-43520",
-        "CVE-2025-43529",
-        "CVE-2026-20700",
         "CVE-2026-3910"
       ],
-      "matched_intelligence_cves": [
-        "CVE-2024-27834"
-      ],
-      "score": 91,
-      "cve_evidence": "source_article",
-      "title_zh": "駭客在針對 iOS 與 Android 裝置的零點擊攻擊中使用 N-day 漏洞",
-      "summary_zh": "與俄羅斯駭客相關的大規模水坑攻擊一直在針對造訪受害者網站或冒充合法入口網站之虛假網站的 iOS 和 Android 使用者。[...]"
+      "matched_intelligence_cves": [],
+      "score": 86,
+      "cve_evidence": "source_article"
     },
     {
       "id": "05d712189c612534",
@@ -253,96 +342,10 @@
       "source_url": "https://www.bleepingcomputer.com/news/security/vercel-rolls-out-new-protection-against-stolen-session-cookie-attacks/",
       "related_cves": [],
       "matched_intelligence_cves": [],
-      "score": 87,
+      "score": 85,
       "cve_evidence": null,
       "title_zh": "Vercel 推出新防護措施以抵禦 Session Cookie 竊取攻擊",
       "summary_zh": "Vercel 正在其平台上逐步推出裝置綁定會話憑證（Device Bound Session Credentials, DBSC），作為抵禦資訊竊取程式（stealer malware）的主要防禦手段。[...]"
-    },
-    {
-      "id": "646c23c08481b93b",
-      "event_type": "THREAT_ACTIVITY",
-      "priority": "MEDIUM",
-      "published_at": "2026-11-04T15:00:10+00:00",
-      "title": "Google Calendar phishing campaign hijacks sessions, bypasses MFA",
-      "summary": "A phishing campaign used Google Calendar invites, trusted redirects, and fake login pages to hijack corporate Google sessions and bypass MFA protections. Material Security examines how Operation CloudFire tracked the attacks, blocked malicious messages, and helped take down nearly 900 domains used by the attackers. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/google-calendar-phishing-campaign-hijacks-sessions-bypasses-mfa/",
-      "related_cves": [],
-      "matched_intelligence_cves": [],
-      "score": 86,
-      "cve_evidence": null,
-      "title_zh": "Google Calendar 網路釣魚活動劫持會話並繞過 MFA",
-      "summary_zh": "一項網路釣魚活動利用 Google Calendar 邀請、受信任的重定向和虛假登入頁面來劫持企業的 Google 會話並繞過 MFA 防護。Material Security 分析了 Operation CloudFire 如何追蹤攻擊、阻擋惡意訊息，並協助下架攻擊者使用的近 900 個網域。[...]"
-    },
-    {
-      "id": "9243e4545523c773",
-      "event_type": "THREAT_ACTIVITY",
-      "priority": "MEDIUM",
-      "published_at": "2026-11-04T10:36:32+00:00",
-      "title": "Rigged Coding Assignment, Abused AI Tool Opened Path to $6 Billion Binance Heist",
-      "summary": "Binance’s first incident report traces the record theft to a months-long campaign that compromised three engineers’ computers. The post Rigged Coding Assignment, Abused AI Tool Opened Path to $6 Billion Binance Heist appeared first on SecurityWeek .",
-      "source_name": "SecurityWeek",
-      "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/rigged-coding-assignment-abused-ai-tool-opened-path-to-6-billion-binance-heist/",
-      "related_cves": [],
-      "matched_intelligence_cves": [],
-      "score": 86,
-      "cve_evidence": null,
-      "title_zh": "遭操控的程式設計作業與被濫用的 AI 工具，為 60 億美元 Binance 劫案鋪路",
-      "summary_zh": "Binance 的首份事件報告追溯了這起創紀錄的竊案，源於一場持續數月、使三名工程師電腦受駭的活動。這篇《遭操控的程式設計作業與被濫用的 AI 工具，為 60 億美元 Binance 劫案鋪路》文章首次發表於 SecurityWeek。"
-    },
-    {
-      "id": "e3626c78b944f486",
-      "event_type": "THREAT_ACTIVITY",
-      "priority": "MEDIUM",
-      "published_at": "2026-11-03T22:18:50+00:00",
-      "title": "Hackers hijack cPGuard autoupdate to deploy backdoor, steal data",
-      "summary": "Attackers have compromised the update infrastructure for the cPGuard web security suite to distribute a backdoor and a data-stealing script. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/hackers-hijack-cpguard-autoupdate-to-deploy-backdoor-steal-data/",
-      "related_cves": [],
-      "matched_intelligence_cves": [],
-      "score": 85,
-      "cve_evidence": null,
-      "title_zh": "駭客劫持 cPGuard 自動更新以部署後門並竊取資料",
-      "summary_zh": "攻擊者已入侵 cPGuard 網路安全套件的更新基礎設施，以散佈後門和資料竊取指令碼。[...]"
-    },
-    {
-      "id": "1ad3ad4143cb6c94",
-      "event_type": "THREAT_ACTIVITY",
-      "priority": "MEDIUM",
-      "published_at": "2026-11-03T20:05:50+00:00",
-      "title": "Binance says fake job interview led to $6.3 billion crypto heist",
-      "summary": "Cryptocurrency exchange Binance says North Korean hackers used a fake job interview to trick an employee into installing malware that ultimately let them compromise the company's wallet infrastructure and steal about $6.34 billion in digital assets. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/binance-says-fake-job-interview-led-to-63-billion-crypto-heist/",
-      "related_cves": [],
-      "matched_intelligence_cves": [],
-      "score": 85,
-      "cve_evidence": null,
-      "title_zh": "幣安表示假求職面試導致 63 億美元加密貨幣搶案",
-      "summary_zh": "加密貨幣交易所幣安（Binance）表示，北韓駭客利用假求職面試誘騙一名員工安裝惡意軟體，最終使其入侵公司的錢包基礎設施，並竊取約 63.4 億美元的數位資產。[...]"
     }
-  ],
-  "translation": {
-    "language": "zh-Hant-TW",
-    "status": "translated",
-    "provider": "gemini",
-    "model": "gemini-3.6-flash",
-    "models_used": [
-      "gemini-3.6-flash"
-    ],
-    "translated_items": 15,
-    "cached_items": 4,
-    "pending_items": 0,
-    "total_items": 15,
-    "attempted_items": 11,
-    "batch_size": 5,
-    "rejected_item_ids": [],
-    "fallback_reason": null,
-    "batch_fallback_reasons": []
-  }
+  ]
 }
