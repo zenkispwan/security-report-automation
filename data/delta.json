@@ -1,30 +1,30 @@
 {
   "schema_version": "2.1-delta",
-  "generated_at": "2026-11-08T06:49:44.174201+00:00",
+  "generated_at": "2026-11-09T07:27:59.747862+00:00",
   "baseline": {
     "type": "state",
-    "generated_at": "2026-11-07T06:43:17.189212+00:00",
+    "generated_at": "2026-11-08T06:49:44.174201+00:00",
     "available": true
   },
   "summary": {
-    "current_snapshot_count": 3714,
+    "current_snapshot_count": 1370,
     "tracked_previous_count": 1000,
-    "epss_monitored_count": 794,
-    "meaningful_change_count": 10,
-    "included_count": 10,
+    "epss_monitored_count": 797,
+    "meaningful_change_count": 20,
+    "included_count": 20,
     "truncated": false,
     "events": {
-      "NEW_CVE": 10
+      "NEW_CVE": 20
     }
   },
   "items": [
     {
-      "cve": "CVE-2026-123966",
+      "cve": "CVE-2026-6715",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-11-07T14:17:01.800"
+          "to": "2026-11-08T19:17:39.980"
         }
       ],
       "risk": {
@@ -42,18 +42,18 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-123966",
-        "vendor": "Tenda",
-        "product": "AC19",
+        "cve": "CVE-2026-6715",
+        "vendor": "IBM",
+        "product": "Concert",
         "title": null,
-        "description": "A vulnerability was determined in Tenda AC19 16.03.10.07. Affected by this issue is the function saveParentControlInfo of the file /goform/saveParentControlInfo. This manipulation of the argument deviceId causes heap-based buffer overflow. The attack is possible to be carried out remotely. The exploit has been publicly disclosed and may be utilized.",
+        "description": "IBM Concert 1.0 through 3.0.1.1 allows an attacker can supply crafted input that is incorporated into an operating system command without adequate validation or sanitization. Successful exploitation allows remote attackers to execute arbitrary commands on the underlying operating system with the privileges of the affected service.",
         "cvss": {
-          "version": "4.0",
-          "score": 9.3,
+          "version": "3.1",
+          "score": 9.8,
           "severity": "CRITICAL",
-          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-          "source": "cna@vuldb.com",
-          "type": "Secondary"
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "source": "psirt@us.ibm.com",
+          "type": "Primary"
         },
         "epss": null,
         "epss_percentile": null,
@@ -65,30 +65,29 @@
           "source": null,
           "ssvc": null
         },
-        "published_time": "2026-11-07T14:17:01.800",
-        "updated_time": "2026-11-07T14:17:01.973",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123966",
+        "published_time": "2026-11-08T19:17:39.980",
+        "updated_time": "2026-11-08T19:17:40.093",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6715",
         "source_type": [
           "nvd"
         ],
         "cwes": [
-          "CWE-119",
-          "CWE-122"
+          "CWE-78"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-123966",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-6715",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-123614",
+      "cve": "CVE-2026-17466",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-11-08T02:16:56.983"
+          "to": "2026-11-08T18:17:03.303"
         }
       ],
       "risk": {
@@ -106,269 +105,143 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-123614",
-        "vendor": "imgproxy",
-        "product": "imgproxy",
+        "cve": "CVE-2026-17466",
+        "vendor": "IBM",
+        "product": "Optim",
         "title": null,
-        "description": "imgproxy from 4.0.0 before 4.0.16 contains an integer overflow in the ICO loader that allows remote attackers to trigger a heap buffer overflow via a crafted data_size value. Attackers can submit a crafted ICO image whose data_size wraps the allocation in vips/icoload.c, corrupting heap memory to crash the process or achieve code execution.",
-        "cvss": {
-          "version": "4.0",
-          "score": 9.3,
-          "severity": "CRITICAL",
-          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-          "source": "disclosure@vulncheck.com",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-11-08T02:16:56.983",
-        "updated_time": "2026-11-08T02:16:56.983",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123614",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [
-          "CWE-122"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-123614",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-123551",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-11-08T02:16:46.603"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-123551",
-        "vendor": "OpenIdentityPlatform",
-        "product": "OpenAM",
-        "title": null,
-        "description": "OpenAM from 14.0.0 before 16.1.4 contains an information disclosure vulnerability that allows unauthenticated attackers to read live session tokens from the notification WebSocket. Attackers can bypass the agent-only check through an unvalidated internal forward on legacy Liberty ID-FF endpoints, collecting iPlanetDirectoryPro tokens to hijack user and administrator sessions.",
-        "cvss": {
-          "version": "4.0",
-          "score": 10.0,
-          "severity": "CRITICAL",
-          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-          "source": "disclosure@vulncheck.com",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-11-08T02:16:46.603",
-        "updated_time": "2026-11-08T02:16:46.603",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123551",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [
-          "CWE-201"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-123551",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-123550",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-11-08T02:16:46.410"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-123550",
-        "vendor": "OpenIdentityPlatform",
-        "product": "OpenAM",
-        "title": null,
-        "description": "OpenAM before 16.1.4 contains an authentication bypass vulnerability in its SAML v2.0 service provider that accepts unsigned assertions on the ECP (PAOS) and HTTP-Artifact bindings when WantAssertionsSigned is false. Unauthenticated remote attackers can submit forged assertions to obtain sessions as any mapped user, including administrators, and hijack single sign-on to dependent applications.",
-        "cvss": {
-          "version": "4.0",
-          "score": 9.3,
-          "severity": "CRITICAL",
-          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-          "source": "disclosure@vulncheck.com",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-11-08T02:16:46.410",
-        "updated_time": "2026-11-08T02:16:46.410",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123550",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [
-          "CWE-290"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-123550",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-123549",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-11-08T02:16:46.247"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-123549",
-        "vendor": "OpenIdentityPlatform",
-        "product": "OpenAM",
-        "title": null,
-        "description": "OpenAM before 16.1.4 fails to enforce the Valid Creation Attributes list during self-registration, allowing anonymous attackers to set restricted attributes including group membership. Attackers can register through the legacy self-service REST endpoint or User Self-Service flow to join administrative groups and gain full administrative control of OpenAM.",
-        "cvss": {
-          "version": "4.0",
-          "score": 9.3,
-          "severity": "CRITICAL",
-          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-          "source": "disclosure@vulncheck.com",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-11-08T02:16:46.247",
-        "updated_time": "2026-11-08T02:16:46.247",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123549",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [
-          "CWE-269"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-123549",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-122041",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-11-07T13:16:36.067"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-122041",
-        "vendor": "Themehigh",
-        "product": "Checkout Field Editor for WooCommerce (Pro)",
-        "title": null,
-        "description": "The Checkout Field Editor for WooCommerce (Pro) plugin for WordPress is vulnerable to unauthorized deletion of arbitrary attachments due to a missing capability/ownership check in the ajax_remove_uploaded() function in versions up to, and including, 3.8.0. The handler is registered for both wp_ajax and wp_ajax_nopriv and is gated solely by the 'file_handling_nonce' nonce, which is emitted inside the public checkout page markup (data-nonce attribute) whenever a File Upload checkout field is configured. This makes it possible for unauthenticated attackers to delete arbitrary attachments (including those belonging to other users or posts) by submitting a crafted attachment_id, which can lead to loss of important media and potential denial of service.",
+        "description": "IBM Optim 1.0.0, 1.1.0, and 1.2.0 could allow a remote authenticated attacker to obtain sensitive information due to path traversal.",
         "cvss": {
           "version": "3.1",
           "score": 9.1,
           "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
-          "source": "security@wordfence.com",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:L",
+          "source": "psirt@us.ibm.com",
+          "type": "Primary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-11-08T18:17:03.303",
+        "updated_time": "2026-11-08T18:17:03.410",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17466",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-22"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-17466",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-15266",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-11-08T18:17:02.450"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-15266",
+        "vendor": "IBM",
+        "product": "Concert",
+        "title": null,
+        "description": "IBM Concert 1.0 through 3.0.1.1 contains components that allow potentially unsafe command execution, which could be exploited to run arbitrary system commands on the host.",
+        "cvss": {
+          "version": "3.1",
+          "score": 9.8,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "source": "psirt@us.ibm.com",
+          "type": "Primary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-11-08T18:17:02.450",
+        "updated_time": "2026-11-08T18:17:02.560",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15266",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-78"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-15266",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-124494",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-11-08T14:18:19.277"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-124494",
+        "vendor": "JiHong88",
+        "product": "suneditor",
+        "title": null,
+        "description": "SunEditor before 3.4.0 contains a stored cross-site scripting vulnerability because the html.clean() sanitizer's _normalizeURL() function decodes named entities like &colon; to an empty string. Attackers can inject href values such as javascript&colon; that pass the _isSafeURL() check but are decoded by browsers, executing JavaScript when victims click stored links.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
           "type": "Secondary"
         },
         "epss": null,
@@ -377,20 +250,580 @@
           "listed": false
         },
         "exploitation_status": {
-          "status": "none",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "none",
-            "automatable": "yes",
-            "technical_impact": "partial",
-            "timestamp": "2026-11-07T18:10:47.816889Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
         },
-        "published_time": "2026-11-07T13:16:36.067",
-        "updated_time": "2026-11-07T19:17:25.583",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-122041",
+        "published_time": "2026-11-08T14:18:19.277",
+        "updated_time": "2026-11-08T14:18:19.277",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124494",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-79"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-124494",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-124493",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-11-08T14:18:19.130"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-124493",
+        "vendor": "JiHong88",
+        "product": "suneditor",
+        "title": null,
+        "description": "SunEditor before 3.4.0 contains a stored cross-site scripting vulnerability in the DocumentType constructor that injects header textContent into innerHTML without HTML escaping. Attackers can store entity-encoded HTML in h1-h6 headers that executes JavaScript when editors using document:header mode initialize, enabling session cookie theft.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-11-08T14:18:19.130",
+        "updated_time": "2026-11-08T14:18:19.130",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124493",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-79"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-124493",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-124490",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-11-08T14:18:18.667"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-124490",
+        "vendor": "openemr",
+        "product": "openemr",
+        "title": null,
+        "description": "OpenEMR before 8.3.0 contains a path traversal vulnerability in the RingCentral RCFaxClient disposeDocument() method of oe-module-faxsms that allows authenticated attackers to read and write arbitrary files via the file_path parameter. Attackers can use action=download to read credentials and source code, or action=setup with base64 content to write web-executable files for code execution.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.4,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-11-08T14:18:18.667",
+        "updated_time": "2026-11-08T14:18:18.667",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124490",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-73"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-124490",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-124469",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-11-08T14:18:15.130"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-124469",
+        "vendor": "openemr",
+        "product": "openemr",
+        "title": null,
+        "description": "OpenEMR before 8.3.0 contains an SQL injection vulnerability in the Fee Sheet drug-inventory lookup (DrugSalesService::sellDrug) that interpolates the prod[N][warehouse] POST field into an ORDER BY clause. Low-privileged authenticated users can submit Fee Sheet product lines with constant subqueries to run a time-based blind oracle, extracting patient data and users_secure bcrypt hashes.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.4,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-11-08T14:18:15.130",
+        "updated_time": "2026-11-08T14:18:15.130",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124469",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-89"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-124469",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-124463",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-11-08T14:18:14.167"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-124463",
+        "vendor": "openemr",
+        "product": "openemr",
+        "title": null,
+        "description": "OpenEMR before 8.3.0 contains a stored cross-site scripting vulnerability that allows authenticated users with CAMOS access to inject HTML by saving malicious CAMOS content through ajax_save.php. Attackers can store a script payload that executes unencoded when the entry is printed via the non-print_html branch of rx_print.php, performing actions and reading data as the victim user.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-11-08T14:18:14.167",
+        "updated_time": "2026-11-08T14:18:14.167",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124463",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-79"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-124463",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-124450",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-11-08T14:18:12.260"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-124450",
+        "vendor": "openemr",
+        "product": "openemr",
+        "title": null,
+        "description": "OpenEMR before 8.3.0 contains a broken access control and path traversal vulnerability in the fax/sms module disposeDocument action via an unvalidated file_path parameter. Authenticated low-privilege users can read sqlconf.php to recover database credentials and write arbitrary files as the web user, enabling remote code execution.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:L/SC:H/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-11-08T14:18:12.260",
+        "updated_time": "2026-11-08T14:18:12.260",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124450",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-73"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-124450",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-124445",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-11-08T14:18:11.487"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-124445",
+        "vendor": "openemr",
+        "product": "openemr",
+        "title": null,
+        "description": "OpenEMR from 7.0.1 before 8.4.0 contains a flaw in src/Common/Auth/OneTimeAuth.php that ignores the enforce_onetime_use and max_access_count flags, never revokes consumed service_auth tokens, and checks login_pin without rate limiting or strict comparison. Attackers holding a captured token can replay it or brute-force the PIN to open patient-portal sessions exposing PHI.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-11-08T14:18:11.487",
+        "updated_time": "2026-11-08T14:18:11.487",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124445",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-307"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-124445",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-124440",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-11-08T14:18:10.633"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-124440",
+        "vendor": "kyverno",
+        "product": "kyverno",
+        "title": null,
+        "description": "Kyverno from 1.19.1 before 1.19.2 contains an authorization bypass vulnerability in the apiCall namespace clamp that allows namespace tenants to issue cross-namespace and cluster-scoped API requests by appending malformed percent-escapes to urlPath. Attackers can create namespaced Policies whose apiCall runs as the admission-controller ServiceAccount to read other namespaces' resources and create mutating webhooks, escalating to cluster admin.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.4,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-11-08T14:18:10.633",
+        "updated_time": "2026-11-08T14:18:10.633",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124440",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-441"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-124440",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-124438",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-11-08T14:18:10.320"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-124438",
+        "vendor": "scriban",
+        "product": "scriban",
+        "title": null,
+        "description": "Scriban before 7.5.2 contains an information disclosure and object manipulation vulnerability that allows template authors to access .NET internals of function values through reflection member accessors. Attackers can use array.map to read Target, Method, or ReturnType on imported delegates, exposing and overwriting service properties, captured closure secrets, and assembly paths.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.1,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-11-08T14:18:10.320",
+        "updated_time": "2026-11-08T14:18:10.320",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124438",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-200"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-124438",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-124427",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-11-08T14:18:08.517"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-124427",
+        "vendor": "craftcms",
+        "product": "cms",
+        "title": null,
+        "description": "Craft CMS from 5.0.0 before 5.11.2 contains an authorization bypass vulnerability that allows anonymous GraphQL clients to read out-of-scope section entries via prev/next fields. Attackers can chain next hops from one visible in-scope entry to enumerate entries and read titles, slugs, and custom-field content from withheld sections.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "disclosure@vulncheck.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-11-08T14:18:08.517",
+        "updated_time": "2026-11-08T14:18:08.517",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124427",
         "source_type": [
           "nvd"
         ],
@@ -398,19 +831,19 @@
           "CWE-862"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-122041",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-124427",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-120984",
+      "cve": "CVE-2026-119506",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-11-07T14:17:01.580"
+          "to": "2026-11-09T01:17:01.197"
         }
       ],
       "risk": {
@@ -428,151 +861,18 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-120984",
-        "vendor": "Red Hat",
-        "product": "Red Hat Build of Keycloak",
+        "cve": "CVE-2026-119506",
+        "vendor": "DynamiApps",
+        "product": "Frontend Admin by DynamiApps",
         "title": null,
-        "description": "A flaw was found in the Keycloak server's client management component. When a client is created or imported with authorization services enabled, the system fails to properly clear an internal session attribute used during the setup process. This allows an authenticated attacker with client management permissions to bypass security controls and upload a malicious JavaScript policy, which is then executed on the server when an authorization request is made. Successful exploitation could allow the attacker to run arbitrary code on the server, potentially compromising the entire system.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.1,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
-          "source": "secalert@redhat.com",
-          "type": "Primary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "unconfirmed",
-          "source": null,
-          "ssvc": null
-        },
-        "published_time": "2026-11-07T14:17:01.580",
-        "updated_time": "2026-11-07T14:17:01.717",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120984",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [
-          "CWE-94"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-120984",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-119075",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-11-07T12:17:44.033"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-119075",
-        "vendor": "themegrill",
-        "product": "Registration Form for WooCommerce",
-        "title": null,
-        "description": "The Registration Form for WooCommerce plugin for WordPress is vulnerable to privilege escalation due to a missing allow-list check in the FormHandler::validate_checkout_fields() function in versions up to, and including, 1.1.4 The My Account registration path (validate_fields()) validates a submitted 'tgwcfb/user-roles' value against the form's configured allowed roles, but the checkout registration path (validate_checkout_fields(), hooked to woocommerce_after_checkout_validation) stores the raw $_POST['user_roles'] value in $this->valid_data without any allow-list enforcement, and add_user_data() then injects that value into woocommerce_new_customer_data as the new account's role. This makes it possible for unauthenticated attackers to elevate their privileges to Administrator by supplying a user_roles=administrator parameter when creating an account during checkout, resulting in full site takeover.",
-        "cvss": {
-          "version": "3.1",
-          "score": 9.8,
-          "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "security@wordfence.com",
-          "type": "Secondary"
-        },
-        "epss": null,
-        "epss_percentile": null,
-        "cisa_kev": {
-          "listed": false
-        },
-        "exploitation_status": {
-          "status": "none",
-          "source": "nvd_ssvc",
-          "ssvc": {
-            "exploitation": "none",
-            "automatable": "yes",
-            "technical_impact": "total",
-            "timestamp": "2026-11-07T18:11:49.846770Z",
-            "role": "CISA Coordinator",
-            "version": "2.0.3"
-          }
-        },
-        "published_time": "2026-11-07T12:17:44.033",
-        "updated_time": "2026-11-07T19:17:19.637",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119075",
-        "source_type": [
-          "nvd"
-        ],
-        "cwes": [
-          "CWE-269"
-        ],
-        "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-119075",
-          "cisa_kev": null,
-          "epss": null
-        }
-      }
-    },
-    {
-      "cve": "CVE-2026-118066",
-      "events": [
-        {
-          "type": "NEW_CVE",
-          "from": null,
-          "to": "2026-11-07T12:17:43.717"
-        }
-      ],
-      "risk": {
-        "score": 28,
-        "priority": "WATCH",
-        "reasons": [
-          {
-            "code": "CVSS_CRITICAL",
-            "points": 20
-          },
-          {
-            "code": "RECENTLY_PUBLISHED",
-            "points": 8
-          }
-        ]
-      },
-      "facts": {
-        "cve": "CVE-2026-118066",
-        "vendor": "latepoint",
-        "product": "Appointment Booking Plugin – LatePoint | Calendar & Scheduling for WordPress",
-        "title": null,
-        "description": "The Appointment Booking Plugin – LatePoint | Calendar & Scheduling for WordPress plugin for WordPress is vulnerable to Authentication Bypass via Account Takeover in all versions up to, and including, 5.7.6. This is due to the `OsModel::build_conditions_query()` function in `lib/models/model.php` comparing WHERE-clause values against the literal strings `'IS NULL'` and `'IS NOT NULL'` and concatenating a match directly into SQL without binding it as a parameter, a flaw that neither `sanitize_text_field()` nor the 5.7.5 `is_scalar()` hardening guard closes, since both pass the scalar sentinel through unchanged. This makes it possible for unauthenticated attackers to send `params[password_reset_token]=IS NOT NULL` to the public `customer_cabinet__change_password` AJAX route to match every non-null `account_nonse` value, resolving to the lowest-id customer and overwriting that customer's password to an attacker-chosen value — granting full access to their bookings, orders, and PII, and, when the `wp_users_as_customers` option is enabled, takeover of the linked WordPress subscriber or customer-role account. The attacker can first identify the target customer's email by sending `params[order_intent_key]=IS NOT NULL` to the public `steps__start_from_order_intent` route, which returns the name and email from the first matching order intent, and can then self-arm the required 15-minute password-reset freshness window by triggering a reset for that customer directly.",
+        "description": "Incorrect Privilege Assignment vulnerability in DynamiApps Frontend Admin by DynamiApps acf-frontend-form-element allows Privilege Escalation.This issue affects Frontend Admin by DynamiApps: from n/a through 3.30.1.",
         "cvss": {
           "version": "3.1",
           "score": 9.1,
           "severity": "CRITICAL",
           "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-          "source": "security@wordfence.com",
-          "type": "Primary"
+          "source": "audit@patchstack.com",
+          "type": "Secondary"
         },
         "epss": null,
         "epss_percentile": null,
@@ -584,29 +884,29 @@
           "source": null,
           "ssvc": null
         },
-        "published_time": "2026-11-07T12:17:43.717",
-        "updated_time": "2026-11-07T12:17:43.833",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118066",
+        "published_time": "2026-11-09T01:17:01.197",
+        "updated_time": "2026-11-09T01:17:02.270",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119506",
         "source_type": [
           "nvd"
         ],
         "cwes": [
-          "CWE-287"
+          "CWE-266"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-118066",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-119506",
           "cisa_kev": null,
           "epss": null
         }
       }
     },
     {
-      "cve": "CVE-2026-104014",
+      "cve": "CVE-2026-114464",
       "events": [
         {
           "type": "NEW_CVE",
           "from": null,
-          "to": "2026-11-07T12:17:41.313"
+          "to": "2026-11-08T17:16:36.583"
         }
       ],
       "risk": {
@@ -624,17 +924,206 @@
         ]
       },
       "facts": {
-        "cve": "CVE-2026-104014",
-        "vendor": "naimurrahmannahid",
-        "product": "Naimur Email OTP Verification for WooCommerce",
+        "cve": "CVE-2026-114464",
+        "vendor": "IBM",
+        "product": "Process Mining",
         "title": null,
-        "description": "The Naimur Email OTP Verification for WooCommerce plugin for WordPress is vulnerable to authentication bypass in versions up to, and including, 2.1.0. This is due to the plugin's password-reset finalization endpoint (the wp_ajax_nopriv_ceovw_update_new_password action handled by CEOVW_AJAX::update_new_password()) authorizing the reset solely by the presence of a database row marking an email as 'VERIFIED', with no timestamp check, no session binding, and no per-reset token — combined with mark_otp_as_verified_for_reset() leaving the row in that state after a user enters their code (abandoning the flow leaves the row behind), and a scheduled 'ceovw_cleanup_expired_otps_event' cron that has no add_action() handler anywhere in the plugin so cleanup never runs. This makes it possible for unauthenticated attackers to take over any account whose owner previously requested and verified a password-reset code and did not immediately finish choosing a new password — the attacker needs only the victim's email address and a nonce that the plugin itself localizes publicly into the CEOVW_APP global on the WooCommerce account page for logged-out visitors, after which they call the endpoint, overwrite the victim's password, and are returned a live wordpress_logged_in_ session cookie for that user (full site takeover if the account is an administrator).",
+        "description": "IBM Process Mining 2.0.0 through 2.2.1 could allow a remote attacker to obtain sensitive information due to improper access control.",
         "cvss": {
           "version": "3.1",
-          "score": 9.8,
+          "score": 9.3,
           "severity": "CRITICAL",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "source": "security@wordfence.com",
+          "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N",
+          "source": "psirt@us.ibm.com",
+          "type": "Primary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-11-08T17:16:36.583",
+        "updated_time": "2026-11-08T17:16:36.690",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114464",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-284"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-114464",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-113364",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-11-09T05:18:26.810"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-113364",
+        "vendor": "NEC Corporation",
+        "product": "WebSAM WinShare",
+        "title": null,
+        "description": "Buffer Overflow in the data receiving process in NEC Corporation WebSAM WinShare Ver 7.5.0 and earlier, Ver 7.6.0 and Ver 7.7.0 through 7.7.2 on Windows allows a remote unauthenticated attacker to execute arbitrary code with SYSTEM privileges via a crafted packet with a malformed data size value in the protocol header.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "psirt-info@cyber.jp.nec.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-11-09T05:18:26.810",
+        "updated_time": "2026-11-09T05:18:26.810",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-113364",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-122"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-113364",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-113363",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-11-09T05:18:26.107"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-113363",
+        "vendor": "NEC Corporation",
+        "product": "WebSAM WinShare",
+        "title": null,
+        "description": "Improper Input Validation in the network communication processing in NEC Corporation WebSAM WinShare Ver 7.2.0 through 7.5.0, Ver 7.6.0 and Ver 7.7.0 through 7.7.2 on Windows allows a remote unauthenticated attacker to execute arbitrary commands with SYSTEM privileges via a crafted network packet sent to the computer on which WinShare is running.",
+        "cvss": {
+          "version": "4.0",
+          "score": 9.3,
+          "severity": "CRITICAL",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+          "source": "psirt-info@cyber.jp.nec.com",
+          "type": "Secondary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-11-09T05:18:26.107",
+        "updated_time": "2026-11-09T05:18:26.107",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-113363",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-749"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-113363",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-109900",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-11-08T16:16:36.773"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-109900",
+        "vendor": "Melapress",
+        "product": "Melapress Role Editor",
+        "title": null,
+        "description": "Incorrect Privilege Assignment vulnerability in Melapress Melapress Role Editor melapress-role-editor allows Privilege Escalation.This issue affects Melapress Role Editor: from n/a through 1.3.0.",
+        "cvss": {
+          "version": "3.1",
+          "score": 9.6,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+          "source": "audit@patchstack.com",
           "type": "Secondary"
         },
         "epss": null,
@@ -647,24 +1136,150 @@
           "source": "nvd_ssvc",
           "ssvc": {
             "exploitation": "none",
-            "automatable": "yes",
+            "automatable": "no",
             "technical_impact": "total",
-            "timestamp": "2026-11-07T18:11:18.295742Z",
+            "timestamp": "2026-11-08T18:43:16.401102Z",
             "role": "CISA Coordinator",
             "version": "2.0.3"
           }
         },
-        "published_time": "2026-11-07T12:17:41.313",
-        "updated_time": "2026-11-07T19:17:17.340",
-        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104014",
+        "published_time": "2026-11-08T16:16:36.773",
+        "updated_time": "2026-11-08T19:17:33.233",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109900",
         "source_type": [
           "nvd"
         ],
         "cwes": [
-          "CWE-287"
+          "CWE-266"
         ],
         "provenance": {
-          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-104014",
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-109900",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-107331",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-11-08T17:16:35.550"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-107331",
+        "vendor": "IBM",
+        "product": "DataStage on Cloud Pak for Data",
+        "title": null,
+        "description": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to obtain sensitive information due to an absolute-path traversal vulnerability.",
+        "cvss": {
+          "version": "3.1",
+          "score": 9.9,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+          "source": "psirt@us.ibm.com",
+          "type": "Primary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-11-08T17:16:35.550",
+        "updated_time": "2026-11-08T17:16:35.660",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107331",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-36"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-107331",
+          "cisa_kev": null,
+          "epss": null
+        }
+      }
+    },
+    {
+      "cve": "CVE-2026-101117",
+      "events": [
+        {
+          "type": "NEW_CVE",
+          "from": null,
+          "to": "2026-11-08T16:16:36.103"
+        }
+      ],
+      "risk": {
+        "score": 28,
+        "priority": "WATCH",
+        "reasons": [
+          {
+            "code": "CVSS_CRITICAL",
+            "points": 20
+          },
+          {
+            "code": "RECENTLY_PUBLISHED",
+            "points": 8
+          }
+        ]
+      },
+      "facts": {
+        "cve": "CVE-2026-101117",
+        "vendor": "IBM",
+        "product": "WebSphere Extreme Scale",
+        "title": null,
+        "description": "IBM WebSphere Extreme Scale 8.6.1.0 through 8.6.2.2 could allow a remote attacker to bypass security restrictions due to improper Content Security Policy configuration.",
+        "cvss": {
+          "version": "3.1",
+          "score": 9.1,
+          "severity": "CRITICAL",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+          "source": "psirt@us.ibm.com",
+          "type": "Primary"
+        },
+        "epss": null,
+        "epss_percentile": null,
+        "cisa_kev": {
+          "listed": false
+        },
+        "exploitation_status": {
+          "status": "unconfirmed",
+          "source": null,
+          "ssvc": null
+        },
+        "published_time": "2026-11-08T16:16:36.103",
+        "updated_time": "2026-11-08T16:16:36.223",
+        "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101117",
+        "source_type": [
+          "nvd"
+        ],
+        "cwes": [
+          "CWE-16"
+        ],
+        "provenance": {
+          "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-101117",
           "cisa_kev": null,
           "epss": null
         }
