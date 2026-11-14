@@ -1,11 +1,11 @@
 {
   "schema_version": "1.1-security-events",
-  "generated_at": "2026-11-12T07:53:54.686224+00:00",
+  "generated_at": "2026-11-14T07:13:47.930884+00:00",
   "selection": {
     "window_days": 7,
     "max_items": 20,
     "rule": "Homepage events come from current RSS/advisory sources. CVEs are shown only when the source article/advisory mentions them.",
-    "tracked_cve_count": 39
+    "tracked_cve_count": 163
   },
   "sources": [
     {
@@ -31,91 +31,102 @@
   ],
   "summary": {
     "fetched_entries": 65,
-    "included_items": 19,
-    "linked_cve_items": 9,
-    "matched_intelligence_items": 0,
+    "included_items": 20,
+    "linked_cve_items": 15,
+    "matched_intelligence_items": 5,
     "successful_sources": 4,
     "source_errors": [],
-    "preserved_translations": 7
+    "preserved_translations": 2
   },
   "items": [
     {
-      "id": "9d0e65808ab58d16",
-      "event_type": "RANSOMWARE",
-      "priority": "CRITICAL",
-      "published_at": "2026-11-11T16:24:18+00:00",
-      "title": "Maersk confirms data breach as WhiteArmor ransomware demands $5 million",
-      "summary": "Maersk announced that a threat actor gained unauthorized access to a local legacy system inherited through an earlier acquisition and extracted data from it. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/maersk-confirms-data-breach-as-whitearmor-ransomware-demands-5-million/",
-      "related_cves": [],
-      "matched_intelligence_cves": [],
-      "score": 111,
-      "cve_evidence": null,
-      "title_zh": "馬士基確認資料外洩事故，WhiteArmor 勒索軟體索要 500 萬美元",
-      "summary_zh": "馬士基宣布威脅者未經授權存取了透過早期收購所繼承的本地舊版系統，並從中擷取了資料。"
-    },
-    {
-      "id": "1850dcd8e0028e19",
+      "id": "7b5dacba886b8db5",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "published_at": "2026-11-11T15:42:47+00:00",
-      "title": "Critical Xen Orchestra Flaws Exploited in Attacks",
-      "summary": "A critical authentication bypass allows attackers to execute arbitrary code as admin and take over XCP-ng nodes. The post Critical Xen Orchestra Flaws Exploited in Attacks appeared first on SecurityWeek .",
+      "published_at": "2026-11-13T12:00:00+00:00",
+      "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
+      "summary": "CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-114713 UnrealIRCd Improper Neutralization of Delimiters Vulnerability CVE-2026-123039 Check Point Multiple Products Incorrect Permission Assignment for Critical Resource Vulnerability These types of vulnerabiliti...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/alerts/2026/11/13/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+      "related_cves": [
+        "CVE-2026-114713",
+        "CVE-2026-123039"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-114713",
+        "CVE-2026-123039"
+      ],
+      "score": 116,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "02c1dcd61c66dc6c",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-11-13T10:44:22+00:00",
+      "title": "Check Point warns of zero-day flaw exploited for root access",
+      "summary": "Check Point Software has released emergency hotfixes to address a high-severity flaw that hackers have been exploiting to gain root privileges and establish persistence on vulnerable devices since late October. [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/check-point-patches-zero-day-that-lets-hackers-get-root-access/",
+      "related_cves": [
+        "CVE-2026-123039",
+        "CVE-2026-85102",
+        "CVE-2026-93616"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-123039"
+      ],
+      "score": 111,
+      "cve_evidence": "source_article"
+    },
+    {
+      "id": "d89589bec211ea26",
+      "event_type": "ACTIVE_EXPLOITATION",
+      "priority": "CRITICAL",
+      "published_at": "2026-11-13T08:50:36+00:00",
+      "title": "Nightmare Eclipse Drops Windows Zero-Day Exploit ‘SignDrop’",
+      "summary": "It abuses CLFS and Windows Defender to trigger arbitrary file creation in the context of the antimalware process. The post Nightmare Eclipse Drops Windows Zero-Day Exploit ‘SignDrop’ appeared first on SecurityWeek .",
       "source_name": "SecurityWeek",
       "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/critical-xen-orchestra-flaws-exploited-in-attacks/",
+      "source_url": "https://www.securityweek.com/nightmare-eclipse-drops-windows-zero-day-exploit-signdrop/",
       "related_cves": [],
       "matched_intelligence_cves": [],
       "score": 106,
-      "cve_evidence": null,
-      "title_zh": "Xen Orchestra 重大漏洞在攻擊中遭利用",
-      "summary_zh": "一項重大身分驗證繞過漏洞允許攻擊者以管理員身分執行任意程式碼並接管 XCP-ng 節點。《Critical Xen Orchestra Flaws Exploited in Attacks》這篇文章首先出現在 SecurityWeek。"
+      "cve_evidence": null
     },
     {
-      "id": "fdb07bf27f816d37",
+      "id": "7f23aad252df2a55",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "published_at": "2026-11-11T12:32:27+00:00",
-      "title": "N-able releases security hotfixes for zero-day vulnerabilities",
-      "summary": "N-able released hotfixes to address zero-day bugs affecting its N-central remote monitoring and management (RMM) platform, which were publicly disclosed over the weekend and forced it to take vulnerable hosted environments offline. [...]",
+      "published_at": "2026-11-12T19:51:16+00:00",
+      "title": "New N-able \"4EverAble2Shell\" zero-day exploited hours after PoC released",
+      "summary": "Hackers are actively exploiting a newly disclosed N-able N-central zero-day vulnerability dubbed \"4EverAble2Shell\" to compromise servers and deploy cryptocurrency miners, with researchers reporting at least 21 affected systems, including 19 running the company's latest security update. [...]",
       "source_name": "BleepingComputer",
       "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/n-able-releases-security-hotfixes-for-zero-day-vulnerabilities/",
+      "source_url": "https://www.bleepingcomputer.com/news/security/new-n-able-4everable2shell-zero-day-exploited-hours-after-poc-released/",
       "related_cves": [
-        "CVE-2026-125878",
-        "CVE-2026-125879",
-        "CVE-2026-125880",
-        "CVE-2026-125881",
-        "CVE-2026-125882",
-        "CVE-2026-125883",
-        "CVE-2026-91000"
+        "CVE-2026-90436"
       ],
       "matched_intelligence_cves": [],
-      "score": 106,
-      "cve_evidence": "source_article",
-      "title_zh": "N-able 為零日漏洞發布安全熱修復程式",
-      "summary_zh": "N-able 發布了熱修復程式，以修復影響其 N-central 遠端監控與管理（RMM）平台的零日漏洞；這些漏洞於週末被公開披露，並迫使該公司將受影響的託管環境下線。"
+      "score": 105,
+      "cve_evidence": "source_article"
     },
     {
-      "id": "22463fa6921d14b3",
+      "id": "1dc09f8d2480496e",
       "event_type": "ACTIVE_EXPLOITATION",
       "priority": "CRITICAL",
-      "published_at": "2026-11-11T10:12:08+00:00",
-      "title": "CISA flags Cisco BroadWorks flaw as actively exploited in attacks",
-      "summary": "The US Cybersecurity and Infrastructure Security Agency (CISA) warned on Tuesday that hackers are now exploiting a high-severity Cisco BroadWorks vulnerability in attacks. [...]",
+      "published_at": "2026-11-12T16:04:00+00:00",
+      "title": "New Windows SignDrop zero-day gives hackers SYSTEM privileges",
+      "summary": "Security researcher Abdelhamid Naceri (also known as Nightmare Eclipse) has released a new Windows zero-day exploit that can let attackers gain SYSTEM privileges. [...]",
       "source_name": "BleepingComputer",
       "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/cisa-flags-cisco-broadworks-flaw-as-actively-exploited-in-attacks/",
-      "related_cves": [
-        "CVE-2026-20320"
-      ],
+      "source_url": "https://www.bleepingcomputer.com/news/security/new-windows-signdrop-zero-day-gives-hackers-system-privileges/",
+      "related_cves": [],
       "matched_intelligence_cves": [],
-      "score": 106,
-      "cve_evidence": "source_article",
-      "title_zh": "CISA 警示 Cisco BroadWorks 漏洞正於攻擊中遭積極利用",
-      "summary_zh": "美國網路安全暨基礎設施安全局（CISA）於週二發出警告，指出駭客目前正在攻擊中利用一個高嚴重性的 Cisco BroadWorks 漏洞。"
+      "score": 104,
+      "cve_evidence": null
     },
     {
       "id": "f4b34728a6f8e326",
@@ -136,7 +147,7 @@
         "CVE-2026-20320"
       ],
       "matched_intelligence_cves": [],
-      "score": 104,
+      "score": 100,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 將六個已知被利用的漏洞新增至目錄",
       "summary_zh": "CISA 根據積極利用的證據，將六個新漏洞新增至其已知被利用漏洞（KEV）目錄中。CVE-2026-20320 Cisco BroadWorks XML 外部實體參照限制不當漏洞、CVE-2026-111560 Barracuda Networks 多款產品作業系統命令注入漏洞、CVE-2026-111793 Openwave Messagin..."
@@ -158,264 +169,254 @@
         "CVE-2026-123218"
       ],
       "matched_intelligence_cves": [],
-      "score": 102,
+      "score": 98,
       "cve_evidence": "source_title_or_summary",
       "title_zh": "CISA 將四個已知已被利用的漏洞新增至目錄",
       "summary_zh": "CISA 根據主動利用的證據，在其已知已被利用漏洞（KEV）目錄中新增了四個新漏洞：CVE-2026-102895 GPUStack 不當身份驗證漏洞、CVE-2026-116779 SignalWire FreeSwitch 程式碼注入漏洞、CVE-2026-123158 OpenBSD OpenSSH 異常狀態碼或傳回值漏洞、CVE-2..."
     },
     {
-      "id": "2e68c49691546005",
-      "event_type": "ACTIVE_EXPLOITATION",
+      "id": "7fc84ef561ad2bda",
+      "event_type": "VULNERABILITY_NEWS",
       "priority": "CRITICAL",
-      "published_at": "2026-11-06T12:00:00+00:00",
-      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
-      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-19868 SonicWall SonicOS SSLVPN Use of Single-factor Authentication Vulnerability This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal enterpri...",
+      "published_at": "2026-11-13T09:36:56+00:00",
+      "title": "Citrix Patches 10 Critical NetScaler Vulnerabilities",
+      "summary": "Successful exploitation could lead to unexpected behavior or denial-of-service (DoS) conditions. The post Citrix Patches 10 Critical NetScaler Vulnerabilities appeared first on SecurityWeek .",
+      "source_name": "SecurityWeek",
+      "source_type": "security_media",
+      "source_url": "https://www.securityweek.com/citrix-patches-10-critical-netscaler-vulnerabilities/",
+      "related_cves": [
+        "CVE-2026-107407",
+        "CVE-2026-107410",
+        "CVE-2026-107412",
+        "CVE-2026-107415",
+        "CVE-2026-111334",
+        "CVE-2026-111338",
+        "CVE-2026-120864",
+        "CVE-2026-120868",
+        "CVE-2026-120869"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-107407",
+        "CVE-2026-107410",
+        "CVE-2026-107412",
+        "CVE-2026-107415",
+        "CVE-2026-111334",
+        "CVE-2026-120864",
+        "CVE-2026-120868",
+        "CVE-2026-120869"
+      ],
+      "score": 96,
+      "cve_evidence": "source_article"
+    },
+    {
+      "id": "e1501a330e51ba12",
+      "event_type": "VULNERABILITY_NEWS",
+      "priority": "CRITICAL",
+      "published_at": "2026-11-12T19:12:55+00:00",
+      "title": "Apache HTTP Server patches critical HTTP/2 remote code execution flaw",
+      "summary": "A critical vulnerability in the HTTP/2 module of Apache HTTP Server could be exploited by an unauthenticated attacker to obtain remote code execution (RCE). [...]",
+      "source_name": "BleepingComputer",
+      "source_type": "security_media",
+      "source_url": "https://www.bleepingcomputer.com/news/security/apache-http-server-patches-critical-http-2-remote-code-execution-flaw/",
+      "related_cves": [
+        "CVE-2026-106023",
+        "CVE-2026-109163",
+        "CVE-2026-119618"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 79,
+      "cve_evidence": "source_article"
+    },
+    {
+      "id": "f45d3069b40c902e",
+      "event_type": "VULNERABILITY_NEWS",
+      "priority": "CRITICAL",
+      "published_at": "2026-11-12T12:00:00+00:00",
+      "title": "Siemens Desigo, Gridscale",
+      "summary": "View CSAF Summary On October 21, 2026, the Node.js project released security updates addressing a critical vulnerability in the Brotli decoder bundled with Node.js, commonly referred to as \"Node2Shell\" (tracked as CVE-2026-111497). The vulnerability is an out-of-bounds write that could allow a remote attacker to cause memory corruption and potentially exe...",
       "source_name": "CISA Advisories",
       "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/news-events/alerts/2026/11/06/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-316-02",
       "related_cves": [
-        "CVE-2026-19868"
+        "CVE-2026-111497"
       ],
+      "matched_intelligence_cves": [],
+      "score": 79,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "057c02b04cc39ce1",
+      "event_type": "VULNERABILITY_NEWS",
+      "priority": "CRITICAL",
+      "published_at": "2026-11-12T12:00:00+00:00",
+      "title": "Siemens RUGGEDCOM APE1808",
+      "summary": "View CSAF Summary Palo Alto Networks has published information on vulnerabilities in PAN-OS related to PHP2Shell vulnerabilities. This advisory lists the related Siemens Industrial products affected by these vulnerabilities. Customers are advised to consult and implement the workarounds provided in Palo Alto Networks' upstream security notifications. The...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-316-05",
+      "related_cves": [
+        "CVE-2026-109618",
+        "CVE-2026-109619"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 79,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "652c8f30b0994d6c",
+      "event_type": "VULNERABILITY_NEWS",
+      "priority": "CRITICAL",
+      "published_at": "2026-11-12T12:00:00+00:00",
+      "title": "Siemens RUGGEDCOM APE1808",
+      "summary": "View CSAF Summary Palo Alto Networks has published information on a vulnerability in PAN-OS related to the Node2Shell vulnerability. This advisory lists the related Siemens Industrial products affected by this vulnerability. Customers are advised to consult and implement the workarounds provided in Palo Alto Networks' upstream security notifications. The...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-316-04",
+      "related_cves": [
+        "CVE-2026-111497"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 79,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "89146ff5418730c2",
+      "event_type": "VULNERABILITY_NEWS",
+      "priority": "CRITICAL",
+      "published_at": "2026-11-12T12:00:00+00:00",
+      "title": "Siemens Building Automation and Energy Products",
+      "summary": "View CSAF Summary On October 21, 2026, the PHP project and security researchers disclosed two critical, unauthenticated remote code execution vulnerabilities in the core PHP language runtime known as \"php2shell\" (tracked as CVE-2026-109618 and CVE-2026-109619). This advisory covers the status of impact of various Siemens software products. As a general se...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-316-01",
+      "related_cves": [
+        "CVE-2026-109618",
+        "CVE-2026-109619"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 79,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "ff020ded0d332431",
+      "event_type": "VULNERABILITY_NEWS",
+      "priority": "CRITICAL",
+      "published_at": "2026-11-12T12:00:00+00:00",
+      "title": "Siemens Industrial Edge Management",
+      "summary": "View CSAF Summary Siemens is currently assessing the impact of Node2Shell (CVE-2026-111497) on Industrial Edge. Please check your Industrial Edge Management (IEM) setup: - No Management Applications installed: No action is required. Although the affected Brotli library is included in the IEM software stack, the affected functionality is not used or expose...",
+      "source_name": "CISA Advisories",
+      "source_type": "official_advisory",
+      "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-316-03",
+      "related_cves": [
+        "CVE-2026-111497"
+      ],
+      "matched_intelligence_cves": [],
+      "score": 79,
+      "cve_evidence": "source_title_or_summary"
+    },
+    {
+      "id": "0963885b5efedda3",
+      "event_type": "DATA_BREACH",
+      "priority": "HIGH",
+      "published_at": "2026-11-13T15:20:00+00:00",
+      "title": "In Other News: New CISA Director Nominee, Connected Car Hacking, Baker Tilly Data Breach",
+      "summary": "Noteworthy stories that might have slipped under the radar: Siemens details security advisory policy, OpenAI Codex backdoor risk, Microsoft warns of model weight backdoors. The post In Other News: New CISA Director Nominee, Connected Car Hacking, Baker Tilly Data Breach appeared first on SecurityWeek .",
+      "source_name": "SecurityWeek",
+      "source_type": "security_media",
+      "source_url": "https://www.securityweek.com/in-other-news-new-cisa-director-nominee-connected-car-hacking-baker-tilly-data-breach/",
+      "related_cves": [],
       "matched_intelligence_cves": [],
       "score": 96,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "CISA 將一個已知被利用的漏洞新增至目錄",
-      "summary_zh": "CISA 根據主動利用的證據，在其已知被利用漏洞（KEV）目錄中新增了一個新漏洞。CVE-2026-19868 SonicWall SonicOS SSLVPN 使用單因子驗證漏洞。此類漏洞是惡意網路行為者常用的攻擊途徑，對聯邦企業構成重大風險..."
+      "cve_evidence": null
     },
     {
-      "id": "cddef5bb18e3bcbf",
-      "event_type": "SUPPLY_CHAIN",
-      "priority": "CRITICAL",
-      "published_at": "2026-11-05T12:00:00+00:00",
-      "title": "US Government Partners Urge Hardening Industrial Refrigeration and Cold Chain Monitoring Systems",
-      "summary": "Overview The Cybersecurity and Infrastructure Security Agency (CISA), Federal Bureau of Investigation (FBI), Health and Human Services (HHS), U.S. Department of Agriculture (USDA), and the Department of Transportation (DoT)—hereafter referred to as “the authoring organizations”—are aware of malicious cyber activity targeting industrial refrigeration and c...",
-      "source_name": "CISA Advisories",
-      "source_type": "official_advisory",
-      "source_url": "https://www.cisa.gov/resources-tools/resources/us-government-partners-urge-hardening-industrial-refrigeration-and-cold-chain-monitoring-systems",
-      "related_cves": [],
-      "matched_intelligence_cves": [],
-      "score": 90,
-      "cve_evidence": null,
-      "title_zh": "美國政府夥伴呼籲加強工業冷凍和冷鏈監控系統的安全防禦",
-      "summary_zh": "概述：網路安全暨基礎設施安全局（CISA）、聯邦調查局（FBI）、美國衛生與公眾服務部（HHS）、美國農業部（USDA）及美國運輸部（DoT）——以下簡稱「編撰組織」——已意識到針對工業冷凍和冷鏈監控系統的惡意網路活動..."
-    },
-    {
-      "id": "84cdfac250c3be22",
-      "event_type": "VULNERABILITY_NEWS",
-      "priority": "CRITICAL",
-      "published_at": "2026-11-11T13:37:19+00:00",
-      "title": "Citrix, Ivanti Patch Critical and High-Severity Vulnerabilities",
-      "summary": "Attackers could exploit the bugs to tamper with certificate entries, achieve remote code execution, and compromise hosts. The post Citrix, Ivanti Patch Critical and High-Severity Vulnerabilities appeared first on SecurityWeek .",
-      "source_name": "SecurityWeek",
-      "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/citrix-ivanti-patch-critical-and-high-severity-vulnerabilities/",
-      "related_cves": [
-        "CVE-2026-102705",
-        "CVE-2026-105425",
-        "CVE-2026-121653",
-        "CVE-2026-121683"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 81,
-      "cve_evidence": "source_article",
-      "title_zh": "Citrix 與 Ivanti 修補重大及高嚴重性漏洞",
-      "summary_zh": "攻擊者可利用這些漏洞篡改憑證項目、實現遠端程式碼執行並入侵主機。《Citrix, Ivanti Patch Critical and High-Severity Vulnerabilities》這篇文章首先出現在 SecurityWeek。"
-    },
-    {
-      "id": "2fa347656b166d57",
-      "event_type": "DATA_BREACH",
-      "priority": "HIGH",
-      "published_at": "2026-11-11T23:01:31+00:00",
-      "title": "Baker Tilly notifies clients of data breach at third-party provider",
-      "summary": "The Baker Tilly Advisory Group is notifying clients that a data breach has compromised certain personal information about them and their dependents. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/baker-tilly-notifies-clients-of-data-breach-at-third-party-provider/",
-      "related_cves": [],
-      "matched_intelligence_cves": [],
-      "score": 97,
-      "cve_evidence": null,
-      "title_zh": "Baker Tilly 通知客戶第三方提供業者發生資料洩漏事件",
-      "summary_zh": "Baker Tilly Advisory Group 正通知客戶，一場資料洩漏事件已妥協了他們及其受撫養人的特定個人資訊。[...]"
-    },
-    {
-      "id": "8ecf3ded8f74d009",
-      "event_type": "DATA_BREACH",
-      "priority": "HIGH",
-      "published_at": "2026-11-11T22:56:21+00:00",
-      "title": "Active ScreenConnect attacks breach MSPs, impact dozens of organizations",
-      "summary": "ConnectWise is investigating an active malware campaign targeting managed service providers (MSPs) that uses compromised ScreenConnect environments to deploy rogue remote-access clients to customer devices. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/active-screenconnect-attacks-breach-msps-impact-dozens-of-organizations/",
-      "related_cves": [],
-      "matched_intelligence_cves": [],
-      "score": 97,
-      "cve_evidence": null,
-      "title_zh": "針對 ScreenConnect 的活躍攻擊入侵 MSP，影響數十個組織",
-      "summary_zh": "ConnectWise 正深入調查一項針對託管服務提供業者（MSP）的活躍惡意程式活動，該活動利用已遭入侵的 ScreenConnect 環境向客戶裝置部署未授權的遠端存取用戶端。[...]"
-    },
-    {
-      "id": "3c445f1213014085",
-      "event_type": "DATA_BREACH",
-      "priority": "HIGH",
-      "published_at": "2026-11-11T20:54:20+00:00",
-      "title": "Notion says Fireworks breach exposed customer AI chat transcripts",
-      "summary": "Notion, the digital workspace platform, disclosed that a security breach at its AI infrastructure provider, Fireworks AI, exposed Notion AI chat transcripts in a small number of workspaces. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/notion-says-fireworks-breach-exposed-customer-ai-chat-transcripts/",
-      "related_cves": [],
-      "matched_intelligence_cves": [],
-      "score": 97,
-      "cve_evidence": null,
-      "title_zh": "Notion 表示 Fireworks 資料洩漏事件外洩了客戶的 AI 聊天紀錄",
-      "summary_zh": "數位工作區平台 Notion 披露，其 AI 基礎設施提供業者 Fireworks AI 發生的安全入侵事件，導致少數工作區內的 Notion AI 聊天紀錄遭到外洩。[...]"
-    },
-    {
-      "id": "43b50136d94d3390",
-      "event_type": "DATA_BREACH",
-      "priority": "HIGH",
-      "published_at": "2026-11-10T22:20:19+00:00",
-      "title": "Railway breach leads to $740,000 in fraudulent AI charges",
-      "summary": "Cloud hosting provider Railway says hackers exploited vulnerabilities in its infrastructure to steal customer authentication secrets and generate approximately $740,000 in fraudulent AI usage, potentially exposing credentials for up to 100,000 workspaces. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/apple/railway-breach-leads-to-740-000-in-fraudulent-ai-charges/",
-      "related_cves": [],
-      "matched_intelligence_cves": [],
-      "score": 95,
-      "cve_evidence": null,
-      "title_zh": "Railway 資料外洩事件導致 74 萬美元的欺詐性 AI 費用",
-      "summary_zh": "雲端託管服務提供商 Railway 表示，駭客利用其基礎設施中的漏洞竊取客戶身份驗證機密，並產生約 740,000 美元的欺詐性 AI 使用費，可能暴露多達 100,000 個工作區的憑證。[...]"
-    },
-    {
-      "id": "ddf41e717f52acfd",
-      "event_type": "DATA_BREACH",
-      "priority": "HIGH",
-      "published_at": "2026-11-10T19:31:11+00:00",
-      "title": "Hackers exploit trusted AWS access to breach multiple cloud environments",
-      "summary": "A threat actor used compromised identity and access management (IAM) credentials for a Qubole big data platform's AWS account to access and exfiltrate data from multiple customers' AWS environments. [...]",
-      "source_name": "BleepingComputer",
-      "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/hackers-exploit-trusted-aws-access-to-breach-multiple-cloud-environments/",
-      "related_cves": [],
-      "matched_intelligence_cves": [],
-      "score": 94,
-      "cve_evidence": null,
-      "title_zh": "駭客利用受信任的 AWS 存取權入侵多個雲端環境",
-      "summary_zh": "威脅誘因者利用 Qubole 大數據平台 AWS 帳號遭入侵的存取身份與管理（IAM）憑證，存取並外洩來自多個客戶 AWS 環境的資料。[...]"
-    },
-    {
-      "id": "9f6bff3523085583",
+      "id": "7182a3a53c63a0d3",
       "event_type": "VULNERABILITY_NEWS",
       "priority": "HIGH",
-      "published_at": "2026-11-11T13:58:38+00:00",
-      "title": "Asus, Zoom Release Security Patches",
-      "summary": "Attackers could exploit them for command execution, memory overwrites, and privilege escalation. The post Asus, Zoom Release Security Patches appeared first on SecurityWeek .",
+      "published_at": "2026-11-13T07:39:04+00:00",
+      "title": "PHP2Shell Exploited in Destructive Check Point Gateway Attacks",
+      "summary": "PHP2Shell enabled initial compromise, while CVE-2026-123039 allowed attackers to elevate privileges to root. The post PHP2Shell Exploited in Destructive Check Point Gateway Attacks appeared first on SecurityWeek .",
       "source_name": "SecurityWeek",
       "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/asus-zoom-release-security-patches/",
+      "source_url": "https://www.securityweek.com/php2shell-exploited-in-destructive-check-point-gateway-attacks/",
       "related_cves": [
-        "CVE-2026-108186",
-        "CVE-2026-108187"
+        "CVE-2026-109618",
+        "CVE-2026-109619",
+        "CVE-2026-123039"
       ],
-      "matched_intelligence_cves": [],
-      "score": 81,
-      "cve_evidence": "source_article",
-      "title_zh": "Asus 與 Zoom 發布安全補丁",
-      "summary_zh": "攻擊者可利用這些漏洞進行指令執行、記憶體覆寫以及權限提升。「Asus 與 Zoom 發布安全補丁」這篇文章首次出現在 SecurityWeek 上。"
+      "matched_intelligence_cves": [
+        "CVE-2026-123039"
+      ],
+      "score": 86,
+      "cve_evidence": "source_title_or_summary"
     },
     {
-      "id": "f7bee101ee0275bf",
+      "id": "97c01e9fc4639398",
       "event_type": "THREAT_ACTIVITY",
       "priority": "MEDIUM",
-      "published_at": "2026-11-11T15:12:59+00:00",
-      "title": "Hackers use AntiFox AI agents in AWS credential-theft attacks",
-      "summary": "Attackers are using Alibaba Cloud to host self-managed instances of AntiFox, an open-source agentic penetration testing platform, to target web services and AWS environments. [...]",
+      "published_at": "2026-11-13T16:21:43+00:00",
+      "title": "Check Point gateways hacked via PHP2Shell to deploy VMware ESXi wiper",
+      "summary": "Vulnerable Check Point Security Gateway instances have been targeted in PHP2Shell attacks that deployed data-wiping malware on VMware ESXi hosts. [...]",
       "source_name": "BleepingComputer",
       "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/hackers-use-antifox-ai-agents-in-aws-credential-theft-attacks/",
+      "source_url": "https://www.bleepingcomputer.com/news/security/check-point-gateways-hacked-via-php2shell-to-deploy-vmware-esxi-wiper/",
+      "related_cves": [
+        "CVE-2026-109618",
+        "CVE-2026-109619",
+        "CVE-2026-123039"
+      ],
+      "matched_intelligence_cves": [
+        "CVE-2026-123039"
+      ],
+      "score": 91,
+      "cve_evidence": "source_article"
+    },
+    {
+      "id": "76848e0d050b2a62",
+      "event_type": "THREAT_ACTIVITY",
+      "priority": "MEDIUM",
+      "published_at": "2026-11-13T12:20:28+00:00",
+      "title": "SilentAir Hackers Intercept Calls, SMS From Inside Mobile Networks",
+      "summary": "Enea says SilentAir hijacked mobile network nodes to intercept calls and messages, with Taiwanese subscribers the primary targets. The post SilentAir Hackers Intercept Calls, SMS From Inside Mobile Networks appeared first on SecurityWeek .",
+      "source_name": "SecurityWeek",
+      "source_type": "security_media",
+      "source_url": "https://www.securityweek.com/silentair-hackers-intercept-calls-sms-from-inside-mobile-networks/",
       "related_cves": [],
       "matched_intelligence_cves": [],
       "score": 86,
-      "cve_evidence": null,
-      "title_zh": "駭客在 AWS 憑證竊取攻擊中使用 AntiFox AI 代理",
-      "summary_zh": "攻擊者正利用阿里雲託管自建的 AntiFox（一個開源代理式滲透測試平台）軟體實例，以此瞄準 Web 服務與 AWS 環境。[...]"
+      "cve_evidence": null
     },
     {
-      "id": "acc7a2d0e9799faa",
+      "id": "afe79ee14497cedd",
       "event_type": "THREAT_ACTIVITY",
       "priority": "MEDIUM",
-      "published_at": "2026-11-11T15:01:11+00:00",
-      "title": "eBPF Rootkits: Why Underground Actors Are Taking Notice",
-      "summary": "Linux eBPF rootkits can hide malicious activity and evade traditional detection methods without loading kernel modules. Flare reveals how these techniques are spreading through underground forums, where threat actors are sharing rootkit source code, tutorials, and exploits targeting Linux systems. [...]",
+      "published_at": "2026-11-12T22:53:10+00:00",
+      "title": "New worm-like 'SCKit' malware targets MSPs in ScreenConnect attacks",
+      "summary": "A new worm-like malware toolkit named SCKit was deployed in the recent ScreenConnect attacks targeting managed service providers (MSPs), designed to spread from infected customer devices to MSP technicians' computers and compromise additional managed networks. [...]",
       "source_name": "BleepingComputer",
       "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/ebpf-rootkits-why-underground-actors-are-taking-notice/",
+      "source_url": "https://www.bleepingcomputer.com/news/security/new-worm-like-sckit-malware-targets-msps-in-screenconnect-attacks/",
       "related_cves": [
-        "CVE-2017-16995"
+        "CVE-2026-84869"
       ],
       "matched_intelligence_cves": [],
-      "score": 86,
-      "cve_evidence": "source_article",
-      "title_zh": "eBPF Rootkit：地下威脅份子關注其發展的原因",
-      "summary_zh": "Linux eBPF Rootkit 無需載入核心模組即可隱藏惡意活動並規避傳統偵測方法。Flare 揭露了這些技術如何在地下論壇中傳播，威脅份子正於論壇中分享針對 Linux 系統的 Rootkit 原始碼、教學課程與漏洞利用程式。[...]"
+      "score": 85,
+      "cve_evidence": "source_article"
     },
     {
-      "id": "8b14998fef80eb25",
+      "id": "ec46d2ca2fd1c7f3",
       "event_type": "THREAT_ACTIVITY",
       "priority": "MEDIUM",
-      "published_at": "2026-11-11T09:01:07+00:00",
-      "title": "Threat Actors Exploit Openwave, Cisco BroadWorks Vulnerabilities",
-      "summary": "The flaws, CVE-2026-111793 and CVE-2026-20320, let attackers leak sensitive information, including configuration data. The post Threat Actors Exploit Openwave, Cisco BroadWorks Vulnerabilities appeared first on SecurityWeek .",
-      "source_name": "SecurityWeek",
-      "source_type": "security_media",
-      "source_url": "https://www.securityweek.com/threat-actors-exploit-openwave-cisco-broadworks-vulnerabilities/",
-      "related_cves": [
-        "CVE-2026-111793",
-        "CVE-2026-20320"
-      ],
-      "matched_intelligence_cves": [],
-      "score": 86,
-      "cve_evidence": "source_title_or_summary",
-      "title_zh": "威脅份子利用 Openwave 與 Cisco BroadWorks 漏洞",
-      "summary_zh": "漏洞 CVE-2026-111793 與 CVE-2026-20320 可讓攻擊者外洩敏感資訊，包含組態資料。這篇「威脅份子利用 Openwave 與 Cisco BroadWorks 漏洞」文章最早發表於 SecurityWeek。"
-    },
-    {
-      "id": "e01c8b6f2f4a1f1a",
-      "event_type": "THREAT_ACTIVITY",
-      "priority": "MEDIUM",
-      "published_at": "2026-11-10T20:54:55+00:00",
-      "title": "Japanese furniture giant Nitori says hackers stole 37.6M customer records",
-      "summary": "Nitori, a major Japanese furniture and home accessories retailer, discovered that an attacker accessed a system on its network and may have stolen 37.62 million customer records. [...]",
+      "published_at": "2026-11-12T22:25:30+00:00",
+      "title": "Hackers compromise 4,800 GitHub accounts to steal cloud credentials",
+      "summary": "A new campaign dubbed 'wfx-loot' has unfolded on GitHub where threat actors used 4,837 compromised accounts to probe 61,764 repositories, open pull requests, and push secrets-stealing malware. [...]",
       "source_name": "BleepingComputer",
       "source_type": "security_media",
-      "source_url": "https://www.bleepingcomputer.com/news/security/japanese-furniture-giant-nitori-says-hackers-stole-376m-customer-records/",
+      "source_url": "https://www.bleepingcomputer.com/news/security/hackers-compromise-4-800-github-accounts-to-steal-cloud-credentials/",
       "related_cves": [],
       "matched_intelligence_cves": [],
       "score": 85,
-      "cve_evidence": null,
-      "title_zh": "日本家具巨擘宜得利表示駭客竊取了 3760 萬筆客戶記錄",
-      "summary_zh": "日本大型家具和家居用品零售商宜得利（Nitori）發現攻擊者存取了其網路上的某個系統，並可能竊取了 3762 萬筆客戶記錄。[...]"
+      "cve_evidence": null
     }
-  ],
-  "translation": {
-    "language": "zh-Hant-TW",
-    "status": "translated",
-    "provider": "gemini",
-    "model": "gemini-3.6-flash",
-    "models_used": [
-      "gemini-3.6-flash"
-    ],
-    "translated_items": 19,
-    "cached_items": 7,
-    "pending_items": 0,
-    "total_items": 19,
-    "attempted_items": 12,
-    "batch_size": 5,
-    "rejected_item_ids": [],
-    "fallback_reason": null,
-    "batch_fallback_reasons": []
-  }
+  ]
 }
