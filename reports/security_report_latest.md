@@ -4,235 +4,448 @@
 
 ## 執行摘要
 
-- Daily Delta：**6** 筆符合目前門檻的重要變化；事件統計：NEW_CVE=6。
-- Intelligence 候選：**30** 筆；P1 **24**、P2 **0**、P3 **0**、WATCH **6**。
-- Baseline：state / generated_at=2026-11-15T07:22:24.192484+00:00 / available=true。
-- 目前排序最前的 P1：CVE-2026-97229、CVE-2026-9586、CVE-2026-9198、CVE-2026-9082、CVE-2026-86950。此排序直接沿用 deterministic risk score，不由本報告重新評分。
+- Daily Delta：**39** 筆符合目前門檻的重要變化；事件統計：CVSS_CHANGED=1、NEW_CVE=38。
+- Intelligence 候選：**30** 筆；P1 **0**、P2 **0**、P3 **0**、WATCH **30**。
+- Baseline：state / generated_at=2026-11-16T07:28:39.700149+00:00 / available=true。
+- 目前 compact intelligence 中沒有 P1 項目。
 
 ## Daily Delta｜自上一份報告的重要變化
 
-本次共有 **6** 筆 delta item；以下欄位直接取自 `data/delta.json`。
+本次共有 **39** 筆 delta item；以下欄位直接取自 `data/delta.json`。
 
-### 1. CVE-2026-129483｜cyrusimap / cyrus-sasl
-- **Delta event**：NEW_CVE (from=未確認; to=2026-11-15T14:17:27.530)
+### 1. CVE-2026-129879｜lintsinghua / DeepAudit
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T15:17:26.900)
+- **Risk**：WATCH / score 30；reasons：POC_AVAILABLE(+10)、CVSS_HIGH(+12)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 8.7 (HIGH)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=poc / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T15:17:26.900 / 2026-11-16T20:19:02.293
+- **官方描述（原文）**：DeepAudit 2.0.0-beta.1 through 3.8.0 contains a path traversal vulnerability that allows authenticated users to write arbitrary files by importing projects with crafted IDs. Attackers can set absolute or ../ project IDs via /api/v1/database/import, then upload ZIPs through /api/v1/scan/upload-zip following cloned symlinks to overwrite app/main.py for remote code execution.
+
+### 2. CVE-2026-129875｜getrebuild / rebuild
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T15:17:26.233)
+- **Risk**：WATCH / score 30；reasons：POC_AVAILABLE(+10)、CVSS_HIGH(+12)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 8.7 (HIGH)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=poc / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T15:17:26.233 / 2026-11-16T20:19:02.160
+- **官方描述（原文）**：REBUILD 4.5.0 through 4.5.4 contains an information disclosure vulnerability that allows low-privileged authenticated users to recover the administrator password hash by filtering User.password through the MCP QueryRecords tool. Attackers can send LK2 prefix-match filters to the /gw/mcp/sse gateway and use the returned total count as an oracle to extract the SHA-256 hash one character at a time, then log in as administrator.
+
+### 3. CVE-2026-129863｜GitBucket / GitBucket
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T15:17:24.083)
+- **Risk**：WATCH / score 30；reasons：POC_AVAILABLE(+10)、CVSS_HIGH(+12)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 7.1 (HIGH)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=poc / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T15:17:24.083 / 2026-11-16T17:17:32.590
+- **官方描述（原文）**：GitBucket through 4.48.0 contains an incorrect authorization vulnerability that allows authenticated users to edit and merge other users' pull requests because the PATCH pulls and PUT pulls merge REST API endpoints only check read access. Attackers can close, reopen, retitle, retarget, or merge pull requests into the base branch without write permission on public repositories or as private-repository guest collaborators.
+
+### 4. CVE-2026-129855｜samugit83 / RedAmon
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T15:17:22.723)
+- **Risk**：WATCH / score 30；reasons：POC_AVAILABLE(+10)、CVSS_HIGH(+12)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 8.7 (HIGH)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=poc / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T15:17:22.723 / 2026-11-16T17:17:32.327
+- **官方描述（原文）**：RedAmon before 7.8.0 contains a missing authentication vulnerability in the kali-sandbox terminal server that allows unauthenticated attackers to obtain a root shell by connecting to its WebSocket listener on port 8016. Attackers who can reach the port from co-resident containers or the host loopback can send keystrokes to an interactive /bin/bash session, executing commands as root inside the kali-sandbox container.
+
+### 5. CVE-2026-129854｜samugit83 / RedAmon
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T15:17:22.553)
+- **Risk**：WATCH / score 30；reasons：POC_AVAILABLE(+10)、CVSS_HIGH(+12)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 8.7 (HIGH)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=poc / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T15:17:22.553 / 2026-11-16T19:17:44.057
+- **官方描述（原文）**：RedAmon 4.0.0 before 7.8.0 contains a missing object-level authorization vulnerability that allows authenticated users to control other tenants' agent sessions by supplying arbitrary session ids. Attackers can call /api/agent/sessions, interact and kill routes to list, kill, or send commands into other users' meterpreter and shell sessions on their compromised targets.
+
+### 6. CVE-2026-120698｜requarks / wiki
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T22:18:14.720)
+- **Risk**：WATCH / score 30；reasons：POC_AVAILABLE(+10)、CVSS_HIGH(+12)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v3.1 8.8 (HIGH)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=poc / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T22:18:14.720 / 2026-11-16T22:18:14.720
+- **官方描述（原文）**：Wiki.js is an open source wiki app built on Node.js. Prior to 2.5.315, an authenticated account with only manage:users can use users.update to change the password of any local account, including the Root administrator and other accounts with manage:system, by omitting the optional groups argument, which is automatically allowed and bypasses destination-group authorization without checking the target's current privileges. The attacker can use users.disableTFA to clear the same target's tfaIsActive state and TFA secret without a target-privilege check, then authenticate with the replacement password. Supplying groups: [] to users.update can remove every group relationship from a selected administrator and leave the installation without a legitimate account holding manage:system. Additional administrators with IDs greater than 2 can also be deactivated or deleted. This issue is fixed in version 2.5.315.
+
+### 7. CVE-2026-93664｜Dassault Systèmes / Station Launcher App in 3DEXPERIENCE platform
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T13:17:23.313)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v3.1 10.0 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=none / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T13:17:23.313 / 2026-11-16T15:17:34.640
+- **官方描述（原文）**：A Deserialization of Untrusted Data vulnerability affecting Station Launcher App in 3DEXPERIENCE platform from Release 3DEXPERIENCE R2023x through Release 3DEXPERIENCE R2026x could lead to an unauthenticated remote code execution.
+
+### 8. CVE-2026-79614｜Zyxel / DX3301-T0 firmware
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-17T02:17:22.743)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v3.1 9.8 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=unconfirmed / source=未確認
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-17T02:17:22.743 / 2026-11-17T02:17:22.743
+- **官方描述（原文）**：An out-of-bounds write vulnerability in “libclinkc.so” in Zyxel DX3301-T0/EX3301-T0 firmware versions through 5.50(ABVY.8.3)C0 could allow an unauthenticated attacker to elevate privileges and potentially execute arbitrary commands by sending a crafted HTTP request. WAN access is disabled by default on these devices.
+
+### 9. CVE-2026-77033｜Dassault Systèmes / Station Launcher App in 3DEXPERIENCE platform
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T13:17:23.003)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v3.1 9.9 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=none / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T13:17:23.003 / 2026-11-17T00:17:27.257
+- **官方描述（原文）**：An OS Command Injection vulnerability affecting Station Launcher App in 3DEXPERIENCE platform from Release 3DEXPERIENCE R2023x through Release 3DEXPERIENCE R2026x could allow an attacker to execute arbitrary commands on the server.
+
+### 10. CVE-2026-53998｜Arize-ai / phoenix
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T20:19:06.807)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v3.1 10.0 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=unconfirmed / source=未確認
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T20:19:06.807 / 2026-11-16T20:19:06.807
+- **官方描述（原文）**：Phoenix is an AI observability and evaluation platform. From 13.0.0 until 15.7.0, the applyChatTemplate GraphQL query passed attacker-controlled F-string templates to FStringTemplateFormatter._format, while DotDict.__getattr__ did not prevent traversal through Python private attributes. A crafted field could traverse object internals such as __class__, __init__, and __globals__ to read process environment variables and internal module state. The endpoint is unauthenticated on default installations, and any account can reach it when authentication is enabled. Exposure of PHOENIX_SECRET can allow administrative session-token forgery and decryption of credentials protected by keys derived from that secret. This issue is fixed in version 15.7.0.
+
+### 11. CVE-2026-19732｜Dassault Systèmes / Station Launcher App in 3DEXPERIENCE platform
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T13:17:22.843)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v3.1 9.9 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=none / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T13:17:22.843 / 2026-11-17T00:17:26.930
+- **官方描述（原文）**：An OS Command Injection vulnerability affecting Station Launcher App in 3DEXPERIENCE platform from Release 3DEXPERIENCE R2023x through Release 3DEXPERIENCE R2026x could allow an attacker to execute arbitrary commands on the server.
+
+### 12. CVE-2026-130380｜adminneo-org / AdminNeo
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-17T02:17:22.037)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 9.2 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=unconfirmed / source=未確認
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-17T02:17:22.037 / 2026-11-17T02:17:22.163
+- **官方描述（原文）**：AdminNeo before 5.9.1 contains an authentication bypass vulnerability in the sqlsrv-based MS SQL driver that allows unauthenticated attackers to log in by submitting an empty username. Attackers can supply any non-empty password, triggering Windows integrated authentication that grants a full session with the web server identity's SQL Server privileges.
+
+### 13. CVE-2026-130371｜thorsten / phpMyFAQ
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-17T02:17:20.490)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 9.2 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=unconfirmed / source=未確認
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-17T02:17:20.490 / 2026-11-17T02:17:20.617
+- **官方描述（原文）**：phpMyFAQ before 4.1.12 and 4.2.0-alpha before 4.2.0-RC.2 contains an authentication bypass vulnerability because the web installer ignores the legacy config/database.php during 3.x upgrades. Unauthenticated attackers can reinstall the site against an attacker-controlled database and create their own administrator account to take over the application.
+
+### 14. CVE-2026-130369｜thorsten / phpMyFAQ
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-17T02:17:20.130)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 9.2 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=unconfirmed / source=未確認
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-17T02:17:20.130 / 2026-11-17T02:17:20.257
+- **官方描述（原文）**：phpMyFAQ 4.1.9 before 4.1.12 and 4.2.0-alpha before 4.2.0-RC.2 contains an authorization bypass vulnerability in multisite deployments that allows attackers to overwrite passkeys of accounts on other tenants via a shared PHP session store. Attackers can run WebAuthn prepare() for a login on one tenant, then replay the session against /api/webauthn/register on another tenant or the master to replace that user's passkeys and log in as admin.
+
+### 15. CVE-2026-130366｜adminneo-org / AdminNeo
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-17T02:17:19.593)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 9.2 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=unconfirmed / source=未確認
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-17T02:17:19.593 / 2026-11-17T02:17:19.727
+- **官方描述（原文）**：AdminNeo before 5.9.1 contains an authentication bypass vulnerability in the ClickHouse driver that allows remote attackers to log in to passwordless accounts without the configured defaultPasswordHash password. Attackers who know the name of a ClickHouse no_password account can submit any non-empty password, because connect() skips openPasswordless(), and obtain a session with that account's rights.
+
+### 16. CVE-2026-130327｜Open Object Rexx / ooRexx
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T23:17:15.313)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v3.1 9.3 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=unconfirmed / source=未確認
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T23:17:15.313 / 2026-11-16T23:17:15.313
+- **官方描述（原文）**：In Open Object Rexx (ooRexx) before 5.2.0, RXAPI relies on a world-writable /tmp file unless XDG_RUNTIME_DIR is set, or localhost TCP port 10010, allowing RXAPI communication by any local user, e.g., for injection of a macro that will be executed by a REXX script.
+
+### 17. CVE-2026-130320｜Open Object Rexx / ooRexx
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T23:17:15.177)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v3.1 9.3 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=unconfirmed / source=未確認
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T23:17:15.177 / 2026-11-16T23:17:15.177
+- **官方描述（原文）**：In Open Object Rexx (ooRexx) before 5.2.0, RXAPI mishandles nameArg and userid bounds checking, possibly leading to arbitrary code execution via crafted messages.
+
+### 18. CVE-2026-130071｜TridotsTech / go1cms
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T22:18:22.373)
 - **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
 - **CVSS**：v4.0 9.3 (CRITICAL)
 - **EPSS**：未確認
 - **CISA KEV**：listed=false
 - **Exploitation status**：status=unconfirmed / source=未確認
 - **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-11-15T14:17:27.530 / 2026-11-15T14:17:27.530
-- **官方描述（原文）**：Cyrus SASL through 2.1.28 contains an authentication bypass vulnerability in the SRP server mechanism because srp_server_mech_step2 does not reject client public values A that are multiples of N. Unauthenticated network clients can send A equal to N to force a zero shared secret, authenticating as any existing user without the password and learning session keys.
+- **Published / Updated**：2026-11-16T22:18:22.373 / 2026-11-16T22:18:22.373
+- **官方描述（原文）**：TridotsTech go1cms master branch through commit 7f68d05 and version-3 branch before commit ead8da3 contains a missing authentication vulnerability in the guest-whitelisted update_doc method that allows unauthenticated attackers to modify any document. Attackers can supply a doctype, name and arbitrary fields that are saved with ignore_permissions=True, altering User records to escalate privileges, take over accounts or tamper with business data.
 
-### 2. CVE-2026-129444｜D-Link / DSL-6740C
-- **Delta event**：NEW_CVE (from=未確認; to=2026-11-15T09:16:44.570)
+### 19. CVE-2026-130070｜muneeb141 / ghost
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T22:18:22.220)
 - **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
 - **CVSS**：v4.0 9.3 (CRITICAL)
-- **EPSS**：0.00606 / percentile=0.49583
-- **CISA KEV**：listed=false
-- **Exploitation status**：status=unconfirmed / source=未確認
-- **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-11-15T09:16:44.570 / 2026-11-15T09:16:44.743
-- **官方描述（原文）**：A vulnerability was identified in D-Link DSL-6740C 20131126. This affects an unknown function of the file /etc/templates/ftpd/ftpd_conf.php of the component FTP Daemon. Such manipulation leads to hard-coded credentials. The attack can be executed remotely. The exploit is publicly available and might be used.
-
-### 3. CVE-2026-129349｜Apache Software Foundation / Apache Shiro
-- **Delta event**：NEW_CVE (from=未確認; to=2026-11-15T10:16:53.020)
-- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
-- **CVSS**：v4.0 9.1 (CRITICAL)
-- **EPSS**：0.00543 / percentile=0.46177
-- **CISA KEV**：listed=false
-- **Exploitation status**：status=unconfirmed / source=未確認
-- **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-11-15T10:16:53.020 / 2026-11-15T10:16:53.020
-- **官方描述（原文）**：When authentication caching is enabled on DefaultLdapRealm, after a user logs in successfully once, subsequent logins for that user succeed with any password. A cached authentication skips the LDAP bind, and the AllowAllCredentialsMatcher installed by default in DefaultLdapRealm accepts any credentials, allowing an attacker who knows a valid username to authenticate as that user. This issue affects all Apache Shiro versions through 3.0.0, only when using DefaultLdapRealm (or JndiLdapRealm) with authenticationCachingEnabled set to true, which is not the default. Mitigation: Upgrade to version 3.0.1 or later, which fixes the issue by no longer installing AllowAllCredentialsMatcher by default. Alternatively, disable authentication caching on the LDAP realm (this is the default), or configure a credentials matcher, such as SimpleCredentialsMatcher, that verifies credentials against the cached authentication info.
-
-### 4. CVE-2026-125795｜Estatik / Estatik
-- **Delta event**：NEW_CVE (from=未確認; to=2026-11-15T15:16:47.163)
-- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
-- **CVSS**：v3.1 9.8 (CRITICAL)
 - **EPSS**：未確認
 - **CISA KEV**：listed=false
 - **Exploitation status**：status=unconfirmed / source=未確認
 - **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-11-15T15:16:47.163 / 2026-11-15T15:16:47.283
-- **官方描述（原文）**：Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion') vulnerability in Estatik Estatik estatik allows PHP Local File Inclusion.This issue affects Estatik: from n/a through 4.3.6.
+- **Published / Updated**：2026-11-16T22:18:22.220 / 2026-11-16T22:18:22.220
+- **官方描述（原文）**：Ghost by muneeb141 on the main branch from commit c731cdf through commit 672dfec contains an authentication bypass vulnerability in the whitelisted ghost.api.ghost.convert_to_real_user method that allows unauthenticated attackers to skip OTP verification by setting the client-supplied bypass_otp parameter. Attackers can obtain a ghost session from the guest-accessible create_ghost_session endpoint, then call convert_to_real_user with an arbitrary real_email and bypass_otp=1 to receive OAuth tokens for existing accounts and take them over.
 
-### 5. CVE-2026-125769｜Nasir Ahmed / Advanced Form Integration
-- **Delta event**：NEW_CVE (from=未確認; to=2026-11-15T14:17:24.813)
+### 20. CVE-2026-129955｜surmon-china / NodePress
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T15:17:31.030)
 - **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
-- **CVSS**：v3.1 9.8 (CRITICAL)
+- **CVSS**：v4.0 9.3 (CRITICAL)
 - **EPSS**：未確認
 - **CISA KEV**：listed=false
 - **Exploitation status**：status=unconfirmed / source=未確認
 - **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-11-15T14:17:24.813 / 2026-11-15T14:17:24.937
-- **官方描述（原文）**：Incorrect Privilege Assignment vulnerability in Nasir Ahmed Advanced Form Integration advanced-form-integration allows Privilege Escalation.This issue affects Advanced Form Integration: from n/a through 2.11.3.
+- **Published / Updated**：2026-11-16T15:17:31.030 / 2026-11-16T20:28:06.217
+- **官方描述（原文）**：NodePress through 8.5.1 contains an authentication bypass vulnerability that allows unauthenticated attackers to gain administrator access by using the hardcoded default password 'root'. Attackers can send base64-encoded 'root' to POST /admin/login when NP_ADMIN_DEFAULT_PASSWORD is unset to obtain admin tokens and fully control the site.
 
-### 6. CVE-2026-122662｜Barn2 Plugins / Document Library Pro
-- **Delta event**：NEW_CVE (from=未確認; to=2026-11-15T14:17:20.507)
+### 21. CVE-2026-129952｜surmon-china / NodePress
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T15:17:30.573)
 - **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
-- **CVSS**：v3.1 9.8 (CRITICAL)
+- **CVSS**：v4.0 9.3 (CRITICAL)
 - **EPSS**：未確認
 - **CISA KEV**：listed=false
 - **Exploitation status**：status=unconfirmed / source=未確認
 - **Known ransomware campaign use**：未確認
-- **Published / Updated**：2026-11-15T14:17:20.507 / 2026-11-15T14:17:21.347
-- **官方描述（原文）**：Deserialization of Untrusted Data vulnerability in Barn2 Plugins Document Library Pro document-library-pro allows Object Injection.This issue affects Document Library Pro: from n/a before 4.2.2.
+- **Published / Updated**：2026-11-16T15:17:30.573 / 2026-11-16T20:28:06.217
+- **官方描述（原文）**：NodePress through 8.5.1 contains an authentication bypass vulnerability that allows unauthenticated remote attackers to gain administrator access by forging JWTs with the hardcoded 'nodepress-secret' fallback key. Attackers can sign HS256 bearer tokens with the default issuer, audience, and role 'admin' to access administrator-only APIs for article, comment, options, and file management.
+
+### 22. CVE-2026-129941｜birkir / prime
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T15:17:28.800)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 9.3 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=none / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T15:17:28.800 / 2026-11-16T18:17:31.507
+- **官方描述（原文）**：Prime CMS (@primecms/core) through 0.4.0-beta.0 contains an authentication bypass vulnerability that allows unauthenticated attackers to register accounts via the createUser mutation on /prime/graphql. Because the isAuthenticated() guard has its check commented out and createAbility() hard-codes every role to admin, attackers can log in with full administrative control over content, users, webhooks and settings.
+
+### 23. CVE-2026-129552｜tenseijs / @tensei/auth
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T12:17:53.337)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 9.3 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=none / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T12:17:53.337 / 2026-11-16T17:17:32.070
+- **官方描述（原文）**：Tensei through 0.11.5 contains an authentication bypass vulnerability in @tensei/auth that falls back to the hard-coded JWT signing key 'auth-secret-key' when JWT_SECRET is unset. Unauthenticated attackers can sign tokens with arbitrary user ids accepted by populateContextFromToken to impersonate any user, including administrators.
+
+### 24. CVE-2026-129550｜tenseijs / @tensei/auth
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T12:17:53.033)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 9.3 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=none / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T12:17:53.033 / 2026-11-16T16:17:52.537
+- **官方描述（原文）**：Tensei through 0.11.5 contains a privilege escalation vulnerability in @tensei/auth that allows unauthenticated or authenticated users to assign themselves arbitrary roles via the exposed User Roles field. Attackers can supply a roles array during registration, a POST to the users route, or a PATCH to their own record to gain administrator permissions.
+
+### 25. CVE-2026-120699｜TencentCloud / CubeSandbox
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T21:17:20.980)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 9.4 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=none / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T21:17:20.980 / 2026-11-16T22:18:14.877
+- **官方描述（原文）**：CubeSandbox is an instant, concurrent, secure, and lightweight sandbox for AI agents. Prior to 0.5.1, any authenticated tenant permitted to call POST /sandboxes can supply metadata["host-mount"] with an arbitrary existing host path because the control plane performs no authorization check or allowed-prefix validation for the path. injectHostDirMounts forwards the path to prepareHostDirVolume, where Cubelet uses mount --rbind through the function to perform a recursive bind mount as root and exposes the host subtree to the tenant's MicroVM through virtio-fs, read-write by default. This allows host-root file access and modification, host code execution, access to the container runtime, and compromise of co-resident tenants without a kernel or virtual-machine-monitor flaw. This issue is fixed in version 0.5.1.
+
+### 26. CVE-2026-120387｜Circutor / PowerStudio SCADA Wave
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-17T05:18:33.067)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 10.0 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=unconfirmed / source=未確認
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-17T05:18:33.067 / 2026-11-17T05:18:33.067
+- **官方描述（原文）**：An improper JWT signature verification vulnerability in CIRCUTOR PowerStudio SCADA WAVE desktop version allows an unauthenticated remote attacker to bypass authentication by submitting an unsigned JWT with the algorithm set to “none”. The shared JWT validation component accepts the token without verifying a cryptographic signature, allowing the attacker to impersonate another user and access protected functionality with that user's privileges.
+
+### 27. CVE-2026-111559｜sruupl / Batflat
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T13:17:18.683)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 9.3 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=none / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T13:17:18.683 / 2026-11-16T16:17:48.797
+- **官方描述（原文）**：Batflat CMS does not sanitize data passed to the /contact endpoint. A remote unauthenticated attacker can send a POST request with a crafted message, causing arbitrary PHP code execution with www-data user privileges. The project is no longer maintained and the issue has not been fixed.
+
+### 28. CVE-2026-104840｜OpenCTI-Platform / opencti
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T21:17:17.393)
+- **Risk**：WATCH / score 28；reasons：CVSS_CRITICAL(+20)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 9.2 (CRITICAL)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=unconfirmed / source=未確認
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T21:17:17.393 / 2026-11-16T21:17:17.393
+- **官方描述（原文）**：OpenCTI is an open source platform for managing cyber threat intelligence knowledge and observables. Prior to 7.260428.0, the token GraphQL mutation used for primary login has no endpoint-specific rate limit, while the global Express limiter defaults to permitting 10,000 requests in a one-second window. An unauthenticated remote attacker can make password guesses at network speed against a chosen user account and, if a credential is recovered, access the account's threat-intelligence data and permitted operations. This issue is fixed in version 7.260428.0.
+
+### 29. CVE-2026-69221｜wpengine / faustjs
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T20:19:10.037)
+- **Risk**：WATCH / score 22；reasons：POC_AVAILABLE(+10)、CVSS_MEDIUM(+4)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v3.1 5.9 (MEDIUM)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=poc / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T20:19:10.037 / 2026-11-16T22:18:25.387
+- **官方描述（原文）**：Faust.js is a headless WordPress toolkit. Prior to 1.8.12, the FaustWP generateAuthorizationCode GraphQL mutation called wp_authenticate_username_password and wp_authenticate_email_password directly instead of using wp_authenticate. This bypassed callbacks registered on WordPress's outer authenticate filter, including policies for multifactor authentication, single sign-on, IP allowlists, or disabled accounts. On a site using FaustWP local login and one of those policies, an attacker with a valid username or email and password could obtain an authorization code and exchange it through /api/faust/auth/token for access and refresh tokens even when the normal WordPress login path would deny access. This issue is fixed in version 1.8.12.
+
+### 30. CVE-2026-129950｜Rowy / Rowy
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T15:17:30.243)
+- **Risk**：WATCH / score 22；reasons：POC_AVAILABLE(+10)、CVSS_MEDIUM(+4)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 5.3 (MEDIUM)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=poc / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T15:17:30.243 / 2026-11-16T17:17:33.117
+- **官方描述（原文）**：Rowy through 3.0.0 contains an incorrect permission assignment vulnerability in default Firebase Storage rules that grants any user holding a role read and write access to the entire bucket. Authenticated users restricted to a single table or read-only access can use the Firebase SDK directly to list, download, overwrite, and delete any stored files.
+
+### 31. CVE-2026-129887｜thirdweb / thirdweb Dashboard
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T15:17:28.123)
+- **Risk**：WATCH / score 22；reasons：POC_AVAILABLE(+10)、CVSS_MEDIUM(+4)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 5.3 (MEDIUM)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=poc / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T15:17:28.123 / 2026-11-16T20:19:02.567
+- **官方描述（原文）**：thirdweb Dashboard through commit 940b3745 contains an information disclosure vulnerability that allows authenticated users to read non-public team metadata by requesting the team join page with any invite ID. Attackers who know a team slug can obtain the serialized Team object, exposing billing email, billing status, Stripe customer ID, verified domain and support identifiers.
+
+### 32. CVE-2026-129886｜thirdweb / thirdweb Dashboard
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T15:17:27.973)
+- **Risk**：WATCH / score 22；reasons：POC_AVAILABLE(+10)、CVSS_MEDIUM(+4)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 6.9 (MEDIUM)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=poc / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T15:17:27.973 / 2026-11-16T19:17:45.987
+- **官方描述（原文）**：thirdweb Dashboard through commit 940b3745 contains a missing authorization vulnerability in revalidatePathAction and revalidateCacheTagAction server actions in revalidate.ts. Unauthenticated attackers can use action identifiers exposed in the client bundle to send POST requests that purge cached pages and data, forcing repeated regeneration and degrading performance.
+
+### 33. CVE-2026-129883｜thirdweb / thirdweb Dashboard
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T15:17:27.517)
+- **Risk**：WATCH / score 22；reasons：POC_AVAILABLE(+10)、CVSS_MEDIUM(+4)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 5.1 (MEDIUM)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=poc / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T15:17:27.517 / 2026-11-16T20:19:02.430
+- **官方描述（原文）**：thirdweb Dashboard through commit 940b3745 contains an open redirect vulnerability that allows remote attackers to send users to arbitrary sites by supplying an unvalidated redirectUri parameter on the /pay/[id] payment link page. Attackers can distribute payment links with a malicious redirectUri that PayPageWidget opens via window.open after payment without noopener, enabling phishing and reverse tabnabbing of the payment page.
+
+### 34. CVE-2026-129871｜rocboss / paopao-ce
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T15:17:25.480)
+- **Risk**：WATCH / score 22；reasons：POC_AVAILABLE(+10)、CVSS_MEDIUM(+4)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 6.9 (MEDIUM)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=poc / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T15:17:25.480 / 2026-11-16T17:17:32.863
+- **官方描述（原文）**：Rocboss paopao-ce through 0.6.0-alpha.3 contains a payment bypass vulnerability that allows unauthenticated attackers to obtain paid attachments by reading storage URLs from the GET /v1/post endpoint. Attackers can download the paid file directly from the unauthenticated LocalOSS /oss static route, whose signed URL expired parameter is never checked.
+
+### 35. CVE-2026-129867｜rocboss / paopao-ce
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T15:17:24.763)
+- **Risk**：WATCH / score 22；reasons：POC_AVAILABLE(+10)、CVSS_MEDIUM(+4)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 5.1 (MEDIUM)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=poc / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T15:17:24.763 / 2026-11-16T17:17:32.733
+- **官方描述（原文）**：Rocboss paopao-ce through 0.6.0-alpha.3 contains a stored cross-site scripting vulnerability that allows registered users to inject script by abusing #topic link wrapping in preparePost and parsePostTag. Attackers can publish posts or comments with a crafted topic containing a lone '<' and event handler to steal the PAOPAO_TOKEN JWT from localStorage and take over viewer accounts.
+
+### 36. CVE-2026-129866｜DataLinkDC / Dinky
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T15:17:24.587)
+- **Risk**：WATCH / score 22；reasons：POC_AVAILABLE(+10)、CVSS_MEDIUM(+4)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 5.3 (MEDIUM)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=poc / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T15:17:24.587 / 2026-11-16T19:17:44.950
+- **官方描述（原文）**：Dinky through 1.2.5 contains a missing authorization vulnerability in ClusterConfigurationController that allows authenticated users without cluster configuration permissions to list Flink cluster configurations. Attackers can query the /api/clusterConfiguration/list and listAll endpoints to retrieve full configJson deployment settings for every cluster in their tenant.
+
+### 37. CVE-2026-129851｜seaweedfs / seaweedfs
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T15:17:22.077)
+- **Risk**：WATCH / score 22；reasons：POC_AVAILABLE(+10)、CVSS_MEDIUM(+4)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v4.0 6.9 (MEDIUM)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=poc / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T15:17:22.077 / 2026-11-16T17:17:32.197
+- **官方描述（原文）**：SeaweedFS before 4.42 contains a server-side request forgery vulnerability in the VolumeServer.FetchAndWriteNeedle gRPC method that allows unauthenticated attackers to bypass the incomplete CVE-2026-73080 fix. Attackers can supply crafted replicas[].url entries or an azure_endpoint to make the volume server send requests with controlled tokens and bodies to internal services and metadata addresses.
+
+### 38. CVE-2026-129303｜rennf93 / guard-core
+- **Delta event**：NEW_CVE (from=未確認; to=2026-11-16T20:19:01.200)
+- **Risk**：WATCH / score 18；reasons：POC_AVAILABLE(+10)、RECENTLY_PUBLISHED(+8)
+- **CVSS**：v3.1 3.7 (LOW)
+- **EPSS**：未確認
+- **CISA KEV**：listed=false
+- **Exploitation status**：status=poc / source=nvd_ssvc
+- **Known ransomware campaign use**：未確認
+- **Published / Updated**：2026-11-16T20:19:01.200 / 2026-11-16T22:18:20.080
+- **官方描述（原文）**：Guard Core is an API security core engine for the FastAPI-Guard, FlaskAPI Guard, and DjAPI Guard adapters. From 1.0.0 until 3.13.0, ContentPreprocessor.preprocess() in guard_core/detection_engine/preprocessor.py collapses all whitespace before built-in pattern matching in the default enhanced mode. This removes carriage returns and newlines required by the http_split and newline-anchored cmd_injection detectors in guard_core/handlers/suspatterns_handler.py, making those detectors unable to match. Framework-decoded CRLF can therefore pass through Guard Core unflagged while the downstream application still receives the raw newline-bearing value. Direct security impact requires a downstream stack or application that persists or re-emits the value into a CRLF-tolerant response or command context. This issue is fixed in version 3.13.0.
+
+### 39. CVE-2026-114713｜UnrealIRCd / UnrealIRCd
+- **Delta event**：CVSS_CHANGED (from=8.6; to=7.7)
+- **Risk**：P1 / score 82；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、CVSS_HIGH(+12)
+- **CVSS**：v3.1 7.7 (HIGH)
+- **EPSS**：0.00508 / percentile=0.43872
+- **CISA KEV**：listed=true / date_added=2026-11-13 / due_date=2026-11-16
+- **Exploitation status**：status=known_exploited / source=cisa_kev
+- **Known ransomware campaign use**：Unknown
+- **Published / Updated**：2026-11-08T03:16:33.410 / 2026-11-16T12:51:36.280
+- **官方描述（原文）**：UnrealIRCd UnrealIRCd contains an improper neutralization of delimiters vulnerability that allows any user on a network with two or more linked servers to inject server-to-server commands that are executed with server authority.
 
 
 ## P1｜立即優先處理
 
-以下為 deterministic risk engine 標記為 P1 的項目；不額外推論攻擊鏈、受影響版本或修補版本。
-
-### 1. CVE-2026-97229｜GitLab / Community Edition and Enterprise Edition
-- **Title**：GitLab Community Edition and Enterprise Edition Integer Overflow or Wraparound Vulnerability
-- **Risk**：P1 / score 100；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、CVSS_CRITICAL(+20)、EPSS_VERY_HIGH(+20)、EPSS_TOP_5_PERCENT(+5)
-- **CVSS**：v3.1 10.0 (CRITICAL)
-- **EPSS**：0.69289 / percentile=0.99369
-- **CISA KEV**：listed=true / date_added=2026-10-29 / due_date=2026-11-01
-- **Exploitation status**：status=known_exploited / source=cisa_kev
-- **Known ransomware campaign use**：Unknown
-- **受影響版本**：未確認（compact intelligence 未提供結構化受影響版本）
-- **官方描述（原文）**：GitLab Community Edition and Enterprise Edition contain a integer overflow or wraparound vulnerability that could allow an unauthenticated user to execute arbitrary code on the GitLab server via a specially crafted regular expression in a CI/CD configuration, due to insufficient regular expression validation.
-- **CISA Required Action（原文）**：Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.
-- **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
-
-### 2. CVE-2026-9586｜Sangoma / Switchvox
-- **Title**：Sangoma Switchvox SQL Injection Vulnerability
-- **Risk**：P1 / score 100；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、CVSS_CRITICAL(+20)、EPSS_ELEVATED(+8)、EPSS_TOP_5_PERCENT(+5)
-- **CVSS**：v4.0 9.3 (CRITICAL)
-- **EPSS**：0.18979 / percentile=0.97348
-- **CISA KEV**：listed=true / date_added=2026-09-02 / due_date=2026-09-05
-- **Exploitation status**：status=known_exploited / source=cisa_kev
-- **Known ransomware campaign use**：Unknown
-- **受影響版本**：未確認（compact intelligence 未提供結構化受影響版本）
-- **官方描述（原文）**：Sangoma Switchvox contains a SQL injection vulnerability which allows an unauthenticated remote attacker to execute arbitrary SQL statements against the backend PostgreSQL database using a single crafted request, including database operations and remote code execution.
-- **CISA Required Action（原文）**：Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.
-- **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
-
-### 3. CVE-2026-9198｜IBM / Langflow
-- **Title**：IBM Langflow Code Injection Vulnerability
-- **Risk**：P1 / score 100；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、CVSS_CRITICAL(+20)、EPSS_HIGH(+14)、EPSS_TOP_5_PERCENT(+5)
-- **CVSS**：v3.1 9.8 (CRITICAL)
-- **EPSS**：0.28658 / percentile=0.98169
-- **CISA KEV**：listed=true / date_added=2026-08-04 / due_date=2026-08-07
-- **Exploitation status**：status=known_exploited / source=cisa_kev
-- **Known ransomware campaign use**：Unknown
-- **受影響版本**：未確認（compact intelligence 未提供結構化受影響版本）
-- **官方描述（原文）**：Langflow contains a code injection vulnerability that allows unauthenticated attackers to achieve full remote code execution on default Langflow deployments.
-- **CISA Required Action（原文）**：Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.
-- **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
-
-### 4. CVE-2026-9082｜Drupal / Core
-- **Title**：Drupal Core SQL Injection Vulnerability
-- **Risk**：P1 / score 100；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、CVSS_CRITICAL(+20)、EPSS_VERY_HIGH(+20)、EPSS_TOP_5_PERCENT(+5)
-- **CVSS**：v3.1 9.8 (CRITICAL)
-- **EPSS**：0.89381 / percentile=0.99789
-- **CISA KEV**：listed=true / date_added=2026-05-22 / due_date=2026-05-27
-- **Exploitation status**：status=known_exploited / source=cisa_kev
-- **Known ransomware campaign use**：Unknown
-- **受影響版本**：未確認（compact intelligence 未提供結構化受影響版本）
-- **官方描述（原文）**：Drupal Core contains a SQL injection vulnerability that could allow for privilege escalation and remote code execution via specially crafted requests sent with the database abstraction API.
-- **CISA Required Action（原文）**：Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.
-- **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
-
-### 5. CVE-2026-86950｜Apple / Multiple Products
-- **Title**：Apple Multiple Products Out-of-Bounds Write Vulnerability
-- **Risk**：P1 / score 100；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、CVSS_HIGH(+12)、EPSS_HIGH(+14)、EPSS_TOP_5_PERCENT(+5)
-- **CVSS**：v3.1 8.8 (HIGH)
-- **EPSS**：0.26166 / percentile=0.98022
-- **CISA KEV**：listed=true / date_added=2026-09-29 / due_date=2026-10-13
-- **Exploitation status**：status=known_exploited / source=cisa_kev
-- **Known ransomware campaign use**：Unknown
-- **受影響版本**：未確認（compact intelligence 未提供結構化受影響版本）
-- **官方描述（原文）**：Apple iOS, macOS, and iPadOS contain an out-of-bounds write vulnerability in CoreGraphics that may lead to arbitrary code execution.
-- **CISA Required Action（原文）**：Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.
-- **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
-
-### 6. CVE-2026-48939｜iCagenda / iCagenda
-- **Title**：iCagenda Unrestricted Upload of File with Dangerous Type Vulnerability
-- **Risk**：P1 / score 100；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、CVSS_CRITICAL(+20)、EPSS_HIGH(+14)、EPSS_TOP_5_PERCENT(+5)
-- **CVSS**：v4.0 10.0 (CRITICAL)
-- **EPSS**：0.20069 / percentile=0.9749
-- **CISA KEV**：listed=true / date_added=2026-07-10 / due_date=2026-07-13
-- **Exploitation status**：status=known_exploited / source=cisa_kev
-- **Known ransomware campaign use**：Unknown
-- **受影響版本**：未確認（compact intelligence 未提供結構化受影響版本）
-- **官方描述（原文）**：iCagenda contains an unrestricted upload of file with dangerous type vulnerability that allows the upload of arbitrary files in the file attachment feature, ultimately resulting in PHP code upload and execution.
-- **CISA Required Action（原文）**：Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.
-- **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
-
-### 7. CVE-2026-48908｜JoomShaper / SP Page Builder
-- **Title**：JoomShaper SP Page Builder Unrestricted Upload of File with Dangerous Type Vulnerability
-- **Risk**：P1 / score 100；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、CVSS_CRITICAL(+20)、EPSS_VERY_HIGH(+20)、EPSS_TOP_5_PERCENT(+5)
-- **CVSS**：v4.0 10.0 (CRITICAL)
-- **EPSS**：0.89176 / percentile=0.99785
-- **CISA KEV**：listed=true / date_added=2026-07-07 / due_date=2026-07-10
-- **Exploitation status**：status=known_exploited / source=cisa_kev
-- **Known ransomware campaign use**：Unknown
-- **受影響版本**：未確認（compact intelligence 未提供結構化受影響版本）
-- **官方描述（原文）**：JoomShaper SP Page Builder contains an unrestricted upload of file with dangerous type vulnerability that allows unauthenticated users to upload arbitrary files, ultimately resulting in the upload and execution of PHP code.
-- **CISA Required Action（原文）**：Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.
-- **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
-
-### 8. CVE-2026-42208｜BerriAI / LiteLLM
-- **Title**：BerriAI LiteLLM SQL Injection Vulnerability
-- **Risk**：P1 / score 100；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、CVSS_CRITICAL(+20)、EPSS_VERY_HIGH(+20)、EPSS_TOP_5_PERCENT(+5)
-- **CVSS**：v4.0 9.3 (CRITICAL)
-- **EPSS**：0.8942 / percentile=0.9979
-- **CISA KEV**：listed=true / date_added=2026-05-08 / due_date=2026-05-11
-- **Exploitation status**：status=known_exploited / source=cisa_kev
-- **Known ransomware campaign use**：Unknown
-- **受影響版本**：未確認（compact intelligence 未提供結構化受影響版本）
-- **官方描述（原文）**：BerriAI LiteLLM contains a SQL injection vulnerability that allows an attacker to read data from the proxy's database and potentially modify it, leading to unauthorized access to the proxy and the credentials it manages.
-- **CISA Required Action（原文）**：Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.
-- **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
-
-### 9. CVE-2026-31431｜Linux / Kernel
-- **Title**：Linux Kernel Incorrect Resource Transfer Between Spheres Vulnerability
-- **Risk**：P1 / score 100；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、CVSS_HIGH(+12)、EPSS_VERY_HIGH(+20)、EPSS_TOP_5_PERCENT(+5)
-- **CVSS**：v3.1 7.8 (HIGH)
-- **EPSS**：0.98114 / percentile=0.99912
-- **CISA KEV**：listed=true / date_added=2026-05-01 / due_date=2026-05-15
-- **Exploitation status**：status=known_exploited / source=cisa_kev
-- **Known ransomware campaign use**：Unknown
-- **受影響版本**：未確認（compact intelligence 未提供結構化受影響版本）
-- **官方描述（原文）**：Linux Kernel contains an incorrect resource transfer between spheres vulnerability that could allow for privilege escalation.
-- **CISA Required Action（原文）**："Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.
-- **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
-
-### 10. CVE-2026-116606｜Barracuda Networks / Barracuda Email Security Gateway (ESG)
-- **Title**：Barracuda Networks Email Security Gateway (ESG) Authentication Bypass Using an Alternate Path or Channel Vulnerability
-- **Risk**：P1 / score 100；reasons：CISA_KEV(+45)、ACTIVE_OR_KNOWN_EXPLOITATION(+25)、CVSS_CRITICAL(+20)、EPSS_ELEVATED(+8)、EPSS_TOP_5_PERCENT(+5)
-- **CVSS**：v4.0 9.3 (CRITICAL)
-- **EPSS**：0.10947 / percentile=0.95956
-- **CISA KEV**：listed=true / date_added=2026-11-10 / due_date=2026-11-13
-- **Exploitation status**：status=known_exploited / source=cisa_kev
-- **Known ransomware campaign use**：Unknown
-- **受影響版本**：未確認（compact intelligence 未提供結構化受影響版本）
-- **官方描述（原文）**：Barracuda Networks Email Security Gateway (ESG) contains an authentication bypass using an alternate path or channel that could allow an unauthenticated remote attacker to invoke a configuration-import function and restore a crafted, compatible backup archive, resulting in unauthorized modification of the appliance’s global configuration. This vulnerability can be chained with CVE-2026-111560.
-- **CISA Required Action（原文）**：Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.
-- **處置原則（系統規則）**：先比對組織資產與適用版本，再依上方官方來源/required action 執行；本報告不自行推定 patch 名稱或版本。
-
-
-### 其他 P1
-
-| CVE | Priority / Score | Vendor / Product | CVSS | EPSS | KEV | Exploitation | Ransomware use |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| CVE-2026-111497 | P1 / 100 | Google / Brotli | v4.0 9.2 (CRITICAL) | 0.82641 / percentile=0.99673 | listed=true / date_added=2026-10-27 / due_date=2026-11-10 | status=known_exploited / source=cisa_kev | Unknown |
-| CVE-2026-110447 | P1 / 100 | Collabora / Collabora Online – Built-in CODE Server | v4.0 9.2 (CRITICAL) | 0.73307 / percentile=0.99469 | listed=true / date_added=2026-10-23 / due_date=2026-10-26 | status=known_exploited / source=cisa_kev | Unknown |
-| CVE-2026-109619 | P1 / 100 | PHP Group / PHP | v4.0 9.2 (CRITICAL) | 0.99999 / percentile=0.99999 | listed=true / date_added=2026-10-26 / due_date=2026-10-29 | status=known_exploited / source=cisa_kev | Unknown |
-| CVE-2026-109618 | P1 / 100 | PHP Group / PHP | v4.0 9.2 (CRITICAL) | 0.99999 / percentile=0.99999 | listed=true / date_added=2026-10-26 / due_date=2026-10-29 | status=known_exploited / source=cisa_kev | Unknown |
-| CVE-2026-105134 | P1 / 100 | Ahsay / AhsayCBS | v4.0 10.0 (CRITICAL) | 0.81763 / percentile=0.99653 | listed=true / date_added=2026-10-14 / due_date=2026-10-17 | status=known_exploited / source=cisa_kev | Unknown |
-| CVE-2026-105133 | P1 / 99 | Ahsay / AhsayCBS | v4.0 6.9 (MEDIUM) | 0.84478 / percentile=0.99707 | listed=true / date_added=2026-10-14 / due_date=2026-10-17 | status=known_exploited / source=cisa_kev | Unknown |
-| CVE-2026-96951 | P1 / 95 | Microsoft / Windows | v3.1 8.8 (HIGH) | 0.09813 / percentile=0.95627 | listed=true / date_added=2026-10-13 / due_date=2026-10-16 | status=known_exploited / source=cisa_kev | Unknown |
-| CVE-2026-46300 | P1 / 95 | Linux / Kernel | v3.1 7.8 (HIGH) | 0.1613 / percentile=0.96979 | listed=true / date_added=2026-10-28 / due_date=2026-10-31 | status=known_exploited / source=cisa_kev | Unknown |
-| CVE-2026-42018 | P1 / 95 | JFrog / Artifactory | v3.1 7.5 (HIGH) | 0.09983 / percentile=0.95678 | listed=true / date_added=2026-09-11 / due_date=2026-09-25 | status=known_exploited / source=cisa_kev | Unknown |
-| CVE-2026-111560 | P1 / 95 | Barracuda Networks / Multiple Products | v4.0 8.6 (HIGH) | 0.09082 / percentile=0.95377 | listed=true / date_added=2026-11-10 / due_date=2026-11-13 | status=known_exploited / source=cisa_kev | Unknown |
-| CVE-2026-8398 | P1 / 90 | Daemon / Daemon Tools Lite | v4.0 9.3 (CRITICAL) | 0.01456 / percentile=0.73918 | listed=true / date_added=2026-05-27 / due_date=2026-05-30 | status=known_exploited / source=cisa_kev | Unknown |
-| CVE-2026-49869 | P1 / 90 | Kestra / Kestra OSS | v3.1 10.0 (CRITICAL) | 0.02095 / percentile=0.81965 | listed=true / date_added=2026-09-02 / due_date=2026-09-05 | status=known_exploited / source=cisa_kev | Unknown |
-| CVE-2026-116779 | P1 / 90 | SignalWire / FreeSwitch | v3.1 9.8 (CRITICAL) | 0.02473 / percentile=0.84793 | listed=true / date_added=2026-11-09 / due_date=2026-11-12 | status=known_exploited / source=cisa_kev | Unknown |
-| CVE-2026-102895 | P1 / 90 | GPUStack / GPUStack | v3.1 9.8 (CRITICAL) | 0.00517 / percentile=0.44547 | listed=true / date_added=2026-11-09 / due_date=2026-11-12 | status=known_exploited / source=cisa_kev | Unknown |
+目前沒有 P1 項目。
 
 ## P2 / P3｜排程處理與監控
 
@@ -242,12 +455,36 @@
 
 | CVE | Priority / Score | Vendor / Product | CVSS | EPSS | KEV | Exploitation | Ransomware use |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| CVE-2026-129483 | WATCH / 28 | cyrusimap / cyrus-sasl | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-129444 | WATCH / 28 | D-Link / DSL-6740C | v4.0 9.3 (CRITICAL) | 0.00606 / percentile=0.49583 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-129349 | WATCH / 28 | Apache Software Foundation / Apache Shiro | v4.0 9.1 (CRITICAL) | 0.00543 / percentile=0.46177 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-125795 | WATCH / 28 | Estatik / Estatik | v3.1 9.8 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-125769 | WATCH / 28 | Nasir Ahmed / Advanced Form Integration | v3.1 9.8 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
-| CVE-2026-122662 | WATCH / 28 | Barn2 Plugins / Document Library Pro | v3.1 9.8 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-129879 | WATCH / 30 | lintsinghua / DeepAudit | v4.0 8.7 (HIGH) | 未確認 | listed=false | status=poc / source=nvd_ssvc | 未確認 |
+| CVE-2026-129875 | WATCH / 30 | getrebuild / rebuild | v4.0 8.7 (HIGH) | 未確認 | listed=false | status=poc / source=nvd_ssvc | 未確認 |
+| CVE-2026-129863 | WATCH / 30 | GitBucket / GitBucket | v4.0 7.1 (HIGH) | 未確認 | listed=false | status=poc / source=nvd_ssvc | 未確認 |
+| CVE-2026-129855 | WATCH / 30 | samugit83 / RedAmon | v4.0 8.7 (HIGH) | 未確認 | listed=false | status=poc / source=nvd_ssvc | 未確認 |
+| CVE-2026-129854 | WATCH / 30 | samugit83 / RedAmon | v4.0 8.7 (HIGH) | 未確認 | listed=false | status=poc / source=nvd_ssvc | 未確認 |
+| CVE-2026-120698 | WATCH / 30 | requarks / wiki | v3.1 8.8 (HIGH) | 未確認 | listed=false | status=poc / source=nvd_ssvc | 未確認 |
+| CVE-2026-93664 | WATCH / 28 | Dassault Systèmes / Station Launcher App in 3DEXPERIENCE platform | v3.1 10.0 (CRITICAL) | 未確認 | listed=false | status=none / source=nvd_ssvc | 未確認 |
+| CVE-2026-79614 | WATCH / 28 | Zyxel / DX3301-T0 firmware | v3.1 9.8 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-77033 | WATCH / 28 | Dassault Systèmes / Station Launcher App in 3DEXPERIENCE platform | v3.1 9.9 (CRITICAL) | 未確認 | listed=false | status=none / source=nvd_ssvc | 未確認 |
+| CVE-2026-53998 | WATCH / 28 | Arize-ai / phoenix | v3.1 10.0 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-19732 | WATCH / 28 | Dassault Systèmes / Station Launcher App in 3DEXPERIENCE platform | v3.1 9.9 (CRITICAL) | 未確認 | listed=false | status=none / source=nvd_ssvc | 未確認 |
+| CVE-2026-130380 | WATCH / 28 | adminneo-org / AdminNeo | v4.0 9.2 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-130371 | WATCH / 28 | thorsten / phpMyFAQ | v4.0 9.2 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-130369 | WATCH / 28 | thorsten / phpMyFAQ | v4.0 9.2 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-130366 | WATCH / 28 | adminneo-org / AdminNeo | v4.0 9.2 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-130327 | WATCH / 28 | Open Object Rexx / ooRexx | v3.1 9.3 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-130320 | WATCH / 28 | Open Object Rexx / ooRexx | v3.1 9.3 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-130071 | WATCH / 28 | TridotsTech / go1cms | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-130070 | WATCH / 28 | muneeb141 / ghost | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-129955 | WATCH / 28 | surmon-china / NodePress | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-129952 | WATCH / 28 | surmon-china / NodePress | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-129941 | WATCH / 28 | birkir / prime | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=none / source=nvd_ssvc | 未確認 |
+| CVE-2026-129552 | WATCH / 28 | tenseijs / @tensei/auth | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=none / source=nvd_ssvc | 未確認 |
+| CVE-2026-129550 | WATCH / 28 | tenseijs / @tensei/auth | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=none / source=nvd_ssvc | 未確認 |
+| CVE-2026-120699 | WATCH / 28 | TencentCloud / CubeSandbox | v4.0 9.4 (CRITICAL) | 未確認 | listed=false | status=none / source=nvd_ssvc | 未確認 |
+| CVE-2026-120387 | WATCH / 28 | Circutor / PowerStudio SCADA Wave | v4.0 10.0 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-111559 | WATCH / 28 | sruupl / Batflat | v4.0 9.3 (CRITICAL) | 未確認 | listed=false | status=none / source=nvd_ssvc | 未確認 |
+| CVE-2026-104840 | WATCH / 28 | OpenCTI-Platform / opencti | v4.0 9.2 (CRITICAL) | 未確認 | listed=false | status=unconfirmed / source=未確認 | 未確認 |
+| CVE-2026-69221 | WATCH / 22 | wpengine / faustjs | v3.1 5.9 (MEDIUM) | 未確認 | listed=false | status=poc / source=nvd_ssvc | 未確認 |
+| CVE-2026-129950 | WATCH / 22 | Rowy / Rowy | v4.0 5.3 (MEDIUM) | 未確認 | listed=false | status=poc / source=nvd_ssvc | 未確認 |
 
 ## 建議行動
 
@@ -269,45 +506,54 @@
 
 ## 資料品質與未確認事項
 
-- Intelligence items：30；缺少 Vendor：0；缺少 Product：0；缺少 Title：6。
-- EPSS 未確認：4；Exploitation status 未確認：6。
+- Intelligence items：30；缺少 Vendor：0；缺少 Product：0；缺少 Title：30。
+- EPSS 未確認：30；Exploitation status 未確認：14。
 - 結構化受影響版本未提供：30。本 renderer **不會**從 description 自行解析或猜測版本。
 - Google Search grounding：本次不可用或已停用，因此沒有 Search query / citation，也不會用模型既有知識補齊 vendor advisory 或攻擊背景。
-- Intelligence generated at：`2026-11-16T07:28:39.700149+00:00`；Delta generated at：`2026-11-16T07:28:39.700149+00:00`。
+- Intelligence generated at：`2026-11-17T08:41:13.667495+00:00`；Delta generated at：`2026-11-17T08:41:13.667495+00:00`。
 
 ---
 
 ## 可驗證資料來源
 
-- **CVE-2026-97229** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-97229) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-97229) · [Vendor / Advisory (ruby-lang.org)](https://www.ruby-lang.org/en/news/2026/10/23/regexp-fixes-for-gitlab-cves) · [Vendor / Advisory (docs.gitlab.com)](https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-2-released/) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
-- **CVE-2026-9586** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-9586) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-9586) · [Vendor / Advisory (sangomakb.atlassian.net)](https://sangomakb.atlassian.net/wiki/spaces/Switchvox/pages/1802371073/Switchvox+-+Release+Notes+Version+8.4.0.2+July+14+2026) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
-- **CVE-2026-9198** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-9198) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-9198) · [Vendor / Advisory (ibm.com)](https://www.ibm.com/support/pages/node/7278927) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
-- **CVE-2026-9082** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-9082) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-9082) · [Vendor / Advisory (drupal.org)](https://www.drupal.org/sa-core-2026-004)
-- **CVE-2026-86950** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-86950) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-86950) · [Vendor / Advisory (support.apple.com)](https://support.apple.com/en-us/149226) · [Vendor / Advisory (support.apple.com)](https://support.apple.com/en-us/149228) · [Vendor / Advisory (support.apple.com)](https://support.apple.com/en-us/149229) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
-- **CVE-2026-129483** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-129483)
-- **CVE-2026-129444** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-129444) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-129444)
-- **CVE-2026-129349** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-129349) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-129349)
-- **CVE-2026-125795** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-125795)
-- **CVE-2026-125769** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-125769)
-- **CVE-2026-122662** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-122662)
-- **CVE-2026-48939** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-48939) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-48939) · [Vendor / Advisory (icagenda.com)](https://www.icagenda.com/#download) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
-- **CVE-2026-48908** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-48908) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-48908) · [Vendor / Advisory (extensions.joomla.org)](https://extensions.joomla.org/extension/sp-page-builder/) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
-- **CVE-2026-42208** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-42208) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-42208) · [Vendor / Advisory (github.com)](https://github.com/BerriAI/litellm/security/advisories/GHSA-r75f-5x8p-qvmc)
-- **CVE-2026-31431** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-31431) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [Vendor / Advisory (lore.kernel.org)](https://lore.kernel.org/linux-cve-announce/2026042214-CVE-2026-31431-3d65@gregkh/) · [Vendor / Advisory (xint.io)](https://xint.io/blog/copy-fail-linux-distributions#the-fix-6) · [Vendor / Advisory (git.kernel.org)](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/about/)
-- **CVE-2026-116606** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-116606) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-116606) · [Vendor / Advisory (trust.barracuda.com)](https://trust.barracuda.com/security/pre-authentication-authorization-bypass-command-injection) · [Vendor / Advisory (github.com)](https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0042.md) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
-- **CVE-2026-111560** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-111560) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-111560) · [Vendor / Advisory (trust.barracuda.com)](https://trust.barracuda.com/security/pre-authentication-authorization-bypass-command-injection) · [Vendor / Advisory (github.com)](https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0041.md) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
-- **CVE-2026-111497** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-111497) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-111497) · [Vendor / Advisory (github.com)](https://github.com/google/brotli/releases/tag/v1.2.1) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
-- **CVE-2026-110447** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-110447) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-110447) · [Vendor / Advisory (help.nextcloud.com)](https://help.nextcloud.com/t/to-collabora-built-in-user-update-asap/250516) · [Vendor / Advisory (github.com)](https://github.com/CollaboraOnline/online/security/advisories/GHSA-g3vx-3m76-fghh) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
-- **CVE-2026-109619** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-109619) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-109619) · [Vendor / Advisory (php.net)](https://www.php.net/) · [CISA](https://www.cisa.gov/news-events/alerts/2026/10/21/critical-vulnerabilities-php-require-immediate-patching) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
-- **CVE-2026-109618** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-109618) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-109618) · [Vendor / Advisory (php.net)](https://www.php.net/) · [CISA](https://www.cisa.gov/news-events/alerts/2026/10/21/critical-vulnerabilities-php-require-immediate-patching) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
-- **CVE-2026-105134** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-105134) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-105134) · [Vendor / Advisory (ahsay.com)](https://www.ahsay.com/en/company/announcements/patch-cve-105133-105134-update) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
-- **CVE-2026-105133** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-105133) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-105133) · [Vendor / Advisory (ahsay.com)](https://www.ahsay.com/en/company/announcements/patch-cve-105133-105134-update) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
-- **CVE-2026-96951** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-96951) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-96951) · [Vendor / Advisory (msrc.microsoft.com)](https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-96951)
-- **CVE-2026-46300** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-46300) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-46300) · [Vendor / Advisory (git.kernel.org)](https://git.kernel.org/stable/c/3599e6b3cc1ada96883d496a50a210d3afbb6987) · [Vendor / Advisory (git.kernel.org)](https://git.kernel.org/stable/c/2f2b16022a2e10ca7bccfb98db5ed2ec0f72641c) · [Vendor / Advisory (git.kernel.org)](https://git.kernel.org/stable/c/9d3e5fd19fe1063bf607219e8562fbd567b8e8d5) · [Vendor / Advisory (git.kernel.org)](https://git.kernel.org/stable/c/78bf6b6bb19541d19fbda6242e7cfe2c682763c0) · [Vendor / Advisory (git.kernel.org)](https://git.kernel.org/stable/c/760e1addc27ba1a7beb4a0a7e8b3e9ec49e7a34e) · [Vendor / Advisory (git.kernel.org)](https://git.kernel.org/stable/c/3bd9e113d50034db99d7ef69fd8e5242d15e414a) · [Vendor / Advisory (git.kernel.org)](https://git.kernel.org/stable/c/3884358a9286b17f389a72b1426fc4547c23c111) · [Vendor / Advisory (git.kernel.org)](https://git.kernel.org/stable/c/f84eca5817390257cef78013d0112481c503b4a3) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
-- **CVE-2026-42018** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-42018) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-42018) · [Vendor / Advisory (docs.jfrog.com)](https://docs.jfrog.com/releases/docs/jfrog-security-advisories) · [Vendor / Advisory (docs.jfrog.com)](https://docs.jfrog.com/releases/docs/artifactory-self-managed-releases) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
-- **CVE-2026-8398** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-8398) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-8398) · [Vendor / Advisory (blog.daemon-tools.cc)](https://blog.daemon-tools.cc/post/security-incident)
-- **CVE-2026-49869** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-49869) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-49869) · [Vendor / Advisory (github.com)](https://github.com/kestra-io/kestra/security/advisories/GHSA-5vc5-wxxq-3fjx) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
-- **CVE-2026-116779** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-116779) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-116779) · [Vendor / Advisory (github.com)](https://github.com/signalwire/freeswitch/security/advisories/GHSA-mg63-h38w-8p9p) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
-- **CVE-2026-102895** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-102895) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-102895) · [Vendor / Advisory (github.com)](https://github.com/gpustack/gpustack/security/advisories/GHSA-gj9m-f8ph-pmhr) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
+- **CVE-2026-129879** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-129879)
+- **CVE-2026-129875** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-129875)
+- **CVE-2026-129863** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-129863)
+- **CVE-2026-129855** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-129855)
+- **CVE-2026-129854** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-129854)
+- **CVE-2026-120698** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-120698)
+- **CVE-2026-93664** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-93664)
+- **CVE-2026-79614** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-79614)
+- **CVE-2026-77033** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-77033)
+- **CVE-2026-53998** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-53998)
+- **CVE-2026-19732** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-19732)
+- **CVE-2026-130380** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-130380)
+- **CVE-2026-130371** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-130371)
+- **CVE-2026-130369** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-130369)
+- **CVE-2026-130366** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-130366)
+- **CVE-2026-130327** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-130327)
+- **CVE-2026-130320** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-130320)
+- **CVE-2026-130071** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-130071)
+- **CVE-2026-130070** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-130070)
+- **CVE-2026-129955** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-129955)
+- **CVE-2026-129952** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-129952)
+- **CVE-2026-129941** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-129941)
+- **CVE-2026-129552** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-129552)
+- **CVE-2026-129550** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-129550)
+- **CVE-2026-120699** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-120699)
+- **CVE-2026-120387** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-120387)
+- **CVE-2026-111559** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-111559)
+- **CVE-2026-104840** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-104840)
+- **CVE-2026-69221** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-69221)
+- **CVE-2026-129950** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-129950)
+- **CVE-2026-129887** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-129887)
+- **CVE-2026-129886** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-129886)
+- **CVE-2026-129883** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-129883)
+- **CVE-2026-129871** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-129871)
+- **CVE-2026-129867** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-129867)
+- **CVE-2026-129866** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-129866)
+- **CVE-2026-129851** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-129851)
+- **CVE-2026-129303** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-129303)
+- **CVE-2026-114713** — [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-114713) · [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) · [FIRST EPSS](https://api.first.org/data/v1/epss?cve=CVE-2026-114713) · [Vendor / Advisory (forums.unrealircd.org)](https://forums.unrealircd.org/viewtopic.php?t=9487) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk) · [CISA](https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk)
 
 > 核心漏洞 Facts 來自 CISA KEV、NVD 與 FIRST EPSS；Google Search 僅用於補充即時背景與處置脈絡。未經確認的欄位應維持「未確認」。
