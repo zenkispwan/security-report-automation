@@ -1,26 +1,60 @@
 {
   "schema_version": "1.1-cve-zh-enrichment",
-  "generated_at": "2026-11-19T08:13:48.442822+00:00",
+  "generated_at": "2026-11-21T08:00:56.109687+00:00",
   "language": "zh-Hant-TW",
   "selection": {
     "rule": "Translate only CVEs referenced by current security events and present in intelligence.json; reuse translations only when source title/description fingerprints are unchanged.",
-    "linked_cve_count": 31,
-    "matched_intelligence_cves": 4
+    "linked_cve_count": 56,
+    "matched_intelligence_cves": 12
   },
-  "items": [],
+  "items": [
+    {
+      "cve": "CVE-2026-76466",
+      "title_zh": "Cisco Expressway 系列使用寫死憑證漏洞",
+      "description_zh": "Cisco Expressway 系列存在使用寫死憑證（hard-coded credentials）的漏洞，遠端未經身份驗證的攻擊者只要擁有持續性 Cookie 與網路存取權限，即可透過資料庫服務在叢集裝置上以 root 權限執行命令。",
+      "source_fingerprint": "f320340bf14a2891e1373571af61b86424f483c5c92c778f2de93c6c90b86a31"
+    },
+    {
+      "cve": "CVE-2026-129448",
+      "title_zh": "Apache Roller 不可信資料反序列化漏洞",
+      "description_zh": "Apache Roller 存在不可信資料反序列化漏洞，遠端未經身份驗證的攻擊者可透過 XML-RPC 端點執行任意程式碼，該端點會在身份驗證之前接受並反序列化廠商擴充類型。此 CVE 涵蓋與 CVE-2026-82384 相同的底層漏洞，但適用於更廣泛的受影響版本範圍。",
+      "source_fingerprint": "7000ed4b051baff7842b9b1c44b7bd9fc53db40b4f371927d7dea671af6eb655"
+    },
+    {
+      "cve": "CVE-2026-123890",
+      "title_zh": "VMware vCenter 使用替代路徑或通道繞過身份驗證漏洞",
+      "description_zh": "Broadcom VMware vCenter 在 VMware Directory Service 中存在使用替代路徑或通道繞過身份驗證的漏洞，允許具有 vCenter 網路存取權限且未經身份驗證的攻擊者繞過身份驗證，並取得系統的未授權存取權限。",
+      "source_fingerprint": "1e5f832a9c587f32abb6a84744fd91f0e50ee5315901d46f4b2337554a83e9f6"
+    },
+    {
+      "cve": "CVE-2025-42884",
+      "title_zh": "SAP NetWeaver 資料查詢邏輯中特殊元素未妥善消除漏洞",
+      "description_zh": "SAP NetWeaver Enterprise Portal 存在資料查詢邏輯中特殊元素未妥善消除（Improper Neutralization）的漏洞，未經身份驗證的攻擊者可透過注入的 JNDI 環境屬性或於 JNDI 尋找（lookup）作業期間使用的 URL，洩漏或修改伺服器資訊。",
+      "source_fingerprint": "c74fb0291aac13a90004d6c12c8179e70721cddff735c233b5bb5e103e19766e"
+    },
+    {
+      "cve": "CVE-2026-90817",
+      "title_zh": "范德堡大學研究電子資料擷取（REDCap）程式碼注入漏洞",
+      "description_zh": "范德堡大學（Vanderbilt University）研究電子資料擷取（REDCap）存在程式碼注入漏洞，可能允許未經身份驗證的攻擊者在伺服器上執行任意程式碼。攻擊者可透過特製的 HTTP 請求，從公開調查的情境存取非預期的控制器路由，並在資料匯入處理過程中提供特製的檔案路徑或串流參數來利用此漏洞。成功利用此漏洞需要已知有效的公開調查雜湊值（hash）。",
+      "source_fingerprint": "86fc16360637d73d2c8a6f4ca18f76b42229e8b75786bc4efd42a33e4fa4f41a"
+    }
+  ],
   "translation": {
-    "provider": null,
-    "model": null,
-    "models_used": [],
+    "provider": "gemini",
+    "model": "gemini-3.6-flash",
+    "models_used": [
+      "gemini-3.6-flash"
+    ],
     "cached_items": 0,
-    "attempted_items": 4,
-    "newly_translated_items": 0,
-    "translated_items": 0,
-    "pending_items": 4,
+    "attempted_items": 12,
+    "newly_translated_items": 5,
+    "translated_items": 5,
+    "pending_items": 7,
     "batch_size": 5,
     "rejected_cves": [],
-    "fallback_reason": "translation_failed",
+    "fallback_reason": "partial_translation",
     "batch_fallback_reasons": [
+      "translation_failed",
       "translation_failed"
     ]
   }
